@@ -6,14 +6,14 @@
 
 👤 Identificação
 
-📝 Nome:** Ana Clara Ribeiro
-⚧️ Gênero:** Feminino
-🎂 Idade:** 17 anos
-📚 Ocupação:** Estudante do Ensino Médio Técnico
-🏫 Instituição:** Centro Paula Souza – Escola Técnica Estadual Sylvio de Mattos Carvalho
-📖 Ano/Série:** 3º ano do Ensino Médio Técnico
-🕒 Período:** Vespertino
-🎓 Escolaridade:** Ensino Médio Técnico (em andamento)
+📝 Nome: Ana Clara Ribeiro
+⚧️ Gênero: Feminino
+🎂 Idade: 17 anos
+📚 Ocupação: Estudante do Ensino Médio Técnico
+🏫 Instituição: Centro Paula Souza – Escola Técnica Estadual Sylvio de Mattos Carvalho
+📖 Ano/Série: 3º ano do Ensino Médio Técnico
+🕒 Período: Vespertino
+🎓 Escolaridade: Ensino Médio Técnico (em andamento)
 
 ---
 

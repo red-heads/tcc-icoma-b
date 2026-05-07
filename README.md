@@ -1,86 +1,184 @@
 #red-heads
-MODELO DE PERSONA
 
-🎯 FICHA DE PERSONA
-Nome: Ana Clara Ribeiro
-Gênero: Feminino
-Idade: 17 anos
-Profissão: Estudante do Ensino Médio (3º ano)
-Escola: Escola Técnica Estadual Sylvio de Mattos Carvalho
-Período: Tarde
-Escolaridade: Ensino Médio Técnico (em andamento)
-;
+🎯PERSONA DO PROJETO
 
-🧠 Resumo da história
+---
 
-Ana Clara está no 3º ano do ensino médio técnico e vive um dos momentos mais decisivos da sua vida escolar. Estudando no período da tarde, ela passa as noites tentando revisar conteúdos ou descansando, mas frequentemente dorme/acorda já preocupada com provas, trabalhos e o vestibular. suas noites são tomadas por estudos, trabalhos e preocupação com o futuro. Ela se sente constantemente pressionada — tanto pela escola quanto por si mesma — para ter um bom desempenho e garantir uma vaga em uma boa faculdade.
+👤 Identificação
 
-A carga da escola técnica é intensa, exigindo tanto desempenho acadêmico quanto técnico. Ela sente que precisa dar conta de tudo ao mesmo tempo: manter boas notas, se preparar para o ENEM e ainda decidir o futuro profissional. Nos últimos meses, sua ansiedade aumentou significativamente, principalmente por causa do vestibular e do medo de não corresponder às expectativas.
-;
+📝 Nome:** Ana Clara Ribeiro
+⚧️ Gênero:** Feminino
+🎂 Idade:** 17 anos
+📚 Ocupação:** Estudante do Ensino Médio Técnico
+🏫 Instituição:** Centro Paula Souza – Escola Técnica Estadual Sylvio de Mattos Carvalho
+📖 Ano/Série:** 3º ano do Ensino Médio Técnico
+🕒 Período:** Vespertino
+🎓 Escolaridade:** Ensino Médio Técnico (em andamento)
 
-⚠️ Principais problemas / dores / desafios
+---
 
--Ansiedade intensa pré-provas e vestibulares
--Sobrecarga com matérias + projetos técnicos
--Sensação de nunca estar fazendo o suficiente
--Dificuldade para relaxar sem culpa
--Insônia antes de avaliações importantes
--Autocobrança excessiva
--Medo de decepcionar família e a si mesma
--baixa autoestima
-;
+🌟 **Perfil Geral**
 
-⚠️ Como o estresse se manifesta
-Cansaço mental constante
-Irritação fácil
-Dores de cabeça ou tensão no corpo
-Dificuldade de concentração
-;
+Ana Clara Ribeiro é uma estudante do 3º ano do ensino médio técnico que enfrenta um período decisivo de sua trajetória acadêmica. Como aluna de uma instituição de ensino técnico, lida diariamente com uma rotina intensa que exige alto desempenho acadêmico, dedicação a projetos técnicos e preparação paralela para vestibulares, especialmente o ENEM.
 
-⚠️ Como a baixa autoestima se manifesta
+🌙 Sua rotina noturna costuma ser dedicada à revisão de conteúdos, realização de atividades e organização dos estudos, o que frequentemente compromete sua qualidade de descanso.
 
--Autocrítica excessiva (“eu deveria estar fazendo mais”)
-Sensação constante de insuficiência
-Medo de errar ou tentar coisas novas
-Pensamentos como: “eu não sou inteligente o bastante”
-Dificuldade de reconhecer conquistas próprias
-;
+📈 Nos últimos meses, o aumento das demandas escolares e a proximidade dos processos seletivos intensificaram seus níveis de ansiedade, gerando preocupações recorrentes sobre desempenho, futuro profissional e expectativas familiares.
 
-💭 Desejos e objetivos
-Passar no vestibular (principalmente em universidade pública)
-Conseguir organizar uma rotina eficiente de estudos
-Reduzir a ansiedade no dia a dia
-Ter mais equilíbrio emocional
-Sentir segurança sobre o futuro
-Conseguir descansar sem culpa
-;
+---
 
-❓ Dúvidas frequentes
-“Como controlar a ansiedade antes de provas importantes?”
-“Como revisar tudo sem entrar em desespero?”
-“Como saber se estou estudando o suficiente?”
-“Como lidar com a pressão do 3º ano?”
-“O que fazer quando não consigo parar de pensar nos estudos?”
-;
+🧠 Contexto Emocional e Psicológico
 
-💡 Comportamentos e hábitos
--Usa muito TikTok e Instagram para “fugir” da pressão
--Assiste vídeos de estudo no YouTube, mas nem sempre aplica
--Costuma revisar conteúdo à noite, mesmo cansada
--Procrastina quando está emocionalmente sobrecarregada
-;
+Ana Clara apresenta sinais frequentes de sobrecarga emocional associados ao ambiente acadêmico competitivo.
 
-📱 Canais e tecnologias
-Smartphone (principal ferramenta)
-Pesquisa no Google sobre estudos e ansiedade
-Usa aplicativos de música para relaxar
-Consome conteúdos rápidos (vídeos curtos e dicas práticas)
-;
+Ela sente a necessidade constante de atender simultaneamente a múltiplas expectativas:
 
-❤️ Principais atributos e valores
-Muito responsável
-Determinada
-Ansiosa e autocrítica
-Sensível à pressão externa
-Valoriza estabilidade, aprovação e reconhecimento
-;
+✅ Manter alto rendimento escolar
+✅ Cumprir prazos de projetos técnicos
+✅ Preparar-se adequadamente para vestibulares
+✅ Definir sua futura carreira profissional
+
+⚡ Essa pressão gera um estado contínuo de alerta e preocupação, impactando diretamente seu bem-estar emocional.
+
+---
+
+⚠️ **Principais Dores e Desafios**
+
+😰 **Ansiedade Acadêmica**
+
+* Crises de ansiedade antes de provas e avaliações;
+* Medo excessivo de falhar;
+* Preocupação constante com o vestibular.
+
+📚 **Sobrecarga de Demandas**
+
+* Acúmulo de matérias e projetos;
+* Dificuldade para equilibrar estudo e descanso;
+* Sensação de insuficiência diante das tarefas.
+
+🔥 **Autocobrança Excessiva**
+
+* Busca constante por desempenho elevado;
+* Dificuldade em reconhecer conquistas;
+* Comparação frequente com colegas.
+
+💭 Baixa Autoestima Acadêmica
+
+* Insegurança sobre suas capacidades;
+* Medo de não corresponder às expectativas;
+* Pensamentos autodepreciativos.
+
+---
+
+🩺 Manifestações do Estresse
+
+O estresse se manifesta em Ana Clara por meio de:
+
+🧠 Cansaço mental constante
+😤 Irritabilidade
+🤕 Dores de cabeça e tensão muscular
+🎯 Dificuldade de concentração
+🌙 Insônia em períodos avaliativos
+🔋 Sensação frequente de esgotamento
+
+---
+
+💔 Manifestações da Baixa Autoestima
+
+🗣️ Autocrítica intensa
+📉 Sensação persistente de insuficiência
+🚫 Dificuldade em valorizar conquistas
+😟 Medo de errar ou assumir novos desafios
+
+Pensamentos recorrentes:
+💬 *“Não sou inteligente o suficiente”*
+💬 *“Deveria estar fazendo mais”*
+
+---
+
+🎯 Objetivos e Necessidades
+
+Ana Clara busca:
+
+🌱 Reduzir a ansiedade acadêmica
+📅 Desenvolver melhor organização da rotina
+📖 Criar hábitos saudáveis de estudo
+⚖️ Equilibrar produtividade e descanso
+💪 Fortalecer sua segurança emocional
+✨ Construir autoconfiança
+😌 Descansar sem culpa
+
+---
+
+❓ Dúvidas Frequentes
+
+🤔 Como controlar a ansiedade antes de provas importantes?
+🤔 Como organizar os estudos sem sobrecarga?
+🤔 Como saber se estou estudando o suficiente?
+🤔 Como lidar com a pressão do último ano?
+🤔 Como descansar sem sentir culpa?
+🤔 Como melhorar minha confiança acadêmica?
+
+---
+
+📱 Comportamentos e Hábitos Digitais
+
+Ana Clara utiliza a tecnologia como ferramenta de apoio e também como escape emocional.
+
+ 🔄 Hábitos
+
+📲 Consome conteúdos rápidos em redes sociais;
+🧩 Busca distração em momentos de alta pressão;
+🎥 Assiste vídeos sobre técnicas de estudo;
+🔍 Pesquisa dicas de produtividade e controle emocional;
+⏳ Procrastina quando emocionalmente sobrecarregada.
+
+🌐 Plataformas Mais Utilizadas
+
+* [TikTok]
+* [Instagram]
+* [YouTube]
+* 🎵 Aplicativos de música e relaxamento
+
+---
+
+💻 Dispositivos e Canais de Acesso
+
+📱 Dispositivo principal: Smartphone
+
+📌 Canais preferidos:
+🔎 Pesquisas rápidas na internet
+📖 Sites com linguagem objetiva
+🎨 Conteúdos visuais e interativos
+🛠️ Ferramentas práticas de apoio emocional
+
+---
+
+❤️ Valores e Características Pessoais
+
+🌟 Características
+ ✔️ Responsável
+ ✔️ Determinada
+ ✔️ Sensível à pressão
+ ✔️ Altamente comprometida
+ ✔️ Autocrítica
+
+💎 Valores
+* 🛡️ Segurança
+* 🏆 Aprovação acadêmica
+* 📈 Crescimento pessoal
+* 🚀 Construção de futuro profissional
+
+---
+
+🌐 Relação com a Solução Proposta
+
+O website de apoio psicológico e emocional deve oferecer recursos que atendam diretamente às necessidades de Ana Clara:
+
+🧘 Técnicas de controle da ansiedade
+📚 Conteúdos sobre organização emocional
+🌿 Exercícios de relaxamento
+💬 Mensagens de acolhimento e orientação
+📱 Interface objetiva e responsiva para mobile
+
+---

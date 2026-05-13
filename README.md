@@ -4,7 +4,7 @@
 
 ---
 
-👤 Identificação
+👤 **Identificação**
 
 📝 Nome: Ana Clara Ribeiro
 ⚧️ Gênero: Feminino
@@ -27,7 +27,7 @@ Ana Clara Ribeiro é uma estudante do 3º ano do ensino médio técnico que enfr
 
 ---
 
-🧠 Contexto Emocional e Psicológico
+🧠 **Contexto Emocional e Psicológico**
 
 Ana Clara apresenta sinais frequentes de sobrecarga emocional associados ao ambiente acadêmico competitivo.
 
@@ -44,19 +44,19 @@ Ela sente a necessidade constante de atender simultaneamente a múltiplas expect
 
 ⚠️ **Principais Dores e Desafios**
 
-😰 **Ansiedade Acadêmica**
+😰 Ansiedade Acadêmica
 
 * Crises de ansiedade antes de provas e avaliações;
 * Medo excessivo de falhar;
 * Preocupação constante com o vestibular.
 
-📚 **Sobrecarga de Demandas**
+📚 Sobrecarga de Demandas
 
 * Acúmulo de matérias e projetos;
 * Dificuldade para equilibrar estudo e descanso;
 * Sensação de insuficiência diante das tarefas.
 
-🔥 **Autocobrança Excessiva**
+🔥 Autocobrança Excessiva
 
 * Busca constante por desempenho elevado;
 * Dificuldade em reconhecer conquistas;
@@ -70,7 +70,7 @@ Ela sente a necessidade constante de atender simultaneamente a múltiplas expect
 
 ---
 
-🩺 Manifestações do Estresse
+🩺 **Manifestações do Estresse**
 
 O estresse se manifesta em Ana Clara por meio de:
 
@@ -83,7 +83,7 @@ O estresse se manifesta em Ana Clara por meio de:
 
 ---
 
-💔 Manifestações da Baixa Autoestima
+💔 **Manifestações da Baixa Autoestima**
 
 🗣️ Autocrítica intensa
 📉 Sensação persistente de insuficiência
@@ -96,7 +96,7 @@ Pensamentos recorrentes:
 
 ---
 
-🎯 Objetivos e Necessidades
+🎯 **Objetivos e Necessidades**
 
 Ana Clara busca:
 
@@ -110,7 +110,7 @@ Ana Clara busca:
 
 ---
 
-❓ Dúvidas Frequentes
+❓ **Dúvidas Frequentes**
 
 🤔 Como controlar a ansiedade antes de provas importantes?
 🤔 Como organizar os estudos sem sobrecarga?
@@ -121,7 +121,7 @@ Ana Clara busca:
 
 ---
 
-📱 Comportamentos e Hábitos Digitais
+📱 **Comportamentos e Hábitos Digitais**
 
 Ana Clara utiliza a tecnologia como ferramenta de apoio e também como escape emocional.
 
@@ -142,7 +142,7 @@ Ana Clara utiliza a tecnologia como ferramenta de apoio e também como escape em
 
 ---
 
-💻 Dispositivos e Canais de Acesso
+💻 **Dispositivos e Canais de Acesso**
 
 📱 Dispositivo principal: Smartphone
 
@@ -154,7 +154,7 @@ Ana Clara utiliza a tecnologia como ferramenta de apoio e também como escape em
 
 ---
 
-❤️ Valores e Características Pessoais
+❤️ **Valores e Características Pessoais**
 
 🌟 Características
  ✔️ Responsável
@@ -171,7 +171,7 @@ Ana Clara utiliza a tecnologia como ferramenta de apoio e também como escape em
 
 ---
 
-🌐 Relação com a Solução Proposta
+🌐 **Relação com a Solução Proposta**
 
 O website de apoio psicológico e emocional deve oferecer recursos que atendam diretamente às necessidades de Ana Clara:
 

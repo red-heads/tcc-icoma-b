@@ -1,5 +1,15 @@
 #red-heads
 
+RESUMO
+
+Este Trabalho de Conclusão de Curso apresenta o desenvolvimento de um website de apoio psicológico e emocional voltado para os adolescentes da Escola Técnica Estadual Sylvio de Mattos Carvalho. O projeto tem como principal objetivo oferecer suporte informativo e acolhedor para estudantes que enfrentam sintomas de ansiedade e sobrecarga emocional causados pela rotina escolar e pelas dificuldades do cotidiano.
+
+A plataforma foi criada para disponibilizar conteúdos educativos sobre saúde mental, dicas de bem-estar, técnicas de relaxamento e orientações sobre a importância do autocuidado e da busca por ajuda profissional quando necessária. Além disso, o website busca promover a conscientização sobre saúde emocional entre os jovens, incentivando o diálogo e reduzindo preconceitos relacionados aos problemas psicológicos.
+
+Com isso, o projeto pretende contribuir para a melhoria da qualidade de vida dos estudantes, oferecendo um ambiente digital acessível, seguro e acolhedor para apoio emocional e prevenção de problemas relacionados à saúde mental.
+
+---
+
 🎯PERSONA DO PROJETO
 
 ---

@@ -12,6 +12,16 @@ Com isso, o projeto pretende contribuir para a melhoria da qualidade de vida dos
 
 🎯PERSONA DO PROJETO
 
+**Apresenta:**
+Contexto acadêmico;
+Perfil emocional;
+Dores;
+Objetivos;
+Hábitos digitais;
+Necessidades;
+Comportamento;
+Relação com a solução.
+
 ---
 
 👤 **Identificação**

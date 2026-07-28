@@ -1,0 +1,386 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f7ff;
+    color: #263858;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.cabecalho {
+    width: 100%;
+    min-height: 76px;
+    padding: 14px 7%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    box-shadow: 0 3px 14px rgba(46, 70, 112, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.logo-area h1 {
+    color: #168bb8;
+    font-size: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.menu a {
+    color: #3a4f72;
+    font-weight: 600;
+}
+
+.menu a:hover {
+    color: #078bbc;
+}
+
+.botao-entrar,
+.botao-principal,
+.botao-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 22px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.botao-entrar,
+.botao-principal {
+    background-color: #168fbd;
+    color: #ffffff;
+}
+
+.botao-entrar:hover,
+.botao-principal:hover {
+    background-color: #087aa4;
+    transform: translateY(-2px);
+}
+
+.botao-secundario {
+    background-color: #ffffff;
+    color: #168fbd;
+    border-color: #168fbd;
+}
+
+.botao-secundario:hover {
+    background-color: #e8f7fd;
+}
+
+.apresentacao {
+    width: min(1180px, 88%);
+    min-height: 560px;
+    margin: 50px auto;
+    padding: 58px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #e2eaff, #f5f8ff);
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.selo,
+.titulo-secao span,
+.ajuda span {
+    display: inline-block;
+    color: #087fa9;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.apresentacao h2 {
+    max-width: 720px;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 22px;
+}
+
+.apresentacao p {
+    max-width: 620px;
+    color: #526687;
+    font-size: 1.1rem;
+}
+
+.botoes {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.apresentacao-ilustracao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo-ilustracao {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background-color: #b9d9ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 0 25px rgba(98, 174, 239, 0.15),
+        0 0 0 50px rgba(98, 174, 239, 0.08);
+}
+
+.circulo-ilustracao span {
+    font-size: 6rem;
+}
+
+.informacoes,
+.lista-videos,
+.grade-ferramentas {
+    width: min(1180px, 88%);
+    margin: 0 auto;
+    display: grid;
+    gap: 22px;
+}
+
+.informacoes {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card,
+.video-card,
+.ferramenta-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 8px 24px rgba(45, 68, 110, 0.1);
+}
+
+.card {
+    display: flex;
+    gap: 18px;
+}
+
+.icone-card,
+.icone-ferramenta {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e4f3ff;
+    border-radius: 14px;
+}
+
+.icone-card {
+    width: 58px;
+    height: 58px;
+    font-size: 1.7rem;
+}
+
+.card h3,
+.video-card h3,
+.ferramenta-card h3 {
+    margin-bottom: 8px;
+}
+
+.card p,
+.video-card p,
+.ferramenta-card p,
+.titulo-secao p,
+.ajuda p {
+    color: #60718d;
+}
+
+.secao {
+    padding: 100px 0 20px;
+}
+
+.titulo-secao {
+    width: min(1180px, 88%);
+    margin: 0 auto 34px;
+    text-align: center;
+}
+
+.titulo-secao h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 10px;
+}
+
+.lista-videos {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.video-card {
+    transition: transform 0.2s;
+}
+
+.video-card:hover {
+    transform: translateY(-6px);
+}
+
+.video-imagem {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #b7d8ff, #d8e6ff);
+    color: #ffffff;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ferramentas {
+    padding-bottom: 90px;
+}
+
+.grade-ferramentas {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ferramenta-card {
+    text-align: center;
+}
+
+.icone-ferramenta {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    font-size: 2rem;
+}
+
+.ajuda {
+    width: min(1180px, 88%);
+    margin: 0 auto 90px;
+    padding: 42px;
+    border-radius: 22px;
+    background-color: #ddebff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.ajuda h2 {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    margin-bottom: 10px;
+}
+
+.ajuda p {
+    max-width: 700px;
+}
+
+.rodape {
+    padding: 28px;
+    text-align: center;
+    background-color: #233a5d;
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .cabecalho {
+        flex-direction: column;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .apresentacao {
+        grid-template-columns: 1fr;
+        padding: 40px 28px;
+        text-align: center;
+    }
+
+    .apresentacao p {
+        margin-inline: auto;
+    }
+
+    .botoes {
+        justify-content: center;
+    }
+
+    .informacoes,
+    .lista-videos {
+        grid-template-columns: 1fr;
+    }
+
+    .grade-ferramentas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ajuda {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 560px) {
+    .cabecalho {
+        padding-inline: 20px;
+    }
+
+    .menu {
+        gap: 14px;
+    }
+
+    .apresentacao {
+        width: 92%;
+        margin-top: 28px;
+    }
+
+    .circulo-ilustracao {
+        width: 180px;
+        height: 180px;
+    }
+
+    .circulo-ilustracao span {
+        font-size: 4rem;
+    }
+
+    .grade-ferramentas {
+        grid-template-columns: 1fr;
+    }
+}

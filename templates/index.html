@@ -1,38 +1,202 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ICOMA - Apoio emocional</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-    <section name="navbar-plaform">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="{{url_for('static',filename='logo.jpg')}}" alt="Logo" width="30" height="24"
-                        class="d-inline-block align-text-top">
-                    Bootstrap
-                </a>
-            </div>
-        </nav>
-    </section>
 
-    <footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-            integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-            crossorigin="anonymous"></script>
+    <header class="cabecalho">
+        <div class="logo-area">
+            <img
+                src="{{ url_for('static', filename='logo.jpg') }}"
+                alt="Logo do projeto"
+                class="logo"
+            >
+
+            <h1>ICOMA</h1>
+        </div>
+
+        <nav class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#videos">Vídeos</a>
+            <a href="#ferramentas">Ferramentas</a>
+            <a href="#ajuda">Ajuda</a>
+            <a href="{{ url_for('login') }}" class="botao-entrar">
+                Entrar
+            </a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="inicio" class="apresentacao">
+            <div class="apresentacao-texto">
+                <span class="selo">✨ Tudo bem aí?</span>
+
+                <h2>
+                    Ansiedade e sobrecarga no ensino médio:
+                    você não precisa lidar com isso sozinho.
+                </h2>
+
+                <p>
+                    Estamos aqui para ajudar você a entender seus
+                    sentimentos e encontrar formas de lidar com a ansiedade.
+                </p>
+
+                <div class="botoes">
+                    <a href="{{ url_for('login') }}" class="botao-principal">
+                        Entrar
+                    </a>
+
+                    <button type="button" class="botao-secundario">
+                        Saiba mais
+                    </button>
+                </div>
+            </div>
+
+            <div class="apresentacao-ilustracao">
+                <div class="circulo-ilustracao">
+                    <span>💙</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="informacoes">
+            <article class="card">
+                <div class="icone-card">😊</div>
+
+                <div>
+                    <h3>O que é ansiedade?</h3>
+                    <p>
+                        Entenda o que é, como funciona e quais são
+                        os sentimentos mais comuns.
+                    </p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="icone-card">⚠️</div>
+
+                <div>
+                    <h3>Sinais comuns</h3>
+                    <p>
+                        Conheça alguns dos principais sinais de ansiedade
+                        no ambiente escolar.
+                    </p>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="icone-card">💭</div>
+
+                <div>
+                    <h3>Como lidar</h3>
+                    <p>
+                        Descubra pequenas ações que podem ajudar durante
+                        momentos de preocupação.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <section id="videos" class="secao">
+            <div class="titulo-secao">
+                <span>Conteúdo de apoio</span>
+                <h2>Vídeos recomendados</h2>
+                <p>
+                    Recursos selecionados para apoiar você todos os dias.
+                </p>
+            </div>
+
+            <div class="lista-videos">
+                <article class="video-card">
+                    <div class="video-imagem">▶</div>
+                    <h3>Ansiedade nos estudos: o que fazer?</h3>
+                    <p>Aprenda estratégias simples para momentos difíceis.</p>
+                </article>
+
+                <article class="video-card">
+                    <div class="video-imagem">▶</div>
+                    <h3>Como lidar com a sobrecarga emocional</h3>
+                    <p>Entenda como organizar seus pensamentos e atividades.</p>
+                </article>
+
+                <article class="video-card">
+                    <div class="video-imagem">▶</div>
+                    <h3>Ambiente escolar e saúde mental</h3>
+                    <p>Veja como pedir ajuda e construir uma rede de apoio.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="ferramentas" class="secao ferramentas">
+            <div class="titulo-secao">
+                <span>Cuide de você</span>
+                <h2>Ferramentas de apoio</h2>
+            </div>
+
+            <div class="grade-ferramentas">
+                <article class="ferramenta-card">
+                    <div class="icone-ferramenta">🌬️</div>
+                    <h3>Exercícios de respiração</h3>
+                    <p>Práticas rápidas para recuperar a calma.</p>
+                </article>
+
+                <article class="ferramenta-card">
+                    <div class="icone-ferramenta">📘</div>
+                    <h3>Diário emocional</h3>
+                    <p>Registre como você está se sentindo.</p>
+                </article>
+
+                <article class="ferramenta-card">
+                    <div class="icone-ferramenta">⏱️</div>
+                    <h3>Pausa consciente</h3>
+                    <p>Reserve um minuto para observar o momento presente.</p>
+                </article>
+
+                <article class="ferramenta-card">
+                    <div class="icone-ferramenta">💙</div>
+                    <h3>Pensamento positivo</h3>
+                    <p>Leia mensagens acolhedoras e motivadoras.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="ajuda" class="ajuda">
+            <div>
+                <span>Você não está sozinho</span>
+                <h2>Precisa de ajuda profissional?</h2>
+                <p>
+                    Converse com um psicólogo ou procure profissionais
+                    e serviços de apoio próximos de você.
+                </p>
+            </div>
+
+            <button type="button" class="botao-principal">
+                Encontrar profissionais
+            </button>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>
+            ICOMA — Informação, cuidado e orientação para estudantes.
+        </p>
     </footer>
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
 </body>
 
 </html>

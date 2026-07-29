@@ -56,9 +56,13 @@
                         Entrar
                     </a>
 
-                    <button type="button" class="botao-secundario">
-                        Saiba mais
-                    </button>
+                    <button
+    type="button"
+    class="botao-secundario"
+    id="abrir-modal"
+>
+    Saiba mais
+</button>
                 </div>
             </div>
 
@@ -116,24 +120,63 @@
                 </p>
             </div>
 
-            <div class="lista-videos">
-                <article class="video-card">
-                    <div class="video-imagem">▶</div>
-                    <h3>Ansiedade nos estudos: o que fazer?</h3>
-                    <p>Aprenda estratégias simples para momentos difíceis.</p>
-                </article>
+            <div class="carrossel-videos">
 
-                <article class="video-card">
-                    <div class="video-imagem">▶</div>
-                    <h3>Como lidar com a sobrecarga emocional</h3>
-                    <p>Entenda como organizar seus pensamentos e atividades.</p>
-                </article>
-
-                <article class="video-card">
-                    <div class="video-imagem">▶</div>
-                    <h3>Ambiente escolar e saúde mental</h3>
-                    <p>Veja como pedir ajuda e construir uma rede de apoio.</p>
-                </article>
+                <button
+                    type="button"
+                    class="botao-carrossel anterior"
+                    id="botao-anterior"
+                    aria-label="Mostrar vídeo anterior"
+                >
+                    ❮
+                </button>
+            
+                <div class="janela-carrossel">
+                    <div class="trilho-videos" id="trilho-videos">
+            
+                        <article class="video-card">
+                            <div class="video-imagem">▶</div>
+                            <h3>Ansiedade nos estudos: o que fazer?</h3>
+                            <p>Aprenda estratégias simples para momentos difíceis.</p>
+                        </article>
+            
+                        <article class="video-card">
+                            <div class="video-imagem">▶</div>
+                            <h3>Como lidar com a sobrecarga emocional</h3>
+                            <p>Entenda como organizar seus pensamentos e atividades.</p>
+                        </article>
+            
+                        <article class="video-card">
+                            <div class="video-imagem">▶</div>
+                            <h3>Ambiente escolar e saúde mental</h3>
+                            <p>Veja como pedir ajuda e construir uma rede de apoio.</p>
+                        </article>
+            
+                        <article class="video-card">
+                            <div class="video-imagem">▶</div>
+                            <h3>Dicas para provas e vestibulares</h3>
+                            <p>Veja maneiras de se preparar sem se sobrecarregar.</p>
+                        </article>
+            
+                    </div>
+                </div>
+            
+                <button
+                    type="button"
+                    class="botao-carrossel proximo"
+                    id="botao-proximo"
+                    aria-label="Mostrar próximo vídeo"
+                >
+                    ❯
+                </button>
+            
+            </div>
+            
+            <div class="indicadores-carrossel" id="indicadores-carrossel">
+                <button class="indicador ativo" data-slide="0" aria-label="Slide 1"></button>
+                <button class="indicador" data-slide="1" aria-label="Slide 2"></button>
+                <button class="indicador" data-slide="2" aria-label="Slide 3"></button>
+                <button class="indicador" data-slide="3" aria-label="Slide 4"></button>
             </div>
         </section>
 
@@ -192,12 +235,54 @@
             ICOMA — Informação, cuidado e orientação para estudantes.
         </p>
     </footer>
+</footer>
 
-    <script
-        src="{{ url_for('static', filename='js/script.js') }}">
-    </script>
+<!-- MODAL SAIBA MAIS -->
+<div class="modal-fundo" id="modal-saiba-mais">
+
+    <div class="modal-conteudo">
+
+        <button
+            type="button"
+            class="fechar-modal"
+            id="fechar-modal">
+            ×
+        </button>
+
+        <h2>Sobre o Tudo Bem Aí?</h2>
+
+        <p>
+            O <strong>Tudo Bem Aí?</strong> é um website criado para oferecer
+            apoio emocional e psicológico aos estudantes do Ensino Médio.
+        </p>
+
+        <p>
+            Aqui você encontrará vídeos, ferramentas de apoio,
+            exercícios de respiração, diário emocional e conteúdos
+            sobre ansiedade e sobrecarga emocional.
+        </p>
+
+        <p>
+            Este site não substitui um psicólogo, mas pode orientar
+            você a procurar ajuda quando necessário.
+        </p>
+
+        <button
+            type="button"
+            class="botao-principal"
+            id="entendi-modal">
+            Entendi
+        </button>
+
+    </div>
+
+</div>
+
+<script
+    src="{{ url_for('static', filename='js/script.js') }}">
+</script>
 
 </body>
-
 </html>
+   
 

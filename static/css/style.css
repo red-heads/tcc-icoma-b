@@ -27,37 +27,58 @@ button {
 
 .cabecalho {
     width: 100%;
-    min-height: 76px;
-    padding: 14px 7%;
     background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
     box-shadow: 0 3px 14px rgba(46, 70, 112, 0.12);
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+}
+
+.cabecalho-conteudo {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+    min-width: 260px;
 }
 
 .logo {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 13px;
 }
 
-.logo-area h1 {
+.nome-projeto {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome-projeto strong {
     color: #168bb8;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
+.nome-projeto span {
+    color: #6a7b96;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
 .menu {
     display: flex;
     align-items: center;
@@ -110,16 +131,16 @@ button {
 }
 
 .apresentacao {
-    width: min(1180px, 88%);
-    min-height: 560px;
-    margin: 50px auto;
-    padding: 58px;
-    border-radius: 28px;
-    background: linear-gradient(135deg, #e2eaff, #f5f8ff);
+    width: min(1180px, 92%);
+    margin: 46px auto;
+    padding: 48px;
+    border-radius: 24px;
+    background-color: #eaf0ff;
+
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
-    gap: 40px;
+    gap: 48px;
 }
 
 .selo,
@@ -132,10 +153,10 @@ button {
 }
 
 .apresentacao h2 {
-    max-width: 720px;
-    font-size: clamp(2rem, 4.5vw, 4rem);
-    line-height: 1.1;
-    margin-bottom: 22px;
+    max-width: 650px;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.08;
+    margin-bottom: 20px;
 }
 
 .apresentacao p {
@@ -158,20 +179,37 @@ button {
 }
 
 .circulo-ilustracao {
-    width: 260px;
-    height: 260px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
-    background-color: #b9d9ff;
+    background-color: #b8d8ff;
+
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    padding: 28px;
+    text-align: center;
+
     box-shadow:
-        0 0 0 25px rgba(98, 174, 239, 0.15),
-        0 0 0 50px rgba(98, 174, 239, 0.08);
+        0 0 0 22px rgba(98, 174, 239, 0.16),
+        0 0 0 44px rgba(98, 174, 239, 0.08);
+}
+.icone-principal {
+    font-size: 4rem;
+    margin-bottom: 16px;
 }
 
-.circulo-ilustracao span {
-    font-size: 6rem;
+.circulo-ilustracao {
+    flex-direction: column;
+    padding: 25px;
+    text-align: center;
+}
+
+.circulo-ilustracao p {
+    max-width: 210px;
+    font-size: 1rem;
 }
 
 .informacoes,
@@ -513,4 +551,44 @@ button {
 
     color:#1d8dbb;
 
+}
+
+@media (max-width: 760px) {
+    .cabecalho-conteudo {
+        padding: 14px 0;
+        flex-direction: column;
+    }
+
+    .menu {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .nome-projeto {
+        text-align: left;
+    }
+}
+
+@media (max-width: 900px) {
+    .apresentacao {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 38px 26px;
+    }
+
+    .apresentacao p {
+        margin-inline: auto;
+    }
+
+    .botoes {
+        justify-content: center;
+    }
+
+    .circulo-ilustracao {
+        width: 230px;
+        height: 230px;
+        margin-top: 20px;
+    }
 }

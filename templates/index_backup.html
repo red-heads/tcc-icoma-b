@@ -12,37 +12,29 @@
 </head>
 
 <body>
-    <header class="cabecalho">
 
-        <div class="cabecalho-conteudo">
-    
-            <a href="#inicio" class="logo-area">
-                <img
-                    src="{{ url_for('static', filename='logo.jpg') }}"
-                    alt="Logo Tudo bem aí?"
-                    class="logo"
-                >
-    
-                <div class="nome-projeto">
-                    <strong>Tudo bem aí?</strong>
-                    <span>Apoio emocional para estudantes</span>
-                </div>
-            </a>
-    
-            <nav class="menu">
-                <a href="#inicio">Início</a>
-                <a href="#videos">Vídeos</a>
-                <a href="#ferramentas">Ferramentas</a>
-                <a href="#ajuda">Ajuda</a>
-    
-                <a href="{{ url_for('login') }}" class="botao-entrar">
-                    Entrar
-                </a>
-            </nav>
-    
+    <header class="cabecalho">
+        <div class="logo-area">
+            <img
+                src="{{ url_for('static', filename='logo.jpg') }}"
+                alt="Logo do projeto"
+                class="logo"
+            >
+
+            <h1>ICOMA</h1>
         </div>
-    
+
+        <nav class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#videos">Vídeos</a>
+            <a href="#ferramentas">Ferramentas</a>
+            <a href="#ajuda">Ajuda</a>
+            <a href="{{ url_for('login') }}" class="botao-entrar">
+                Entrar
+            </a>
+        </nav>
     </header>
+
     <main>
 
         <section id="inicio" class="apresentacao">
@@ -258,7 +250,7 @@
             ICOMA — Informação, cuidado e orientação para estudantes.
         </p>
     </footer>
-
+</footer>
 
 <!-- MODAL SAIBA MAIS -->
 <div class="modal-fundo" id="modal-saiba-mais">

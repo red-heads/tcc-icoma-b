@@ -15,6 +15,9 @@ def index():
 def login():
     return render_template("login/login.html")
 
+@app.route("/respiracao")
+def respiracao():
+    return render_template("pages/respiracao.html")
 
 def main():
     app.run(

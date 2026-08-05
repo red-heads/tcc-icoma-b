@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exercícios de respiração</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+
+    >
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/respiracao.css') }}"
+>
+</head>
+
+<body class="pagina-ferramenta">
+
+    <main class="conteudo-ferramenta">
+
+        <a href="{{ url_for('index') }}" class="voltar-ferramenta">
+            ← Exercícios de respiração
+        </a>
+
+        <section class="cartao-respiracao">
+
+            <header class="cabecalho-ferramenta">
+                <h1>Respire com calma</h1>
+                <p>Siga o ritmo e respire profundamente.</p>
+            </header>
+
+            <div class="circulo-respiracao" id="circulo-respiracao">
+                <span id="texto-respiracao">Inspire...</span>
+            </div>
+
+            <div class="controle-respiracao">
+
+                <div class="duracao-respiracao">
+                    <span>Duração do exercício</span>
+                    <strong>1 minuto</strong>
+                </div>
+
+                <div class="barra-respiracao">
+                    <div
+                        class="progresso-respiracao"
+                        id="progresso-respiracao">
+                    </div>
+                </div>
+
+                <div class="tempo-respiracao" id="tempo-respiracao">
+                    01:00
+                </div>
+
+                <div class="acoes-respiracao">
+
+                    <button
+                        type="button"
+                        class="botao-principal"
+                        id="iniciar-respiracao">
+                        Iniciar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="botao-secundario"
+                        id="pausar-respiracao">
+                        Pausar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="botao-secundario"
+                        id="reiniciar-respiracao">
+                        Reiniciar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script
+        src="{{ url_for('static', filename='js/respiracao.js') }}">
+    </script>
+
+</body>
+
+</html>

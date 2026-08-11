@@ -19,6 +19,21 @@ def login():
 def respiracao():
     return render_template("pages/respiracao.html")
 
+
+@app.route("/pausa")
+def pausa():
+    return render_template("pages/pausa.html")
+
+def main():
+    app.run(
+        port=int(os.environ.get("PORT", 80)),
+        debug=True
+    )
+
+
+if __name__ == "__main__":
+    main()
+    
 def main():
     app.run(
         port=int(os.environ.get("PORT", 80)),

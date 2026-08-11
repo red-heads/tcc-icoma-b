@@ -601,3 +601,11 @@ button {
 .ferramenta-link:hover {
     transform: translateY(-6px);
 }
+
+.ferramenta-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}

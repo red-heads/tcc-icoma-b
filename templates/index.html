@@ -211,21 +211,26 @@
 
             <div class="grade-ferramentas">
                 <article class="ferramenta-card">
-                    <div class="icone-ferramenta">🌬️</div>
-                    <h3>Exercícios de respiração</h3>
-                    <p>Práticas rápidas para recuperar a calma.</p>
+                    <div class="icone-ferramenta">📘</div>
+                    <h3>Diário emocional</h3>
+                    <p>Registre como você está se sentindo.</p>
                 </article>
 
-                <a href="{{ url_for('respiracao') }}" class="ferramenta-card ferramenta-link">
-                    <div class="icone-ferramenta">🌬️</div>
-                    <h3>Exercícios de respiração</h3>
-                    <p>Práticas rápidas para recuperar a calma.</p>
-                </a>
+                <article class="ferramenta-card">
+                    <a href="{{ url_for('respiracao') }}" class="ferramenta-link">
+                        <div class="icone-ferramenta">🌬️</div>
+                        <h3>Exercícios de respiração</h3>
+                        <p>Práticas rápidas para recuperar a calma.</p>
+                    </a>
+                </article>
+                
 
                 <article class="ferramenta-card">
-                    <div class="icone-ferramenta">⏱️</div>
-                    <h3>Pausa consciente</h3>
-                    <p>Reserve um minuto para observar o momento presente.</p>
+                    <a href="{{ url_for('pausa') }}" class="ferramenta-link">
+                        <div class="icone-ferramenta">⏱️</div>
+                        <h3>Pausa consciente</h3>
+                        <p>Reserve um minuto para observar o momento presente.</p>
+                    </a>
                 </article>
 
                 <article class="ferramenta-card">

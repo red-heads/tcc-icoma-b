@@ -1,0 +1,129 @@
+body.pagina-ferramenta {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eef4ff;
+    color: #203d6b;
+}
+
+.conteudo-pausa {
+    width: min(900px, 92%);
+    margin: 60px auto;
+    background-color: #ffffff;
+    border-radius: 28px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.voltar-pausa {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: #203d6b;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.cartao-pausa {
+    text-align: center;
+}
+
+.cabecalho-pausa h1 {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    font-size: 2.3rem;
+    line-height: 1.2;
+}
+
+.circulo-pausa {
+    width: 330px;
+    height: 330px;
+    margin: 0 auto 35px;
+    border-radius: 50%;
+    background-color: #afd2fa;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 0 0 30px rgba(98, 174, 239, 0.15),
+        0 0 0 60px rgba(98, 174, 239, 0.08);
+}
+
+.circulo-pausa span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #174a8b;
+}
+
+.acoes-pausa {
+    margin-top: 60px;
+}
+
+.acoes-pausa button {
+    min-width: 130px;
+}
+
+.mais-sobre-pausa {
+    margin-top: 25px;
+    border: none;
+    background: transparent;
+    color: #168fbd;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mais-sobre-pausa:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+
+    .conteudo-pausa {
+        width: 94%;
+        margin: 25px auto;
+        padding: 30px 20px;
+    }
+
+    .cabecalho-pausa h1 {
+        font-size: 1.8rem;
+    }
+
+    .circulo-pausa {
+        width: 230px;
+        height: 230px;
+
+        box-shadow:
+            0 0 0 20px rgba(98, 174, 239, 0.15),
+            0 0 0 40px rgba(98, 174, 239, 0.08);
+    }
+
+    .circulo-pausa span {
+        font-size: 2.3rem;
+    }
+}
+
+.explicacao-pausa {
+    display: none;
+    width: min(520px, 100%);
+    margin: 25px auto 0;
+    padding: 24px;
+    background: #f7fbff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(38, 56, 88, 0.10);
+}
+
+.explicacao-pausa.ativa {
+    display: block;
+}
+
+.explicacao-pausa h2 {
+    margin-bottom: 12px;
+    color: #203d6b;
+}
+
+.explicacao-pausa p {
+    margin-bottom: 12px;
+    color: #5f6f8c;
+}

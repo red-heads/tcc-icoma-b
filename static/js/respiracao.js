@@ -32,6 +32,8 @@ function atualizarRespiracao() {
 
     if (etapa < 4) {
         textoRespiracao.textContent = "Inspire...";
+        textoRespiracao.classList.remove("concluido");
+        
         circuloRespiracao.classList.add("inspirando");
         circuloRespiracao.classList.remove("expirando");
     } else {

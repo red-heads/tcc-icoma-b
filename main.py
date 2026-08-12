@@ -12,6 +12,10 @@ def index():
 @app.route("/login")
 def login():
     return render_template('login/login.html')
+    
+@app.route('/respiracao')
+def respiracao():
+    return render_template('respiracao.html')
 
 def main():
     app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))

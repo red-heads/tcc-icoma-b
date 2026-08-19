@@ -13,6 +13,14 @@ def index():
 def login():
     return render_template('login/login.html')
 
+@app.route("/respiracao")
+def respiracao():
+    return "Página de Respiração (Em construção)"
+
+@app.route("/pausa")
+def pausa():
+    return "Página de Pausa (Em construção)"
+
 def main():
     app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))
 

@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Respire com calma | ICOMA</title>
+
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef5ff 0%,
+                    #e4f2fc 100%
+                );
+
+            color: #263f70;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 24px;
+        }
+
+
+        /* ================================
+           CONTAINER PRINCIPAL
+        ================================= */
+
+        .pagina {
+
+            width: 100%;
+
+            max-width: 760px;
+
+            min-height: 700px;
+
+            background: #edf3fd;
+
+            border-radius: 28px;
+
+            padding:
+                clamp(20px, 4vw, 38px);
+
+            box-shadow:
+                0 12px 35px
+                rgba(48, 91, 135, 0.15);
+
+            display: flex;
+
+            flex-direction: column;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* Detalhe decorativo */
+
+        .pagina::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            background: #dceeff;
+
+            top: -130px;
+
+            right: -100px;
+
+            opacity: 0.7;
+        }
+
+
+        /* ================================
+           CABEÇALHO
+        ================================= */
+
+        .voltar {
+
+            width: fit-content;
+
+            min-height: 46px;
+
+            padding:
+                10px 18px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #087fc1;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 10px
+                rgba(45, 79, 112, 0.12);
+
+            transition:
+                0.2s ease;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .voltar:hover {
+
+            transform: translateX(-3px);
+
+            box-shadow:
+                0 5px 14px
+                rgba(45, 79, 112, 0.18);
+        }
+
+
+        /* ================================
+           TÍTULO
+        ================================= */
+
+        .cabecalho {
+
+            text-align: center;
+
+            margin-top: 26px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .titulo {
+
+            font-size:
+                clamp(25px, 5vw, 34px);
+
+            font-weight: 600;
+
+            color: #263f70;
+
+            margin-bottom: 7px;
+        }
+
+
+        .subtitulo {
+
+            font-size:
+                clamp(14px, 2.5vw, 16px);
+
+            color: #53688f;
+
+            line-height: 1.5;
+        }
+
+
+        /* ================================
+           ÁREA DA RESPIRAÇÃO
+        ================================= */
+
+        .area-respiracao {
+
+            flex: 1;
+
+            min-height: 360px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+        }
+
+
+        /* Círculo externo */
+
+        .circulo-externo {
+
+            width:
+                clamp(220px, 42vw, 310px);
+
+            aspect-ratio: 1 / 1;
+
+            border-radius: 50%;
+
+            background: #d5efff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 0 0 12px
+                rgba(255,255,255,0.25);
+
+            transition:
+                transform 4s
+                cubic-bezier(
+                    0.4,
+                    0,
+                    0.2,
+                    1
+                );
+        }
+
+
+        /* Círculo intermediário */
+
+        .circulo-meio {
+
+            width: 84%;
+
+            height: 84%;
+
+            border-radius: 50%;
+
+            background: #a9dcfa;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        /* Círculo interno */
+
+        .circulo-interno {
+
+            width: 83%;
+
+            height: 83%;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #55b5f5,
+                    #389fe5
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            box-shadow:
+                inset 0 3px 12px
+                rgba(255,255,255,0.18),
+
+                0 8px 22px
+                rgba(38, 145, 211, 0.18);
+
+            transition:
+                transform 4s
+                cubic-bezier(
+                    0.4,
+                    0,
+                    0.2,
+                    1
+                );
+        }
+
+
+        .texto-respiracao {
+
+            color: white;
+
+            font-size:
+                clamp(24px, 5vw, 34px);
+
+            font-weight: 400;
+
+            letter-spacing: 0.3px;
+        }
+
+
+        /* ================================
+           ANIMAÇÃO
+        ================================= */
+
+        .inspirando .circulo-externo,
+        .inspirando .circulo-interno {
+
+            transform: scale(1.10);
+        }
+
+
+        .expirando .circulo-externo,
+        .expirando .circulo-interno {
+
+            transform: scale(0.88);
+        }
+
+
+        /* ================================
+           CARD DE CONTROLE
+        ================================= */
+
+        .card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding:
+                22px;
+
+            box-shadow:
+                0 7px 20px
+                rgba(47, 78, 109, 0.12);
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* ================================
+           INFORMAÇÕES
+        ================================= */
+
+        .informacoes {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .rotulo {
+
+            color: #52678e;
+
+            font-size: 14px;
+        }
+
+
+        .tempo {
+
+            color: #263f70;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            background: #edf6fd;
+
+            padding:
+                7px 12px;
+
+            border-radius: 8px;
+        }
+
+
+        /* ================================
+           BARRA DE PROGRESSO
+        ================================= */
+
+        .progresso {
+
+            width: 100%;
+
+            height: 6px;
+
+            background: #e7f0f8;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-bottom: 20px;
+        }
+
+
+        .progresso-barra {
+
+            width: 0%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #56b5f4,
+                    #319de3
+                );
+
+            border-radius: 20px;
+
+            transition:
+                width 1s linear;
+        }
+
+
+        /* ================================
+           BOTÃO INICIAR
+        ================================= */
+
+        .iniciar {
+
+            display: block;
+
+            width: min(100%, 190px);
+
+            min-height: 44px;
+
+            margin:
+                0 auto 20px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4db2f3,
+                    #319ee5
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 500;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 12px
+                rgba(48, 158, 224, 0.22);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .iniciar:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 16px
+                rgba(48, 158, 224, 0.28);
+        }
+
+
+        .iniciar:active {
+
+            transform: translateY(0);
+        }
+
+
+        /* ================================
+           CONTROLES
+        ================================= */
+
+        .controles {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 45px;
+        }
+
+
+        .controle {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #168bd0;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            padding: 7px;
+
+            border-radius: 8px;
+
+            transition:
+                background 0.2s ease;
+        }
+
+
+        .controle:hover {
+
+            background: #eef8fe;
+        }
+
+
+        /* ================================
+           ÍCONES
+        ================================= */
+
+        .icone-pausa {
+
+            width: 25px;
+
+            height: 25px;
+
+            border-radius: 50%;
+
+            background: #1684c4;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 11px;
+        }
+
+
+        .icone-reiniciar {
+
+            font-size: 23px;
+
+            color: #168bd0;
+
+            line-height: 1;
+        }
+
+
+        /* ================================
+           CELULAR
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 0;
+
+                align-items: stretch;
+            }
+
+
+            .pagina {
+
+                max-width: none;
+
+                min-height: 100vh;
+
+                border-radius: 0;
+
+                box-shadow: none;
+
+                padding:
+                    18px 16px 22px;
+            }
+
+
+            .cabecalho {
+
+                margin-top: 20px;
+            }
+
+
+            .area-respiracao {
+
+                min-height: 350px;
+
+                padding:
+                    15px 0;
+            }
+
+
+            .card {
+
+                padding:
+                    19px 16px;
+            }
+
+
+            .controles {
+
+                gap: 25px;
+            }
+        }
+
+
+        /* ================================
+           CELULAR PEQUENO
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            .area-respiracao {
+
+                min-height: 300px;
+            }
+
+
+            .circulo-externo {
+
+                width: 215px;
+            }
+
+
+            .titulo {
+
+                font-size: 24px;
+            }
+
+
+            .controles {
+
+                gap: 12px;
+
+                justify-content:
+                    space-between;
+            }
+        }
+
+
+        /* ================================
+           TABLET / DESKTOP GRANDE
+        ================================= */
+
+        @media (min-width: 900px) {
+
+            .pagina {
+
+                min-height: 760px;
+            }
+
+
+            .area-respiracao {
+
+                min-height: 390px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="pagina">
+
+
+        <!-- VOLTAR -->
+
+        <button
+            class="voltar"
+            onclick="voltar()"
+        >
+            ← &nbsp; Exercícios de respiração
+        </button>
+
+
+        <!-- CABEÇALHO -->
+
+        <header class="cabecalho">
+
+            <h1 class="titulo">
+                Respire com calma
+            </h1>
+
+            <p class="subtitulo">
+                Siga o ritmo e respire profundamente.
+            </p>
+
+        </header>
+
+
+        <!-- RESPIRAÇÃO -->
+
+        <section class="area-respiracao">
+
+            <div
+                class="circulo-externo"
+                id="circulo"
+            >
+
+                <div class="circulo-meio">
+
+                    <div class="circulo-interno">
+
+                        <span
+                            class="texto-respiracao"
+                            id="textoRespiracao"
+                        >
+                            Inspire...
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROLES -->
+
+        <section class="card">
+
+
+            <div class="informacoes">
+
+                <span class="rotulo">
+                    Duração do exercício
+                </span>
+
+                <span
+                    class="tempo"
+                    id="tempo"
+                >
+                    1 minuto
+                </span>
+
+            </div>
+
+
+            <!-- BARRA DE PROGRESSO -->
+
+            <div class="progresso">
+
+                <div
+                    class="progresso-barra"
+                    id="progressoBarra"
+                ></div>
+
+            </div>
+
+
+            <!-- BOTÃO INICIAR -->
+
+            <button
+                class="iniciar"
+                id="btnIniciar"
+                onclick="iniciar()"
+            >
+                Iniciar
+            </button>
+
+
+            <!-- PAUSAR / REINICIAR -->
+
+            <div class="controles">
+
+
+                <button
+                    class="controle"
+                    onclick="pausar()"
+                >
+
+                    <span
+                        class="icone-pausa"
+                        id="iconePausa"
+                    >
+                        Ⅱ
+                    </span>
+
+                    <span id="textoPausa">
+                        Pausar
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="controle"
+                    onclick="reiniciar()"
+                >
+
+                    <span class="icone-reiniciar">
+                        ⟳
+                    </span>
+
+                    <span>
+                        Reiniciar
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+
+        /* ================================
+           VARIÁVEIS
+        ================================= */
+
+        let tempoRestante = 60;
+
+        let intervalo = null;
+
+        let executando = false;
+
+        let pausado = false;
+
+        let cicloRespiracao = null;
+
+
+        /* ================================
+           ELEMENTOS
+        ================================= */
+
+        const textoRespiracao =
+            document.getElementById(
+                "textoRespiracao"
+            );
+
+
+        const circulo =
+            document.getElementById(
+                "circulo"
+            );
+
+
+        const tempo =
+            document.getElementById(
+                "tempo"
+            );
+
+
+        const btnIniciar =
+            document.getElementById(
+                "btnIniciar"
+            );
+
+
+        const textoPausa =
+            document.getElementById(
+                "textoPausa"
+            );
+
+
+        const iconePausa =
+            document.getElementById(
+                "iconePausa"
+            );
+
+
+        const progressoBarra =
+            document.getElementById(
+                "progressoBarra"
+            );
+
+
+        /* ================================
+           INICIAR
+        ================================= */
+
+        function iniciar() {
+
+
+            /*
+             * Se o exercício terminou,
+             * começa novamente com 60 segundos.
+             */
+
+            if (tempoRestante <= 0) {
+
+                tempoRestante = 60;
+
+                atualizarTempo();
+
+                progressoBarra.style.width =
+                    "0%";
+
+                textoRespiracao.textContent =
+                    "Inspire...";
+
+                circulo.classList.remove(
+                    "inspirando"
+                );
+
+                circulo.classList.remove(
+                    "expirando"
+                );
+            }
+
+
+            /*
+             * Evita iniciar duas contagens
+             * ao mesmo tempo.
+             */
+
+            if (executando && !pausado) {
+
+                return;
+            }
+
+
+            executando = true;
+
+            pausado = false;
+
+
+            btnIniciar.textContent =
+                "Em andamento";
+
+
+            textoPausa.textContent =
+                "Pausar";
+
+
+            iconePausa.textContent =
+                "Ⅱ";
+
+
+            iniciarRespiracao();
+
+
+            clearInterval(intervalo);
+
+
+            intervalo = setInterval(
+                function() {
+
+                    tempoRestante--;
+
+                    atualizarTempo();
+
+                    atualizarProgresso();
+
+
+                    if (
+                        tempoRestante <= 0
+                    ) {
+
+                        finalizar();
+
+                    }
+
+                },
+                1000
+            );
+        }
+
+
+        /* ================================
+           CICLO DE RESPIRAÇÃO
+        ================================= */
+
+        function iniciarRespiracao() {
+
+
+            if (
+                !executando ||
+                pausado
+            ) {
+
+                return;
+            }
+
+
+            textoRespiracao.textContent =
+                "Inspire...";
+
+
+            circulo.classList.remove(
+                "expirando"
+            );
+
+
+            circulo.classList.add(
+                "inspirando"
+            );
+
+
+            cicloRespiracao =
+                setTimeout(
+                    function() {
+
+
+                        if (
+                            !executando ||
+                            pausado
+                        ) {
+
+                            return;
+                        }
+
+
+                        textoRespiracao.textContent =
+                            "Expire...";
+
+
+                        circulo.classList.remove(
+                            "inspirando"
+                        );
+
+
+                        circulo.classList.add(
+                            "expirando"
+                        );
+
+
+                        cicloRespiracao =
+                            setTimeout(
+                                function() {
+
+
+                                    if (
+                                        !executando ||
+                                        pausado
+                                    ) {
+
+                                        return;
+                                    }
+
+
+                                    iniciarRespiracao();
+
+
+                                },
+                                4000
+                            );
+
+
+                    },
+                    4000
+                );
+        }
+
+
+        /* ================================
+           PAUSAR
+        ================================= */
+
+        function pausar() {
+
+
+            if (!executando) {
+
+                return;
+            }
+
+
+            if (!pausado) {
+
+
+                pausado = true;
+
+
+                clearInterval(
+                    intervalo
+                );
+
+
+                clearTimeout(
+                    cicloRespiracao
+                );
+
+
+                textoPausa.textContent =
+                    "Continuar";
+
+
+                iconePausa.textContent =
+                    "▶";
+
+
+                textoRespiracao.textContent =
+                    "Pausado";
+
+
+                circulo.classList.remove(
+                    "inspirando"
+                );
+
+
+                circulo.classList.remove(
+                    "expirando"
+                );
+
+
+            } else {
+
+
+                /*
+                 * Continua exatamente de
+                 * onde havia parado.
+                 */
+
+                iniciar();
+
+            }
+        }
+
+
+        /* ================================
+           REINICIAR
+        ================================= */
+
+        function reiniciar() {
+
+
+            clearInterval(
+                intervalo
+            );
+
+
+            clearTimeout(
+                cicloRespiracao
+            );
+
+
+            tempoRestante = 60;
+
+            executando = false;
+
+            pausado = false;
+
+
+            atualizarTempo();
+
+
+            progressoBarra.style.width =
+                "0%";
+
+
+            textoRespiracao.textContent =
+                "Inspire...";
+
+
+            textoPausa.textContent =
+                "Pausar";
+
+
+            iconePausa.textContent =
+                "Ⅱ";
+
+
+            btnIniciar.textContent =
+                "Iniciar";
+
+
+            circulo.classList.remove(
+                "inspirando"
+            );
+
+
+            circulo.classList.remove(
+                "expirando"
+            );
+        }
+
+
+        /* ================================
+           FINALIZAR
+        ================================= */
+
+        function finalizar() {
+
+
+            clearInterval(
+                intervalo
+            );
+
+
+            clearTimeout(
+                cicloRespiracao
+            );
+
+
+            executando = false;
+
+            pausado = false;
+
+
+            tempoRestante = 0;
+
+
+            atualizarTempo();
+
+
+            progressoBarra.style.width =
+                "100%";
+
+
+            textoRespiracao.textContent =
+                "Concluído!";
+
+
+            btnIniciar.textContent =
+                "Iniciar novamente";
+
+
+            circulo.classList.remove(
+                "inspirando"
+            );
+
+
+            circulo.classList.remove(
+                "expirando"
+            );
+        }
+
+
+        /* ================================
+           ATUALIZAR TEMPO
+        ================================= */
+
+        function atualizarTempo() {
+
+
+            if (tempoRestante <= 0) {
+
+                tempo.textContent =
+                    "Concluído";
+
+
+            } else if (
+                tempoRestante < 60
+            ) {
+
+                tempo.textContent =
+                    tempoRestante +
+                    " segundos";
+
+
+            } else {
+
+                tempo.textContent =
+                    "1 minuto";
+            }
+        }
+
+
+        /* ================================
+           ATUALIZAR PROGRESSO
+        ================================= */
+
+        function atualizarProgresso() {
+
+
+            const progresso =
+                ((60 - tempoRestante) / 60)
+                * 100;
+
+
+            progressoBarra.style.width =
+                progresso + "%";
+        }
+
+
+        /* ================================
+           VOLTAR
+        ================================= */
+
+        function voltar() {
+
+            window.history.back();
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

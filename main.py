@@ -15,11 +15,11 @@ def login():
 
 @app.route("/respiracao")
 def respiracao():
-    return "Página de Respiração (Em construção)"
+    return render_template('ferramentas/respiracao.html')
 
 @app.route("/pausa")
 def pausa():
-    return "Página de Pausa (Em construção)"
+    return render_template('ferramentas/pausa.html')
 
 def main():
     app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))

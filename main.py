@@ -21,6 +21,10 @@ def respiracao():
 def pausa():
     return render_template('ferramentas/pausa.html')
 
+@app.route("/pensamento")
+def pensamento():
+    return render_template('ferramentas/pensamento.html')
+
 def main():
     app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))
 

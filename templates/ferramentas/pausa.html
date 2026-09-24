@@ -58,17 +58,11 @@
         }
 
 
-        /* =================================
-           CONTAINER PRINCIPAL
-        ================================= */
-
         .pagina {
 
             width: 100%;
 
             max-width: 760px;
-
-            min-height: 700px;
 
             background: #edf3fd;
 
@@ -81,17 +75,11 @@
                 0 12px 35px
                 rgba(48, 91, 135, 0.15);
 
-            display: flex;
-
-            flex-direction: column;
-
             position: relative;
 
             overflow: hidden;
         }
 
-
-        /* Decoração */
 
         .pagina::before {
 
@@ -116,7 +104,7 @@
 
 
         /* =================================
-           BOTÃO VOLTAR
+           VOLTAR
         ================================= */
 
         .voltar {
@@ -144,8 +132,7 @@
                 0 4px 10px
                 rgba(45, 79, 112, 0.14);
 
-            transition:
-                0.2s ease;
+            transition: 0.2s ease;
 
             position: relative;
 
@@ -155,7 +142,8 @@
 
         .voltar:hover {
 
-            transform: translateX(-3px);
+            transform:
+                translateX(-3px);
 
             box-shadow:
                 0 6px 14px
@@ -169,10 +157,7 @@
 
         .cabecalho {
 
-            margin-top: 34px;
-
-            padding:
-                0 5px;
+            margin-top: 30px;
 
             position: relative;
 
@@ -183,27 +168,603 @@
         .titulo {
 
             font-size:
-                clamp(22px, 4vw, 30px);
+                clamp(25px, 4vw, 32px);
 
             font-weight: 500;
 
             line-height: 1.3;
 
             color: #263f70;
+        }
 
-            max-width: 600px;
+
+        .subtitulo {
+
+            margin-top: 10px;
+
+            max-width: 650px;
+
+            color: #52678e;
+
+            font-size: 17px;
+
+            line-height: 1.6;
         }
 
 
         /* =================================
-           ÁREA DO CONTADOR
+           ESCOLHA DO TEMPO
         ================================= */
 
-        .area-contador {
+        .configuracao {
+
+            margin-top: 24px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 6px 18px
+                rgba(45, 79, 112, 0.08);
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .configuracao h2 {
+
+            font-size: 20px;
+
+            font-weight: 600;
+
+            color: #263f70;
+
+            margin-bottom: 8px;
+        }
+
+
+        .configuracao p {
+
+            color: #627596;
+
+            line-height: 1.5;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =================================
+           TEMPOS RÁPIDOS
+        ================================= */
+
+        .tempos-rapidos {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .tempo-rapido {
 
             flex: 1;
 
-            min-height: 370px;
+            min-width: 70px;
+
+            min-height: 46px;
+
+            border:
+                2px solid #c9dceb;
+
+            border-radius: 10px;
+
+            background: #f8fbff;
+
+            color: #087fc1;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .tempo-rapido:hover {
+
+            border-color: #087fc1;
+
+            background: #edf8fd;
+        }
+
+
+        .tempo-rapido.selecionado {
+
+            background: #087fc1;
+
+            border-color: #087fc1;
+
+            color: white;
+        }
+
+
+        /* =================================
+           TEMPO PERSONALIZADO
+        ================================= */
+
+        .tempo-personalizado {
+
+            margin-top: 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .campo-tempo {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+        }
+
+
+        .campo-tempo label {
+
+            color: #52678e;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .campo-tempo input {
+
+            width: 100%;
+
+            min-height: 46px;
+
+            border:
+                1px solid #cbd9e8;
+
+            border-radius: 9px;
+
+            padding: 8px;
+
+            text-align: center;
+
+            font-size: 18px;
+
+            color: #263f70;
+
+            outline: none;
+        }
+
+
+        .campo-tempo input:focus {
+
+            border-color: #087fc1;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(8,127,193,0.10);
+        }
+
+
+        .btn-definir {
+
+            width: 100%;
+
+            margin-top: 18px;
+
+            min-height: 48px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #087fc1;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .btn-definir:hover {
+
+            background: #076fa9;
+        }
+
+
+        /* =================================
+           TEMPO ESCOLHIDO
+        ================================= */
+
+        .tempo-escolhido {
+
+            display: none;
+
+            margin-top: 16px;
+
+            text-align: center;
+
+            color: #087fc1;
+
+            font-size: 16px;
+
+            font-weight: 600;
+        }
+
+
+        .tempo-escolhido.visivel {
+
+            display: block;
+        }
+
+
+        /* =================================
+           ABA DE MISSÕES
+        ================================= */
+
+        .area-missoes {
+
+            margin-top: 18px;
+
+            position: relative;
+
+            z-index: 3;
+        }
+
+
+        .btn-escolher-missoes {
+
+            width: 100%;
+
+            min-height: 52px;
+
+            border:
+                2px solid #087fc1;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #087fc1;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .btn-escolher-missoes:hover {
+
+            background: #087fc1;
+
+            color: white;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .painel-missoes {
+
+            display: none;
+
+            margin-top: 12px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 7px 20px
+                rgba(45, 79, 112, 0.10);
+
+            animation:
+                aparecer 0.25s ease;
+        }
+
+
+        .painel-missoes.visivel {
+
+            display: block;
+        }
+
+
+        .painel-missoes h2 {
+
+            color: #263f70;
+
+            font-size: 20px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .painel-missoes > p {
+
+            color: #687a98;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            margin-bottom: 15px;
+        }
+
+
+        .contador-selecao {
+
+            color: #087fc1;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 12px;
+        }
+
+
+        .lista-escolha {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+
+            max-height: 400px;
+
+            overflow-y: auto;
+
+            padding-right: 4px;
+        }
+
+
+        .opcao-missao {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            padding: 13px;
+
+            border:
+                1px solid #dbe5ef;
+
+            border-radius: 11px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .opcao-missao:hover {
+
+            background: #f6fbfe;
+
+            border-color: #b8d9e9;
+        }
+
+
+        .opcao-missao input {
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            width: 22px;
+
+            height: 22px;
+
+            min-width: 22px;
+
+            border:
+                2px solid #9bb4cc;
+
+            border-radius: 6px;
+
+            background: white;
+
+            cursor: pointer;
+
+            position: relative;
+
+            margin-top: 1px;
+        }
+
+
+        .opcao-missao input:checked {
+
+            background: #087fc1;
+
+            border-color: #087fc1;
+        }
+
+
+        .opcao-missao input:checked::after {
+
+            content: "✓";
+
+            position: absolute;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            left: 3px;
+
+            top: -1px;
+        }
+
+
+        .opcao-texto {
+
+            flex: 1;
+        }
+
+
+        .opcao-titulo {
+
+            color: #263f70;
+
+            font-weight: 600;
+
+            font-size: 15px;
+
+            margin-bottom: 2px;
+        }
+
+
+        .opcao-descricao {
+
+            color: #687a98;
+
+            font-size: 13px;
+
+            line-height: 1.4;
+        }
+
+
+        .acoes-missoes {
+
+            display: flex;
+
+            gap: 9px;
+
+            margin-top: 16px;
+        }
+
+
+        .btn-selecionar-todas,
+        .btn-limpar-missoes {
+
+            flex: 1;
+
+            min-height: 44px;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-selecionar-todas {
+
+            border: none;
+
+            background: #e7f5fc;
+
+            color: #087fc1;
+        }
+
+
+        .btn-limpar-missoes {
+
+            border:
+                1px solid #cbd9e8;
+
+            background: white;
+
+            color: #627596;
+        }
+
+
+        .btn-usar-missoes {
+
+            width: 100%;
+
+            margin-top: 10px;
+
+            min-height: 48px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #087fc1;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-usar-missoes:hover {
+
+            background: #076fa9;
+        }
+
+
+        .aviso-selecao {
+
+            display: none;
+
+            color: #087fc1;
+
+            font-size: 14px;
+
+            margin-top: 8px;
+
+            text-align: center;
+        }
+
+
+        .aviso-selecao.visivel {
+
+            display: block;
+        }
+
+
+        /* =================================
+           CONTADOR
+        ================================= */
+
+        .area-contador {
 
             display: flex;
 
@@ -211,14 +772,13 @@
 
             align-items: center;
 
-            padding:
-                25px 10px;
+            padding: 30px 10px;
+
+            position: relative;
+
+            z-index: 1;
         }
 
-
-        /* =================================
-           CÍRCULO
-        ================================= */
 
         .circulo {
 
@@ -229,7 +789,12 @@
 
             border-radius: 50%;
 
-            background: #ffdd8a;
+            background:
+                linear-gradient(
+                    135deg,
+                    #087fc1,
+                    #39a9dc
+                );
 
             display: flex;
 
@@ -254,7 +819,12 @@
 
             border-radius: 50%;
 
-            background: #ffe9b8;
+            background:
+                linear-gradient(
+                    135deg,
+                    #d8effc,
+                    #a9d8f1
+                );
 
             display: flex;
 
@@ -263,10 +833,6 @@
             align-items: center;
         }
 
-
-        /* =================================
-           ANIMAÇÃO
-        ================================= */
 
         .circulo.ativo {
 
@@ -280,42 +846,208 @@
         @keyframes pulsar {
 
             0% {
-
                 transform: scale(1);
-
             }
 
             50% {
-
-                transform: scale(1.06);
-
+                transform: scale(1.05);
             }
 
             100% {
-
                 transform: scale(1);
-
             }
         }
 
 
-        /* =================================
-           CONTADOR
-        ================================= */
-
         .contador {
 
-            color: #111;
+            color: #263f70;
 
             font-size:
                 clamp(48px, 9vw, 66px);
 
-            font-weight: 300;
+            font-weight: 400;
 
             letter-spacing: 1px;
 
             font-variant-numeric:
                 tabular-nums;
+        }
+
+
+        /* =================================
+           MISSÕES ATUAIS
+        ================================= */
+
+        .missoes {
+
+            margin-top: 4px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .missoes-titulo {
+
+            text-align: center;
+
+            color: #263f70;
+
+            font-size: 22px;
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+        }
+
+
+        .missoes-subtitulo {
+
+            text-align: center;
+
+            color: #657899;
+
+            font-size: 15px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .lista-missoes {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .missao {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 13px;
+
+            padding: 16px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 4px 12px
+                rgba(45, 79, 112, 0.08);
+
+            transition: 0.2s ease;
+        }
+
+
+        .missao:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 6px 16px
+                rgba(45, 79, 112, 0.12);
+        }
+
+
+        .missao input {
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            width: 25px;
+
+            height: 25px;
+
+            min-width: 25px;
+
+            border:
+                2px solid #9bb4cc;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            background: white;
+
+            position: relative;
+
+            margin-top: 2px;
+        }
+
+
+        .missao input:checked {
+
+            background: #087fc1;
+
+            border-color: #087fc1;
+        }
+
+
+        .missao input:checked::after {
+
+            content: "✓";
+
+            position: absolute;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            left: 4px;
+
+            top: -1px;
+        }
+
+
+        .missao-conteudo {
+
+            flex: 1;
+        }
+
+
+        .missao-titulo {
+
+            color: #263f70;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            margin-bottom: 3px;
+        }
+
+
+        .missao-descricao {
+
+            color: #647796;
+
+            font-size: 15px;
+
+            line-height: 1.45;
+        }
+
+
+        .missao.concluida {
+
+            background: #f1f9fd;
+        }
+
+
+        .missao.concluida .missao-titulo {
+
+            color: #087fc1;
         }
 
 
@@ -331,9 +1063,9 @@
 
             align-items: center;
 
-            gap: 20px;
+            gap: 14px;
 
-            padding-bottom: 22px;
+            margin-top: 24px;
 
             position: relative;
 
@@ -341,169 +1073,254 @@
         }
 
 
-        /* =================================
-           BOTÃO INICIAR / PAUSAR
-        ================================= */
-
         .btn-iniciar {
 
             width:
-                min(100%, 210px);
+                min(100%, 250px);
 
-            height: 48px;
+            min-height: 52px;
 
             border: none;
 
-            border-radius: 8px;
+            border-radius: 10px;
 
-            background: #ffca55;
+            background: #087fc1;
 
             color: white;
 
-            font-size: 22px;
+            font-size: 20px;
+
+            font-weight: 600;
 
             cursor: pointer;
 
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease,
-                box-shadow 0.2s ease;
+            transition: 0.2s ease;
         }
 
 
         .btn-iniciar:hover {
 
-            transform: translateY(-2px);
-
-            background: #f5bd3f;
-
-            box-shadow:
-                0 6px 14px
-                rgba(227, 168, 48, 0.25);
-        }
-
-
-        .btn-iniciar:active {
-
-            transform: translateY(0);
-        }
-
-
-        /* =================================
-           MAIS SOBRE
-        ================================= */
-
-        .mais-sobre {
-
-            width:
-                min(100%, 330px);
-
-            min-height: 52px;
-
-            border: 1px solid
-                rgba(8, 127, 193, 0.15);
-
-            border-radius: 14px;
-
-            background: rgba(255,255,255,0.72);
-
-            color: #087fc1;
-
-            font-size: 20px;
-
-            font-weight: 500;
-
-            cursor: pointer;
-
-            padding:
-                10px 18px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 10px;
-
-            box-shadow:
-                0 4px 12px
-                rgba(45, 79, 112, 0.08);
-
-            transition:
-                0.25s ease;
-        }
-
-
-        .mais-sobre:hover {
-
-            background: white;
+            background: #076fa9;
 
             transform:
                 translateY(-2px);
 
             box-shadow:
-                0 7px 16px
-                rgba(45, 79, 112, 0.13);
+                0 6px 14px
+                rgba(8,127,193,0.25);
         }
 
 
-        .seta {
+        .btn-alterar {
+
+            width:
+                min(100%, 250px);
+
+            min-height: 52px;
+
+            padding:
+                11px 20px;
+
+            border:
+                2px solid #087fc1;
+
+            border-radius: 11px;
+
+            background: white;
+
+            color: #087fc1;
 
             font-size: 18px;
 
+            font-weight: 600;
+
+            cursor: pointer;
+
             transition:
-                transform 0.25s ease;
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
 
-        .mais-sobre.aberto .seta {
+        .btn-alterar:hover {
+
+            background: #087fc1;
+
+            color: white;
 
             transform:
-                rotate(180deg);
+                translateY(-2px);
+
+            box-shadow:
+                0 6px 14px
+                rgba(8,127,193,0.20);
         }
 
 
         /* =================================
-           INFORMAÇÕES
+           NOTIFICAÇÃO
         ================================= */
 
-        .informacoes {
+        .notificacao-overlay {
 
-            width: 100%;
+            position: fixed;
 
-            max-width: 560px;
+            inset: 0;
 
-            background: white;
-
-            border-radius: 16px;
-
-            padding: 22px;
-
-            color: #52678e;
-
-            font-size: 16px;
-
-            line-height: 1.65;
-
-            text-align: left;
-
-            box-shadow:
-                0 6px 18px
-                rgba(45, 79, 112, 0.1);
+            background:
+                rgba(24, 51, 82, 0.48);
 
             display: none;
 
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+        }
+
+
+        .notificacao-overlay.visivel {
+
+            display: flex;
+        }
+
+
+        .notificacao {
+
+            width: 100%;
+
+            max-width: 470px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 32px 26px;
+
+            text-align: center;
+
+            box-shadow:
+                0 18px 50px
+                rgba(20, 54, 90, 0.25);
+
             animation:
-                aparecer 0.25s ease;
+                aparecerNotificacao
+                0.25s ease;
         }
 
 
-        .informacoes.visivel {
+        @keyframes aparecerNotificacao {
 
-            display: block;
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px)
+                    scale(0.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
         }
 
+
+        .notificacao-icone {
+
+            font-size: 48px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .notificacao h2 {
+
+            color: #263f70;
+
+            font-size: 26px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .notificacao p {
+
+            color: #627596;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+        }
+
+
+        .notificacao-missoes {
+
+            margin-top: 16px;
+
+            color: #087fc1;
+
+            font-weight: 600;
+
+            font-size: 17px;
+        }
+
+
+        .notificacao-tempo {
+
+            margin-top: 7px;
+
+            color: #7b8da8;
+
+            font-size: 14px;
+        }
+
+
+        .btn-continuar {
+
+            width: 100%;
+
+            max-width: 220px;
+
+            min-height: 48px;
+
+            margin-top: 22px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #087fc1;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .btn-continuar:hover {
+
+            background: #076fa9;
+        }
+
+
+        /* =================================
+           ANIMAÇÕES
+        ================================= */
 
         @keyframes aparecer {
 
@@ -513,7 +1330,6 @@
 
                 transform:
                     translateY(-8px);
-
             }
 
             to {
@@ -522,25 +1338,12 @@
 
                 transform:
                     translateY(0);
-
             }
         }
 
 
-        .informacoes-titulo {
-
-            color: #263f70;
-
-            font-size: 18px;
-
-            font-weight: 600;
-
-            margin-bottom: 8px;
-        }
-
-
         /* =================================
-           TABLET
+           RESPONSIVIDADE
         ================================= */
 
         @media (max-width: 700px) {
@@ -566,65 +1369,33 @@
                 padding:
                     22px;
             }
-
-
-            .cabecalho {
-
-                margin-top: 28px;
-            }
-
-
-            .area-contador {
-
-                min-height: 350px;
-            }
         }
 
-
-        /* =================================
-           CELULAR
-        ================================= */
 
         @media (max-width: 480px) {
 
             .pagina {
 
                 padding:
-                    18px 16px 24px;
-            }
-
-
-            .voltar {
-
-                font-size: 17px;
-
-                min-height: 46px;
-
-                padding:
-                    9px 14px;
-            }
-
-
-            .cabecalho {
-
-                margin-top: 30px;
+                    18px 16px 28px;
             }
 
 
             .titulo {
 
-                font-size: 21px;
-
-                max-width: 350px;
+                font-size: 24px;
             }
 
 
-            .area-contador {
+            .subtitulo {
 
-                min-height: 350px;
+                font-size: 16px;
+            }
 
-                padding:
-                    20px 0;
+
+            .tempo-personalizado {
+
+                gap: 8px;
             }
 
 
@@ -641,42 +1412,45 @@
             }
 
 
-            .btn-iniciar {
+            .missao {
 
-                width: 205px;
-
-                height: 48px;
+                padding: 14px;
             }
 
 
-            .mais-sobre {
+            .missao-titulo {
 
-                width: 100%;
-
-                max-width: 330px;
-
-                font-size: 19px;
+                font-size: 16px;
             }
 
 
-            .informacoes {
+            .missao-descricao {
 
-                font-size: 15px;
+                font-size: 14px;
+            }
 
-                padding: 18px;
+
+            .acoes-missoes {
+
+                flex-direction: column;
+            }
+
+
+            .notificacao {
+
+                padding:
+                    28px 20px;
             }
         }
 
 
-        /* =================================
-           CELULAR PEQUENO
-        ================================= */
-
         @media (max-width: 360px) {
 
-            .area-contador {
+            .tempo-rapido {
 
-                min-height: 300px;
+                min-width: 60px;
+
+                font-size: 14px;
             }
 
 
@@ -689,18 +1463,6 @@
             .contador {
 
                 font-size: 46px;
-            }
-
-
-            .titulo {
-
-                font-size: 20px;
-            }
-
-
-            .mais-sobre {
-
-                font-size: 18px;
             }
         }
 
@@ -722,6 +1484,7 @@
         <button
             class="voltar"
             onclick="voltar()"
+            type="button"
         >
 
             ← &nbsp; Pausa consciente
@@ -730,19 +1493,293 @@
 
 
         <!-- =================================
-             TÍTULO
+             CABEÇALHO
         ================================= -->
 
         <header class="cabecalho">
 
             <h1 class="titulo">
 
-                Foque na sua respiração e
-                observe o momento presente.
+                Pare por alguns minutos e
+                preste atenção ao presente.
 
             </h1>
 
+
+            <p class="subtitulo">
+
+                Escolha seu tempo e experimente
+                observar o que está ao seu redor
+                e como você está se sentindo.
+
+            </p>
+
         </header>
+
+
+        <!-- =================================
+             CONFIGURAÇÃO DO TEMPO
+        ================================= -->
+
+        <section
+            class="configuracao"
+            id="configuracao"
+        >
+
+            <h2>
+
+                ⏱️ Quanto tempo você quer
+                fazer uma pausa?
+
+            </h2>
+
+
+            <p>
+
+                Escolha uma duração rápida ou
+                defina seu próprio tempo.
+
+            </p>
+
+
+            <div class="tempos-rapidos">
+
+                <button
+                    class="tempo-rapido"
+                    onclick="
+                        selecionarTempoRapido(60, this)
+                    "
+                    type="button"
+                >
+                    1 min
+                </button>
+
+
+                <button
+                    class="tempo-rapido"
+                    onclick="
+                        selecionarTempoRapido(180, this)
+                    "
+                    type="button"
+                >
+                    3 min
+                </button>
+
+
+                <button
+                    class="tempo-rapido"
+                    onclick="
+                        selecionarTempoRapido(300, this)
+                    "
+                    type="button"
+                >
+                    5 min
+                </button>
+
+
+                <button
+                    class="tempo-rapido"
+                    onclick="
+                        selecionarTempoRapido(600, this)
+                    "
+                    type="button"
+                >
+                    10 min
+                </button>
+
+
+                <button
+                    class="tempo-rapido"
+                    onclick="
+                        selecionarTempoRapido(900, this)
+                    "
+                    type="button"
+                >
+                    15 min
+                </button>
+
+            </div>
+
+
+            <div class="tempo-personalizado">
+
+                <div class="campo-tempo">
+
+                    <label for="horas">
+                        Horas
+                    </label>
+
+                    <input
+                        type="number"
+                        id="horas"
+                        min="0"
+                        max="23"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <div class="campo-tempo">
+
+                    <label for="minutos">
+                        Minutos
+                    </label>
+
+                    <input
+                        type="number"
+                        id="minutos"
+                        min="0"
+                        max="59"
+                        value="1"
+                    >
+
+                </div>
+
+
+                <div class="campo-tempo">
+
+                    <label for="segundos">
+                        Segundos
+                    </label>
+
+                    <input
+                        type="number"
+                        id="segundos"
+                        min="0"
+                        max="59"
+                        value="0"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn-definir"
+                onclick="definirTempo()"
+                type="button"
+            >
+
+                Definir tempo
+
+            </button>
+
+
+            <div
+                class="tempo-escolhido"
+                id="tempoEscolhido"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================
+             ESCOLHER MISSÕES
+        ================================= -->
+
+        <section class="area-missoes">
+
+            <button
+                class="btn-escolher-missoes"
+                id="btnEscolherMissoes"
+                onclick="alternarPainelMissoes()"
+                type="button"
+            >
+
+                🎯 Escolher minhas missões
+
+            </button>
+
+
+            <div
+                class="painel-missoes"
+                id="painelMissoes"
+            >
+
+                <h2>
+                    Escolha suas missões
+                </h2>
+
+
+                <p>
+
+                    Você pode escolher quantas quiser.
+                    Se não selecionar nenhuma, três
+                    serão sorteadas automaticamente
+                    para sua próxima pausa.
+
+                </p>
+
+
+                <div
+                    class="contador-selecao"
+                    id="contadorSelecao"
+                >
+
+                    0 missões selecionadas
+
+                </div>
+
+
+                <div
+                    class="lista-escolha"
+                    id="listaEscolha"
+                ></div>
+
+
+                <div class="acoes-missoes">
+
+                    <button
+                        class="btn-selecionar-todas"
+                        onclick="selecionarTodas()"
+                        type="button"
+                    >
+
+                        Selecionar todas
+
+                    </button>
+
+
+                    <button
+                        class="btn-limpar-missoes"
+                        onclick="limparSelecao()"
+                        type="button"
+                    >
+
+                        Limpar
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="aviso-selecao"
+                    id="avisoSelecao"
+                >
+
+                    Selecione pelo menos uma missão
+                    ou deixe todas desmarcadas
+                    para sortear automaticamente.
+
+                </div>
+
+
+                <button
+                    class="btn-usar-missoes"
+                    onclick="usarMissoesEscolhidas()"
+                    type="button"
+                >
+
+                    Usar minhas missões
+
+                </button>
+
+            </div>
+
+        </section>
 
 
         <!-- =================================
@@ -762,7 +1799,9 @@
                         class="contador"
                         id="contador"
                     >
+
                         01:00
+
                     </span>
 
                 </div>
@@ -773,18 +1812,48 @@
 
 
         <!-- =================================
+             MISSÕES DA PAUSA
+        ================================= -->
+
+        <section class="missoes">
+
+            <h2 class="missoes-titulo">
+
+                🎯 Suas missões
+
+            </h2>
+
+
+            <p
+                class="missoes-subtitulo"
+                id="missoesSubtitulo"
+            >
+
+                Escolha um tempo para receber
+                suas missões.
+
+            </p>
+
+
+            <div
+                class="lista-missoes"
+                id="listaMissoes"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================
              CONTROLES
         ================================= -->
 
         <section class="controles">
 
-
-            <!-- BOTÃO PRINCIPAL -->
-
             <button
                 class="btn-iniciar"
                 id="btnIniciar"
                 onclick="alternarExercicio()"
+                type="button"
             >
 
                 Iniciar
@@ -792,60 +1861,16 @@
             </button>
 
 
-            <!-- MAIS SOBRE -->
-
             <button
-                class="mais-sobre"
-                id="btnMaisSobre"
-                onclick="mostrarInformacoes()"
+                class="btn-alterar"
+                id="btnAlterar"
+                onclick="alterarTempo()"
+                type="button"
             >
 
-                <span>
-                    Mais sobre o exercício
-                </span>
-
-                <span class="seta">
-                    ↓
-                </span>
+                ⚙ Alterar tempo
 
             </button>
-
-
-            <!-- INFORMAÇÕES -->
-
-            <div
-                class="informacoes"
-                id="informacoes"
-            >
-
-                <div class="informacoes-titulo">
-
-                    Sobre a pausa consciente
-
-                </div>
-
-
-                Reserve um minuto para diminuir
-                o ritmo e prestar atenção ao
-                momento presente.
-
-                <br><br>
-
-                Observe sua respiração, perceba
-                as sensações do seu corpo e tente
-                deixar os pensamentos passarem
-                sem julgá-los.
-
-                <br><br>
-
-                Não é necessário fazer nada
-                perfeitamente. O objetivo é
-                apenas parar por um momento,
-                respirar e perceber como você
-                está se sentindo.
-
-            </div>
-
 
         </section>
 
@@ -853,7 +1878,157 @@
     </main>
 
 
+    <!-- =================================
+         NOTIFICAÇÃO FINAL
+    ================================= -->
+
+    <div
+        class="notificacao-overlay"
+        id="notificacaoOverlay"
+    >
+
+        <div
+            class="notificacao"
+            role="dialog"
+            aria-modal="true"
+        >
+
+            <div
+                class="notificacao-icone"
+                id="notificacaoIcone"
+            >
+
+                💙
+
+            </div>
+
+
+            <h2 id="tituloNotificacao">
+
+                Pausa concluída!
+
+            </h2>
+
+
+            <p id="textoNotificacao">
+
+                Você reservou alguns minutos
+                para estar presente.
+
+            </p>
+
+
+            <div
+                class="notificacao-missoes"
+                id="notificacaoMissoes"
+            >
+            </div>
+
+
+            <div
+                class="notificacao-tempo"
+                id="notificacaoTempo"
+            >
+            </div>
+
+
+            <button
+                class="btn-continuar"
+                onclick="fecharNotificacao()"
+                type="button"
+            >
+
+                Continuar
+
+            </button>
+
+        </div>
+
+    </div>
+
+
     <script>
+
+
+        /* =================================
+           12 MISSÕES
+        ================================= */
+
+        const missoes = [
+
+            {
+                titulo: "Caça aos detalhes",
+                descricao:
+                    "Encontre 3 coisas ao seu redor que você normalmente não percebe."
+            },
+
+            {
+                titulo: "Mapa dos sons",
+                descricao:
+                    "Tente identificar 5 sons diferentes, próximos ou distantes."
+            },
+
+            {
+                titulo: "Escolha uma cor",
+                descricao:
+                    "Escolha uma cor e encontre 3 objetos dessa cor."
+            },
+
+            {
+                titulo: "Perceba o contato",
+                descricao:
+                    "Observe onde seu corpo está encostado e perceba essas sensações."
+            },
+
+            {
+                titulo: "Como está o ambiente?",
+                descricao:
+                    "Preste atenção à temperatura, à luz e ao ar do lugar onde você está."
+            },
+
+            {
+                titulo: "Observe um pensamento",
+                descricao:
+                    "Quando um pensamento surgir, perceba que ele apareceu, sem tentar mudá-lo."
+            },
+
+            {
+                titulo: "Como estou agora?",
+                descricao:
+                    "Escolha uma palavra que descreva como você está se sentindo neste momento."
+            },
+
+            {
+                titulo: "Olhe pela janela",
+                descricao:
+                    "Se puder, observe o lado de fora e procure algum movimento ou detalhe interessante."
+            },
+
+            {
+                titulo: "Minuto sem tela",
+                descricao:
+                    "Deixe o celular de lado por alguns minutos e observe o ambiente ao seu redor."
+            },
+
+            {
+                titulo: "Desenho de 1 minuto",
+                descricao:
+                    "Pegue papel e lápis e desenhe algo que esteja vendo. Não precisa ficar bonito."
+            },
+
+            {
+                titulo: "Uma frase sobre agora",
+                descricao:
+                    "Escreva uma frase começando com: “Neste momento, eu percebo que...”"
+            },
+
+            {
+                titulo: "Encontre algo interessante",
+                descricao:
+                    "Escolha um objeto e observe seus detalhes, textura, formato e pequenas marcas."
+            }
+
+        ];
 
 
         /* =================================
@@ -862,11 +2037,17 @@
 
         let tempoRestante = 60;
 
+        let tempoInicial = 60;
+
         let intervalo = null;
 
         let executando = false;
 
         let pausado = false;
+
+        let missoesAtuais = [];
+
+        let missoesPersonalizadas = false;
 
 
         /* =================================
@@ -891,16 +2072,721 @@
             );
 
 
-        const informacoes =
+        const configuracao =
             document.getElementById(
-                "informacoes"
+                "configuracao"
             );
 
 
-        const btnMaisSobre =
+        const horasInput =
             document.getElementById(
-                "btnMaisSobre"
+                "horas"
             );
+
+
+        const minutosInput =
+            document.getElementById(
+                "minutos"
+            );
+
+
+        const segundosInput =
+            document.getElementById(
+                "segundos"
+            );
+
+
+        const tempoEscolhido =
+            document.getElementById(
+                "tempoEscolhido"
+            );
+
+
+        const listaMissoes =
+            document.getElementById(
+                "listaMissoes"
+            );
+
+
+        const missoesSubtitulo =
+            document.getElementById(
+                "missoesSubtitulo"
+            );
+
+
+        const painelMissoes =
+            document.getElementById(
+                "painelMissoes"
+            );
+
+
+        const listaEscolha =
+            document.getElementById(
+                "listaEscolha"
+            );
+
+
+        const contadorSelecao =
+            document.getElementById(
+                "contadorSelecao"
+            );
+
+
+        const avisoSelecao =
+            document.getElementById(
+                "avisoSelecao"
+            );
+
+
+        const notificacaoOverlay =
+            document.getElementById(
+                "notificacaoOverlay"
+            );
+
+
+        const notificacaoIcone =
+            document.getElementById(
+                "notificacaoIcone"
+            );
+
+
+        const tituloNotificacao =
+            document.getElementById(
+                "tituloNotificacao"
+            );
+
+
+        const textoNotificacao =
+            document.getElementById(
+                "textoNotificacao"
+            );
+
+
+        const notificacaoMissoes =
+            document.getElementById(
+                "notificacaoMissoes"
+            );
+
+
+        const notificacaoTempo =
+            document.getElementById(
+                "notificacaoTempo"
+            );
+
+
+        /* =================================
+           CRIAR LISTA DE ESCOLHA
+        ================================= */
+
+        function criarListaEscolha() {
+
+            listaEscolha.innerHTML = "";
+
+
+            missoes.forEach(
+                (missao, indice) => {
+
+                    const elemento =
+                        document.createElement(
+                            "label"
+                        );
+
+
+                    elemento.className =
+                        "opcao-missao";
+
+
+                    elemento.innerHTML = `
+
+                        <input
+                            type="checkbox"
+                            class="checkbox-escolha"
+                            data-indice="${indice}"
+                            onchange="atualizarContadorSelecao()"
+                        >
+
+                        <div class="opcao-texto">
+
+                            <div class="opcao-titulo">
+
+                                ${missao.titulo}
+
+                            </div>
+
+                            <div class="opcao-descricao">
+
+                                ${missao.descricao}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    listaEscolha.appendChild(
+                        elemento
+                    );
+
+                }
+            );
+
+
+            atualizarContadorSelecao();
+
+        }
+
+
+        /* =================================
+           CONTADOR DE SELEÇÃO
+        ================================= */
+
+        function atualizarContadorSelecao() {
+
+            const quantidade =
+                document.querySelectorAll(
+                    ".checkbox-escolha:checked"
+                ).length;
+
+
+            if (quantidade === 0) {
+
+                contadorSelecao.textContent =
+                    "Nenhuma missão selecionada";
+
+            } else {
+
+                contadorSelecao.textContent =
+                    quantidade === 1
+                        ? "1 missão selecionada"
+                        : `${quantidade} missões selecionadas`;
+
+            }
+
+
+            avisoSelecao.classList.remove(
+                "visivel"
+            );
+
+        }
+
+
+        /* =================================
+           ABRIR/FECHAR ABA
+        ================================= */
+
+        function alternarPainelMissoes() {
+
+            painelMissoes.classList.toggle(
+                "visivel"
+            );
+
+        }
+
+
+        /* =================================
+           SELECIONAR TODAS
+        ================================= */
+
+        function selecionarTodas() {
+
+            document
+                .querySelectorAll(
+                    ".checkbox-escolha"
+                )
+                .forEach(
+                    checkbox =>
+                        checkbox.checked = true
+                );
+
+
+            atualizarContadorSelecao();
+
+        }
+
+
+        /* =================================
+           LIMPAR SELEÇÃO
+        ================================= */
+
+        function limparSelecao() {
+
+            document
+                .querySelectorAll(
+                    ".checkbox-escolha"
+                )
+                .forEach(
+                    checkbox =>
+                        checkbox.checked = false
+                );
+
+
+            atualizarContadorSelecao();
+
+        }
+
+
+        /* =================================
+           USAR MISSÕES ESCOLHIDAS
+        ================================= */
+
+        function usarMissoesEscolhidas() {
+
+            const selecionadas =
+                Array.from(
+                    document.querySelectorAll(
+                        ".checkbox-escolha:checked"
+                    )
+                )
+                .map(
+                    checkbox =>
+                        missoes[
+                            Number(
+                                checkbox.dataset.indice
+                            )
+                        ]
+                );
+
+
+            if (
+                selecionadas.length === 0
+            ) {
+
+                missoesPersonalizadas =
+                    false;
+
+
+                avisoSelecao.classList.add(
+                    "visivel"
+                );
+
+
+                missoesSubtitulo.textContent =
+                    "Nenhuma missão escolhida. Três serão sorteadas na próxima pausa.";
+
+
+                return;
+
+            }
+
+
+            missoesAtuais =
+                selecionadas;
+
+
+            missoesPersonalizadas =
+                true;
+
+
+            mostrarMissoes();
+
+
+            missoesSubtitulo.textContent =
+                selecionadas.length === 1
+                    ? "Você escolheu 1 missão para esta pausa."
+                    : `Você escolheu ${selecionadas.length} missões para esta pausa.`;
+
+
+            painelMissoes.classList.remove(
+                "visivel"
+            );
+
+        }
+
+
+        /* =================================
+           SORTEAR MISSÕES
+        ================================= */
+
+        function sortearMissoes() {
+
+            /*
+               Sempre cria uma nova ordem.
+               Isso garante que uma nova pausa
+               receba novas missões.
+            */
+
+            const embaralhadas =
+                [...missoes]
+                    .sort(
+                        () =>
+                            Math.random() - 0.5
+                    );
+
+
+            missoesAtuais =
+                embaralhadas.slice(0, 3);
+
+
+            missoesPersonalizadas =
+                false;
+
+
+            mostrarMissoes();
+
+        }
+
+
+        /* =================================
+           NOVA PAUSA
+        ================================= */
+
+        function prepararNovaPausa() {
+
+            /*
+               Se o usuário escolheu missões,
+               elas continuam sendo utilizadas.
+
+               Caso contrário, são sorteadas
+               três novas missões.
+            */
+
+            if (
+                !missoesPersonalizadas
+            ) {
+
+                sortearMissoes();
+
+            }
+
+
+            mostrarMissoes();
+
+        }
+
+
+        /* =================================
+           MOSTRAR MISSÕES
+        ================================= */
+
+        function mostrarMissoes() {
+
+            listaMissoes.innerHTML = "";
+
+
+            missoesAtuais.forEach(
+                (missao, indice) => {
+
+                    const elemento =
+                        document.createElement(
+                            "label"
+                        );
+
+
+                    elemento.className =
+                        "missao";
+
+
+                    elemento.innerHTML = `
+
+                        <input
+                            type="checkbox"
+                            onchange="marcarMissao(this)"
+                            aria-label="Marcar missão como concluída"
+                        >
+
+                        <div class="missao-conteudo">
+
+                            <div class="missao-titulo">
+
+                                ${indice + 1}.
+                                ${missao.titulo}
+
+                            </div>
+
+                            <div class="missao-descricao">
+
+                                ${missao.descricao}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    listaMissoes.appendChild(
+                        elemento
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =================================
+           MARCAR MISSÃO
+        ================================= */
+
+        function marcarMissao(checkbox) {
+
+            const missao =
+                checkbox.closest(
+                    ".missao"
+                );
+
+
+            if (
+                checkbox.checked
+            ) {
+
+                missao.classList.add(
+                    "concluida"
+                );
+
+            } else {
+
+                missao.classList.remove(
+                    "concluida"
+                );
+
+            }
+
+        }
+
+
+        /* =================================
+           TEMPO RÁPIDO
+        ================================= */
+
+        function selecionarTempoRapido(
+            segundos,
+            botao
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".tempo-rapido"
+                )
+                .forEach(
+                    elemento =>
+                        elemento.classList.remove(
+                            "selecionado"
+                        )
+                );
+
+
+            botao.classList.add(
+                "selecionado"
+            );
+
+
+            const horas =
+                Math.floor(
+                    segundos / 3600
+                );
+
+
+            const minutos =
+                Math.floor(
+                    (segundos % 3600) / 60
+                );
+
+
+            const segundosRestantes =
+                segundos % 60;
+
+
+            horasInput.value =
+                horas;
+
+
+            minutosInput.value =
+                minutos;
+
+
+            segundosInput.value =
+                segundosRestantes;
+
+        }
+
+
+        /* =================================
+           DEFINIR TEMPO
+        ================================= */
+
+        function definirTempo() {
+
+            let horas =
+                parseInt(
+                    horasInput.value
+                ) || 0;
+
+
+            let minutos =
+                parseInt(
+                    minutosInput.value
+                ) || 0;
+
+
+            let segundos =
+                parseInt(
+                    segundosInput.value
+                ) || 0;
+
+
+            horas =
+                Math.max(
+                    0,
+                    Math.min(
+                        23,
+                        horas
+                    )
+                );
+
+
+            minutos =
+                Math.max(
+                    0,
+                    Math.min(
+                        59,
+                        minutos
+                    )
+                );
+
+
+            segundos =
+                Math.max(
+                    0,
+                    Math.min(
+                        59,
+                        segundos
+                    )
+                );
+
+
+            const total =
+                (horas * 3600) +
+                (minutos * 60) +
+                segundos;
+
+
+            if (
+                total <= 0
+            ) {
+
+                alert(
+                    "Escolha um tempo maior que zero."
+                );
+
+                return;
+
+            }
+
+
+            tempoInicial =
+                total;
+
+
+            tempoRestante =
+                total;
+
+
+            executando = false;
+
+            pausado = false;
+
+
+            clearInterval(
+                intervalo
+            );
+
+
+            circulo.classList.remove(
+                "ativo"
+            );
+
+
+            btnIniciar.textContent =
+                "Iniciar";
+
+
+            atualizarContador();
+
+
+            atualizarTextoTempo();
+
+
+            configuracao.style.display =
+                "none";
+
+
+            tempoEscolhido.classList.add(
+                "visivel"
+            );
+
+
+            /*
+               Só sorteia aqui se não houver
+               uma seleção personalizada.
+            */
+
+            prepararNovaPausa();
+
+        }
+
+
+        /* =================================
+           TEXTO DO TEMPO
+        ================================= */
+
+        function atualizarTextoTempo() {
+
+            const horas =
+                Math.floor(
+                    tempoInicial / 3600
+                );
+
+
+            const minutos =
+                Math.floor(
+                    (tempoInicial % 3600) / 60
+                );
+
+
+            const segundos =
+                tempoInicial % 60;
+
+
+            let texto = "";
+
+
+            if (
+                horas > 0
+            ) {
+
+                texto +=
+                    `${horas}h `;
+
+            }
+
+
+            if (
+                minutos > 0
+            ) {
+
+                texto +=
+                    `${minutos}min `;
+
+            }
+
+
+            if (
+                segundos > 0 ||
+                texto === ""
+            ) {
+
+                texto +=
+                    `${segundos}s`;
+
+            }
+
+
+            tempoEscolhido.textContent =
+                `Tempo escolhido: ${texto}`;
+
+        }
 
 
         /* =================================
@@ -909,29 +2795,27 @@
 
         function alternarExercicio() {
 
-
             /*
-
-                Se o exercício terminou,
-                começa novamente.
-
+               Quando termina e o usuário
+               clica novamente, prepara uma
+               nova pausa.
             */
 
-            if (tempoRestante <= 0) {
+            if (
+                tempoRestante <= 0
+            ) {
 
-                tempoRestante = 60;
+                tempoRestante =
+                    tempoInicial;
+
+
+                prepararNovaPausa();
+
 
                 atualizarContador();
 
             }
 
-
-            /*
-
-                Se está executando,
-                pausa.
-
-            */
 
             if (
                 executando &&
@@ -945,13 +2829,6 @@
             }
 
 
-            /*
-
-                Se está pausado,
-                continua.
-
-            */
-
             if (pausado) {
 
                 continuar();
@@ -960,13 +2837,6 @@
 
             }
 
-
-            /*
-
-                Caso contrário,
-                inicia normalmente.
-
-            */
 
             iniciar();
 
@@ -978,6 +2848,21 @@
         ================================= */
 
         function iniciar() {
+
+            if (
+                tempoRestante <= 0
+            ) {
+
+                tempoRestante =
+                    tempoInicial;
+
+
+                prepararNovaPausa();
+
+
+                atualizarContador();
+
+            }
 
 
             executando = true;
@@ -1005,14 +2890,14 @@
 
         function iniciarContagem() {
 
-
-            clearInterval(intervalo);
+            clearInterval(
+                intervalo
+            );
 
 
             intervalo =
                 setInterval(
                     function() {
-
 
                         tempoRestante--;
 
@@ -1028,10 +2913,10 @@
 
                         }
 
-
                     },
                     1000
                 );
+
         }
 
 
@@ -1040,7 +2925,6 @@
         ================================= */
 
         function pausar() {
-
 
             clearInterval(
                 intervalo
@@ -1069,7 +2953,6 @@
 
         function continuar() {
 
-
             executando = true;
 
             pausado = false;
@@ -1095,7 +2978,6 @@
 
         function finalizar() {
 
-
             clearInterval(
                 intervalo
             );
@@ -1120,24 +3002,263 @@
                 "ativo"
             );
 
+
+            const concluidas =
+                document.querySelectorAll(
+                    ".missao input:checked"
+                ).length;
+
+
+            const total =
+                missoesAtuais.length;
+
+
+            mostrarMensagemFinal(
+                concluidas,
+                total
+            );
+
+
+            notificacaoTempo.textContent =
+                `Pausa de ${formatarTempo(tempoInicial)} finalizada`;
+
+
+            notificacaoOverlay.classList.add(
+                "visivel"
+            );
+
         }
 
 
         /* =================================
-           ATUALIZAR CONTADOR
+           MENSAGEM FINAL
         ================================= */
 
-        function atualizarContador() {
+        function mostrarMensagemFinal(
+            concluidas,
+            total
+        ) {
+
+            if (
+                concluidas === total &&
+                total > 0
+            ) {
+
+                notificacaoIcone.textContent =
+                    "🎉";
+
+
+                tituloNotificacao.textContent =
+                    "Você conseguiu!";
+
+
+                textoNotificacao.textContent =
+                    "Todas as suas missões foram concluídas. Você reservou esse momento para estar presente e aproveitou sua pausa.";
+
+
+                notificacaoMissoes.textContent =
+                    `${concluidas} de ${total} missões concluídas. Parabéns!`;
+
+                return;
+
+            }
+
+
+            if (
+                concluidas > 0
+            ) {
+
+                notificacaoIcone.textContent =
+                    "💙";
+
+
+                tituloNotificacao.textContent =
+                    "Você fez sua pausa.";
+
+
+                textoNotificacao.textContent =
+                    "Você conseguiu dedicar alguns minutos ao momento presente. Não precisa fazer tudo — cada pequena pausa já conta.";
+
+
+                notificacaoMissoes.textContent =
+                    `${concluidas} de ${total} missões concluídas.`;
+
+                return;
+
+            }
+
+
+            notificacaoIcone.textContent =
+                "🌿";
+
+
+            tituloNotificacao.textContent =
+                "Está tudo bem.";
+
+
+            textoNotificacao.textContent =
+                "Você não precisava completar nenhuma missão. O importante foi reservar alguns minutos para parar e estar presente.";
+
+
+            notificacaoMissoes.textContent =
+                "Nenhuma missão concluída — e tudo bem.";
+
+        }
+
+
+        /* =================================
+           FORMATAR TEMPO
+        ================================= */
+
+        function formatarTempo(
+            totalSegundos
+        ) {
+
+            const horas =
+                Math.floor(
+                    totalSegundos / 3600
+                );
 
 
             const minutos =
                 Math.floor(
-                    tempoRestante / 60
+                    (totalSegundos % 3600) / 60
+                );
+
+
+            const segundos =
+                totalSegundos % 60;
+
+
+            if (
+                horas > 0
+            ) {
+
+                return `${horas}h ${minutos}min`;
+
+            }
+
+
+            if (
+                minutos > 0
+            ) {
+
+                return `${minutos}min`;
+
+            }
+
+
+            return `${segundos}s`;
+
+        }
+
+
+        /* =================================
+           ALTERAR TEMPO
+        ================================= */
+
+        function alterarTempo() {
+
+            clearInterval(
+                intervalo
+            );
+
+
+            executando = false;
+
+            pausado = false;
+
+
+            circulo.classList.remove(
+                "ativo"
+            );
+
+
+            fecharNotificacao();
+
+
+            configuracao.style.display =
+                "block";
+
+
+            tempoEscolhido.classList.remove(
+                "visivel"
+            );
+
+
+            btnIniciar.textContent =
+                "Iniciar";
+
+
+            horasInput.value =
+                Math.floor(
+                    tempoInicial / 3600
+                );
+
+
+            minutosInput.value =
+                Math.floor(
+                    (tempoInicial % 3600) / 60
+                );
+
+
+            segundosInput.value =
+                tempoInicial % 60;
+
+
+            tempoRestante =
+                tempoInicial;
+
+
+            atualizarContador();
+
+        }
+
+
+        /* =================================
+           CONTADOR
+        ================================= */
+
+        function atualizarContador() {
+
+            const horas =
+                Math.floor(
+                    tempoRestante / 3600
+                );
+
+
+            const minutos =
+                Math.floor(
+                    (tempoRestante % 3600) / 60
                 );
 
 
             const segundos =
                 tempoRestante % 60;
+
+
+            if (
+                horas > 0
+            ) {
+
+                contador.textContent =
+
+                    String(horas)
+                        .padStart(2, "0")
+
+                    + ":" +
+
+                    String(minutos)
+                        .padStart(2, "0")
+
+                    + ":" +
+
+                    String(segundos)
+                        .padStart(2, "0");
+
+                return;
+
+            }
 
 
             contador.textContent =
@@ -1154,21 +3275,13 @@
 
 
         /* =================================
-           MAIS SOBRE
+           FECHAR NOTIFICAÇÃO
         ================================= */
 
-        function mostrarInformacoes() {
+        function fecharNotificacao() {
 
-
-            const aberto =
-                informacoes.classList.toggle(
-                    "visivel"
-                );
-
-
-            btnMaisSobre.classList.toggle(
-                "aberto",
-                aberto
+            notificacaoOverlay.classList.remove(
+                "visivel"
             );
 
         }
@@ -1184,6 +3297,23 @@
 
         }
 
+
+        /* =================================
+           INICIALIZAÇÃO
+        ================================= */
+
+        criarListaEscolha();
+
+
+        /*
+           A primeira tela começa sem
+           missões definidas.
+        */
+
+        listaMissoes.innerHTML = "";
+
+
+        atualizarContador();
 
     </script>
 

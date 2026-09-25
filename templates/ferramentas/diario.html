@@ -1,0 +1,2761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Diário emocional | Tudo bem aí?</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #e8eefb;
+            color: #26364d;
+        }
+
+        .pagina {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            padding: 20px 15px 30px;
+        }
+
+        /* BOTÃO VOLTAR */
+
+        .botao-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+            background: transparent;
+            color: #315b9b;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 5px 0;
+            margin-bottom: 15px;
+        }
+
+        .botao-voltar:hover {
+            color: #1d437d;
+        }
+
+        /* CARD PRINCIPAL */
+
+        .diario-card {
+            background: white;
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 5px 18px rgba(40, 75, 120, 0.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #315b9b;
+            font-size: 25px;
+            margin: 0 0 8px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #66758a;
+            font-size: 14px;
+            margin: 0 0 22px;
+            line-height: 1.5;
+        }
+
+        .titulo-secao {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #334b6b;
+        }
+
+        /* =========================================
+           ABA DE SENTIMENTOS
+        ========================================= */
+
+        .aba-sentimentos {
+            width: 100%;
+            margin-bottom: 18px;
+        }
+
+        .botao-aba-sentimentos {
+            width: 100%;
+            min-height: 52px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border: 1px solid #c5d5eb;
+            background: #f5f8fe;
+            color: #315b9b;
+
+            border-radius: 13px;
+            padding: 12px 15px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .botao-aba-sentimentos:hover {
+            background: #edf3fc;
+        }
+
+        .seta-aba {
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .seta-aba.aberta {
+            transform: rotate(180deg);
+        }
+
+        /*
+           LISTA DOS 16 SENTIMENTOS
+
+           Ela fica escondida até abrir a aba.
+        */
+
+        .sentimentos {
+            display: none;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 9px;
+
+            margin-top: 9px;
+            padding: 10px;
+
+            background: #f7f9fd;
+            border: 1px solid #dce5f3;
+
+            border-radius: 14px;
+
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .sentimentos.aberta {
+            display: grid;
+        }
+
+        /*
+           BOTÕES GRANDES E FÁCEIS DE TOCAR
+        */
+
+        .sentimento {
+            min-height: 58px;
+
+            border: 1px solid #d0dceb;
+            background: white;
+
+            color: #42536b;
+
+            border-radius: 11px;
+
+            padding: 8px 5px;
+
+            font-size: 14px;
+            font-weight: 500;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+            text-align: center;
+        }
+
+        .sentimento:hover {
+            background: #edf4ff;
+            border-color: #9eb9df;
+        }
+
+        .sentimento.selecionado {
+            background: #dceaff;
+            border-color: #5f8fc9;
+
+            color: #234f87;
+
+            font-weight: bold;
+        }
+
+        .sentimento span {
+            font-size: 25px;
+            line-height: 1;
+        }
+
+        /* TEXTAREA */
+
+        textarea {
+            width: 100%;
+            min-height: 130px;
+
+            resize: vertical;
+
+            border: 1px solid #ccd8e9;
+            border-radius: 13px;
+
+            padding: 12px;
+
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+
+            color: #34445a;
+
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #6f98ca;
+        }
+
+        .contador {
+            text-align: right;
+            color: #7a8798;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* BOTÕES */
+
+        .botao-principal {
+            width: 100%;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #5b86bd;
+            color: white;
+
+            padding: 12px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .botao-principal:hover {
+            background: #4d76aa;
+        }
+
+        .botao-historico {
+            width: 100%;
+
+            border: 1px solid #b9cbe3;
+            border-radius: 12px;
+
+            background: #f4f7fc;
+            color: #315b9b;
+
+            padding: 11px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+        }
+
+        .botao-historico:hover {
+            background: #e9f0fa;
+        }
+
+        /* HISTÓRICO */
+
+        #historico {
+            display: none;
+        }
+
+        .historico-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 5px 18px rgba(40, 75, 120, 0.12);
+        }
+
+        .historico-titulo {
+            text-align: center;
+
+            color: #315b9b;
+
+            margin: 0 0 15px;
+
+            font-size: 23px;
+        }
+
+        .entry {
+            display: grid;
+
+            grid-template-columns:
+                50px
+                minmax(0, 1fr);
+
+            gap: 10px;
+
+            align-items: center;
+
+            border: 1px solid #dce5f1;
+
+            border-radius: 13px;
+
+            padding: 10px;
+
+            margin-bottom: 9px;
+
+            cursor: pointer;
+
+            background: #fafcff;
+        }
+
+        .entry:hover {
+            background: #f0f5fc;
+        }
+
+        .entry-emoji {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #edf3fc;
+
+            border-radius: 50%;
+
+            font-size: 23px;
+        }
+
+        .entry-conteudo {
+            min-width: 0;
+        }
+
+        .entry-sentimento {
+            font-weight: bold;
+
+            color: #315b9b;
+
+            font-size: 14px;
+
+            margin-bottom: 3px;
+        }
+
+        .entry-data {
+            color: #8995a5;
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+        .entry-text {
+            color: #58677b;
+
+            font-size: 12px;
+
+            line-height: 20px;
+
+            display: -webkit-box;
+
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            max-height: 40px;
+
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .botao-todos {
+            width: 100%;
+
+            border: none;
+
+            background: transparent;
+
+            color: #315b9b;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            padding: 8px;
+        }
+
+        /* MODAIS */
+
+        .registro-fundo,
+        .mensagem-fundo,
+        .confirmacao-fundo,
+        .edicao-fundo {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(35, 54, 78, 0.45);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px;
+        }
+
+        .registro-fundo {
+            z-index: 1100;
+        }
+
+        .edicao-fundo {
+            z-index: 1200;
+        }
+
+        .confirmacao-fundo {
+            z-index: 1300;
+        }
+
+        .mensagem-fundo {
+            z-index: 1400;
+        }
+
+        .registro-caixa {
+
+            width: 100%;
+            max-width: 370px;
+
+            max-height: 80vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(20, 40, 70, 0.2);
+        }
+
+        .registro-emoji {
+
+            text-align: center;
+
+            font-size: 43px;
+
+            margin-bottom: 5px;
+        }
+
+        .registro-sentimento {
+
+            text-align: center;
+
+            color: #315b9b;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+        .registro-data {
+
+            text-align: center;
+
+            color: #8995a5;
+
+            font-size: 12px;
+
+            margin-bottom: 18px;
+        }
+
+        .registro-texto {
+
+            color: #46566c;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            white-space: pre-wrap;
+
+            overflow-wrap: break-word;
+            word-break: break-word;
+
+            background: #f5f8fc;
+
+            border-radius: 12px;
+
+            padding: 13px;
+        }
+
+        .botoes-registro {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 15px;
+        }
+
+        .botoes-registro button {
+
+            flex: 1;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 10px 5px;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .botao-editar {
+            background: #dceaff;
+            color: #315b9b;
+        }
+
+        .botao-excluir {
+            background: #fde1e1;
+            color: #a74444;
+        }
+
+        .botao-fechar {
+            background: #edf0f4;
+            color: #566476;
+        }
+
+        /* MENSAGEM */
+
+        .mensagem-caixa,
+        .confirmacao-caixa {
+
+            width: 100%;
+            max-width: 330px;
+
+            background: white;
+
+            border-radius: 17px;
+
+            padding: 22px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 30px
+                rgba(20, 40, 70, 0.22);
+        }
+
+        .mensagem-caixa p,
+        .confirmacao-caixa p {
+
+            margin: 0 0 18px;
+
+            color: #45556b;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .botao-mensagem {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #5b86bd;
+
+            color: white;
+
+            padding: 10px;
+
+            cursor: pointer;
+        }
+
+        /* CONFIRMAÇÃO */
+
+        .botoes-confirmacao {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .botoes-confirmacao button {
+
+            flex: 1;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 10px;
+
+            cursor: pointer;
+        }
+
+        .botao-nao {
+
+            background: #edf0f4;
+            color: #566476;
+        }
+
+        .botao-sim {
+
+            background: #e56b6b;
+            color: white;
+        }
+
+        /* =========================================
+           EDIÇÃO
+        ========================================= */
+
+        .edicao-caixa {
+
+            width: 100%;
+
+            max-width: 370px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 20px;
+        }
+
+        .edicao-titulo {
+
+            text-align: center;
+
+            color: #315b9b;
+
+            font-size: 21px;
+
+            margin: 0 0 15px;
+        }
+
+        /* ABA DE ALTERAR SENTIMENTO */
+
+        .aba-edicao-sentimentos {
+
+            width: 100%;
+
+            margin-bottom: 15px;
+        }
+
+        .botao-aba-edicao {
+
+            width: 100%;
+
+            min-height: 52px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            border: 1px solid #c5d5eb;
+
+            background: #f5f8fe;
+
+            color: #315b9b;
+
+            border-radius: 13px;
+
+            padding: 12px 15px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .botao-aba-edicao:hover {
+
+            background: #edf3fc;
+        }
+
+        .seta-edicao {
+
+            font-size: 16px;
+
+            transition: transform 0.2s;
+        }
+
+        .seta-edicao.aberta {
+
+            transform: rotate(180deg);
+        }
+
+        /*
+           OS 16 SENTIMENTOS DA EDIÇÃO
+        */
+
+        .edicao-sentimentos {
+
+            display: none;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 9px;
+
+            margin-top: 9px;
+
+            padding: 10px;
+
+            background: #f7f9fd;
+
+            border: 1px solid #dce5f3;
+
+            border-radius: 14px;
+
+            max-height: 45vh;
+
+            overflow-y: auto;
+        }
+
+        .edicao-sentimentos.aberta {
+
+            display: grid;
+        }
+
+        .edicao-sentimento {
+
+            min-height: 58px;
+
+            border: 1px solid #d0dceb;
+
+            background: white;
+
+            color: #42536b;
+
+            border-radius: 11px;
+
+            padding: 8px 5px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 5px;
+
+            text-align: center;
+        }
+
+        .edicao-sentimento:hover {
+
+            background: #edf4ff;
+
+            border-color: #9eb9df;
+        }
+
+        .edicao-sentimento.selecionado {
+
+            background: #dceaff;
+
+            border-color: #5f8fc9;
+
+            color: #234f87;
+
+            font-weight: bold;
+        }
+
+        .edicao-sentimento span {
+
+            font-size: 25px;
+
+            line-height: 1;
+        }
+
+        .botao-salvar-edicao {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #5b86bd;
+
+            color: white;
+
+            padding: 11px;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+        }
+
+        .botao-cancelar-edicao {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #edf0f4;
+
+            color: #566476;
+
+            padding: 10px;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+        }
+
+        /* CELULARES */
+
+        @media (max-width: 400px) {
+
+            .pagina {
+
+                padding:
+                    15px 10px 25px;
+            }
+
+            .diario-card,
+            .historico-card {
+
+                padding: 18px;
+            }
+
+            /*
+               Mantém os botões grandes
+               mesmo em telas pequenas.
+            */
+
+            .sentimento,
+            .edicao-sentimento {
+
+                min-height: 62px;
+
+                font-size: 14px;
+            }
+
+            .sentimento span,
+            .edicao-sentimento span {
+
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="pagina">
+
+
+        <!-- =====================================
+             DIÁRIO
+        ====================================== -->
+
+        <section id="diario">
+
+
+            <button
+                class="botao-voltar"
+                onclick="voltarPagina()"
+            >
+                ← Voltar
+            </button>
+
+
+            <div class="diario-card">
+
+
+                <h1>
+                    Diário emocional
+                </h1>
+
+
+                <p class="subtitulo">
+                    Registre como você está se sentindo.
+                </p>
+
+
+                <div class="titulo-secao">
+                    Como você está se sentindo?
+                </div>
+
+
+                <!-- ABA -->
+
+                <div class="aba-sentimentos">
+
+
+                    <button
+                        class="botao-aba-sentimentos"
+                        onclick="alternarSentimentos()"
+                    >
+
+                        <span id="sentimentoSelecionadoTexto">
+                            Escolher sentimento
+                        </span>
+
+                        <span
+                            id="setaSentimentos"
+                            class="seta-aba"
+                        >
+                            ▼
+                        </span>
+
+                    </button>
+
+
+                    <!-- 16 SENTIMENTOS -->
+
+                    <div
+                        id="listaSentimentos"
+                        class="sentimentos"
+                    >
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Bem"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>🙂</span>
+                            Bem
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Neutro"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😐</span>
+                            Neutro
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Ansioso"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😟</span>
+                            Ansioso
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Triste"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😢</span>
+                            Triste
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Muito feliz"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😄</span>
+                            Muito feliz
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Calmo"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😌</span>
+                            Calmo
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Carinhoso"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>🥰</span>
+                            Carinhoso
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Cansado"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😴</span>
+                            Cansado
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Irritado"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😤</span>
+                            Irritado
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Com medo"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😨</span>
+                            Com medo
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Animado"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>🤩</span>
+                            Animado
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Confuso"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>🤔</span>
+                            Confuso
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Desanimado"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😔</span>
+                            Desanimado
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Confiante"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😎</span>
+                            Confiante
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Comemorando"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>🥳</span>
+                            Comemorando
+                        </button>
+
+
+                        <button
+                            class="sentimento"
+                            data-sentimento="Preocupado"
+                            onclick="selecionarSentimento(this)"
+                        >
+                            <span>😰</span>
+                            Preocupado
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="titulo-secao">
+                    Escreva um pouco
+                </div>
+
+
+                <textarea
+                    id="textoDiario"
+                    maxlength="300"
+                    placeholder="Como foi seu dia? O que está passando pela sua cabeça?"
+                    oninput="atualizarContador()"
+                ></textarea>
+
+
+                <div
+                    id="contador"
+                    class="contador"
+                >
+                    0/300
+                </div>
+
+
+                <button
+                    class="botao-principal"
+                    onclick="enviarDiario()"
+                >
+                    Enviar
+                </button>
+
+
+                <button
+                    class="botao-historico"
+                    onclick="mostrarHistorico()"
+                >
+                    Ver histórico
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             HISTÓRICO
+        ====================================== -->
+
+        <section id="historico">
+
+
+            <button
+                class="botao-voltar"
+                onclick="voltarDiario()"
+            >
+                ← Voltar
+            </button>
+
+
+            <div class="historico-card">
+
+
+                <h2 class="historico-titulo">
+                    Meu histórico
+                </h2>
+
+
+                <div id="listaHistorico"></div>
+
+
+                <button
+                    id="botaoTodos"
+                    class="botao-todos"
+                    onclick="mostrarTodos()"
+                    style="display:none;"
+                >
+                    Ver todos
+                </button>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================
+         MODAL DO REGISTRO
+    ====================================== -->
+
+    <div
+        id="registroFundo"
+        class="registro-fundo"
+    >
+
+
+        <div class="registro-caixa">
+
+
+            <div
+                id="registroEmoji"
+                class="registro-emoji"
+            ></div>
+
+
+            <div
+                id="registroSentimento"
+                class="registro-sentimento"
+            ></div>
+
+
+            <div
+                id="registroData"
+                class="registro-data"
+            ></div>
+
+
+            <div
+                id="registroTexto"
+                class="registro-texto"
+            ></div>
+
+
+            <div class="botoes-registro">
+
+
+                <button
+                    class="botao-editar"
+                    onclick="editarRegistroSelecionado()"
+                >
+                    ✏️ Editar
+                </button>
+
+
+                <button
+                    class="botao-excluir"
+                    onclick="confirmarExclusao()"
+                >
+                    🗑️ Excluir
+                </button>
+
+
+                <button
+                    class="botao-fechar"
+                    onclick="fecharRegistro()"
+                >
+                    Fechar
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         MENSAGEM
+    ====================================== -->
+
+    <div
+        id="mensagemFundo"
+        class="mensagem-fundo"
+    >
+
+
+        <div class="mensagem-caixa">
+
+
+            <p id="mensagemTexto"></p>
+
+
+            <button
+                class="botao-mensagem"
+                onclick="fecharMensagem()"
+            >
+                OK
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         CONFIRMAÇÃO
+    ====================================== -->
+
+    <div
+        id="confirmacaoFundo"
+        class="confirmacao-fundo"
+    >
+
+
+        <div class="confirmacao-caixa">
+
+
+            <p>
+                Tem certeza que deseja excluir este registro?
+            </p>
+
+
+            <div class="botoes-confirmacao">
+
+
+                <button
+                    class="botao-nao"
+                    onclick="fecharConfirmacao()"
+                >
+                    Não
+                </button>
+
+
+                <button
+                    class="botao-sim"
+                    onclick="excluirRegistro()"
+                >
+                    Sim
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         MODAL DE EDIÇÃO
+    ====================================== -->
+
+    <div
+        id="edicaoFundo"
+        class="edicao-fundo"
+    >
+
+
+        <div class="edicao-caixa">
+
+
+            <h2 class="edicao-titulo">
+                Editar registro
+            </h2>
+
+
+            <!-- ABA ALTERAR SENTIMENTO -->
+
+            <div class="aba-edicao-sentimentos">
+
+
+                <button
+                    class="botao-aba-edicao"
+                    onclick="alternarSentimentosEdicao()"
+                >
+
+
+                    <span id="sentimentoEdicaoTexto">
+                        Alterar sentimento
+                    </span>
+
+
+                    <span
+                        id="setaEdicao"
+                        class="seta-edicao"
+                    >
+                        ▼
+                    </span>
+
+
+                </button>
+
+
+                <!-- 16 OPÇÕES -->
+
+                <div
+                    id="listaSentimentosEdicao"
+                    class="edicao-sentimentos"
+                >
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Bem"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>🙂</span>
+                        Bem
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Neutro"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😐</span>
+                        Neutro
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Ansioso"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😟</span>
+                        Ansioso
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Triste"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😢</span>
+                        Triste
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Muito feliz"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😄</span>
+                        Muito feliz
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Calmo"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😌</span>
+                        Calmo
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Carinhoso"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>🥰</span>
+                        Carinhoso
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Cansado"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😴</span>
+                        Cansado
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Irritado"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😤</span>
+                        Irritado
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Com medo"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😨</span>
+                        Com medo
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Animado"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>🤩</span>
+                        Animado
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Confuso"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>🤔</span>
+                        Confuso
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Desanimado"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😔</span>
+                        Desanimado
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Confiante"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😎</span>
+                        Confiante
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Comemorando"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>🥳</span>
+                        Comemorando
+                    </button>
+
+
+                    <button
+                        class="edicao-sentimento"
+                        data-edicao="Preocupado"
+                        onclick="selecionarSentimentoEdicao(this)"
+                    >
+                        <span>😰</span>
+                        Preocupado
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <textarea
+                id="textoEdicao"
+                maxlength="300"
+                placeholder="Edite seu registro..."
+                oninput="atualizarContadorEdicao()"
+            ></textarea>
+
+
+            <div
+                id="contadorEdicao"
+                class="contador"
+            >
+                0/300
+            </div>
+
+
+            <button
+                class="botao-salvar-edicao"
+                onclick="salvarEdicao()"
+            >
+                Salvar alterações
+            </button>
+
+
+            <button
+                class="botao-cancelar-edicao"
+                onclick="fecharEdicao()"
+            >
+                Cancelar
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        let sentimentoSelecionado = null;
+
+        let sentimentoEdicao = null;
+
+        let indiceEdicao = null;
+
+        let indiceSelecionado = null;
+
+
+        /* =====================================
+           LISTA DOS SENTIMENTOS
+        ====================================== */
+
+        const sentimentos = {
+
+            "Bem": {
+                emoji: "🙂"
+            },
+
+            "Neutro": {
+                emoji: "😐"
+            },
+
+            "Ansioso": {
+                emoji: "😟"
+            },
+
+            "Triste": {
+                emoji: "😢"
+            },
+
+            "Muito feliz": {
+                emoji: "😄"
+            },
+
+            "Calmo": {
+                emoji: "😌"
+            },
+
+            "Carinhoso": {
+                emoji: "🥰"
+            },
+
+            "Cansado": {
+                emoji: "😴"
+            },
+
+            "Irritado": {
+                emoji: "😤"
+            },
+
+            "Com medo": {
+                emoji: "😨"
+            },
+
+            "Animado": {
+                emoji: "🤩"
+            },
+
+            "Confuso": {
+                emoji: "🤔"
+            },
+
+            "Desanimado": {
+                emoji: "😔"
+            },
+
+            "Confiante": {
+                emoji: "😎"
+            },
+
+            "Comemorando": {
+                emoji: "🥳"
+            },
+
+            "Preocupado": {
+                emoji: "😰"
+            }
+
+        };
+
+
+        /* =====================================
+           ABA PRINCIPAL
+        ====================================== */
+
+        function alternarSentimentos() {
+
+            const lista =
+                document.getElementById(
+                    "listaSentimentos"
+                );
+
+            const seta =
+                document.getElementById(
+                    "setaSentimentos"
+                );
+
+            lista.classList.toggle("aberta");
+
+            seta.classList.toggle("aberta");
+
+        }
+
+
+        /* =====================================
+           SELECIONAR SENTIMENTO
+        ====================================== */
+
+        function selecionarSentimento(botao) {
+
+            document
+                .querySelectorAll(".sentimento")
+                .forEach(function(item) {
+
+                    item.classList.remove(
+                        "selecionado"
+                    );
+
+                });
+
+
+            botao.classList.add(
+                "selecionado"
+            );
+
+
+            sentimentoSelecionado =
+                botao.dataset.sentimento;
+
+
+            const dados =
+                sentimentos[
+                    sentimentoSelecionado
+                ];
+
+
+            document.getElementById(
+                "sentimentoSelecionadoTexto"
+            ).textContent =
+                dados.emoji +
+                " " +
+                sentimentoSelecionado;
+
+
+            /* fecha a aba */
+
+            document
+                .getElementById(
+                    "listaSentimentos"
+                )
+                .classList.remove("aberta");
+
+
+            document
+                .getElementById(
+                    "setaSentimentos"
+                )
+                .classList.remove("aberta");
+
+        }
+
+
+        /* =====================================
+           CONTADOR
+        ====================================== */
+
+        function atualizarContador() {
+
+            const texto =
+                document.getElementById(
+                    "textoDiario"
+                );
+
+
+            const contador =
+                document.getElementById(
+                    "contador"
+                );
+
+
+            contador.textContent =
+                texto.value.length +
+                "/300";
+
+        }
+
+
+        /* =====================================
+           ENVIAR DIÁRIO
+        ====================================== */
+
+        function enviarDiario() {
+
+            const texto =
+                document
+                    .getElementById(
+                        "textoDiario"
+                    )
+                    .value
+                    .trim();
+
+
+            if (!sentimentoSelecionado) {
+
+                mostrarMensagem(
+                    "Escolha um sentimento antes de enviar."
+                );
+
+                return;
+
+            }
+
+
+            if (!texto) {
+
+                mostrarMensagem(
+                    "Escreva alguma coisa antes de enviar."
+                );
+
+                return;
+
+            }
+
+
+            const registros =
+                JSON.parse(
+                    localStorage.getItem(
+                        "diarioRegistros"
+                    ) || "[]"
+                );
+
+
+            registros.unshift({
+
+                sentimento:
+                    sentimentoSelecionado,
+
+                texto:
+                    texto,
+
+                data:
+                    new Date()
+                        .toLocaleString(
+                            "pt-BR"
+                        )
+
+            });
+
+
+            localStorage.setItem(
+                "diarioRegistros",
+                JSON.stringify(registros)
+            );
+
+
+            document.getElementById(
+                "textoDiario"
+            ).value = "";
+
+
+            document.getElementById(
+                "contador"
+            ).textContent = "0/300";
+
+
+            sentimentoSelecionado = null;
+
+
+            document.getElementById(
+                "sentimentoSelecionadoTexto"
+            ).textContent =
+                "Escolher sentimento";
+
+
+            document
+                .querySelectorAll(
+                    ".sentimento"
+                )
+                .forEach(function(item) {
+
+                    item.classList.remove(
+                        "selecionado"
+                    );
+
+                });
+
+
+            mostrarMensagem(
+                "Seu registro foi salvo com sucesso!"
+            );
+
+
+            mostrarHistorico();
+
+        }
+
+
+        /* =====================================
+           MENSAGEM
+        ====================================== */
+
+        function mostrarMensagem(mensagem) {
+
+            document.getElementById(
+                "mensagemTexto"
+            ).textContent = mensagem;
+
+
+            document.getElementById(
+                "mensagemFundo"
+            ).style.display = "flex";
+
+        }
+
+
+        function fecharMensagem() {
+
+            document.getElementById(
+                "mensagemFundo"
+            ).style.display = "none";
+
+        }
+
+
+        /* =====================================
+           HISTÓRICO
+        ====================================== */
+
+        function mostrarHistorico() {
+
+            document.getElementById(
+                "diario"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "historico"
+            ).style.display = "block";
+
+
+            carregarHistorico(false);
+
+        }
+
+
+        function voltarDiario() {
+
+            document.getElementById(
+                "historico"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "diario"
+            ).style.display = "block";
+
+        }
+
+
+        function carregarHistorico(
+            mostrarTodosRegistros = false
+        ) {
+
+            const lista =
+                document.getElementById(
+                    "listaHistorico"
+                );
+
+
+            const botaoTodos =
+                document.getElementById(
+                    "botaoTodos"
+                );
+
+
+            const registros =
+                JSON.parse(
+                    localStorage.getItem(
+                        "diarioRegistros"
+                    ) || "[]"
+                );
+
+
+            lista.innerHTML = "";
+
+
+            if (
+                registros.length === 0
+            ) {
+
+                lista.innerHTML = `
+
+                    <p style="
+                        text-align:center;
+                        color:#7a8798;
+                        font-size:14px;
+                    ">
+
+                        Você ainda não possui registros.
+
+                    </p>
+
+                `;
+
+
+                botaoTodos.style.display =
+                    "none";
+
+
+                return;
+
+            }
+
+
+            const quantidade =
+                mostrarTodosRegistros
+                    ? registros.length
+                    : Math.min(
+                        3,
+                        registros.length
+                    );
+
+
+            for (
+                let i = 0;
+                i < quantidade;
+                i++
+            ) {
+
+                const registro =
+                    registros[i];
+
+
+                const dados =
+                    sentimentos[
+                        registro.sentimento
+                    ] || {
+                        emoji: "🙂"
+                    };
+
+
+                const entrada =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                entrada.className =
+                    "entry";
+
+
+                entrada.onclick =
+                    function() {
+
+                        abrirRegistro(i);
+
+                    };
+
+
+                entrada.innerHTML = `
+
+                    <div class="entry-emoji">
+                        ${dados.emoji}
+                    </div>
+
+                    <div class="entry-conteudo">
+
+                        <div class="entry-sentimento">
+                            ${escapeHTML(
+                                registro.sentimento
+                            )}
+                        </div>
+
+                        <div class="entry-data">
+                            ${escapeHTML(
+                                registro.data
+                            )}
+                        </div>
+
+                        <div class="entry-text">
+                            ${escapeHTML(
+                                registro.texto
+                            )}
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                lista.appendChild(
+                    entrada
+                );
+
+            }
+
+
+            if (
+                registros.length > 3 &&
+                !mostrarTodosRegistros
+            ) {
+
+                botaoTodos.style.display =
+                    "block";
+
+            } else {
+
+                botaoTodos.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        function mostrarTodos() {
+
+            carregarHistorico(true);
+
+        }
+
+
+        /* =====================================
+           ABRIR REGISTRO
+        ====================================== */
+
+        function abrirRegistro(indice) {
+
+            const registros =
+                JSON.parse(
+                    localStorage.getItem(
+                        "diarioRegistros"
+                    ) || "[]"
+                );
+
+
+            const registro =
+                registros[indice];
+
+
+            if (!registro) {
+                return;
+            }
+
+
+            indiceSelecionado =
+                indice;
+
+
+            const dados =
+                sentimentos[
+                    registro.sentimento
+                ] || {
+                    emoji: "🙂"
+                };
+
+
+            document.getElementById(
+                "registroEmoji"
+            ).textContent =
+                dados.emoji;
+
+
+            document.getElementById(
+                "registroSentimento"
+            ).textContent =
+                registro.sentimento;
+
+
+            document.getElementById(
+                "registroData"
+            ).textContent =
+                registro.data;
+
+
+            document.getElementById(
+                "registroTexto"
+            ).textContent =
+                registro.texto;
+
+
+            document.getElementById(
+                "registroFundo"
+            ).style.display =
+                "flex";
+
+        }
+
+
+        function fecharRegistro() {
+
+            document.getElementById(
+                "registroFundo"
+            ).style.display =
+                "none";
+
+
+            indiceSelecionado =
+                null;
+
+        }
+
+
+        /* =====================================
+           EXCLUSÃO
+        ====================================== */
+
+        function confirmarExclusao() {
+
+            if (
+                indiceSelecionado === null
+            ) {
+                return;
+            }
+
+
+            document.getElementById(
+                "confirmacaoFundo"
+            ).style.display =
+                "flex";
+
+        }
+
+
+        function fecharConfirmacao() {
+
+            document.getElementById(
+                "confirmacaoFundo"
+            ).style.display =
+                "none";
+
+        }
+
+
+        function excluirRegistro() {
+
+            if (
+                indiceSelecionado === null
+            ) {
+                return;
+            }
+
+
+            const registros =
+                JSON.parse(
+                    localStorage.getItem(
+                        "diarioRegistros"
+                    ) || "[]"
+                );
+
+
+            registros.splice(
+                indiceSelecionado,
+                1
+            );
+
+
+            localStorage.setItem(
+                "diarioRegistros",
+                JSON.stringify(registros)
+            );
+
+
+            fecharConfirmacao();
+
+
+            document.getElementById(
+                "registroFundo"
+            ).style.display =
+                "none";
+
+
+            indiceSelecionado =
+                null;
+
+
+            carregarHistorico(false);
+
+
+            mostrarMensagem(
+                "Registro excluído."
+            );
+
+        }
+
+
+        /* =====================================
+           EDITAR REGISTRO
+        ====================================== */
+
+        function editarRegistroSelecionado() {
+
+            if (
+                indiceSelecionado === null
+            ) {
+                return;
+            }
+
+
+            editarRegistro(
+                indiceSelecionado
+            );
+
+        }
+
+
+        function editarRegistro(indice) {
+
+            const registros =
+                JSON.parse(
+                    localStorage.getItem(
+                        "diarioRegistros"
+                    ) || "[]"
+                );
+
+
+            const registro =
+                registros[indice];
+
+
+            if (!registro) {
+                return;
+            }
+
+
+            indiceEdicao =
+                indice;
+
+
+            sentimentoEdicao =
+                registro.sentimento;
+
+
+            document.getElementById(
+                "textoEdicao"
+            ).value =
+                registro.texto;
+
+
+            document.getElementById(
+                "contadorEdicao"
+            ).textContent =
+                registro.texto.length +
+                "/300";
+
+
+            /*
+               Atualiza o botão da aba
+               com o sentimento atual.
+            */
+
+            const dados =
+                sentimentos[
+                    registro.sentimento
+                ] || {
+                    emoji: "🙂"
+                };
+
+
+            document.getElementById(
+                "sentimentoEdicaoTexto"
+            ).textContent =
+                dados.emoji +
+                " " +
+                registro.sentimento;
+
+
+            /*
+               Marca o sentimento atual.
+            */
+
+            document
+                .querySelectorAll(
+                    ".edicao-sentimento"
+                )
+                .forEach(function(item) {
+
+                    item.classList.remove(
+                        "selecionado"
+                    );
+
+
+                    if (
+                        item.dataset.edicao ===
+                        registro.sentimento
+                    ) {
+
+                        item.classList.add(
+                            "selecionado"
+                        );
+
+                    }
+
+                });
+
+
+            /*
+               Fecha a lista de sentimentos
+               quando abre a edição.
+            */
+
+            document.getElementById(
+                "listaSentimentosEdicao"
+            ).classList.remove(
+                "aberta"
+            );
+
+
+            document.getElementById(
+                "setaEdicao"
+            ).classList.remove(
+                "aberta"
+            );
+
+
+            document.getElementById(
+                "registroFundo"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "edicaoFundo"
+            ).style.display =
+                "flex";
+
+        }
+
+
+        /* =====================================
+           ABA DA EDIÇÃO
+        ====================================== */
+
+        function alternarSentimentosEdicao() {
+
+            const lista =
+                document.getElementById(
+                    "listaSentimentosEdicao"
+                );
+
+
+            const seta =
+                document.getElementById(
+                    "setaEdicao"
+                );
+
+
+            lista.classList.toggle(
+                "aberta"
+            );
+
+
+            seta.classList.toggle(
+                "aberta"
+            );
+
+        }
+
+
+        /* =====================================
+           SELECIONAR SENTIMENTO NA EDIÇÃO
+        ====================================== */
+
+        function selecionarSentimentoEdicao(
+            botao
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".edicao-sentimento"
+                )
+                .forEach(function(item) {
+
+                    item.classList.remove(
+                        "selecionado"
+                    );
+
+                });
+
+
+            botao.classList.add(
+                "selecionado"
+            );
+
+
+            sentimentoEdicao =
+                botao.dataset.edicao;
+
+
+            const dados =
+                sentimentos[
+                    sentimentoEdicao
+                ];
+
+
+            /*
+               Mostra a escolha no botão.
+            */
+
+            document.getElementById(
+                "sentimentoEdicaoTexto"
+            ).textContent =
+                dados.emoji +
+                " " +
+                sentimentoEdicao;
+
+
+            /*
+               Fecha a aba depois da escolha.
+            */
+
+            document.getElementById(
+                "listaSentimentosEdicao"
+            ).classList.remove(
+                "aberta"
+            );
+
+
+            document.getElementById(
+                "setaEdicao"
+            ).classList.remove(
+                "aberta"
+            );
+
+        }
+
+
+        /* =====================================
+           CONTADOR DA EDIÇÃO
+        ====================================== */
+
+        function atualizarContadorEdicao() {
+
+            const texto =
+                document.getElementById(
+                    "textoEdicao"
+                );
+
+
+            document.getElementById(
+                "contadorEdicao"
+            ).textContent =
+                texto.value.length +
+                "/300";
+
+        }
+
+
+        /* =====================================
+           SALVAR EDIÇÃO
+        ====================================== */
+
+        function salvarEdicao() {
+
+            if (
+                indiceEdicao === null
+            ) {
+                return;
+            }
+
+
+            const texto =
+                document
+                    .getElementById(
+                        "textoEdicao"
+                    )
+                    .value
+                    .trim();
+
+
+            if (!sentimentoEdicao) {
+
+                mostrarMensagem(
+                    "Escolha um sentimento."
+                );
+
+                return;
+
+            }
+
+
+            if (!texto) {
+
+                mostrarMensagem(
+                    "Escreva alguma coisa antes de salvar."
+                );
+
+                return;
+
+            }
+
+
+            const registros =
+                JSON.parse(
+                    localStorage.getItem(
+                        "diarioRegistros"
+                    ) || "[]"
+                );
+
+
+            registros[
+                indiceEdicao
+            ].sentimento =
+                sentimentoEdicao;
+
+
+            registros[
+                indiceEdicao
+            ].texto =
+                texto;
+
+
+            localStorage.setItem(
+                "diarioRegistros",
+                JSON.stringify(registros)
+            );
+
+
+            fecharEdicao();
+
+
+            indiceEdicao =
+                null;
+
+
+            sentimentoEdicao =
+                null;
+
+
+            carregarHistorico(false);
+
+
+            mostrarMensagem(
+                "Seu registro foi atualizado."
+            );
+
+        }
+
+
+        /* =====================================
+           FECHAR EDIÇÃO
+        ====================================== */
+
+        function fecharEdicao() {
+
+            document.getElementById(
+                "edicaoFundo"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "listaSentimentosEdicao"
+            ).classList.remove(
+                "aberta"
+            );
+
+
+            document.getElementById(
+                "setaEdicao"
+            ).classList.remove(
+                "aberta"
+            );
+
+
+            indiceEdicao =
+                null;
+
+
+            sentimentoEdicao =
+                null;
+
+        }
+
+
+        /* =====================================
+           PROTEGER HTML
+        ====================================== */
+
+        function escapeHTML(texto) {
+
+            return String(texto)
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /* =====================================
+           VOLTAR
+        ====================================== */
+
+        function voltarPagina() {
+
+            window.history.back();
+
+        }
+
+
+        /* =====================================
+           INICIALIZAÇÃO
+        ====================================== */
+
+        carregarHistorico(false);
+
+
+    </script>
+
+</body>
+
+</html>

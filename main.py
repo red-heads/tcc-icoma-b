@@ -25,6 +25,10 @@ def pausa():
 def pensamento():
     return render_template('ferramentas/pensamento.html')
 
+@app.route("/diario")
+def diario():
+    return render_template('ferramentas/diario.html')
+
 def main():
     app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))
 

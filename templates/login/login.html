@@ -1,112 +1,934 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-
-<body>
-    
-</body>
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+<html lang="pt-BR">
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Entrar | Tudo bem aí?</title>
 
     <style>
-        body{
-            background-color: #f5f6fb;
-            height: 100vh;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eaf5ff 0%,
+                    #dceeff 45%,
+                    #f5faff 100%
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            color: #173b70;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           DECORAÇÕES DO FUNDO
+        ========================= */
+
+        .background-shape {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape-one {
+            width: 420px;
+            height: 420px;
+
+            background: rgba(83, 157, 255, 0.13);
+
+            top: -180px;
+            left: -140px;
+        }
+
+        .shape-two {
+            width: 350px;
+            height: 350px;
+
+            background: rgba(31, 104, 204, 0.10);
+
+            bottom: -150px;
+            right: -120px;
+        }
+
+        .shape-three {
+            width: 180px;
+            height: 180px;
+
+            background: rgba(112, 184, 255, 0.12);
+
+            top: 20%;
+            right: 8%;
+        }
+
+
+        /* =========================
+           CONTAINER PRINCIPAL
+        ========================= */
+
+        .login-wrapper {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            max-width: 1080px;
+
+            min-height: 650px;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            border-radius: 32px;
+
+            box-shadow:
+                0 25px 70px rgba(23, 82, 145, 0.15),
+                0 8px 25px rgba(23, 82, 145, 0.08);
+
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+
+            overflow: hidden;
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        /* =========================
+           LADO DA LOGO
+        ========================= */
+
+        .brand-section {
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dff0ff 0%,
+                    #c8e5ff 48%,
+                    #eaf6ff 100%
+                );
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 55px 45px;
+
+            overflow: hidden;
+        }
+
+        .brand-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 360px;
+            height: 360px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.35);
+
+            top: -170px;
+            right: -140px;
+        }
+
+        .brand-section::after {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            border-radius: 50%;
+
+            background: rgba(75, 150, 240, 0.10);
+
+            bottom: -130px;
+            left: -100px;
+        }
+
+
+        /* LOGO */
+
+        .logo-container {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+
             display: flex;
             justify-content: center;
+
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: min(100%, 490px);
+
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 15px 25px rgba(20, 90, 180, 0.15)
+                );
+        }
+
+
+        .brand-message {
+            position: relative;
+            z-index: 2;
+
+            max-width: 440px;
+
+            text-align: center;
+        }
+
+        .brand-message h1 {
+            font-size: 27px;
+
+            font-weight: 700;
+
+            color: #123e78;
+
+            margin-bottom: 12px;
+
+            letter-spacing: -0.5px;
+        }
+
+        .brand-message p {
+            font-size: 16px;
+
+            line-height: 1.65;
+
+            color: #527196;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           LADO DO LOGIN
+        ========================= */
+
+        .form-section {
+            background: #ffffff;
+
+            padding: 65px 65px;
+
+            display: flex;
+
             align-items: center;
         }
 
-        .login-card{
-            width: 380px;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            background: white;
+        .form-content {
+            width: 100%;
+
+            max-width: 390px;
+
+            margin: 0 auto;
         }
 
-        .topo{
-            background: linear-gradient(to right, #dfe9ff, #eef3ff);
-            padding: 30px;
+
+        .form-header {
+            margin-bottom: 30px;
         }
 
-        .form-area{
-            padding: 30px;
+        .form-header h2 {
+            color: #123e78;
+
+            font-size: 31px;
+
+            font-weight: 750;
+
+            letter-spacing: -0.8px;
+
+            margin-bottom: 10px;
         }
 
-        .btn-login{
-            background: #6c9df5;
+        .form-header p {
+            color: #7187a1;
+
+            font-size: 15px;
+
+            line-height: 1.65;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           CAMPOS
+        ========================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            color: #294d76;
+
+            font-size: 14px;
+
+            font-weight: 650;
+
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 16px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 18px;
+
+            opacity: 0.75;
+
+            pointer-events: none;
+        }
+
+        .form-control {
+            width: 100%;
+
+            height: 54px;
+
+            border: 1.5px solid #d8e5f2;
+
+            border-radius: 14px;
+
+            background: #f9fcff;
+
+            color: #24496f;
+
+            font-size: 15px;
+
+            padding: 0 17px 0 47px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: #a1b2c4;
+        }
+
+        .form-control:focus {
+            border-color: #5c9ee8;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 4px rgba(79, 151, 230, 0.12);
+        }
+
+
+        /* =========================
+           BOTÃO
+        ========================= */
+
+        .btn-login {
+            width: 100%;
+
+            height: 56px;
+
             border: none;
-            border-radius: 12px;
-            padding: 12px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #287ed0,
+                    #1556a5
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 22px rgba(35, 112, 190, 0.22);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                opacity 0.2s ease;
+
+            margin-top: 8px;
         }
 
-        .btn-login:hover{
-            background: #5a8be6;
+        .btn-login:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 28px rgba(35, 112, 190, 0.28);
         }
 
-        .cadastro{
-            text-decoration: none;
-            color: #7c8aa5;
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.65;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =========================
+           CADASTRO
+        ========================= */
+
+        .register-area {
+            text-align: center;
+
+            margin-top: 24px;
+
+            color: #7c91a9;
+
             font-size: 14px;
         }
 
-        .form-control{
-            border-radius: 12px;
-            height: 50px;
+        .register-area a {
+            color: #216bb7;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: color 0.2s ease;
         }
+
+        .register-area a:hover {
+            color: #124d8d;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           AVISO
+        ========================= */
+
+        .support-notice {
+            margin-top: 27px;
+
+            padding: 15px 17px;
+
+            border-radius: 14px;
+
+            background: #f0f7ff;
+
+            border: 1px solid #d8eaff;
+
+            color: #5b7591;
+
+            font-size: 12.5px;
+
+            line-height: 1.55;
+
+            text-align: center;
+        }
+
+        .support-notice strong {
+            color: #315c88;
+        }
+
+
+        /* =========================
+           MENSAGENS
+        ========================= */
+
+        #mensagem {
+            margin-bottom: 18px;
+        }
+
+        .alert {
+            padding: 13px 15px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            line-height: 1.45;
+        }
+
+        .alert-success {
+            background: #e9f8f0;
+
+            color: #26704b;
+
+            border: 1px solid #c8ecd9;
+        }
+
+        .alert-danger {
+            background: #fff0f0;
+
+            color: #a64a4a;
+
+            border: 1px solid #f1d0d0;
+        }
+
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .login-wrapper {
+                grid-template-columns: 1fr;
+
+                max-width: 600px;
+
+                min-height: auto;
+            }
+
+            .brand-section {
+                padding: 40px 30px 35px;
+            }
+
+            .logo {
+                width: min(100%, 400px);
+            }
+
+            .brand-message h1 {
+                font-size: 24px;
+            }
+
+            .form-section {
+                padding: 40px 35px 45px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 12px;
+            }
+
+            .login-wrapper {
+                border-radius: 25px;
+            }
+
+            .brand-section {
+                padding: 32px 18px 28px;
+            }
+
+            .logo {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .brand-message h1 {
+                font-size: 21px;
+            }
+
+            .brand-message p {
+                font-size: 14px;
+            }
+
+            .form-section {
+                padding: 35px 22px 32px;
+            }
+
+            .form-header h2 {
+                font-size: 27px;
+            }
+
+            .form-header p {
+                font-size: 14px;
+            }
+
+            .form-control {
+                height: 52px;
+            }
+
+            .btn-login {
+                height: 54px;
+            }
+
+            .support-notice {
+                font-size: 12px;
+            }
+
+        }
+
     </style>
+
 </head>
+
+
 <body>
 
-<div class="login-card">
 
-    <div class="topo">
-        <h3 class="fw-bold">➜ Tudo bem aí?</h3>
-        <p class="fs-5 mb-1">Você não está sozinho(a).</p>
-        <p class="text-muted">
-            Entre para acessar seu painel de apoio emocional.
-        </p>
-    </div>
+    <!-- DECORAÇÕES DO FUNDO -->
 
-    <div class="form-area">
+    <div class="background-shape shape-one"></div>
 
-        <div class="mb-3">
-            <label class="form-label">E-mail</label>
-            <input type="email" class="form-control">
-        </div>
+    <div class="background-shape shape-two"></div>
 
-        <div class="mb-4">
-            <label class="form-label">Senha</label>
-            <input type="password" class="form-control">
-        </div>
+    <div class="background-shape shape-three"></div>
 
-        <button class="btn btn-login text-white w-100">
-            Entrar
-        </button>
 
-        <div class="text-center mt-3">
-            <a href="#" class="cadastro">Cadastro</a>
-        </div>
+    <!-- CONTAINER PRINCIPAL -->
 
-    </div>
+    <main class="login-wrapper">
+
+
+        <!-- =========================
+             LOGO / APRESENTAÇÃO
+        ========================== -->
+
+        <section class="brand-section">
+
+          <div class="logo-container">
+
+    <img
+        src="{{ url_for('static', filename='img/logo.png') }}"
+        alt="Logo Tudo bem aí?"
+        class="logo"
+    >
 
 </div>
 
+
+            <div class="brand-message">
+
+                <h1>
+                    Um espaço para olhar para você.
+                </h1>
+
+                <p>
+                    Aqui você encontra ferramentas e conteúdos
+                    que podem ajudar a refletir sobre o que está
+                    sentindo e perceber quando pode ser importante
+                    buscar apoio profissional.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FORMULÁRIO
+        ========================== -->
+
+        <section class="form-section">
+
+            <div class="form-content">
+
+
+                <div class="form-header">
+
+                    <h2>
+                        Bem-vindo(a)!
+                    </h2>
+
+                    <p>
+                        Entre na sua conta para continuar
+                        explorando seu espaço de apoio e reflexão.
+                    </p>
+
+                </div>
+
+
+                <!-- MENSAGEM -->
+
+                <div id="mensagem"></div>
+
+
+                <!-- LOGIN -->
+
+                <form id="loginForm">
+
+
+                    <!-- E-MAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-control"
+                                placeholder="Digite seu e-mail"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="senha">
+                            Senha
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                class="form-control"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BOTÃO -->
+
+                    <button
+                        type="submit"
+                        class="btn-login"
+                        id="btnLogin"
+                    >
+                        Entrar
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- CADASTRO -->
+
+                <div class="register-area">
+
+                    Ainda não possui uma conta?
+
+                    <a href="/cadastro">
+                        Criar conta
+                    </a>
+
+                </div>
+
+
+
+                <!-- AVISO -->
+
+                <div class="support-notice">
+
+                    <strong>Um lembrete importante:</strong><br>
+
+                    O Tudo bem aí? é um espaço de apoio,
+                    informação e reflexão. Ele não substitui
+                    o acompanhamento de um profissional.
+                    Se algo estiver causando sofrimento ou
+                    preocupação, conversar com um profissional
+                    pode ser um passo importante.
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT DO LOGIN
+    ========================== -->
+
+    <script>
+
+        const loginForm = document.getElementById("loginForm");
+
+        const btnLogin = document.getElementById("btnLogin");
+
+        const mensagem = document.getElementById("mensagem");
+
+
+        loginForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const senha =
+                document.getElementById("senha").value;
+
+
+            mensagem.innerHTML = "";
+
+            btnLogin.disabled = true;
+
+            btnLogin.textContent = "Entrando...";
+
+
+            try {
+
+                const resposta = await fetch("/login", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+
+                });
+
+
+                const dados = await resposta.json();
+
+
+                if (dados.sucesso) {
+
+                    mensagem.innerHTML = `
+                        <div class="alert alert-success">
+                            ${dados.mensagem || "Login realizado com sucesso!"}
+                        </div>
+                    `;
+
+
+                    setTimeout(function() {
+
+                        window.location.href =
+                            dados.redirect || "/dashboard";
+
+                    }, 500);
+
+                } else {
+
+                    mensagem.innerHTML = `
+                        <div class="alert alert-danger">
+                            ${dados.mensagem || "Não foi possível realizar o login."}
+                        </div>
+                    `;
+
+                    btnLogin.disabled = false;
+
+                    btnLogin.textContent = "Entrar";
+
+                }
+
+            } catch (erro) {
+
+                console.error(erro);
+
+
+                mensagem.innerHTML = `
+                    <div class="alert alert-danger">
+                        Ocorreu um erro ao tentar entrar.
+                        Verifique sua conexão e tente novamente.
+                    </div>
+                `;
+
+
+                btnLogin.disabled = false;
+
+                btnLogin.textContent = "Entrar";
+
+            }
+
+        });
+
+    </script>
+
+
 </body>
-</html>
+
 </html>

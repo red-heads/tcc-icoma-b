@@ -16,6 +16,11 @@ def login():
     return render_template('login/login.html')
 
 
+@app.route("/cadastro")
+def cadastro():
+    return render_template('login/cadastro.html')
+
+
 @app.route("/dashboard")
 def dashboard():
     return render_template('dashboard.html')

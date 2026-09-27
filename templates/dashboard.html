@@ -1,0 +1,4695 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | Tudo bem aí?</title>
+
+
+    <style>
+
+        /* =========================================================
+           CONFIGURAÇÕES GERAIS
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(
+                180deg,
+                #e8efff 0%,
+                #eef3ff 100%
+            );
+            color: #2c4164;
+            min-height: 100vh;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        .dashboard {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 45px 35px 55px;
+        }
+
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            padding: 28px 30px;
+
+            box-shadow:
+                0 5px 16px rgba(46, 73, 113, 0.14);
+
+            border: 1px solid rgba(120, 155, 205, 0.12);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 22px rgba(46, 73, 113, 0.17);
+        }
+
+
+        .card h1,
+        .card h2 {
+            color: #294267;
+            font-weight: 400;
+        }
+
+
+        .card h1 {
+            font-size: 30px;
+            line-height: 1.18;
+            margin-bottom: 10px;
+        }
+
+
+        .card h2 {
+            font-size: 27px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+
+        .card p {
+            color: #405577;
+            font-size: 17px;
+            line-height: 1.45;
+        }
+
+
+        /* =========================================================
+           ENTENDENDO O QUE VOCÊ ESTÁ SENTINDO
+        ========================================================= */
+
+        .sentimentos {
+            min-height: 270px;
+            padding-right: 360px;
+
+            cursor: pointer;
+        }
+
+
+        .sentimentos h1 {
+            max-width: 520px;
+        }
+
+
+        .sinais {
+            margin-top: 14px;
+        }
+
+
+        .sinais p {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-top: 12px;
+            font-size: 17px;
+        }
+
+
+        .sinal-emoji {
+            width: 30px;
+            min-width: 30px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+
+        .imagem-cansado {
+            position: absolute;
+            right: 15px;
+            bottom: -14px;
+
+            width: 345px;
+            height: 265px;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================================================
+           CAUSAS
+        ========================================================= */
+
+        .causas {
+            min-height: 185px;
+            padding-right: 330px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            cursor: pointer;
+        }
+
+
+        .causas p {
+            max-width: 610px;
+            font-size: 17px;
+        }
+
+
+        .icone-causas {
+            position: absolute;
+
+            right: 65px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 170px;
+            height: 130px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #438bdd;
+            font-size: 88px;
+        }
+
+
+        /* =========================================================
+           ÁREA CLICÁVEL DOS CARDS
+        ========================================================= */
+
+        .area-clique-card {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: none;
+            background: transparent;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            border-radius: inherit;
+        }
+
+
+        .sentimentos:hover,
+        .causas:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 22px rgba(46, 73, 113, 0.17);
+        }
+
+
+        /* =========================================================
+           COMO LIDAR
+        ========================================================= */
+
+        .como-lidar {
+            min-height: 205px;
+            padding-right: 390px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .como-lidar p {
+            font-size: 20px;
+            margin-top: 5px;
+            color: #3d5376;
+        }
+
+
+        .botao {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: fit-content;
+
+            margin-top: 17px;
+            padding: 11px 24px;
+
+            border-radius: 8px;
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #76aae7,
+                    #6699dc
+                );
+
+            color: #ffffff;
+            text-decoration: none;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 8px rgba(74, 126, 191, 0.18);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .botao:hover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #6599dc,
+                    #5489cf
+                );
+
+            transform: translateY(-1px);
+        }
+
+
+        .imagem-calma {
+            position: absolute;
+
+            right: 20px;
+            bottom: -15px;
+
+            width: 330px;
+            height: 235px;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================================================
+           CARROSSÉIS
+        ========================================================= */
+
+        .carrossel {
+            position: relative;
+            width: 100%;
+        }
+
+
+        .carrossel-conteudo {
+            display: flex;
+
+            gap: 18px;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            scroll-behavior: smooth;
+
+            scrollbar-width: none;
+
+            cursor: grab;
+
+            padding:
+                4px
+                3px
+                10px;
+
+            user-select: none;
+
+            -webkit-overflow-scrolling: touch;
+        }
+
+
+        .carrossel-conteudo::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .carrossel-conteudo.arrastando {
+            cursor: grabbing;
+            scroll-behavior: auto;
+        }
+
+
+        /* =========================================================
+           SETAS
+        ========================================================= */
+
+        .seta-carrossel {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            z-index: 5;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            border: 1px solid #d7e3f4;
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.94
+            );
+
+            color: #5d83b1;
+
+            font-size: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 9px rgba(
+                    45,
+                    73,
+                    110,
+                    0.16
+                );
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .seta-carrossel:hover {
+            background: #edf5ff;
+            color: #397bc0;
+
+            transform:
+                translateY(-50%)
+                scale(1.05);
+        }
+
+
+        .seta-esquerda {
+            left: -14px;
+        }
+
+
+        .seta-direita {
+            right: -14px;
+        }
+
+
+        .seta-carrossel.oculta {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           BOLINHAS
+        ========================================================= */
+
+        .paginacao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 14px;
+        }
+
+
+        .ponto {
+            width: 10px;
+            height: 10px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #d3d8e1;
+
+            cursor: pointer;
+
+            transition:
+                width 0.2s ease,
+                height 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .ponto:hover {
+            transform: scale(1.2);
+            background: #9fbce0;
+        }
+
+
+        .ponto.ativo {
+            width: 12px;
+            height: 12px;
+
+            background: #70a5e3;
+
+            transform: scale(1.1);
+        }
+
+
+        /* =========================================================
+           VÍDEOS
+        ========================================================= */
+
+        .videos h2 {
+            margin-bottom: 2px;
+        }
+
+
+        .subtitulo {
+            margin-bottom: 15px;
+        }
+
+
+        .videos-carrossel {
+            margin: 0 5px;
+        }
+
+
+        .video {
+            flex: 0 0 245px;
+
+            min-height: 260px;
+
+            background: #f7faff;
+
+            border-radius: 13px;
+
+            border: 1px solid #dce6f6;
+
+            overflow: hidden;
+
+            position: relative;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .video:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 6px 16px rgba(
+                    66,
+                    99,
+                    143,
+                    0.15
+                );
+        }
+
+
+        .video-imagem {
+            height: 160px;
+
+            width: 100%;
+
+            background: #e5edf9;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .video-imagem img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+
+        .video:hover .video-imagem img {
+            transform: scale(1.03);
+        }
+
+
+        .youtube {
+            position: absolute;
+
+            left: 13px;
+            top: 138px;
+
+            background: #ef5350;
+
+            color: #ffffff;
+
+            width: 32px;
+            height: 22px;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 2;
+
+            box-shadow:
+                0 2px 5px rgba(
+                    0,
+                    0,
+                    0,
+                    0.16
+                );
+        }
+
+
+        .video-conteudo {
+            padding: 16px;
+        }
+
+
+        .video-conteudo p {
+            font-size: 15px;
+            line-height: 1.35;
+
+            color: #344b6e;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================================================
+           MODAL DOS VÍDEOS
+        ========================================================= */
+
+        .modal-video {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1100;
+
+            background:
+                rgba(
+                    35,
+                    58,
+                    91,
+                    0.58
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease;
+        }
+
+
+        .modal-video.aberto {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .modal-video-caixa {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 850px;
+
+            max-height: 92vh;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(
+                    25,
+                    48,
+                    80,
+                    0.30
+                );
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .fechar-video {
+            position: absolute;
+
+            top: 14px;
+            right: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            color: #526d91;
+
+            font-size: 27px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            box-shadow:
+                0 3px 10px
+                rgba(
+                    40,
+                    64,
+                    96,
+                    0.15
+                );
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .fechar-video:hover {
+            background: #eaf2ff;
+
+            transform: scale(1.05);
+        }
+
+
+        .modal-video-conteudo {
+            overflow-y: auto;
+
+            padding: 28px;
+
+            scrollbar-width: thin;
+        }
+
+
+        .modal-video-titulo {
+            color: #294267;
+
+            font-size: 26px;
+
+            font-weight: 400;
+
+            line-height: 1.3;
+
+            margin-bottom: 20px;
+
+            padding-right: 45px;
+        }
+
+
+        .video-preview {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            background: #dce8f8;
+
+            cursor: pointer;
+
+            border: none;
+
+            padding: 0;
+
+            display: block;
+
+            box-shadow:
+                0 5px 18px
+                rgba(
+                    45,
+                    73,
+                    110,
+                    0.15
+                );
+        }
+
+
+        .video-preview img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+
+        .video-preview:hover img {
+            transform: scale(1.025);
+        }
+
+
+        .video-play {
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                );
+
+            width: 72px;
+            height: 50px;
+
+            border-radius: 14px;
+
+            background: #ef5350;
+
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+
+            padding-left: 3px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.22
+                );
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .video-preview:hover .video-play {
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                )
+                scale(1.08);
+
+            background: #e94442;
+        }
+
+
+        .video-aviso {
+            margin-top: 17px;
+
+            padding: 15px 17px;
+
+            border-radius: 11px;
+
+            background: #edf6ff;
+
+            color: #4a6383;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            border-left:
+                4px solid
+                #73a8e4;
+        }
+
+
+        /* =========================================================
+           API / PERGUNTE À IA
+        ========================================================= */
+
+        .ia {
+            padding-bottom: 27px;
+        }
+
+
+        .ia h2 {
+            margin-bottom: 4px;
+        }
+
+
+        .ia-form {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 18px;
+
+            width: 100%;
+        }
+
+
+        .ia-input {
+            flex: 1 1 auto;
+
+            min-width: 0;
+
+            width: 100%;
+
+            height: 52px;
+
+            border:
+                1px solid
+                #a9b6ca;
+
+            border-radius: 9px;
+
+            padding:
+                0 15px;
+
+            font-size: 16px;
+
+            color: #344a6d;
+
+            outline: none;
+
+            background: #ffffff;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .ia-input:focus {
+            border-color: #6fa4df;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    111,
+                    164,
+                    223,
+                    0.12
+                );
+        }
+
+
+        .ia-input::placeholder {
+            color: #b7c0ce;
+        }
+
+
+        .ia-botao {
+            width: 52px;
+            height: 52px;
+
+            flex: 0 0 52px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #28a9e7,
+                    #168fd0
+                );
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 8px
+                rgba(
+                    25,
+                    143,
+                    205,
+                    0.22
+                );
+
+            transition:
+                transform 0.2s ease;
+        }
+
+
+        .ia-botao:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================================================
+           FERRAMENTAS
+        ========================================================= */
+
+        .ferramentas {
+            padding-bottom: 30px;
+        }
+
+
+        .ferramentas h2 {
+            margin-bottom: 18px;
+        }
+
+
+        .ferramentas-carrossel {
+            margin: 0 5px;
+        }
+
+
+        .ferramenta {
+            flex: 0 0 210px;
+
+            min-height: 175px;
+
+            text-decoration: none;
+
+            color: #334b70;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #f9fbff,
+                    #f1f6ff
+                );
+
+            border:
+                1px solid
+                #dce6f5;
+
+            border-radius: 14px;
+
+            padding: 18px 12px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .ferramenta:hover {
+            transform: translateY(-4px);
+
+            background: #edf4ff;
+
+            box-shadow:
+                0 6px 16px
+                rgba(
+                    55,
+                    91,
+                    135,
+                    0.13
+                );
+        }
+
+
+        .ferramenta-icone {
+            width: 75px;
+            height: 75px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 13px;
+
+            border-radius: 18px;
+
+            background: #e4efff;
+
+            font-size: 39px;
+        }
+
+
+        .ferramenta strong {
+            font-size: 16px;
+
+            font-weight: 500;
+
+            line-height: 1.25;
+        }
+
+
+        /* =========================================================
+           AJUDA PROFISSIONAL
+        ========================================================= */
+
+        .profissional {
+            position: relative;
+
+            min-height: 230px;
+
+            padding:
+                25px
+                390px
+                25px
+                10px;
+        }
+
+
+        .profissional h2 {
+            font-size: 27px;
+
+            margin-bottom: 18px;
+
+            color: #294267;
+
+            font-weight: 400;
+        }
+
+
+        .profissional p {
+            max-width: 480px;
+
+            font-size: 17px;
+
+            line-height: 1.45;
+
+            color: #405577;
+        }
+
+
+        .botao-profissional {
+            margin-top: 18px;
+        }
+
+
+        .imagem-clinica {
+            position: absolute;
+
+            right: 15px;
+            bottom: -5px;
+
+            width: 335px;
+            height: 220px;
+
+            object-fit: contain;
+        }
+
+
+        .confidencial {
+            text-align: center;
+
+            color: #2b9ed4;
+
+            font-size: 17px;
+
+            margin-top: 12px;
+
+            padding-bottom: 5px;
+        }
+
+
+        .escudo {
+            font-size: 21px;
+
+            vertical-align: middle;
+
+            margin-right: 4px;
+        }
+
+
+        /* =========================================================
+           MODAL INFORMATIVO
+        ========================================================= */
+
+        .modal-informativo {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(
+                    35,
+                    58,
+                    91,
+                    0.48
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease;
+        }
+
+
+        .modal-informativo.aberto {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .modal-caixa {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 760px;
+
+            max-height: 90vh;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 45px
+                rgba(
+                    34,
+                    58,
+                    92,
+                    0.25
+                );
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .modal-topo {
+            flex-shrink: 0;
+
+            padding:
+                24px
+                55px
+                18px
+                28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #edf5ff,
+                    #ffffff
+                );
+
+            border-bottom:
+                1px solid
+                #e2eaf5;
+        }
+
+
+        .modal-topo span {
+            display: block;
+
+            color: #6a9bd2;
+
+            font-size: 14px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .modal-topo h2 {
+            color: #294267;
+
+            font-size: 27px;
+
+            font-weight: 400;
+
+            line-height: 1.25;
+        }
+
+
+        .fechar-informativo {
+            position: absolute;
+
+            top: 15px;
+            right: 17px;
+
+            width: 38px;
+            height: 38px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #edf4ff;
+
+            color: #57799f;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            z-index: 5;
+        }
+
+
+        .fechar-informativo:hover {
+            background: #dceaff;
+        }
+
+
+        .modal-corpo {
+            overflow-y: auto;
+
+            padding: 25px 28px 10px;
+
+            flex: 1 1 auto;
+
+            min-height: 0;
+
+            scrollbar-width: thin;
+        }
+
+
+        .modal-corpo p {
+            color: #405577;
+
+            font-size: 17px;
+
+            line-height: 1.65;
+
+            margin-bottom: 17px;
+        }
+
+
+        .mensagem-motivacional {
+            margin-top: 8px;
+
+            padding: 17px 18px;
+
+            border-radius: 12px;
+
+            background: #edf6ff;
+
+            border-left:
+                4px solid
+                #72a9e6;
+
+            color: #41648e;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+        }
+
+
+        .aviso-apoio {
+            margin-top: 18px;
+
+            padding: 17px 18px;
+
+            border-radius: 12px;
+
+            background: #f4f7fb;
+
+            color: #4a5e78;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        .modal-navegacao {
+            flex-shrink: 0;
+
+            padding:
+                15px
+                25px
+                20px;
+
+            border-top:
+                1px solid
+                #e3eaf4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            background: #ffffff;
+        }
+
+
+        .botao-modal {
+            border: none;
+
+            border-radius: 9px;
+
+            padding:
+                10px
+                18px;
+
+            background: #edf4ff;
+
+            color: #4e76a3;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .botao-modal:hover {
+            background: #dceaff;
+
+            transform: translateY(-1px);
+        }
+
+
+        .botao-modal.proximo {
+            background:
+                linear-gradient(
+                    135deg,
+                    #76aae7,
+                    #6699dc
+                );
+
+            color: #ffffff;
+        }
+
+
+        .indicador-modal {
+            color: #7c91ab;
+
+            font-size: 14px;
+
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 950px) {
+
+            .dashboard {
+                max-width: 900px;
+
+                padding:
+                    30px
+                    24px
+                    45px;
+            }
+
+
+            .sentimentos {
+                padding-right: 285px;
+            }
+
+
+            .imagem-cansado {
+                width: 275px;
+                height: 225px;
+            }
+
+
+            .causas {
+                padding-right: 270px;
+            }
+
+
+            .icone-causas {
+                right: 35px;
+
+                width: 140px;
+            }
+
+
+            .como-lidar {
+                padding-right: 300px;
+            }
+
+
+            .imagem-calma {
+                width: 270px;
+                height: 205px;
+            }
+
+
+            .profissional {
+                padding-right: 300px;
+            }
+
+
+            .imagem-clinica {
+                width: 280px;
+                height: 195px;
+            }
+
+
+            .video {
+                flex-basis: 220px;
+            }
+
+
+            .ferramenta {
+                flex-basis: 185px;
+            }
+
+
+            .modal-video-caixa {
+                max-width: 760px;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                background: #eaf0ff;
+            }
+
+
+            .dashboard {
+                width: 100%;
+
+                padding:
+                    16px
+                    12px
+                    30px;
+            }
+
+
+            .card {
+                border-radius: 12px;
+
+                padding: 17px;
+
+                margin-bottom: 15px;
+
+                box-shadow:
+                    0 3px 9px
+                    rgba(
+                        46,
+                        73,
+                        113,
+                        0.14
+                    );
+            }
+
+
+            .card:hover {
+                transform: none;
+            }
+
+
+            .sentimentos:hover,
+            .causas:hover {
+                transform: none;
+            }
+
+
+            .card h1 {
+                font-size: 23px;
+            }
+
+
+            .card h2 {
+                font-size: 21px;
+            }
+
+
+            .card p {
+                font-size: 14px;
+            }
+
+
+            .sentimentos {
+                min-height: 205px;
+
+                padding-right: 125px;
+            }
+
+
+            .sentimentos h1 {
+                max-width: 100%;
+
+                font-size: 21px;
+            }
+
+
+            .sinais {
+                margin-top: 9px;
+            }
+
+
+            .sinais p {
+                font-size: 13px;
+
+                gap: 5px;
+
+                margin-top: 8px;
+            }
+
+
+            .sinal-emoji {
+                font-size: 19px;
+
+                width: 23px;
+
+                min-width: 23px;
+            }
+
+
+            .imagem-cansado {
+                width: 150px;
+
+                height: 145px;
+
+                right: -8px;
+
+                bottom: -7px;
+            }
+
+
+            .causas {
+                min-height: 140px;
+
+                padding-right: 125px;
+            }
+
+
+            .causas p {
+                font-size: 14px;
+
+                line-height: 1.3;
+            }
+
+
+            .icone-causas {
+                right: 4px;
+
+                width: 105px;
+
+                height: 90px;
+
+                font-size: 58px;
+            }
+
+
+            .como-lidar {
+                min-height: 145px;
+
+                padding-right: 125px;
+            }
+
+
+            .como-lidar p {
+                font-size: 15px;
+            }
+
+
+            .botao {
+                font-size: 14px;
+
+                padding:
+                    8px
+                    14px;
+
+                margin-top: 10px;
+            }
+
+
+            .imagem-calma {
+                width: 145px;
+
+                height: 120px;
+
+                right: -5px;
+
+                bottom: -5px;
+            }
+
+
+            /* VÍDEOS */
+
+            .videos {
+                padding-left: 12px;
+
+                padding-right: 12px;
+            }
+
+
+            .videos-carrossel {
+                margin: 0 5px;
+            }
+
+
+            .video {
+                flex: 0 0 205px;
+
+                min-height: 220px;
+
+                border-radius: 11px;
+            }
+
+
+            .video-imagem {
+                height: 130px;
+            }
+
+
+            .video-conteudo {
+                padding: 13px;
+            }
+
+
+            .video-conteudo p {
+                font-size: 13px;
+            }
+
+
+            .youtube {
+                top: 108px;
+
+                left: 10px;
+
+                width: 28px;
+
+                height: 19px;
+
+                font-size: 11px;
+            }
+
+
+            .seta-carrossel {
+                width: 34px;
+                height: 34px;
+
+                font-size: 19px;
+            }
+
+
+            .seta-esquerda {
+                left: -7px;
+            }
+
+
+            .seta-direita {
+                right: -7px;
+            }
+
+
+            .paginacao {
+                gap: 7px;
+
+                margin-top: 11px;
+            }
+
+
+            .ponto {
+                width: 9px;
+                height: 9px;
+            }
+
+
+            .ponto.ativo {
+                width: 11px;
+                height: 11px;
+            }
+
+
+            /* MODAL DOS VÍDEOS */
+
+            .modal-video {
+                padding: 10px;
+            }
+
+
+            .modal-video-caixa {
+                max-height: 94vh;
+
+                border-radius: 15px;
+            }
+
+
+            .modal-video-conteudo {
+                padding: 20px;
+            }
+
+
+            .modal-video-titulo {
+                font-size: 21px;
+
+                margin-bottom: 15px;
+
+                padding-right: 38px;
+            }
+
+
+            .fechar-video {
+                width: 36px;
+                height: 36px;
+
+                top: 10px;
+                right: 10px;
+
+                font-size: 24px;
+            }
+
+
+            .video-play {
+                width: 60px;
+                height: 43px;
+
+                font-size: 23px;
+
+                border-radius: 11px;
+            }
+
+
+            .video-aviso {
+                font-size: 13px;
+
+                padding: 13px 14px;
+            }
+
+
+            /* API */
+
+            .ia-form {
+                width: 100%;
+
+                gap: 7px;
+
+                margin-top: 12px;
+            }
+
+
+            .ia-input {
+                width: 100%;
+
+                min-width: 0;
+
+                height: 42px;
+
+                font-size: 13px;
+
+                padding:
+                    0 11px;
+            }
+
+
+            .ia-botao {
+                width: 42px;
+
+                height: 42px;
+
+                flex: 0 0 42px;
+
+                font-size: 18px;
+            }
+
+
+            /* FERRAMENTAS */
+
+            .ferramentas {
+                padding-left: 12px;
+
+                padding-right: 12px;
+            }
+
+
+            .ferramentas h2 {
+                margin-left: 5px;
+            }
+
+
+            .ferramentas-carrossel {
+                margin: 0 5px;
+            }
+
+
+            .ferramenta {
+                flex: 0 0 165px;
+
+                min-height: 155px;
+
+                padding:
+                    15px
+                    8px;
+
+                border-radius: 12px;
+            }
+
+
+            .ferramenta-icone {
+                width: 62px;
+                height: 62px;
+
+                border-radius: 15px;
+
+                font-size: 32px;
+
+                margin-bottom: 10px;
+            }
+
+
+            .ferramenta strong {
+                font-size: 13px;
+            }
+
+
+            /* PROFISSIONAL */
+
+            .profissional {
+                min-height: 165px;
+
+                padding:
+                    8px
+                    145px
+                    8px
+                    2px;
+            }
+
+
+            .profissional h2 {
+                font-size: 21px;
+
+                margin-bottom: 12px;
+            }
+
+
+            .profissional p {
+                font-size: 13px;
+
+                line-height: 1.35;
+            }
+
+
+            .botao-profissional {
+                font-size: 13px;
+
+                padding:
+                    8px
+                    12px;
+
+                margin-top: 10px;
+            }
+
+
+            .imagem-clinica {
+                width: 145px;
+
+                height: 120px;
+
+                right: -5px;
+
+                bottom: 0;
+            }
+
+
+            .confidencial {
+                font-size: 14px;
+
+                margin-top: 5px;
+            }
+
+
+            /* MODAL INFORMATIVO */
+
+            .modal-informativo {
+                padding: 10px;
+            }
+
+
+            .modal-caixa {
+                max-height: 94vh;
+
+                border-radius: 15px;
+            }
+
+
+            .modal-topo {
+                padding:
+                    20px
+                    48px
+                    15px
+                    20px;
+            }
+
+
+            .modal-topo h2 {
+                font-size: 21px;
+            }
+
+
+            .modal-topo span {
+                font-size: 12px;
+            }
+
+
+            .modal-corpo {
+                padding:
+                    19px
+                    20px
+                    5px;
+            }
+
+
+            .modal-corpo p {
+                font-size: 15px;
+
+                line-height: 1.55;
+            }
+
+
+            .mensagem-motivacional,
+            .aviso-apoio {
+                font-size: 14px;
+
+                padding: 14px;
+            }
+
+
+            .modal-navegacao {
+                padding:
+                    12px
+                    15px
+                    15px;
+            }
+
+
+            .botao-modal {
+                padding:
+                    9px
+                    12px;
+
+                font-size: 13px;
+            }
+
+
+            .indicador-modal {
+                font-size: 12px;
+            }
+        }
+
+
+        @media (max-width: 390px) {
+
+            .dashboard {
+                padding-left: 9px;
+                padding-right: 9px;
+            }
+
+
+            .card {
+                padding: 14px;
+            }
+
+
+            .sentimentos {
+                padding-right: 112px;
+
+                min-height: 195px;
+            }
+
+
+            .sentimentos h1 {
+                font-size: 19px;
+            }
+
+
+            .sinais p {
+                font-size: 12px;
+            }
+
+
+            .imagem-cansado {
+                width: 132px;
+
+                height: 125px;
+            }
+
+
+            .causas {
+                padding-right: 112px;
+            }
+
+
+            .icone-causas {
+                width: 90px;
+
+                font-size: 50px;
+            }
+
+
+            .como-lidar {
+                padding-right: 110px;
+            }
+
+
+            .imagem-calma {
+                width: 130px;
+
+                height: 110px;
+            }
+
+
+            .video {
+                flex-basis: 185px;
+
+                min-height: 205px;
+            }
+
+
+            .video-imagem {
+                height: 120px;
+            }
+
+
+            .youtube {
+                top: 98px;
+            }
+
+
+            .ferramenta {
+                flex-basis: 150px;
+
+                min-height: 145px;
+            }
+
+
+            .ferramenta-icone {
+                width: 55px;
+                height: 55px;
+
+                font-size: 28px;
+            }
+
+
+            .ferramenta strong {
+                font-size: 12px;
+            }
+
+
+            .profissional {
+                padding-right: 125px;
+            }
+
+
+            .imagem-clinica {
+                width: 125px;
+
+                height: 110px;
+            }
+
+
+            .modal-navegacao {
+                gap: 5px;
+            }
+
+
+            .botao-modal {
+                padding:
+                    8px
+                    9px;
+
+                font-size: 12px;
+            }
+
+
+            .modal-video-conteudo {
+                padding: 16px;
+            }
+
+
+            .modal-video-titulo {
+                font-size: 19px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="dashboard">
+
+
+    <!-- =========================================================
+         ENTENDENDO O QUE VOCÊ ESTÁ SENTINDO
+    ========================================================== -->
+
+    <section
+        class="card sentimentos"
+        onclick="abrirInformativo('sentimentos', 0)"
+    >
+
+        <h1>
+            Entendendo o que você está sentindo
+        </h1>
+
+
+        <div class="sinais">
+
+            <p>
+                <span class="sinal-emoji">😣</span>
+                Preocupação constante
+            </p>
+
+
+            <p>
+                <span class="sinal-emoji">✨</span>
+                Falta de concentração
+            </p>
+
+
+            <p>
+                <span class="sinal-emoji">😮‍💨</span>
+                Cansaço
+            </p>
+
+        </div>
+
+
+        <img
+            src="{{ url_for('static', filename='img/cansado.png') }}"
+            alt="Estudante cansado"
+            class="imagem-cansado"
+        >
+
+
+        <button
+            type="button"
+            class="area-clique-card"
+            aria-label="Abrir informações sobre os sentimentos"
+            onclick="event.stopPropagation(); abrirInformativo('sentimentos', 0)"
+        >
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CAUSAS
+    ========================================================== -->
+
+    <section
+        class="card causas"
+        onclick="abrirInformativo('causas', 0)"
+    >
+
+        <h2>
+            Causas
+        </h2>
+
+
+        <p>
+            A pressão por notas, provas e o futuro acadêmico
+            pode gerar muita ansiedade e estresse.
+        </p>
+
+
+        <div class="icone-causas">
+            ⚖️
+        </div>
+
+
+        <button
+            type="button"
+            class="area-clique-card"
+            aria-label="Abrir informações sobre as causas"
+            onclick="event.stopPropagation(); abrirInformativo('causas', 0)"
+        >
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         COMO LIDAR
+    ========================================================== -->
+
+    <section class="card como-lidar">
+
+        <h2>
+            Como lidar
+        </h2>
+
+
+        <p>
+            Respire fundo por 1 minuto
+        </p>
+
+
+        <a
+            href="{{ url_for('respiracao') }}"
+            class="botao"
+        >
+            Tentar agora
+        </a>
+
+
+        <img
+            src="{{ url_for('static', filename='img/calma.png') }}"
+            alt="Pessoa meditando"
+            class="imagem-calma"
+        >
+
+    </section>
+
+
+
+    <!-- =========================================================
+         VÍDEOS
+    ========================================================== -->
+
+    <section class="card videos">
+
+        <h2>
+            Vídeos recomendados
+        </h2>
+
+
+        <p class="subtitulo">
+            Conteúdos para ajudar você a entender e cuidar do que sente.
+        </p>
+
+
+        <div class="carrossel videos-carrossel">
+
+
+            <button
+                type="button"
+                class="seta-carrossel seta-esquerda"
+                onclick="moverCarrossel('videosScroll', -1)"
+                aria-label="Ver vídeos anteriores"
+            >
+                ‹
+            </button>
+
+
+            <div
+                class="carrossel-conteudo"
+                id="videosScroll"
+            >
+
+
+                <!-- VÍDEO 1 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(0)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo Pressão, saúde mental e vestibular"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/mnssW6JsXME/hqdefault.jpg"
+                            alt="Capa do vídeo Pressão, saúde mental e vestibular"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            Pressão, saúde mental e vestibular:
+                            como conciliar?
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 2 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(1)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre Ensino Médio e saúde mental"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/cHkq6faB0b4/hqdefault.jpg"
+                            alt="Capa do vídeo sobre Ensino Médio e saúde mental"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            O Ensino Médio e a saúde mental
+                            dos adolescentes
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 3 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(2)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre escolha da faculdade"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/BTDCl05XGAA/hqdefault.jpg"
+                            alt="Capa do vídeo sobre escolha da faculdade"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            Como escolher o curso certo
+                            da faculdade
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 4 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(3)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre técnicas de estudo"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/posTc56basM/hqdefault.jpg"
+                            alt="Capa do vídeo sobre técnicas de estudo"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            3 técnicas indicadas por cientistas
+                            para melhorar nos estudos
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 5 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(4)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre a pressão aos 18 anos"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/OUND_PErdCE/hqdefault.jpg"
+                            alt="Capa do vídeo sobre a pressão aos 18 anos"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            Crise dos 18: a pressão de
+                            decidir cedo demais
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 6 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(5)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre vestibulares e ENEM"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/pIXQIclP1D0/hqdefault.jpg"
+                            alt="Capa do vídeo sobre vestibulares e ENEM"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            Como funcionam os vestibulares?
+                            ENEM, Prouni, Sisu e Fies
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 7 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(6)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre vestibular e ENEM"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/K8zg0RmyH-g/hqdefault.jpg"
+                            alt="Capa do vídeo sobre vestibular e ENEM"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            O que é o vestibular?
+                            E o ENEM?
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- VÍDEO 8 -->
+
+                <article
+                    class="video"
+                    onclick="abrirVideo(7)"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Abrir vídeo sobre preparo mental para o ENEM"
+                >
+
+                    <div class="video-imagem">
+
+                        <img
+                            src="https://img.youtube.com/vi/DA2dyg2k8mM/hqdefault.jpg"
+                            alt="Capa do vídeo sobre preparo mental para o ENEM"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <span class="youtube">
+                        ▶
+                    </span>
+
+
+                    <div class="video-conteudo">
+
+                        <p>
+                            ENEM 360º: preparo mental
+                            para as provas
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                class="seta-carrossel seta-direita"
+                onclick="moverCarrossel('videosScroll', 1)"
+                aria-label="Ver próximos vídeos"
+            >
+                ›
+            </button>
+
+        </div>
+
+
+        <div
+            class="paginacao"
+            id="paginacaoVideos"
+        >
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PERGUNTE À IA
+    ========================================================== -->
+
+    <section class="card ia">
+
+        <h2>
+            Pergunte à IA
+        </h2>
+
+
+        <p>
+            Tire suas dúvidas de forma rápida e segura.
+        </p>
+
+
+        <form
+            class="ia-form"
+            onsubmit="enviarPergunta(event)"
+        >
+
+            <input
+                type="text"
+                id="pergunta"
+                class="ia-input"
+                placeholder="Digite sua pergunta"
+                autocomplete="off"
+            >
+
+
+            <button
+                type="submit"
+                class="ia-botao"
+                aria-label="Enviar pergunta"
+            >
+                ➤
+            </button>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FERRAMENTAS
+    ========================================================== -->
+
+    <section class="card ferramentas">
+
+        <h2>
+            Ferramentas para você
+        </h2>
+
+
+        <div class="carrossel ferramentas-carrossel">
+
+
+            <button
+                type="button"
+                class="seta-carrossel seta-esquerda"
+                onclick="moverCarrossel('ferramentasScroll', -1)"
+                aria-label="Ver ferramentas anteriores"
+            >
+                ‹
+            </button>
+
+
+            <div
+                class="carrossel-conteudo"
+                id="ferramentasScroll"
+            >
+
+
+                <a
+                    href="{{ url_for('diario') }}"
+                    class="ferramenta"
+                >
+
+                    <span class="ferramenta-icone">
+                        📖
+                    </span>
+
+                    <strong>
+                        Diário<br>
+                        emocional
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('respiracao') }}"
+                    class="ferramenta"
+                >
+
+                    <span class="ferramenta-icone">
+                        🌬️
+                    </span>
+
+                    <strong>
+                        Exercícios de<br>
+                        respiração
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('pausa') }}"
+                    class="ferramenta"
+                >
+
+                    <span class="ferramenta-icone">
+                        ☕
+                    </span>
+
+                    <strong>
+                        Pausa<br>
+                        consciente
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('pensamento') }}"
+                    class="ferramenta"
+                >
+
+                    <span class="ferramenta-icone">
+                        💙
+                    </span>
+
+                    <strong>
+                        Pensamento<br>
+                        positivo
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="ferramenta"
+                >
+
+                    <span class="ferramenta-icone">
+                        🎯
+                    </span>
+
+                    <strong>
+                        Foco e<br>
+                        concentração
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="ferramenta"
+                >
+
+                    <span class="ferramenta-icone">
+                        💙
+                    </span>
+
+                    <strong>
+                        Gratidão<br>
+                        diária
+                    </strong>
+
+                </a>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                class="seta-carrossel seta-direita"
+                onclick="moverCarrossel('ferramentasScroll', 1)"
+                aria-label="Ver próximas ferramentas"
+            >
+                ›
+            </button>
+
+        </div>
+
+
+        <div
+            class="paginacao"
+            id="paginacaoFerramentas"
+        >
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         AJUDA PROFISSIONAL
+    ========================================================== -->
+
+    <section class="profissional">
+
+        <h2>
+            Precisa de ajuda profissional?
+        </h2>
+
+
+        <p>
+            Converse com um psicólogo ou procure clínicas
+            e profissionais perto de você.
+        </p>
+
+
+        <a
+            href="#"
+            class="botao botao-profissional"
+        >
+            Encontrar profissionais
+        </a>
+
+
+        <img
+            src="{{ url_for('static', filename='img/clinica.png') }}"
+            alt="Clínica de saúde"
+            class="imagem-clinica"
+        >
+
+    </section>
+
+
+
+    <div class="confidencial">
+
+        <span class="escudo">
+            🛡️
+        </span>
+
+        Tudo é confidencial e seguro.
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     MODAL - ENTENDENDO OS SENTIMENTOS
+========================================================== -->
+
+<div
+    class="modal-informativo"
+    id="modalSentimentos"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloModalSentimentos"
+>
+
+
+    <div class="modal-caixa">
+
+
+        <button
+            type="button"
+            class="fechar-informativo"
+            onclick="fecharInformativo('sentimentos')"
+            aria-label="Fechar"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-topo">
+
+            <span>
+                Entendendo o que você está sentindo
+            </span>
+
+            <h2 id="tituloModalSentimentos">
+                Preocupação constante
+            </h2>
+
+        </div>
+
+
+        <div
+            class="modal-corpo"
+            id="corpoSentimentos"
+        >
+        </div>
+
+
+        <div class="modal-navegacao">
+
+
+            <button
+                type="button"
+                class="botao-modal"
+                id="anteriorSentimentos"
+                onclick="mudarInformativo('sentimentos', -1)"
+            >
+                ← Voltar
+            </button>
+
+
+            <span
+                class="indicador-modal"
+                id="indicadorSentimentos"
+            >
+            </span>
+
+
+            <button
+                type="button"
+                class="botao-modal proximo"
+                id="proximoSentimentos"
+                onclick="mudarInformativo('sentimentos', 1)"
+            >
+                Próximo →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL - CAUSAS
+========================================================== -->
+
+<div
+    class="modal-informativo"
+    id="modalCausas"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloModalCausas"
+>
+
+
+    <div class="modal-caixa">
+
+
+        <button
+            type="button"
+            class="fechar-informativo"
+            onclick="fecharInformativo('causas')"
+            aria-label="Fechar"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-topo">
+
+            <span>
+                Entendendo possíveis causas
+            </span>
+
+            <h2 id="tituloModalCausas">
+                Pressão escolar
+            </h2>
+
+        </div>
+
+
+        <div
+            class="modal-corpo"
+            id="corpoCausas"
+        >
+        </div>
+
+
+        <div class="modal-navegacao">
+
+
+            <button
+                type="button"
+                class="botao-modal"
+                id="anteriorCausas"
+                onclick="mudarInformativo('causas', -1)"
+            >
+                ← Voltar
+            </button>
+
+
+            <span
+                class="indicador-modal"
+                id="indicadorCausas"
+            >
+            </span>
+
+
+            <button
+                type="button"
+                class="botao-modal proximo"
+                id="proximoCausas"
+                onclick="mudarInformativo('causas', 1)"
+            >
+                Próximo →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL - VÍDEOS
+========================================================== -->
+
+<div
+    class="modal-video"
+    id="modalVideo"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloModalVideo"
+>
+
+
+    <div class="modal-video-caixa">
+
+
+        <button
+            type="button"
+            class="fechar-video"
+            onclick="fecharVideo()"
+            aria-label="Fechar vídeo"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-video-conteudo">
+
+
+            <h2
+                class="modal-video-titulo"
+                id="tituloModalVideo"
+            >
+                Vídeo
+            </h2>
+
+
+            <button
+                type="button"
+                class="video-preview"
+                id="videoPreview"
+                onclick="abrirVideoYoutube()"
+                aria-label="Abrir vídeo no YouTube"
+            >
+
+
+                <img
+                    id="imagemModalVideo"
+                    src=""
+                    alt=""
+                >
+
+
+                <span class="video-play">
+                    ▶
+                </span>
+
+
+            </button>
+
+
+            <div class="video-aviso">
+
+                Clique na imagem para assistir ao vídeo
+                completo no YouTube.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   DADOS DOS VÍDEOS
+========================================================= */
+
+const videos = [
+
+    {
+        id: "mnssW6JsXME",
+
+        titulo:
+            "PRESSÃO, SAÚDE MENTAL E VESTIBULAR: COMO CONCILIAR?",
+
+        url:
+            "https://youtu.be/mnssW6JsXME?si=4ri0yNqQUnW-VpDK"
+    },
+
+
+    {
+        id: "cHkq6faB0b4",
+
+        titulo:
+            "O Ensino Médio e a Saúde Mental dos Adolescentes - 5 sinais que merecem sua atenção",
+
+        url:
+            "https://youtu.be/cHkq6faB0b4?si=PWOp7e6192gsAXb_"
+    },
+
+
+    {
+        id: "BTDCl05XGAA",
+
+        titulo:
+            "HORA DE ENTRAR NA FACULDADE: COMO ESCOLHER O CURSO CERTO DA FACULDADE",
+
+        url:
+            "https://youtu.be/BTDCl05XGAA?si=SewRIXolL12MH3AB"
+    },
+
+
+    {
+        id: "posTc56basM",
+
+        titulo:
+            "3 técnicas indicadas por cientistas para qualquer pessoa melhorar nos estudos",
+
+        url:
+            "https://youtu.be/posTc56basM?si=j_REDRX4AEsgbKtc"
+    },
+
+
+    {
+        id: "OUND_PErdCE",
+
+        titulo:
+            "CRISE DOS 18: A pressão de decidir cedo demais",
+
+        url:
+            "https://youtu.be/OUND_PErdCE?si=vXTr7ZVTl--91mD4"
+    },
+
+
+    {
+        id: "pIXQIclP1D0",
+
+        titulo:
+            "Como FUNCIONAM os VESTIBULARES? ENEM, Prouni, Sisu, Fies e Vestibular de Inverno",
+
+        url:
+            "https://youtu.be/pIXQIclP1D0?si=kCaNHA_lzffkmUvC"
+    },
+
+
+    {
+        id: "K8zg0RmyH-g",
+
+        titulo:
+            "O que é o Vestibular? E o Enem? Um guia para iniciantes",
+
+        url:
+            "https://youtu.be/K8zg0RmyH-g?si=fUhnVXy292Ht74dE"
+    },
+
+
+    {
+        id: "DA2dyg2k8mM",
+
+        titulo:
+            "ENEM 360º: psicóloga dá dicas para o seu preparo mental para as provas",
+
+        url:
+            "https://youtu.be/DA2dyg2k8mM?si=QJT-QJncA08-dCQA"
+    }
+
+];
+
+
+let videoSelecionado = 0;
+
+
+
+/* =========================================================
+   MODAL DOS VÍDEOS
+========================================================= */
+
+function abrirVideo(indice) {
+
+    videoSelecionado = indice;
+
+
+    const video =
+        videos[indice];
+
+
+    if (!video) {
+        return;
+    }
+
+
+    document.getElementById(
+        "tituloModalVideo"
+    ).textContent =
+        video.titulo;
+
+
+    const imagem =
+        document.getElementById(
+            "imagemModalVideo"
+        );
+
+
+    imagem.src =
+        `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+
+
+    imagem.alt =
+        `Capa do vídeo: ${video.titulo}`;
+
+
+    document
+        .getElementById("modalVideo")
+        .classList.add("aberto");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+/* =========================================================
+   ABRIR VÍDEO NO YOUTUBE
+========================================================= */
+
+function abrirVideoYoutube() {
+
+    const video =
+        videos[videoSelecionado];
+
+
+    if (!video) {
+        return;
+    }
+
+
+    window.open(
+        video.url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+
+/* =========================================================
+   FECHAR MODAL DOS VÍDEOS
+========================================================= */
+
+function fecharVideo() {
+
+    document
+        .getElementById("modalVideo")
+        .classList.remove("aberto");
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+
+/* =========================================================
+   DADOS DOS TEXTOS - SENTIMENTOS
+========================================================= */
+
+const informativosSentimentos = [
+
+    {
+        titulo: "Preocupação constante",
+
+        texto: `
+            <p>
+                Sentir preocupação de vez em quando faz parte da vida.
+                Porém, quando a preocupação aparece constantemente e
+                começa a ocupar muito espaço na sua rotina, pode ser
+                importante parar um pouco e observar o que está por trás
+                dela.
+            </p>
+
+            <p>
+                No Ensino Médio, muitas preocupações podem surgir ao
+                mesmo tempo: provas, notas, vestibulares, ENEM,
+                escolha de uma faculdade, futuro profissional,
+                expectativas da família e até a sensação de que você
+                precisa decidir toda a sua vida rapidamente.
+            </p>
+
+            <p>
+                Tente se perguntar: <strong>o que exatamente está me
+                preocupando neste momento?</strong> É uma prova?
+                Uma cobrança? O medo de decepcionar alguém?
+                A dúvida sobre o futuro?
+            </p>
+
+            <div class="mensagem-motivacional">
+                Você não precisa resolver toda a sua vida hoje.
+                Identificar uma preocupação de cada vez já pode ser
+                um primeiro passo para entender melhor o que está
+                acontecendo com você.
+            </div>
+        `
+    },
+
+
+    {
+        titulo: "Falta de concentração",
+
+        texto: `
+            <p>
+                Quando estamos preocupados, sobrecarregados ou pensando
+                em muitas coisas ao mesmo tempo, pode ficar mais difícil
+                manter a atenção em uma atividade.
+            </p>
+
+            <p>
+                Durante o Ensino Médio, isso pode aparecer enquanto você
+                tenta estudar para uma prova, acompanha uma aula ou
+                realiza uma atividade. A mente pode continuar pensando
+                em notas, trabalhos, ENEM, faculdade, problemas em casa
+                ou outras situações que estão acontecendo.
+            </p>
+
+            <p>
+                Em vez de pensar imediatamente que você é "desatento",
+                tente observar o contexto. <strong>O que estava acontecendo
+                antes de você perceber que perdeu a concentração?</strong>
+                Você estava cansado? Preocupado? Com muitas tarefas?
+            </p>
+
+            <div class="mensagem-motivacional">
+                Ter dificuldade para se concentrar em alguns momentos
+                não significa que você não seja capaz. Entender o que
+                está ocupando sua mente pode ajudar a perceber do que
+                você precisa naquele momento.
+            </div>
+        `
+    },
+
+
+    {
+        titulo: "Cansaço",
+
+        texto: `
+            <p>
+                O Ensino Médio pode envolver uma rotina bastante cheia:
+                aulas, trabalhos, provas, estudos em casa, cursos,
+                atividades pessoais e preocupações com o futuro.
+            </p>
+
+            <p>
+                Quando muitas responsabilidades se acumulam, o cansaço
+                pode aparecer tanto no corpo quanto na disposição para
+                estudar, conversar ou realizar atividades que normalmente
+                fazem parte da sua rotina.
+            </p>
+
+            <p>
+                Vale observar como tem sido sua rotina. Você está
+                conseguindo descansar? Está tentando dar conta de
+                muitas coisas ao mesmo tempo? Existe alguma cobrança
+                que tem ocupado seus pensamentos durante todo o dia?
+            </p>
+
+            <div class="mensagem-motivacional">
+                Descansar também faz parte de cuidar de si.
+                Você não precisa provar seu valor estando sempre
+                produzindo ou conseguindo fazer tudo.
+            </div>
+        `
+    }
+
+];
+
+
+
+/* =========================================================
+   DADOS DOS TEXTOS - CAUSAS
+========================================================= */
+
+const informativosCausas = [
+
+    {
+        titulo: "Pressão por notas e provas",
+
+        texto: `
+            <p>
+                Notas e avaliações fazem parte da vida escolar, mas
+                podem se transformar em uma fonte de preocupação quando
+                existe a sensação de que cada resultado define o seu
+                futuro ou o seu valor.
+            </p>
+
+            <p>
+                Talvez você esteja pensando em uma prova específica,
+                preocupado com uma recuperação ou com medo de não
+                alcançar a nota que esperava.
+            </p>
+
+            <p>
+                Experimente refletir:
+                <strong>eu estou preocupado com a prova em si ou com
+                aquilo que acredito que acontecerá se eu não conseguir
+                a nota que espero?</strong>
+            </p>
+
+            <div class="mensagem-motivacional">
+                Uma nota representa o resultado de uma avaliação em
+                determinado momento. Ela não define tudo aquilo que
+                você é ou tudo aquilo que pode aprender.
+            </div>
+        `
+    },
+
+
+    {
+        titulo: "ENEM e vestibulares",
+
+        texto: `
+            <p>
+                Para muitos estudantes, o Ensino Médio vem acompanhado
+                da expectativa de entrar em uma faculdade. O ENEM e os
+                vestibulares podem trazer pressão porque parecem
+                representar uma grande mudança de vida.
+            </p>
+
+            <p>
+                É comum pensar sobre qual curso escolher, qual faculdade
+                frequentar, se a nota será suficiente ou se você está
+                estudando o bastante.
+            </p>
+
+            <p>
+                Uma pergunta que pode ajudar é:
+                <strong>qual parte desse futuro está realmente
+                acontecendo agora?</strong>
+                Separar o presente das preocupações futuras pode ajudar
+                a perceber aquilo que está sob seu controle hoje.
+            </p>
+
+            <div class="mensagem-motivacional">
+                Você pode pensar no futuro sem precisar carregar
+                todas as respostas agora. Algumas decisões podem
+                ser construídas aos poucos.
+            </div>
+        `
+    },
+
+
+    {
+        titulo: "Mudança do Ensino Médio para a faculdade",
+
+        texto: `
+            <p>
+                A aproximação do fim do Ensino Médio pode trazer uma
+                sensação de que uma fase importante está terminando.
+                Para algumas pessoas, isso desperta expectativa;
+                para outras, insegurança.
+            </p>
+
+            <p>
+                Pode surgir o medo de escolher errado, de não se adaptar,
+                de deixar os amigos, de decepcionar a família ou de não
+                saber exatamente o que fazer depois da escola.
+            </p>
+
+            <p>
+                Tente observar:
+                <strong>o que exatamente me assusta nessa mudança?</strong>
+                Talvez seja a escolha do curso, a independência,
+                as responsabilidades ou simplesmente o fato de algo
+                conhecido estar chegando ao fim.
+            </p>
+
+            <div class="mensagem-motivacional">
+                Não ter todas as respostas sobre o futuro é algo que
+                pode acontecer. Você pode construir seus próximos passos
+                com tempo e apoio.
+            </div>
+        `
+    },
+
+
+    {
+        titulo: "Família e expectativas",
+
+        texto: `
+            <p>
+                A família pode ser uma fonte importante de apoio, mas
+                também podem existir expectativas sobre notas, faculdade,
+                profissão e futuro.
+            </p>
+
+            <p>
+                Às vezes, a preocupação não vem apenas daquilo que é
+                dito diretamente. Pode surgir da sensação de que você
+                precisa corresponder às expectativas das pessoas que
+                são importantes para você.
+            </p>
+
+            <p>
+                Vale refletir:
+                <strong>essa cobrança está vindo de alguém ou estou
+                cobrando a mim mesmo?</strong>
+                E, caso esteja vindo de outras pessoas, você consegue
+                conversar sobre como essas expectativas estão fazendo
+                você se sentir?
+            </p>
+
+            <div class="mensagem-motivacional">
+                Seus sentimentos merecem ser ouvidos. Conversar sobre
+                aquilo que está pesado pode ser um começo importante.
+            </div>
+        `
+    },
+
+
+    {
+        titulo: "Muitas responsabilidades ao mesmo tempo",
+
+        texto: `
+            <p>
+                Escola, estudos, tarefas, família, amizades,
+                atividades extracurriculares e preocupações pessoais
+                podem acabar ocupando o mesmo espaço.
+            </p>
+
+            <p>
+                Quando várias responsabilidades se acumulam, pode surgir
+                a sensação de que não existe tempo suficiente para fazer
+                tudo.
+            </p>
+
+            <p>
+                Tente identificar:
+                <strong>quais responsabilidades realmente precisam ser
+                resolvidas agora e quais podem esperar?</strong>
+                Perceber essa diferença pode ajudar a organizar melhor
+                aquilo que está acontecendo.
+            </p>
+
+            <div class="mensagem-motivacional">
+                Você não precisa dar conta de tudo ao mesmo tempo.
+                Pedir ajuda para organizar suas prioridades também é
+                uma forma de cuidado.
+            </div>
+        `
+    }
+
+];
+
+
+
+/* =========================================================
+   ABRIR INFORMATIVO
+========================================================= */
+
+let indiceSentimentos = 0;
+let indiceCausas = 0;
+
+
+function abrirInformativo(tipo, indice) {
+
+    if (tipo === "sentimentos") {
+
+        indiceSentimentos = indice;
+
+        atualizarInformativo("sentimentos");
+
+        document
+            .getElementById("modalSentimentos")
+            .classList.add("aberto");
+
+    }
+
+
+    if (tipo === "causas") {
+
+        indiceCausas = indice;
+
+        atualizarInformativo("causas");
+
+        document
+            .getElementById("modalCausas")
+            .classList.add("aberto");
+
+    }
+
+
+    document.body.style.overflow = "hidden";
+}
+
+
+
+/* =========================================================
+   FECHAR INFORMATIVO
+========================================================= */
+
+function fecharInformativo(tipo) {
+
+    if (tipo === "sentimentos") {
+
+        document
+            .getElementById("modalSentimentos")
+            .classList.remove("aberto");
+
+    }
+
+
+    if (tipo === "causas") {
+
+        document
+            .getElementById("modalCausas")
+            .classList.remove("aberto");
+
+    }
+
+
+    document.body.style.overflow = "";
+}
+
+
+
+/* =========================================================
+   MUDAR PÁGINA DO INFORMATIVO
+========================================================= */
+
+function mudarInformativo(tipo, direcao) {
+
+    if (tipo === "sentimentos") {
+
+        indiceSentimentos += direcao;
+
+        if (
+            indiceSentimentos < 0
+        ) {
+            indiceSentimentos =
+                informativosSentimentos.length - 1;
+        }
+
+
+        if (
+            indiceSentimentos >=
+            informativosSentimentos.length
+        ) {
+            indiceSentimentos = 0;
+        }
+
+
+        atualizarInformativo("sentimentos");
+
+    }
+
+
+    if (tipo === "causas") {
+
+        indiceCausas += direcao;
+
+        if (
+            indiceCausas < 0
+        ) {
+            indiceCausas =
+                informativosCausas.length - 1;
+        }
+
+
+        if (
+            indiceCausas >=
+            informativosCausas.length
+        ) {
+            indiceCausas = 0;
+        }
+
+
+        atualizarInformativo("causas");
+
+    }
+
+}
+
+
+
+/* =========================================================
+   ATUALIZAR CONTEÚDO DO INFORMATIVO
+========================================================= */
+
+function atualizarInformativo(tipo) {
+
+    let dados;
+    let indice;
+    let corpo;
+    let titulo;
+    let indicador;
+
+
+    if (tipo === "sentimentos") {
+
+        dados = informativosSentimentos;
+
+        indice = indiceSentimentos;
+
+        corpo =
+            document.getElementById(
+                "corpoSentimentos"
+            );
+
+        titulo =
+            document.getElementById(
+                "tituloModalSentimentos"
+            );
+
+        indicador =
+            document.getElementById(
+                "indicadorSentimentos"
+            );
+
+    }
+
+
+    if (tipo === "causas") {
+
+        dados = informativosCausas;
+
+        indice = indiceCausas;
+
+        corpo =
+            document.getElementById(
+                "corpoCausas"
+            );
+
+        titulo =
+            document.getElementById(
+                "tituloModalCausas"
+            );
+
+        indicador =
+            document.getElementById(
+                "indicadorCausas"
+            );
+
+    }
+
+
+    const item = dados[indice];
+
+
+    titulo.textContent =
+        item.titulo;
+
+
+    corpo.innerHTML = `
+        ${item.texto}
+
+        <div class="aviso-apoio">
+            <strong>Importante:</strong>
+            este website é apenas uma ferramenta de apoio
+            e informação. Ele não realiza diagnóstico e não
+            substitui acompanhamento psicológico ou outro
+            atendimento profissional.
+            <br><br>
+            Se essas preocupações estiverem atrapalhando sua
+            rotina, procure apoio de um psicólogo ou converse
+            com a escola para que ela possa orientar e encaminhar
+            você para um profissional.
+        </div>
+    `;
+
+
+    indicador.textContent =
+        `${indice + 1} de ${dados.length}`;
+
+
+    corpo.scrollTop = 0;
+}
+
+
+
+/* =========================================================
+   FECHAR MODAL CLICANDO FORA
+========================================================= */
+
+document
+    .getElementById("modalSentimentos")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+                fecharInformativo("sentimentos");
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("modalCausas")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+                fecharInformativo("causas");
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("modalVideo")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+                fecharVideo();
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   ESC FECHA OS MODAIS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            fecharInformativo(
+                "sentimentos"
+            );
+
+            fecharInformativo(
+                "causas"
+            );
+
+            fecharVideo();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   ACESSIBILIDADE - ENTER NOS CARDS DE VÍDEO
+========================================================= */
+
+document
+    .querySelectorAll(".video")
+    .forEach(
+        function(videoCard, indice) {
+
+            videoCard.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        abrirVideo(indice);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+
+/* =========================================================
+   CARROSSÉIS
+========================================================= */
+
+function moverCarrossel(
+    id,
+    direcao
+) {
+
+    const carrossel =
+        document.getElementById(id);
+
+
+    if (!carrossel) {
+        return;
+    }
+
+
+    const distancia =
+        carrossel.clientWidth * 0.75;
+
+
+    carrossel.scrollBy({
+        left:
+            distancia * direcao,
+
+        behavior:
+            "smooth"
+    });
+
+}
+
+
+
+/* =========================================================
+   ARRASTAR CARROSSÉIS
+========================================================= */
+
+function ativarArraste(id) {
+
+    const carrossel =
+        document.getElementById(id);
+
+
+    if (!carrossel) {
+        return;
+    }
+
+
+    let pressionado = false;
+
+    let inicioX = 0;
+
+    let inicioScroll = 0;
+
+
+    carrossel.addEventListener(
+        "mousedown",
+        function(event) {
+
+            pressionado = true;
+
+            carrossel.classList.add(
+                "arrastando"
+            );
+
+            inicioX =
+                event.pageX -
+                carrossel.offsetLeft;
+
+            inicioScroll =
+                carrossel.scrollLeft;
+
+        }
+    );
+
+
+    carrossel.addEventListener(
+        "mouseleave",
+        function() {
+
+            pressionado = false;
+
+            carrossel.classList.remove(
+                "arrastando"
+            );
+
+        }
+    );
+
+
+    carrossel.addEventListener(
+        "mouseup",
+        function() {
+
+            pressionado = false;
+
+            carrossel.classList.remove(
+                "arrastando"
+            );
+
+        }
+    );
+
+
+    carrossel.addEventListener(
+        "mousemove",
+        function(event) {
+
+            if (!pressionado) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            const x =
+                event.pageX -
+                carrossel.offsetLeft;
+
+
+            const distancia =
+                (x - inicioX) * 1.3;
+
+
+            carrossel.scrollLeft =
+                inicioScroll - distancia;
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   SETAS
+========================================================= */
+
+function atualizarSetas(id) {
+
+    const carrossel =
+        document.getElementById(id);
+
+
+    if (!carrossel) {
+        return;
+    }
+
+
+    const area =
+        carrossel.closest(
+            ".carrossel"
+        );
+
+
+    const esquerda =
+        area.querySelector(
+            ".seta-esquerda"
+        );
+
+
+    const direita =
+        area.querySelector(
+            ".seta-direita"
+        );
+
+
+    const chegouInicio =
+        carrossel.scrollLeft <= 5;
+
+
+    const chegouFim =
+        carrossel.scrollLeft +
+        carrossel.clientWidth >=
+        carrossel.scrollWidth - 5;
+
+
+    esquerda.classList.toggle(
+        "oculta",
+        chegouInicio
+    );
+
+
+    direita.classList.toggle(
+        "oculta",
+        chegouFim
+    );
+
+}
+
+
+
+/* =========================================================
+   QUANTIDADE DE BOLINHAS NECESSÁRIAS
+========================================================= */
+
+function criarPaginacao(
+    id,
+    paginacaoId
+) {
+
+    const carrossel =
+        document.getElementById(id);
+
+
+    const paginacao =
+        document.getElementById(
+            paginacaoId
+        );
+
+
+    if (
+        !carrossel ||
+        !paginacao
+    ) {
+        return;
+    }
+
+
+    paginacao.innerHTML = "";
+
+
+    const larguraVisivel =
+        carrossel.clientWidth;
+
+
+    const larguraTotal =
+        carrossel.scrollWidth;
+
+
+    if (
+        larguraTotal <=
+        larguraVisivel + 5
+    ) {
+        return;
+    }
+
+
+    const quantidade =
+        Math.ceil(
+            larguraTotal /
+            larguraVisivel
+        );
+
+
+    const quantidadeFinal =
+        Math.max(
+            2,
+            quantidade
+        );
+
+
+    for (
+        let i = 0;
+        i < quantidadeFinal;
+        i++
+    ) {
+
+        const ponto =
+            document.createElement(
+                "button"
+            );
+
+
+        ponto.type =
+            "button";
+
+
+        ponto.className =
+            "ponto";
+
+
+        if (i === 0) {
+
+            ponto.classList.add(
+                "ativo"
+            );
+
+        }
+
+
+        ponto.setAttribute(
+            "aria-label",
+            `Ir para a posição ${i + 1}`
+        );
+
+
+        ponto.addEventListener(
+            "click",
+            function() {
+
+                irParaPonto(
+                    id,
+                    i,
+                    quantidadeFinal
+                );
+
+            }
+        );
+
+
+        paginacao.appendChild(
+            ponto
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   IR PARA UMA POSIÇÃO DO CARROSSÉL
+========================================================= */
+
+function irParaPonto(
+    id,
+    ponto,
+    quantidade
+) {
+
+    const carrossel =
+        document.getElementById(id);
+
+
+    if (!carrossel) {
+        return;
+    }
+
+
+    const maxScroll =
+        carrossel.scrollWidth -
+        carrossel.clientWidth;
+
+
+    if (maxScroll <= 0) {
+        return;
+    }
+
+
+    const posicao =
+        maxScroll *
+        (
+            ponto /
+            (quantidade - 1)
+        );
+
+
+    carrossel.scrollTo({
+
+        left:
+            posicao,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+
+/* =========================================================
+   ATUALIZAR BOLINHAS
+========================================================= */
+
+function atualizarPaginacao(
+    id,
+    paginacaoId
+) {
+
+    const carrossel =
+        document.getElementById(id);
+
+
+    const paginacao =
+        document.getElementById(
+            paginacaoId
+        );
+
+
+    if (
+        !carrossel ||
+        !paginacao
+    ) {
+        return;
+    }
+
+
+    const pontos =
+        paginacao.querySelectorAll(
+            ".ponto"
+        );
+
+
+    if (!pontos.length) {
+        return;
+    }
+
+
+    const maxScroll =
+        carrossel.scrollWidth -
+        carrossel.clientWidth;
+
+
+    if (maxScroll <= 0) {
+
+        pontos.forEach(
+            function(ponto) {
+
+                ponto.classList.remove(
+                    "ativo"
+                );
+
+            }
+        );
+
+        return;
+    }
+
+
+    const porcentagem =
+        carrossel.scrollLeft /
+        maxScroll;
+
+
+    let pontoAtual =
+        Math.round(
+            porcentagem *
+            (pontos.length - 1)
+        );
+
+
+    pontoAtual =
+        Math.max(
+            0,
+            Math.min(
+                pontoAtual,
+                pontos.length - 1
+            )
+        );
+
+
+    pontos.forEach(
+        function(ponto, index) {
+
+            ponto.classList.toggle(
+                "ativo",
+                index === pontoAtual
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   CONFIGURAR CARROSSÉIS
+========================================================= */
+
+const videosScroll =
+    document.getElementById(
+        "videosScroll"
+    );
+
+
+const ferramentasScroll =
+    document.getElementById(
+        "ferramentasScroll"
+    );
+
+
+videosScroll.addEventListener(
+    "scroll",
+    function() {
+
+        atualizarSetas(
+            "videosScroll"
+        );
+
+
+        atualizarPaginacao(
+            "videosScroll",
+            "paginacaoVideos"
+        );
+
+    }
+);
+
+
+ferramentasScroll.addEventListener(
+    "scroll",
+    function() {
+
+        atualizarSetas(
+            "ferramentasScroll"
+        );
+
+
+        atualizarPaginacao(
+            "ferramentasScroll",
+            "paginacaoFerramentas"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+
+function atualizarTudo() {
+
+    criarPaginacao(
+        "videosScroll",
+        "paginacaoVideos"
+    );
+
+
+    criarPaginacao(
+        "ferramentasScroll",
+        "paginacaoFerramentas"
+    );
+
+
+    atualizarSetas(
+        "videosScroll"
+    );
+
+
+    atualizarSetas(
+        "ferramentasScroll"
+    );
+
+
+    atualizarPaginacao(
+        "videosScroll",
+        "paginacaoVideos"
+    );
+
+
+    atualizarPaginacao(
+        "ferramentasScroll",
+        "paginacaoFerramentas"
+    );
+
+}
+
+
+ativarArraste(
+    "videosScroll"
+);
+
+
+ativarArraste(
+    "ferramentasScroll"
+);
+
+
+atualizarTudo();
+
+
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        atualizarTudo();
+
+    }
+);
+
+
+
+/* =========================================================
+   PERGUNTE À IA
+========================================================= */
+
+function enviarPergunta(event) {
+
+    event.preventDefault();
+
+
+    const campo =
+        document.getElementById(
+            "pergunta"
+        );
+
+
+    const pergunta =
+        campo.value.trim();
+
+
+    if (
+        pergunta === ""
+    ) {
+
+        campo.focus();
+
+        return;
+
+    }
+
+
+    alert(
+        "Sua pergunta foi recebida. " +
+        "A integração com a IA poderá " +
+        "ser adicionada aqui."
+    );
+
+
+    campo.value = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

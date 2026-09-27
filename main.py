@@ -4,33 +4,49 @@ from flask import render_template, Flask
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def index():
     nome = 'icoma.com.br'
-    return render_template('index.html', site = nome)
+    return render_template('index.html', site=nome)
+
 
 @app.route("/login")
 def login():
     return render_template('login/login.html')
 
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template('dashboard.html')
+
+
 @app.route("/respiracao")
 def respiracao():
     return render_template('ferramentas/respiracao.html')
+
 
 @app.route("/pausa")
 def pausa():
     return render_template('ferramentas/pausa.html')
 
+
 @app.route("/pensamento")
 def pensamento():
     return render_template('ferramentas/pensamento.html')
+
 
 @app.route("/diario")
 def diario():
     return render_template('ferramentas/diario.html')
 
+
 def main():
-    app.run(host="0.0.0.0", port = int(os.environ.get("PORT", 10000)))
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 10000))
+    )
+
 
 if __name__ == "__main__":
     main()

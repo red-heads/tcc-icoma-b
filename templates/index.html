@@ -2,319 +2,2042 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ICOMA - Apoio emocional</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Tudo bem aí? | Apoio emocional</title>
+
+    <meta
+        name="description"
+        content="Tudo bem aí? — um espaço de apoio, informação e ferramentas para estudantes que enfrentam ansiedade e sobrecarga emocional."
+    >
+
+    <style>
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        :root {
+
+            --azul-escuro: #263b62;
+            --azul: #78a9e8;
+            --azul-medio: #9fc3f3;
+            --azul-claro: #dfeaff;
+
+            --fundo: #edf2ff;
+
+            --branco: #ffffff;
+
+            --texto: #34476b;
+            --texto-claro: #5c6d89;
+
+            --sombra:
+                0 5px 14px rgba(55, 78, 116, 0.16);
+
+            --raio: 14px;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 5%,
+                    rgba(255,255,255,.85),
+                    transparent 28%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #eaf0ff 0%,
+                    #f1f4ff 48%,
+                    #e8efff 100%
+                );
+
+            color:
+                var(--texto);
+
+            min-height:
+                100vh;
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        /* =========================
+           PÁGINA
+        ========================== */
+
+        .pagina {
+
+            width:
+                min(100%, 1120px);
+
+            margin:
+                0 auto;
+
+            padding:
+                22px 24px 42px;
+        }
+
+
+        /* =========================
+           CABEÇALHO
+        ========================== */
+
+        .cabecalho {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                flex-start;
+
+            margin-bottom:
+                8px;
+
+            margin-left:
+                -12px;
+
+            margin-top:
+                -10px;
+        }
+
+
+        .logo {
+
+            width:
+                205px;
+
+            height:
+                105px;
+
+            object-fit:
+                contain;
+
+            object-position:
+                left center;
+
+            display:
+                block;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                .92fr 1.08fr;
+
+            align-items:
+                center;
+
+            gap:
+                28px;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .hero-texto {
+
+            padding:
+                4px 0 8px;
+        }
+
+
+        .hero h1 {
+
+            color:
+                var(--azul-escuro);
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    53px
+                );
+
+            line-height:
+                1.05;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                -.8px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .hero p {
+
+            color:
+                var(--texto-claro);
+
+            font-size:
+                17px;
+
+            line-height:
+                1.48;
+
+            max-width:
+                480px;
+
+            margin-bottom:
+                23px;
+        }
+
+
+        /* =========================
+           BOTÕES
+        ========================== */
+
+        .botoes {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px;
+        }
+
+
+        .botao {
+
+            min-width:
+                120px;
+
+            display:
+                inline-flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding:
+                11px 20px;
+
+            border-radius:
+                8px;
+
+            text-decoration:
+                none;
+
+            font-size:
+                15px;
+
+            border:
+                none;
+
+            font-family:
+                inherit;
+
+            cursor:
+                pointer;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .botao:hover {
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .botao-principal {
+
+            background:
+                #a5c7f3;
+
+            color:
+                #29476f;
+
+            box-shadow:
+                0 4px 9px
+                rgba(68, 101, 148, .22);
+        }
+
+
+        .botao-secundario {
+
+            background:
+                #7faee9;
+
+            color:
+                white;
+
+            box-shadow:
+                0 4px 9px
+                rgba(68, 101, 148, .22);
+        }
+
+
+        /* =========================
+           IMAGEM PRINCIPAL
+        ========================== */
+
+        .hero-imagem {
+
+            min-width:
+                0;
+
+            display:
+                flex;
+
+            justify-content:
+                flex-end;
+        }
+
+
+        .hero-imagem img {
+
+            width:
+                100%;
+
+            max-width:
+                575px;
+
+            height:
+                auto;
+
+            display:
+                block;
+
+            border-radius:
+                25px;
+
+            filter:
+                drop-shadow(
+                    0 8px 10px
+                    rgba(72, 101, 148, .10)
+                );
+        }
+
+
+        /* =========================
+           CARDS INFORMATIVOS
+        ========================== */
+
+        .informacoes {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                15px;
+
+            margin-bottom:
+                28px;
+        }
+
+
+        .card-info {
+
+            width:
+                100%;
+
+            min-height:
+                88px;
+
+            background:
+                rgba(255,255,255,.94);
+
+            border-radius:
+                var(--raio);
+
+            box-shadow:
+                var(--sombra);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                15px;
+
+            padding:
+                15px 17px;
+
+            text-decoration:
+                none;
+
+            border:
+                none;
+
+            text-align:
+                left;
+
+            font-family:
+                inherit;
+
+            cursor:
+                pointer;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .card-info:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 18px
+                rgba(55, 78, 116, .19);
+        }
+
+
+        .icone-card {
+
+            flex:
+                0 0 54px;
+
+            width:
+                54px;
+
+            height:
+                54px;
+
+            border-radius:
+                13px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                29px;
+        }
+
+
+        .icone-azul {
+
+            background:
+                #d7eaff;
+        }
+
+
+        .icone-amarelo {
+
+            background:
+                #fff3bd;
+        }
+
+
+        .card-info h2 {
+
+            color:
+                #304567;
+
+            font-size:
+                17px;
+
+            font-weight:
+                500;
+
+            margin-bottom:
+                3px;
+        }
+
+
+        .card-info p {
+
+            color:
+                var(--texto-claro);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.3;
+        }
+
+
+        .seta {
+
+            margin-left:
+                auto;
+
+            color:
+                #77a9e2;
+
+            font-size:
+                29px;
+
+            line-height:
+                1;
+        }
+
+
+        /* =========================
+           SEÇÃO DE RECURSOS
+        ========================== */
+
+        .secao {
+
+            background:
+                rgba(255,255,255,.96);
+
+            border-radius:
+                var(--raio);
+
+            box-shadow:
+                var(--sombra);
+
+            padding:
+                24px 26px;
+
+            margin-bottom:
+                27px;
+        }
+
+
+        .secao-titulo {
+
+            color:
+                var(--azul-escuro);
+
+            font-size:
+                28px;
+
+            font-weight:
+                500;
+
+            margin-bottom:
+                5px;
+        }
+
+
+        .secao-subtitulo {
+
+            color:
+                var(--texto-claro);
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                22px;
+        }
+
+
+        .recursos {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                18px;
+        }
+
+
+        .recurso {
+
+            border-radius:
+                13px;
+
+            padding:
+                18px;
+
+            background:
+                #f8faff;
+
+            border:
+                1px solid #e3ebfa;
+
+            min-height:
+                205px;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .recurso:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 8px 18px
+                rgba(61, 89, 132, .13);
+        }
+
+
+        .icone-recurso {
+
+            width:
+                55px;
+
+            height:
+                55px;
+
+            border-radius:
+                13px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                27px;
+
+            margin-bottom:
+                13px;
+        }
+
+
+        .recurso-video .icone-recurso {
+
+            background:
+                #e1e8fb;
+        }
+
+
+        .recurso-ia .icone-recurso {
+
+            background:
+                #dce6fb;
+        }
+
+
+        .recurso-ferramentas .icone-recurso {
+
+            background:
+                #ddf2e9;
+        }
+
+
+        .recurso h3 {
+
+            color:
+                #304567;
+
+            font-size:
+                17px;
+
+            font-weight:
+                500;
+
+            line-height:
+                1.2;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .recurso p {
+
+            color:
+                var(--texto-claro);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.4;
+        }
+
+
+        /* =========================
+           CADASTRO
+        ========================== */
+
+        .cadastro {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d9e5fb,
+                    #e3ecff
+                );
+
+            border-radius:
+                var(--raio);
+
+            box-shadow:
+                var(--sombra);
+
+            padding:
+                22px 25px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                25px;
+
+            margin-bottom:
+                23px;
+        }
+
+
+        .cadastro h2 {
+
+            color:
+                #304567;
+
+            font-size:
+                21px;
+
+            font-weight:
+                500;
+
+            margin-bottom:
+                9px;
+        }
+
+
+        .beneficios {
+
+            list-style:
+                none;
+
+            color:
+                #485b78;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.6;
+        }
+
+
+        .beneficios li::before {
+
+            content:
+                "✓ ";
+
+            color:
+                #597da9;
+
+            font-weight:
+                bold;
+        }
+
+
+        .cadeado {
+
+            flex:
+                0 0 auto;
+
+            font-size:
+                66px;
+
+            opacity:
+                .72;
+
+            filter:
+                drop-shadow(
+                    0 4px 5px
+                    rgba(60,90,135,.12)
+                );
+        }
+
+
+        /* =========================
+           BOTÃO FINAL
+        ========================== */
+
+        .final {
+
+            text-align:
+                center;
+
+            padding:
+                3px 0;
+        }
+
+
+        .botao-final {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                12px 24px;
+
+            background:
+                #7eafe9;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            border-radius:
+                8px;
+
+            font-size:
+                16px;
+
+            box-shadow:
+                0 4px 9px
+                rgba(68, 101, 148, .23);
+
+            transition:
+                .2s ease;
+        }
+
+
+        .botao-final:hover {
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .final p {
+
+            color:
+                #52627f;
+
+            font-size:
+                13px;
+
+            margin-top:
+                9px;
+        }
+
+
+        /* =========================
+           MODAIS
+        ========================== */
+
+        .modal {
+
+            display:
+                none;
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                9999;
+
+            background:
+                rgba(30, 38, 55, 0.48);
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+        }
+
+
+        .modal.ativo {
+
+            display:
+                flex;
+        }
+
+
+        .modal-conteudo {
+
+            width:
+                100%;
+
+            max-width:
+                520px;
+
+            max-height:
+                90vh;
+
+            overflow-y:
+                auto;
+
+            background:
+                #f9f8ff;
+
+            border-radius:
+                15px;
+
+            padding:
+                24px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(30, 45, 75, 0.25);
+
+            animation:
+                aparecerModal
+                .22s ease;
+        }
+
+
+        .modal-conteudo h2 {
+
+            color:
+                #304567;
+
+            font-size:
+                27px;
+
+            font-weight:
+                500;
+
+            line-height:
+                1.15;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .modal-conteudo p {
+
+            color:
+                #34476b;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.25;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .modal-conteudo ul {
+
+            color:
+                #34476b;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.35;
+
+            padding-left:
+                20px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .modal-botao {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            background:
+                #78a9e8;
+
+            color:
+                white;
+
+            font-size:
+                16px;
+
+            padding:
+                9px 15px;
+
+            min-height:
+                38px;
+
+            border-radius:
+                11px;
+
+            cursor:
+                pointer;
+
+            font-family:
+                inherit;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .modal-botao:hover {
+
+            background:
+                #679ddd;
+        }
+
+
+        @keyframes aparecerModal {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(12px)
+                    scale(.98);
+            }
+
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            .pagina {
+
+                padding:
+                    18px 17px 35px;
+            }
+
+
+            .cabecalho {
+
+                margin-left:
+                    -8px;
+
+                margin-top:
+                    -8px;
+            }
+
+
+            .hero {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    8px;
+            }
+
+
+            .hero-texto {
+
+                max-width:
+                    650px;
+            }
+
+
+            .hero-imagem {
+
+                justify-content:
+                    center;
+            }
+
+
+            .hero-imagem img {
+
+                max-width:
+                    620px;
+            }
+
+
+            .recursos {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .recurso {
+
+                min-height:
+                    auto;
+            }
+
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            .pagina {
+
+                padding:
+                    13px 12px 30px;
+            }
+
+
+            .cabecalho {
+
+                margin-left:
+                    -8px;
+
+                margin-top:
+                    -8px;
+
+                margin-bottom:
+                    5px;
+            }
+
+
+            .logo {
+
+                width:
+                    155px;
+
+                height:
+                    80px;
+
+                object-position:
+                    left center;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    32px;
+
+                line-height:
+                    1.08;
+            }
+
+
+            .hero p {
+
+                font-size:
+                    15px;
+            }
+
+
+            .botoes {
+
+                gap:
+                    9px;
+            }
+
+
+            .botao {
+
+                flex:
+                    1;
+
+                min-width:
+                    0;
+
+                padding:
+                    10px 14px;
+            }
+
+
+            .hero-imagem img {
+
+                border-radius:
+                    17px;
+            }
+
+
+            .informacoes {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    12px;
+            }
+
+
+            .card-info {
+
+                min-height:
+                    82px;
+            }
+
+
+            .secao {
+
+                padding:
+                    20px 16px;
+            }
+
+
+            .secao-titulo {
+
+                font-size:
+                    24px;
+            }
+
+
+            .recursos {
+
+                gap:
+                    12px;
+            }
+
+
+            .recurso {
+
+                display:
+                    grid;
+
+                grid-template-columns:
+                    54px 1fr;
+
+                column-gap:
+                    13px;
+
+                padding:
+                    14px;
+            }
+
+
+            .icone-recurso {
+
+                grid-row:
+                    span 2;
+
+                margin:
+                    0;
+            }
+
+
+            .recurso h3 {
+
+                margin-top:
+                    2px;
+            }
+
+
+            .cadastro {
+
+                padding:
+                    19px 17px;
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .cadeado {
+
+                font-size:
+                    48px;
+            }
+
+
+            .beneficios {
+
+                font-size:
+                    12.5px;
+            }
+
+
+            /* MODAIS NO CELULAR */
+
+            .modal {
+
+                padding:
+                    12px;
+            }
+
+
+            .modal-conteudo {
+
+                max-width:
+                    100%;
+
+                max-height:
+                    88vh;
+
+                padding:
+                    20px 23px;
+
+                border-radius:
+                    15px;
+            }
+
+
+            .modal-conteudo h2 {
+
+                font-size:
+                    25px;
+            }
+
+
+            .modal-conteudo p,
+            .modal-conteudo ul {
+
+                font-size:
+                    16px;
+
+                line-height:
+                    1.18;
+            }
+
+
+            .modal-conteudo p {
+
+                margin-bottom:
+                    17px;
+            }
+
+
+            .modal-botao {
+
+                font-size:
+                    16px;
+
+                padding:
+                    9px;
+
+                min-height:
+                    38px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<body>
-    <header class="cabecalho">
 
-        <div class="cabecalho-conteudo">
-    
-            <a href="#inicio" class="logo-area">
+<body>
+
+
+    <main class="pagina">
+
+
+        <!-- =========================
+             LOGO
+        ========================== -->
+
+        <header class="cabecalho">
+
+            <a
+                href="/"
+                aria-label="Página inicial"
+            >
+
                 <img
-                    src="{{ url_for('static', filename='logo.jpg') }}"
-                    alt="Logo Tudo bem aí?"
+                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="Tudo bem aí?"
                     class="logo"
                 >
-    
-                <div class="nome-projeto">
-                    <strong>Tudo bem aí?</strong>
-                    <span>Apoio emocional para estudantes</span>
-                </div>
+
             </a>
-    
-            <nav class="menu">
-                <a href="#inicio">Início</a>
-                <a href="#videos">Vídeos</a>
-                <a href="#ferramentas">Ferramentas</a>
-                <a href="#ajuda">Ajuda</a>
-    
-                <a href="{{ url_for('login') }}" class="botao-entrar">
-                    Entrar
-                </a>
-            </nav>
-    
-        </div>
-    
-    </header>
-    <main>
 
-        <section id="inicio" class="apresentacao">
+        </header>
 
-            <div class="apresentacao-texto">
-        
-                <span class="selo">Tudo bem aí?</span>
-        
-                <h2>
-                    Ansiedade e sobrecarga no ensino médio:
-                    você não precisa lidar com isso sozinho.
-                </h2>
-        
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+
+            <div class="hero-texto">
+
+                <h1>
+
+                    Ansiedade e<br>
+                    sobrecarga no<br>
+                    ensino médio:<br>
+                    você não precisa<br>
+                    lidar com isso<br>
+                    sozinho.
+
+                </h1>
+
+
                 <p>
-                    Encontre informações, ferramentas e conteúdos
-                    para cuidar da sua saúde emocional durante a rotina escolar.
+
+                    Estamos aqui para te ajudar a entender seus
+                    sentimentos e encontrar formas de lidar com a
+                    ansiedade.
+
                 </p>
-        
+
+
                 <div class="botoes">
-        
-                    <a href="{{ url_for('login') }}" class="botao-principal">
+
+                    <a
+                        href="/login"
+                        class="botao botao-principal"
+                    >
                         Entrar
                     </a>
-        
+
+
                     <button
                         type="button"
-                        class="botao-secundario"
-                        id="abrir-modal">
-                        Saiba mais
+                        class="botao botao-secundario"
+                        onclick="abrirModal('modalSaibaMais')"
+                    >
+                        Saiba Mais
                     </button>
-        
+
                 </div>
-        
-            </div>
-        
-            <div class="apresentacao-ilustracao">
-        
-                <div class="circulo-ilustracao">
-        
-                    <div class="icone-principal">
-                        💙
-                    </div>
-        
-                    <p>
-                        Informação, acolhimento e apoio para estudantes.
-                    </p>
-        
-                </div>
-        
-            </div>
-        
-        </section>
 
-        <section class="informacoes">
-            <article class="card">
-                <div class="icone-card">😊</div>
-
-                <div>
-                    <h3>O que é ansiedade?</h3>
-                    <p>
-                        Entenda o que é, como funciona e quais são
-                        os sentimentos mais comuns.
-                    </p>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="icone-card">⚠️</div>
-
-                <div>
-                    <h3>Sinais comuns</h3>
-                    <p>
-                        Conheça alguns dos principais sinais de ansiedade
-                        no ambiente escolar.
-                    </p>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="icone-card">💭</div>
-
-                <div>
-                    <h3>Como lidar</h3>
-                    <p>
-                        Descubra pequenas ações que podem ajudar durante
-                        momentos de preocupação.
-                    </p>
-                </div>
-            </article>
-        </section>
-
-        <section id="videos" class="secao">
-            <div class="titulo-secao">
-                <span>Conteúdo de apoio</span>
-                <h2>Vídeos recomendados</h2>
-                <p>
-                    Recursos selecionados para apoiar você todos os dias.
-                </p>
             </div>
 
-            <div class="carrossel-videos">
 
-                <button
-                    type="button"
-                    class="botao-carrossel anterior"
-                    id="botao-anterior"
-                    aria-label="Mostrar vídeo anterior"
+
+            <!-- IMAGEM PRINCIPAL -->
+
+            <div class="hero-imagem">
+
+                <img
+                    src="{{ url_for('static', filename='img/imageminicial.png') }}"
+                    alt="Estudante estudando cercada por livros, calendário e relógio"
                 >
-                    ❮
-                </button>
-            
-                <div class="janela-carrossel">
-                    <div class="trilho-videos" id="trilho-videos">
-            
-                        <article class="video-card">
-                            <div class="video-imagem">▶</div>
-                            <h3>Ansiedade nos estudos: o que fazer?</h3>
-                            <p>Aprenda estratégias simples para momentos difíceis.</p>
-                        </article>
-            
-                        <article class="video-card">
-                            <div class="video-imagem">▶</div>
-                            <h3>Como lidar com a sobrecarga emocional</h3>
-                            <p>Entenda como organizar seus pensamentos e atividades.</p>
-                        </article>
-            
-                        <article class="video-card">
-                            <div class="video-imagem">▶</div>
-                            <h3>Ambiente escolar e saúde mental</h3>
-                            <p>Veja como pedir ajuda e construir uma rede de apoio.</p>
-                        </article>
-            
-                        <article class="video-card">
-                            <div class="video-imagem">▶</div>
-                            <h3>Dicas para provas e vestibulares</h3>
-                            <p>Veja maneiras de se preparar sem se sobrecarregar.</p>
-                        </article>
-            
-                    </div>
-                </div>
-            
-                <button
-                    type="button"
-                    class="botao-carrossel proximo"
-                    id="botao-proximo"
-                    aria-label="Mostrar próximo vídeo"
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CARDS INFORMATIVOS
+        ========================== -->
+
+        <section
+            class="informacoes"
+            aria-label="Informações sobre ansiedade"
+        >
+
+
+            <!-- O QUE É ANSIEDADE -->
+
+            <button
+                type="button"
+                class="card-info"
+                onclick="abrirModal('modalAnsiedade')"
+            >
+
+                <div
+                    class="icone-card icone-azul"
+                    aria-hidden="true"
                 >
-                    ❯
-                </button>
-            
-            </div>
-            
-            <div class="indicadores-carrossel" id="indicadores-carrossel">
-                <button class="indicador ativo" data-slide="0" aria-label="Slide 1"></button>
-                <button class="indicador" data-slide="1" aria-label="Slide 2"></button>
-                <button class="indicador" data-slide="2" aria-label="Slide 3"></button>
-                <button class="indicador" data-slide="3" aria-label="Slide 4"></button>
-            </div>
-        </section>
+                    😊
+                </div>
 
-        <section id="ferramentas" class="secao ferramentas">
-            <div class="titulo-secao">
-                <span>Cuide de você</span>
-                <h2>Ferramentas de apoio</h2>
-            </div>
 
-            <div class="grade-ferramentas">
-                <article class="ferramenta-card">
-    <a href="{{ url_for('diario') }}" class="ferramenta-link">
-        <div class="icone-ferramenta">📘</div>
-        <h3>Diário emocional</h3>
-        <p>Registre como você está se sentindo.</p>
-    </a>
-</article>
+                <div>
 
-                <article class="ferramenta-card">
-                    <a href="{{ url_for('respiracao') }}" class="ferramenta-link">
-                        <div class="icone-ferramenta">🌬️</div>
-                        <h3>Exercícios de respiração</h3>
-                        <p>Práticas rápidas para recuperar a calma.</p>
-                    </a>
-                </article>
-                
+                    <h2>
+                        O que é ansiedade?
+                    </h2>
 
-                <article class="ferramenta-card">
-                    <a href="{{ url_for('pausa') }}" class="ferramenta-link">
-                        <div class="icone-ferramenta">⏱️</div>
-                        <h3>Pausa consciente</h3>
-                        <p>Reserve um minuto para observar o momento presente.</p>
-                    </a>
-                </article>
 
-                <article class="ferramenta-card">
-    <a href="{{ url_for('pensamento') }}" class="ferramenta-link">
-        <div class="icone-ferramenta">💙</div>
-        <h3>Pensamento positivo</h3>
-        <p>Leia mensagens acolhedoras e motivadoras.</p>
-    </a>
-</article>
-            </div>
-        </section>
+                    <p>
 
-        <section id="ajuda" class="ajuda">
-            <div>
-                <span>Você não está sozinho</span>
-                <h2>Precisa de ajuda profissional?</h2>
-                <p>
-                    Converse com um psicólogo ou procure profissionais
-                    e serviços de apoio próximos de você.
-                </p>
-            </div>
+                        Entenda o que é, como funciona e
+                        seus sinais.
 
-            <button type="button" class="botao-principal">
-                Encontrar profissionais
+                    </p>
+
+                </div>
+
+
+                <span
+                    class="seta"
+                    aria-hidden="true"
+                >
+                    ›
+                </span>
+
             </button>
+
+
+
+            <!-- SINAIS COMUNS -->
+
+            <button
+                type="button"
+                class="card-info"
+                onclick="abrirModal('modalSinais')"
+            >
+
+                <div
+                    class="icone-card icone-amarelo"
+                    aria-hidden="true"
+                >
+                    ⚠️
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Sinais Comuns
+                    </h2>
+
+
+                    <p>
+
+                        Os principais sinais de ansiedade
+                        no ensino médio.
+
+                    </p>
+
+                </div>
+
+
+                <span
+                    class="seta"
+                    aria-hidden="true"
+                >
+                    ›
+                </span>
+
+            </button>
+
         </section>
+
+
+
+        <!-- =========================
+             SEÇÃO DE RECURSOS
+        ========================== -->
+
+        <section
+            class="secao"
+            id="recursos"
+        >
+
+
+            <h2 class="secao-titulo">
+
+                O que você encontra aqui
+
+            </h2>
+
+
+            <p class="secao-subtitulo">
+
+                Recursos pensados para te apoiar nos momentos
+                em que precisar.
+
+            </p>
+
+
+
+            <div class="recursos">
+
+
+                <article class="recurso recurso-video">
+
+                    <div
+                        class="icone-recurso"
+                        aria-hidden="true"
+                    >
+                        ▶️
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Diversidade de recomendações
+                            de vídeos
+
+                        </h3>
+
+
+                        <p>
+
+                            Conteúdos selecionados sobre ansiedade,
+                            sobrecarga emocional, estudos, provas,
+                            vestibular e muito mais.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="recurso recurso-ia">
+
+                    <div
+                        class="icone-recurso"
+                        aria-hidden="true"
+                    >
+                        💬
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            API de apoio
+                            (Pergunte à IA)
+
+                        </h3>
+
+
+                        <p>
+
+                            Tire suas dúvidas, desabafe ou peça
+                            orientações quando precisar de um espaço
+                            para conversar.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="recurso recurso-ferramentas">
+
+                    <div
+                        class="icone-recurso"
+                        aria-hidden="true"
+                    >
+                        ♡
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Ferramentas de apoio
+
+                        </h3>
+
+
+                        <p>
+
+                            Exercícios de respiração, diário emocional,
+                            foco, concentração, relaxamento rápido
+                            e outras ferramentas.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CADASTRO
+        ========================== -->
+
+        <section class="cadastro">
+
+
+            <div>
+
+                <h2>
+
+                    Muito mais ao fazer seu cadastro
+
+                </h2>
+
+
+                <ul class="beneficios">
+
+                    <li>
+                        Acesso completo aos conteúdos
+                        e ferramentas
+                    </li>
+
+                    <li>
+                        Recomendações personalizadas
+                        para você
+                    </li>
+
+                    <li>
+                        Acompanhamento para o
+                        seu bem-estar
+                    </li>
+
+                    <li>
+                        Novidades e conteúdos
+                        exclusivos
+                    </li>
+
+                    <li>
+                        Tudo de forma segura
+                        e confidencial
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div
+                class="cadeado"
+                aria-hidden="true"
+            >
+                🔐
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BOTÃO FINAL
+        ========================== -->
+
+        <section class="final">
+
+
+            <a
+                href="/login"
+                class="botao-final"
+            >
+
+                Entrar e cuidar de você 💙
+
+            </a>
+
+
+            <p>
+
+                É rápido, gratuito e seguro.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             MODAL: ANSIEDADE
+        ========================== -->
+
+        <div
+            id="modalAnsiedade"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloAnsiedade"
+        >
+
+            <div class="modal-conteudo">
+
+                <h2 id="tituloAnsiedade">
+                    O que é ansiedade?
+                </h2>
+
+
+                <p>
+
+                    Ansiedade é uma resposta natural do corpo
+                    a situações de preocupação, medo ou estresse.
+
+                </p>
+
+
+                <p>
+
+                    Ela pode te ajudar a se preparar para desafios,
+                    mas quando é constante ou intensa demais,
+                    pode atrapalhar seu dia a dia, seus estudos
+                    e seu bem-estar.
+
+                </p>
+
+
+                <button
+                    type="button"
+                    class="modal-botao"
+                    onclick="fecharModal('modalAnsiedade')"
+                >
+                    Entendi
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             MODAL: SINAIS
+        ========================== -->
+
+        <div
+            id="modalSinais"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloSinais"
+        >
+
+            <div class="modal-conteudo">
+
+                <h2 id="tituloSinais">
+                    Sinais Comuns
+                </h2>
+
+
+                <p>
+
+                    Os sinais de ansiedade podem aparecer
+                    de diferentes formas em cada pessoa.
+                    Veja alguns dos sinais mais comuns:
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Preocupação excessiva
+                    </li>
+
+                    <li>
+                        Dificuldade de concentração
+                    </li>
+
+                    <li>
+                        Cansaço constante
+                    </li>
+
+                    <li>
+                        Irritabilidade
+                    </li>
+
+                    <li>
+                        Dores de cabeça ou estômago
+                    </li>
+
+                    <li>
+                        Sensação de aperto no peito
+                    </li>
+
+                </ul>
+
+
+                <button
+                    type="button"
+                    class="modal-botao"
+                    onclick="fecharModal('modalSinais')"
+                >
+                    Entendi
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             MODAL: SAIBA MAIS
+        ========================== -->
+
+        <div
+            id="modalSaibaMais"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloSaibaMais"
+        >
+
+            <div class="modal-conteudo">
+
+                <h2 id="tituloSaibaMais">
+                    Saiba mais
+                </h2>
+
+
+                <p>
+
+                    Esse aplicativo foi criado para apoiar
+                    estudantes do ensino médio que sentem
+                    ansiedade ou sobrecarga emocional.
+
+                </p>
+
+
+                <p>
+
+                    Aqui você encontra informações confiáveis,
+                    ferramentas práticas e um espaço seguro
+                    para se cuidar e entender melhor o que sente.
+
+                </p>
+
+
+                <button
+                    type="button"
+                    class="modal-botao"
+                    onclick="fecharModal('modalSaibaMais')"
+                >
+                    Entendi
+                </button>
+
+            </div>
+
+        </div>
+
 
     </main>
 
-    <footer class="rodape">
-        <p>
-            ICOMA — Informação, cuidado e orientação para estudantes.
-        </p>
-    </footer>
 
 
-<!-- MODAL SAIBA MAIS -->
-<div class="modal-fundo" id="modal-saiba-mais">
+    <!-- =========================
+         JAVASCRIPT DOS MODAIS
+    ========================== -->
 
-    <div class="modal-conteudo">
+    <script>
 
-        <button
-            type="button"
-            class="fechar-modal"
-            id="fechar-modal">
-            ×
-        </button>
+        function abrirModal(id) {
 
-        <h2>Sobre o Tudo Bem Aí?</h2>
+            const modal =
+                document.getElementById(id);
 
-        <p>
-            O <strong>Tudo Bem Aí?</strong> é um website criado para oferecer
-            apoio emocional e psicológico aos estudantes do Ensino Médio.
-        </p>
 
-        <p>
-            Aqui você encontrará vídeos, ferramentas de apoio,
-            exercícios de respiração, diário emocional e conteúdos
-            sobre ansiedade e sobrecarga emocional.
-        </p>
+            if (modal) {
 
-        <p>
-            Este site não substitui um psicólogo, mas pode orientar
-            você a procurar ajuda quando necessário.
-        </p>
+                modal.classList.add("ativo");
 
-        <button
-            type="button"
-            class="botao-principal"
-            id="entendi-modal">
-            Entendi
-        </button>
+                document.body.style.overflow =
+                    "hidden";
 
-    </div>
+            }
 
-</div>
+        }
 
-<script
-    src="{{ url_for('static', filename='js/script.js') }}">
-</script>
+
+        function fecharModal(id) {
+
+            const modal =
+                document.getElementById(id);
+
+
+            if (modal) {
+
+                modal.classList.remove("ativo");
+
+                document.body.style.overflow =
+                    "";
+
+            }
+
+        }
+
+    </script>
+
 
 </body>
-</html>
-   
 
+</html>

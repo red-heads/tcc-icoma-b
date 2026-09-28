@@ -12,6 +12,7 @@
 
     <title>Criar conta | Tudo bem aí?</title>
 
+
     <style>
 
         * {
@@ -20,435 +21,1021 @@
             box-sizing: border-box;
         }
 
+
         body {
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
+
             background:
                 linear-gradient(
                     135deg,
-                    #dff5ff 0%,
-                    #bfe8f8 45%,
-                    #a9ddf2 100%
+                    #eaf5ff 0%,
+                    #dceeff 45%,
+                    #f5faff 100%
                 );
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             padding: 30px;
+
+            color: #173b70;
+
             overflow-x: hidden;
-            position: relative;
+
         }
 
-        /* Círculos decorativos */
 
-        body::before {
-            content: "";
+
+        /* =========================
+           DECORAÇÕES DO FUNDO
+        ========================= */
+
+        .background-shape {
+
             position: fixed;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+        .shape-one {
+
             width: 420px;
+
             height: 420px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.28);
+
+            background:
+                rgba(83, 157, 255, 0.13);
+
             top: -180px;
-            left: -130px;
-            z-index: 0;
+
+            left: -140px;
+
         }
 
-        body::after {
-            content: "";
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.20);
-            bottom: -250px;
-            right: -170px;
-            z-index: 0;
+
+        .shape-two {
+
+            width: 350px;
+
+            height: 350px;
+
+            background:
+                rgba(31, 104, 204, 0.10);
+
+            bottom: -150px;
+
+            right: -120px;
+
         }
 
-        /* Cartão principal */
 
-        .main-card {
-            width: 100%;
-            max-width: 1080px;
-            min-height: 650px;
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 32px;
-            box-shadow:
-                0 25px 60px rgba(34, 111, 145, 0.20);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            overflow: hidden;
+        .shape-three {
+
+            width: 180px;
+
+            height: 180px;
+
+            background:
+                rgba(112, 184, 255, 0.12);
+
+            top: 20%;
+
+            right: 8%;
+
+        }
+
+
+
+        /* =========================
+           CONTAINER PRINCIPAL
+        ========================= */
+
+        .login-wrapper {
+
             position: relative;
+
             z-index: 1;
+
+            width: 100%;
+
+            max-width: 1080px;
+
+            min-height: 650px;
+
+            background:
+                rgba(255, 255, 255, 0.92);
+
+            border-radius: 32px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(23, 82, 145, 0.15),
+
+                0 8px 25px
+                rgba(23, 82, 145, 0.08);
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 0.9fr;
+
+            overflow: hidden;
+
+            backdrop-filter:
+                blur(12px);
+
         }
 
-        /* Lado esquerdo */
 
-        .brand-side {
+
+        /* =========================
+           LADO DA LOGO
+        ========================= */
+
+        .brand-section {
+
+            position: relative;
+
             background:
                 linear-gradient(
                     145deg,
-                    #e8f8ff 0%,
-                    #d5f1fc 55%,
-                    #c2e9f7 100%
+                    #dff0ff 0%,
+                    #c8e5ff 48%,
+                    #eaf6ff 100%
                 );
+
             display: flex;
+
             flex-direction: column;
-            justify-content: center;
+
             align-items: center;
-            text-align: center;
-            padding: 50px 45px;
+
+            justify-content: center;
+
+            padding: 55px 45px;
+
+            overflow: hidden;
+
         }
+
+
+        .brand-section::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 360px;
+
+            height: 360px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.35);
+
+            top: -170px;
+
+            right: -140px;
+
+        }
+
+
+        .brand-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(75, 150, 240, 0.10);
+
+            bottom: -130px;
+
+            left: -100px;
+
+        }
+
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo-container {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-bottom: 25px;
+
+        }
+
 
         .logo {
-            width: min(100%, 490px);
+
+            width:
+                min(100%, 490px);
+
             height: auto;
+
+            display: block;
+
             object-fit: contain;
-            filter: drop-shadow(
-                0 10px 18px rgba(45, 122, 155, 0.15)
-            );
-            margin-bottom: 25px;
+
+            filter:
+                drop-shadow(
+                    0 15px 25px
+                    rgba(20, 90, 180, 0.15)
+                );
+
         }
 
-        .brand-title {
-            color: #176b8c;
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 18px;
+
+
+        /* =========================
+           TEXTO DA MARCA
+        ========================= */
+
+        .brand-message {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 440px;
+
+            text-align: center;
+
+        }
+
+
+        .brand-message h1 {
+
+            font-size: 27px;
+
             font-weight: 700;
+
+            color: #123e78;
+
+            margin-bottom: 12px;
+
+            letter-spacing: -0.5px;
+
         }
 
-        .brand-text {
-            max-width: 420px;
-            color: #4c7180;
+
+        .brand-message p {
+
             font-size: 16px;
-            line-height: 1.7;
+
+            line-height: 1.65;
+
+            color: #527196;
+
+            margin: 0;
+
         }
 
-        /* Lado direito */
 
-        .form-side {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 55px 65px;
+
+        /* =========================
+           LADO DO CADASTRO
+        ========================= */
+
+        .form-section {
+
+            background:
+                #ffffff;
+
+            padding:
+                50px 65px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
         }
 
-        .form-container {
+
+        .form-content {
+
             width: 100%;
-            max-width: 430px;
+
+            max-width: 390px;
+
+            margin: 0 auto;
+
         }
 
-        .form-title {
-            color: #185e79;
-            font-size: 34px;
-            margin-bottom: 10px;
-            font-weight: 700;
+
+
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        .form-header {
+
+            margin-bottom:
+                27px;
+
         }
 
-        .form-subtitle {
-            color: #718993;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 30px;
+
+        .form-header h2 {
+
+            color:
+                #123e78;
+
+            font-size:
+                31px;
+
+            font-weight:
+                750;
+
+            letter-spacing:
+                -0.8px;
+
+            margin-bottom:
+                10px;
+
         }
 
-        /* Mensagens Flask */
 
-        .alert {
-            padding: 13px 15px;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            font-size: 14px;
-            line-height: 1.5;
+        .form-header p {
+
+            color:
+                #7187a1;
+
+            font-size:
+                15px;
+
+            line-height:
+                1.65;
+
+            margin: 0;
+
         }
 
-        .alert-success {
-            background: #e4f8ed;
-            color: #217044;
-            border: 1px solid #bde8ce;
-        }
 
-        .alert-danger {
-            background: #fff0f0;
-            color: #a33a3a;
-            border: 1px solid #f0c4c4;
-        }
 
-        /* Campos */
+        /* =========================
+           CAMPOS
+        ========================= */
 
         .form-group {
-            margin-bottom: 18px;
+
+            margin-bottom:
+                17px;
+
         }
 
-        .form-label {
-            display: block;
-            color: #365d6b;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
+
+        .form-group label {
+
+            display:
+                block;
+
+            color:
+                #294d76;
+
+            font-size:
+                14px;
+
+            font-weight:
+                650;
+
+            margin-bottom:
+                8px;
+
         }
+
 
         .input-wrapper {
-            position: relative;
+
+            position:
+                relative;
+
         }
+
 
         .input-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: #72aabd;
-            pointer-events: none;
+
+            position:
+                absolute;
+
+            left:
+                16px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size:
+                18px;
+
+            opacity:
+                0.75;
+
+            pointer-events:
+                none;
+
         }
 
-        .form-input {
-            width: 100%;
-            height: 52px;
-            border: 1px solid #c9e2eb;
-            border-radius: 14px;
-            padding: 0 16px 0 46px;
-            font-size: 15px;
-            color: #34515c;
-            background: #fafdff;
-            outline: none;
-            transition: 0.25s ease;
+
+        .form-control {
+
+            width:
+                100%;
+
+            height:
+                54px;
+
+            border:
+                1.5px solid #d8e5f2;
+
+            border-radius:
+                14px;
+
+            background:
+                #f9fcff;
+
+            color:
+                #24496f;
+
+            font-size:
+                15px;
+
+            padding:
+                0 17px 0 47px;
+
+            outline:
+                none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+
         }
 
-        .form-input:focus {
-            border-color: #58afd0;
+
+        .form-control::placeholder {
+
+            color:
+                #a1b2c4;
+
+        }
+
+
+        .form-control:focus {
+
+            border-color:
+                #5c9ee8;
+
+            background:
+                #ffffff;
+
             box-shadow:
-                0 0 0 4px rgba(88, 175, 208, 0.13);
-            background: #ffffff;
+                0 0 0 4px
+                rgba(79, 151, 230, 0.12);
+
         }
 
-        .form-input::placeholder {
-            color: #a4b9c1;
-        }
 
-        /* Botão */
 
-        .submit-button {
-            width: 100%;
-            height: 54px;
-            border: none;
-            border-radius: 14px;
+        /* =========================
+           BOTÃO
+        ========================= */
+
+        .btn-login {
+
+            width:
+                100%;
+
+            height:
+                56px;
+
+            border:
+                none;
+
+            border-radius:
+                15px;
+
             background:
                 linear-gradient(
                     135deg,
-                    #4aaed0,
-                    #318db1
+                    #287ed0,
+                    #1556a5
                 );
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 8px;
+
+            color:
+                white;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
             box-shadow:
-                0 9px 20px rgba(49, 141, 177, 0.22);
-            transition: 0.25s ease;
+                0 10px 22px
+                rgba(35, 112, 190, 0.22);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                opacity 0.2s ease;
+
+            margin-top:
+                7px;
+
         }
 
-        .submit-button:hover {
-            transform: translateY(-2px);
+
+        .btn-login:hover {
+
+            transform:
+                translateY(-2px);
+
             box-shadow:
-                0 12px 25px rgba(49, 141, 177, 0.28);
+                0 14px 28px
+                rgba(35, 112, 190, 0.28);
+
         }
 
-        .submit-button:active {
-            transform: translateY(0);
+
+        .btn-login:active {
+
+            transform:
+                translateY(0);
+
         }
 
-        /* Link para login */
 
-        .login-link {
-            text-align: center;
-            margin-top: 22px;
-            color: #718993;
-            font-size: 14px;
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .register-area {
+
+            text-align:
+                center;
+
+            margin-top:
+                21px;
+
+            color:
+                #7c91a9;
+
+            font-size:
+                14px;
+
         }
 
-        .login-link a {
-            color: #2585a7;
-            font-weight: 700;
-            text-decoration: none;
+
+        .register-area a {
+
+            color:
+                #216bb7;
+
+            font-weight:
+                700;
+
+            text-decoration:
+                none;
+
+            transition:
+                color 0.2s ease;
+
         }
 
-        .login-link a:hover {
-            text-decoration: underline;
+
+        .register-area a:hover {
+
+            color:
+                #124d8d;
+
+            text-decoration:
+                underline;
+
         }
 
-        /* Aviso */
+
+
+        /* =========================
+           AVISO
+        ========================= */
 
         .support-notice {
-            margin-top: 25px;
-            padding: 14px 16px;
-            border-radius: 13px;
-            background: #f0f9fc;
-            border: 1px solid #d4edf5;
-            color: #66808a;
-            font-size: 12px;
-            line-height: 1.55;
-            text-align: center;
+
+            margin-top:
+                23px;
+
+            padding:
+                15px 17px;
+
+            border-radius:
+                14px;
+
+            background:
+                #f0f7ff;
+
+            border:
+                1px solid #d8eaff;
+
+            color:
+                #5b7591;
+
+            font-size:
+                12.5px;
+
+            line-height:
+                1.55;
+
+            text-align:
+                center;
+
         }
 
-        /* Responsividade */
+
+        .support-notice strong {
+
+            color:
+                #315c88;
+
+        }
+
+
+
+        /* =========================
+           MENSAGENS
+        ========================= */
+
+        #mensagem {
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        .alert {
+
+            padding:
+                13px 15px;
+
+            border-radius:
+                12px;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.45;
+
+        }
+
+
+        .alert-success {
+
+            background:
+                #e9f8f0;
+
+            color:
+                #26704b;
+
+            border:
+                1px solid #c8ecd9;
+
+        }
+
+
+        .alert-danger {
+
+            background:
+                #fff0f0;
+
+            color:
+                #a64a4a;
+
+            border:
+                1px solid #f1d0d0;
+
+        }
+
+
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================= */
 
         @media (max-width: 900px) {
 
             body {
-                padding: 20px;
+
+                padding:
+                    20px;
+
             }
 
-            .main-card {
-                grid-template-columns: 1fr;
-                max-width: 600px;
+
+            .login-wrapper {
+
+                grid-template-columns:
+                    1fr;
+
+                max-width:
+                    600px;
+
+                min-height:
+                    auto;
+
             }
 
-            .brand-side {
-                padding: 35px 30px;
+
+            .brand-section {
+
+                padding:
+                    40px 30px 35px;
+
             }
+
 
             .logo {
-                width: min(100%, 400px);
-                margin-bottom: 15px;
+
+                width:
+                    min(100%, 400px);
+
             }
 
-            .brand-title {
-                font-size: 26px;
+
+            .brand-message h1 {
+
+                font-size:
+                    24px;
+
             }
 
-            .brand-text {
-                font-size: 15px;
+
+            .form-section {
+
+                padding:
+                    40px 35px 45px;
+
             }
 
-            .form-side {
-                padding: 40px 35px 45px;
-            }
         }
+
+
 
         @media (max-width: 500px) {
 
             body {
-                padding: 12px;
+
+                padding:
+                    12px;
+
             }
 
-            .main-card {
-                border-radius: 24px;
+
+            .login-wrapper {
+
+                border-radius:
+                    25px;
+
             }
 
-            .brand-side {
-                padding: 28px 22px 25px;
+
+            .brand-section {
+
+                padding:
+                    32px 18px 28px;
+
             }
+
 
             .logo {
-                width: 100%;
-                max-width: 330px;
+
+                width:
+                    100%;
+
+                max-width:
+                    350px;
+
             }
 
-            .brand-title {
-                font-size: 23px;
+
+            .brand-message h1 {
+
+                font-size:
+                    21px;
+
             }
 
-            .brand-text {
-                font-size: 14px;
-                line-height: 1.6;
+
+            .brand-message p {
+
+                font-size:
+                    14px;
+
             }
 
-            .form-side {
-                padding: 30px 22px 35px;
+
+            .form-section {
+
+                padding:
+                    32px 22px;
+
             }
 
-            .form-title {
-                font-size: 28px;
+
+            .form-header h2 {
+
+                font-size:
+                    27px;
+
             }
 
-            .form-subtitle {
-                font-size: 14px;
-                margin-bottom: 24px;
+
+            .form-header p {
+
+                font-size:
+                    14px;
+
             }
 
-            .form-input {
-                height: 50px;
+
+            .form-control {
+
+                height:
+                    52px;
+
             }
 
-            .submit-button {
-                height: 52px;
+
+            .btn-login {
+
+                height:
+                    54px;
+
             }
+
+
+            .support-notice {
+
+                font-size:
+                    12px;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-    <main class="main-card">
 
-        <!-- LADO DA MARCA -->
+    <!-- =====================================================
+         DECORAÇÕES DO FUNDO
+    ====================================================== -->
 
-        <section class="brand-side">
+    <div class="background-shape shape-one"></div>
 
-            <img
-                src="{{ url_for('static', filename='img/logo.png') }}"
-                alt="Logo Tudo bem aí?"
-                class="logo"
-            >
+    <div class="background-shape shape-two"></div>
 
-            <h1 class="brand-title">
-                Um espaço para olhar para você.
-            </h1>
+    <div class="background-shape shape-three"></div>
 
-            <p class="brand-text">
-                O Tudo bem aí? reúne conteúdos e ferramentas
-                para ajudar você a refletir sobre o que está
-                sentindo e perceber quando pode ser importante
-                buscar apoio profissional.
-            </p>
+
+
+    <!-- =====================================================
+         CONTAINER PRINCIPAL
+    ====================================================== -->
+
+    <main class="login-wrapper">
+
+
+
+        <!-- =================================================
+             LOGO / APRESENTAÇÃO
+        ================================================== -->
+
+        <section class="brand-section">
+
+
+            <div class="logo-container">
+
+                <img
+                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="Logo Tudo bem aí?"
+                    class="logo"
+                >
+
+            </div>
+
+
+            <div class="brand-message">
+
+                <h1>
+
+                    Um espaço para olhar para você.
+
+                </h1>
+
+
+                <p>
+
+                    Aqui você encontra ferramentas e conteúdos
+                    que podem ajudar a refletir sobre o que está
+                    sentindo e perceber quando pode ser importante
+                    buscar apoio profissional.
+
+                </p>
+
+            </div>
+
 
         </section>
 
 
-        <!-- LADO DO CADASTRO -->
 
-        <section class="form-side">
+        <!-- =================================================
+             FORMULÁRIO DE CADASTRO
+        ================================================== -->
 
-            <div class="form-container">
-
-                <h2 class="form-title">
-                    Crie sua conta
-                </h2>
-
-                <p class="form-subtitle">
-                    Faça seu cadastro para continuar explorando
-                    seu espaço de apoio e reflexão.
-                </p>
+        <section class="form-section">
 
 
-                <!-- MENSAGENS DO FLASK -->
+            <div class="form-content">
 
-                {% with messages = get_flashed_messages(with_categories=true) %}
 
-                    {% if messages %}
+                <div class="form-header">
 
-                        {% for category, message in messages %}
+                    <h2>
 
-                            <div
-                                class="alert
-                                {% if category == 'error' %}
-                                    alert-danger
-                                {% else %}
-                                    alert-success
-                                {% endif %}"
-                            >
-                                {{ message }}
-                            </div>
+                        Crie sua conta
 
-                        {% endfor %}
+                    </h2>
 
-                    {% endif %}
 
-                {% endwith %}
+                    <p>
+
+                        Cadastre-se para continuar explorando
+                        seu espaço de apoio e reflexão.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- MENSAGEM -->
+
+                <div id="mensagem"></div>
+
 
 
                 <!-- FORMULÁRIO -->
@@ -456,30 +1043,35 @@
                 <form
                     method="POST"
                     action="/register"
+                    id="registerForm"
                 >
+
 
                     <!-- NOME -->
 
                     <div class="form-group">
 
-                        <label
-                            for="inputName"
-                            class="form-label"
-                        >
-                            Nome completo
+                        <label for="nome">
+
+                            Nome
+
                         </label>
+
 
                         <div class="input-wrapper">
 
                             <span class="input-icon">
+
                                 👤
+
                             </span>
+
 
                             <input
                                 type="text"
-                                id="inputName"
+                                id="nome"
                                 name="nome"
-                                class="form-input"
+                                class="form-control"
                                 placeholder="Digite seu nome"
                                 autocomplete="name"
                                 required
@@ -490,28 +1082,32 @@
                     </div>
 
 
-                    <!-- EMAIL -->
+
+                    <!-- E-MAIL -->
 
                     <div class="form-group">
 
-                        <label
-                            for="inputEmail"
-                            class="form-label"
-                        >
+                        <label for="email">
+
                             E-mail
+
                         </label>
+
 
                         <div class="input-wrapper">
 
                             <span class="input-icon">
-                                ✉️
+
+                                ✉
+
                             </span>
+
 
                             <input
                                 type="email"
-                                id="inputEmail"
+                                id="email"
                                 name="email"
-                                class="form-input"
+                                class="form-control"
                                 placeholder="Digite seu e-mail"
                                 autocomplete="email"
                                 required
@@ -522,28 +1118,32 @@
                     </div>
 
 
+
                     <!-- SENHA -->
 
                     <div class="form-group">
 
-                        <label
-                            for="inputPassword"
-                            class="form-label"
-                        >
+                        <label for="senha">
+
                             Senha
+
                         </label>
+
 
                         <div class="input-wrapper">
 
                             <span class="input-icon">
+
                                 🔒
+
                             </span>
+
 
                             <input
                                 type="password"
-                                id="inputPassword"
+                                id="senha"
                                 name="senha"
-                                class="form-input"
+                                class="form-control"
                                 placeholder="Crie uma senha"
                                 autocomplete="new-password"
                                 required
@@ -554,28 +1154,32 @@
                     </div>
 
 
-                    <!-- CONFIRMAÇÃO DA SENHA -->
+
+                    <!-- CONFIRMAR SENHA -->
 
                     <div class="form-group">
 
-                        <label
-                            for="inputConfirmPassword"
-                            class="form-label"
-                        >
+                        <label for="confirma_senha">
+
                             Confirmar senha
+
                         </label>
+
 
                         <div class="input-wrapper">
 
                             <span class="input-icon">
+
                                 🔐
+
                             </span>
+
 
                             <input
                                 type="password"
-                                id="inputConfirmPassword"
+                                id="confirma_senha"
                                 name="confirma_senha"
-                                class="form-input"
+                                class="form-control"
                                 placeholder="Digite a senha novamente"
                                 autocomplete="new-password"
                                 required
@@ -586,47 +1190,135 @@
                     </div>
 
 
+
                     <!-- BOTÃO -->
 
                     <button
                         type="submit"
-                        class="submit-button"
+                        class="btn-login"
+                        id="btnCadastro"
                     >
-                        Criar minha conta
+
+                        Criar conta
+
                     </button>
+
 
                 </form>
 
 
-                <!-- LINK PARA LOGIN -->
 
-                <div class="login-link">
+                <!-- LOGIN -->
 
-                    Já tem uma conta?
+                <div class="register-area">
+
+                    Já possui uma conta?
 
                     <a href="/login">
-                        Faça login
+
+                        Entrar
+
                     </a>
 
                 </div>
+
 
 
                 <!-- AVISO -->
 
                 <div class="support-notice">
 
+                    <strong>
+                        Um lembrete importante:
+                    </strong>
+
+                    <br>
+
                     O Tudo bem aí? é um espaço de apoio,
                     informação e reflexão. Ele não substitui
-                    acompanhamento ou orientação de profissionais
-                    de saúde.
+                    o acompanhamento de um profissional.
+                    Se algo estiver causando sofrimento ou
+                    preocupação, conversar com um profissional
+                    pode ser um passo importante.
 
                 </div>
+
 
             </div>
 
         </section>
 
+
     </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+        const btnCadastro =
+            document.getElementById("btnCadastro");
+
+        const mensagem =
+            document.getElementById("mensagem");
+
+
+        registerForm.addEventListener(
+            "submit",
+            function(event) {
+
+                const senha =
+                    document.getElementById("senha").value;
+
+                const confirmaSenha =
+                    document.getElementById("confirma_senha").value;
+
+
+                /*
+                 * Verificação simples antes de enviar.
+                 */
+
+                if (senha !== confirmaSenha) {
+
+                    event.preventDefault();
+
+
+                    mensagem.innerHTML = `
+
+                        <div class="alert alert-danger">
+
+                            As senhas não são iguais.
+                            Verifique os campos e tente novamente.
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /*
+                 * Evita múltiplos envios.
+                 */
+
+                btnCadastro.disabled = true;
+
+                btnCadastro.textContent =
+                    "Criando conta...";
+
+            }
+        );
+
+    </script>
+
 
 </body>
 

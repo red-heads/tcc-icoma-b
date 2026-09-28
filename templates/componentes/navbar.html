@@ -1,0 +1,525 @@
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+
+<nav class="site-navbar">
+
+    <div class="navbar-container">
+
+        <!-- LOGO -->
+
+        <a
+            href="{{ url_for('index') }}"
+            class="navbar-logo"
+            aria-label="Ir para a página inicial"
+        >
+
+            <img
+                src="{{ url_for('static', filename='img/logo.png') }}"
+                alt="Logo Tudo bem aí?"
+            >
+
+        </a>
+
+
+        <!-- MENU -->
+
+        <div class="navbar-menu" id="navbarMenu">
+
+            <a
+                href="{{ url_for('index') }}"
+                class="navbar-link"
+            >
+                Início
+            </a>
+
+
+            <a
+                href="{{ url_for('index') }}#saiba-mais"
+                class="navbar-link"
+                id="linkSaibaMais"
+            >
+                Saiba Mais
+            </a>
+
+
+            <a
+                href="{{ url_for('login') }}"
+                class="navbar-link navbar-login"
+            >
+                Entrar
+            </a>
+
+        </div>
+
+
+        <!-- BOTÃO MOBILE -->
+
+        <button
+            type="button"
+            class="navbar-toggle"
+            id="navbarToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<style>
+
+/* =====================================================
+   NAVBAR
+====================================================== */
+
+.site-navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9000;
+
+    width: 100%;
+
+    background: rgba(255, 255, 255, .96);
+
+    border-bottom: 1px solid #d8e5f2;
+
+    box-shadow:
+        0 7px 24px
+        rgba(23, 82, 145, .08);
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+}
+
+
+/* =====================================================
+   CONTAINER
+====================================================== */
+
+.navbar-container {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    min-height: 82px;
+
+    margin: 0 auto;
+
+    padding: 10px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* =====================================================
+   LOGO
+====================================================== */
+
+.navbar-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+}
+
+
+.navbar-logo img {
+
+    width: 155px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 7px 14px
+            rgba(20, 90, 180, .12)
+        );
+
+    transition:
+        transform .2s ease;
+}
+
+
+.navbar-logo:hover img {
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   MENU
+====================================================== */
+
+.navbar-menu {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+}
+
+
+.navbar-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 9px 15px;
+
+    color: #527196;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.navbar-link:hover {
+
+    color: #1556a5;
+
+    background: #f0f7ff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   BOTÃO ENTRAR
+====================================================== */
+
+.navbar-login {
+
+    margin-left: 7px;
+
+    padding: 10px 22px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #287ed0,
+            #1556a5
+        );
+
+    box-shadow:
+        0 8px 19px
+        rgba(35, 112, 190, .20);
+}
+
+
+.navbar-login:hover {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #287ed0,
+            #124d8d
+        );
+
+    box-shadow:
+        0 11px 23px
+        rgba(35, 112, 190, .26);
+}
+
+
+/* =====================================================
+   BOTÃO MOBILE
+====================================================== */
+
+.navbar-toggle {
+
+    display: none;
+
+    width: 44px;
+
+    height: 44px;
+
+    padding: 0;
+
+    border: 1px solid #d8e5f2;
+
+    border-radius: 12px;
+
+    background: #f9fcff;
+
+    cursor: pointer;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.navbar-toggle span {
+
+    width: 20px;
+
+    height: 2px;
+
+    border-radius: 5px;
+
+    background: #216bb7;
+}
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 700px) {
+
+    .navbar-container {
+
+        min-height: 72px;
+
+        padding: 9px 18px;
+    }
+
+
+    .navbar-logo img {
+
+        width: 130px;
+    }
+
+
+    .navbar-toggle {
+
+        display: flex;
+    }
+
+
+    .navbar-menu {
+
+        position: absolute;
+
+        top: calc(100% + 8px);
+
+        left: 14px;
+
+        right: 14px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 10px;
+
+        background: rgba(255,255,255,.98);
+
+        border: 1px solid #d8e5f2;
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 15px 35px
+            rgba(23,82,145,.13);
+    }
+
+
+    .navbar-menu.active {
+
+        display: flex;
+    }
+
+
+    .navbar-link {
+
+        width: 100%;
+
+        padding: 13px 15px;
+
+        text-align: center;
+    }
+
+
+    .navbar-login {
+
+        margin-left: 0;
+
+        margin-top: 3px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .navbar-container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+    }
+
+
+    .navbar-logo img {
+
+        width: 115px;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function () {
+
+    const toggle =
+        document.getElementById("navbarToggle");
+
+    const menu =
+        document.getElementById("navbarMenu");
+
+
+    if (!toggle || !menu) {
+        return;
+    }
+
+
+    toggle.addEventListener(
+        "click",
+        function () {
+
+            const aberto =
+                menu.classList.toggle("active");
+
+
+            toggle.setAttribute(
+                "aria-expanded",
+                aberto ? "true" : "false"
+            );
+
+        }
+    );
+
+
+    const links =
+        menu.querySelectorAll(".navbar-link");
+
+
+    links.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    menu.classList.remove("active");
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+})();
+
+
+/* =====================================================
+   SAIBA MAIS
+====================================================== */
+
+(function () {
+
+    const link =
+        document.getElementById("linkSaibaMais");
+
+
+    if (!link) {
+        return;
+    }
+
+
+    link.addEventListener(
+        "click",
+        function (evento) {
+
+            const modal =
+                document.getElementById("modalSaibaMais");
+
+
+            if (
+                modal &&
+                typeof abrirModal === "function"
+            ) {
+
+                evento.preventDefault();
+
+                abrirModal("modalSaibaMais");
+
+                history.replaceState(
+                    null,
+                    "",
+                    "#saiba-mais"
+                );
+
+            }
+
+        }
+    );
+
+})();
+
+</script>

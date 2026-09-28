@@ -1,0 +1,920 @@
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="site-footer">
+
+
+    <div class="footer-container">
+
+
+        <!-- =================================================
+             MARCA
+        ================================================== -->
+
+        <div class="footer-brand">
+
+
+            <a
+                href="{{ url_for('index') }}"
+                class="footer-logo"
+            >
+
+                <img
+                    src="{{ url_for('static', filename='img/logo.png') }}"
+                    alt="Logo Tudo bem aí?"
+                >
+
+            </a>
+
+
+            <p>
+
+                Um espaço criado para estudantes encontrarem
+                informação, reflexão e apoio para compreender
+                melhor o que estão sentindo.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVEGAÇÃO
+        ================================================== -->
+
+        <div class="footer-column">
+
+
+            <h3>
+                Navegação
+            </h3>
+
+
+            <a
+                href="{{ url_for('index') }}"
+            >
+                Início
+            </a>
+
+
+            <a
+                href="{{ url_for('index') }}#saiba-mais"
+            >
+                Saiba Mais
+            </a>
+
+
+            <a
+                href="{{ url_for('login') }}"
+            >
+                Entrar
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             SOBRE O PROJETO
+        ================================================== -->
+
+        <div class="footer-info">
+
+
+            <div
+                class="footer-info-icon"
+                aria-hidden="true"
+            >
+                ♡
+            </div>
+
+
+            <h3>
+
+                Um espaço de apoio
+
+            </h3>
+
+
+            <p>
+
+                Nosso objetivo é ajudar o estudante a
+                compreender melhor seus sentimentos,
+                valorizar o que está vivenciando e encontrar
+                formas de enfrentar suas dificuldades com
+                mais informação e apoio.
+
+            </p>
+
+
+            <p class="footer-profissional">
+
+                Quando necessário, também incentivamos a
+                busca por profissionais qualificados,
+                porque pedir ajuda faz parte do cuidado
+                com o próprio bem-estar.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CRÉDITOS
+    ================================================== -->
+
+    <div class="footer-credits">
+
+
+        <div class="footer-credits-container">
+
+
+            <div class="credits-brand">
+
+
+                <div class="red-heads-logo">
+
+                    <span class="red-heads-red">
+                        RED
+                    </span>
+
+                    <span class="red-heads-white">
+                        HEADS
+                    </span>
+
+                </div>
+
+
+                <p>
+
+                    Website desenvolvido pelo grupo
+                    <strong>RED HEADS</strong>.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="credits-members">
+
+
+                <span class="credits-title">
+                    Participantes
+                </span>
+
+
+                <div class="members-links">
+
+
+                    <a
+                        href="https://github.com/MariaEduarda1505"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Maria Eduarda
+                    </a>
+
+
+                    <a
+                        href="https://github.com/MariaXavier7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Maria Xavier
+                    </a>
+
+
+                    <a
+                        href="https://github.com/KarolFaggionato"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Karol Faggionato
+                    </a>
+
+
+                    <a
+                        href="https://github.com/juliamagri"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Julia Magri
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         PARTE INFERIOR
+    ================================================== -->
+
+    <div class="footer-bottom">
+
+
+        <div class="footer-bottom-container">
+
+
+            <p>
+
+                © 2026 Tudo bem aí? · RED HEADS
+
+            </p>
+
+
+            <p>
+
+                Projeto acadêmico de apoio e informação
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+
+
+<style>
+
+/* =====================================================
+   FOOTER
+====================================================== */
+
+.site-footer {
+
+    position: relative;
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dff0ff 0%,
+            #c8e5ff 48%,
+            #eaf6ff 100%
+        );
+
+    border-top: 1px solid #d0e4f6;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   DECORAÇÕES
+====================================================== */
+
+.site-footer::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    top: -220px;
+
+    right: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.38);
+
+    pointer-events: none;
+}
+
+
+.site-footer::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 270px;
+
+    height: 270px;
+
+    bottom: -175px;
+
+    left: -110px;
+
+    border-radius: 50%;
+
+    background: rgba(75,150,240,.08);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTAINER
+====================================================== */
+
+.footer-container {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 58px 28px 48px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr
+        .65fr
+        1.5fr;
+
+    gap: 55px;
+}
+
+
+/* =====================================================
+   MARCA
+====================================================== */
+
+.footer-brand {
+
+    max-width: 350px;
+}
+
+
+.footer-logo {
+
+    display: inline-flex;
+
+    margin-bottom: 17px;
+
+    text-decoration: none;
+}
+
+
+.footer-logo img {
+
+    width: 175px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 8px 16px
+            rgba(20,90,180,.12)
+        );
+}
+
+
+.footer-brand p {
+
+    margin: 0;
+
+    color: #527196;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   NAVEGAÇÃO
+====================================================== */
+
+.footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.footer-column h3 {
+
+    margin: 5px 0 18px;
+
+    color: #123e78;
+
+    font-size: 15px;
+
+    font-weight: 750;
+}
+
+
+.footer-column a {
+
+    margin-bottom: 11px;
+
+    color: #527196;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+
+.footer-column a:hover {
+
+    color: #1556a5;
+
+    transform: translateX(3px);
+}
+
+
+/* =====================================================
+   SOBRE
+====================================================== */
+
+.footer-info {
+
+    padding: 23px;
+
+    background: rgba(255,255,255,.55);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
+    border-radius: 19px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(23,82,145,.06);
+}
+
+
+.footer-info-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 13px;
+
+    border-radius: 12px;
+
+    color: #216bb7;
+
+    background: #ffffff;
+
+    font-size: 21px;
+
+    box-shadow:
+        0 5px 12px
+        rgba(23,82,145,.08);
+}
+
+
+.footer-info h3 {
+
+    margin: 0 0 9px;
+
+    color: #123e78;
+
+    font-size: 17px;
+
+    font-weight: 750;
+}
+
+
+.footer-info p {
+
+    margin: 0;
+
+    color: #5b7591;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+.footer-profissional {
+
+    margin-top: 11px !important;
+}
+
+
+/* =====================================================
+   CRÉDITOS
+====================================================== */
+
+.footer-credits {
+
+    position: relative;
+
+    z-index: 1;
+
+    border-top:
+        1px solid
+        rgba(180,211,237,.65);
+
+    border-bottom:
+        1px solid
+        rgba(180,211,237,.65);
+}
+
+
+.footer-credits-container {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 25px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =====================================================
+   RED HEADS
+====================================================== */
+
+.credits-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+.red-heads-logo {
+
+    padding: 9px 13px;
+
+    background: #111827;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    box-shadow:
+        0 5px 12px
+        rgba(23,82,145,.12);
+}
+
+
+.red-heads-red {
+
+    color: #ff1717;
+}
+
+
+.red-heads-white {
+
+    color: #ffffff;
+}
+
+
+.credits-brand p {
+
+    margin: 0;
+
+    color: #5b7591;
+
+    font-size: 12.5px;
+
+    line-height: 1.5;
+}
+
+
+.credits-brand strong {
+
+    color: #123e78;
+}
+
+
+/* =====================================================
+   PARTICIPANTES
+====================================================== */
+
+.credits-members {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 8px;
+}
+
+
+.credits-title {
+
+    color: #123e78;
+
+    font-size: 12px;
+
+    font-weight: 750;
+}
+
+
+.members-links {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+}
+
+
+.members-links a {
+
+    padding: 6px 10px;
+
+    color: #527196;
+
+    background: rgba(255,255,255,.48);
+
+    border:
+        1px solid
+        rgba(255,255,255,.65);
+
+    border-radius: 8px;
+
+    font-size: 11.5px;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        background .2s ease;
+}
+
+
+.members-links a:hover {
+
+    color: #1556a5;
+
+    background: rgba(255,255,255,.8);
+}
+
+
+/* =====================================================
+   PARTE INFERIOR
+====================================================== */
+
+.footer-bottom {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.footer-bottom-container {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    min-height: 62px;
+
+    margin: 0 auto;
+
+    padding: 15px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.footer-bottom p {
+
+    margin: 0;
+
+    color: #7187a1;
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 900px) {
+
+    .footer-container {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 35px;
+    }
+
+
+    .footer-brand {
+
+        max-width: 100%;
+    }
+
+
+    .footer-info {
+
+        grid-column: 1 / -1;
+    }
+
+
+    .footer-credits-container {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .credits-members {
+
+        align-items: flex-start;
+    }
+
+
+    .members-links {
+
+        justify-content: flex-start;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+====================================================== */
+
+@media (max-width: 600px) {
+
+    .footer-container {
+
+        grid-template-columns: 1fr;
+
+        padding: 45px 20px 35px;
+
+        gap: 30px;
+    }
+
+
+    .footer-info {
+
+        grid-column: auto;
+    }
+
+
+    .footer-credits-container {
+
+        padding: 22px 20px;
+
+        gap: 22px;
+    }
+
+
+    .credits-brand {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .credits-members {
+
+        width: 100%;
+    }
+
+
+    .members-links {
+
+        width: 100%;
+    }
+
+
+    .members-links a {
+
+        flex: 1;
+
+        text-align: center;
+    }
+
+
+    .footer-bottom-container {
+
+        min-height: auto;
+
+        padding: 16px 20px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 5px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .footer-container {
+
+        padding-left: 17px;
+
+        padding-right: 17px;
+    }
+
+
+    .footer-credits-container {
+
+        padding-left: 17px;
+
+        padding-right: 17px;
+    }
+
+
+    .members-links {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+</style>

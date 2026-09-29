@@ -1,0 +1,766 @@
+<!-- =====================================================
+     NAVBAR — DASHBOARD
+====================================================== -->
+
+<nav class="dashboard-navbar">
+
+    <div class="dashboard-navbar-container">
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="dashboard-navbar-logo"
+            aria-label="Ir para o Dashboard"
+        >
+
+            <img
+                src="{{ url_for('static', filename='img/logo.png') }}"
+                alt="Logo Tudo bem aí?"
+            >
+
+        </a>
+
+
+        <!-- =================================================
+             MENU DESKTOP
+        ================================================== -->
+
+        <div
+            class="dashboard-navbar-menu"
+            id="dashboardNavbarMenu"
+        >
+
+            <a
+                href="{{ url_for('dashboard') }}"
+                class="dashboard-navbar-link"
+                data-navbar-target="inicio"
+            >
+                Início
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-navbar-link"
+                data-navbar-target="ferramentas"
+            >
+                Ferramentas
+            </a>
+
+
+            <a
+                href="#"
+                class="dashboard-navbar-link"
+                data-navbar-target="videos"
+            >
+                Vídeos
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             AÇÕES DO NAVBAR
+        ================================================== -->
+
+        <div class="dashboard-navbar-actions">
+
+
+            <!-- ÍCONE DE USUÁRIO -->
+
+            <a
+                href="#"
+                class="dashboard-user-button"
+                id="dashboardUserButton"
+                aria-label="Abrir informações da conta"
+                title="Minha conta"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 12a4.2 4.2 0 1 0 0-8.4A4.2 4.2 0 0 0 12 12Zm0 2.1c-4.05 0-7.35 2.08-7.35 4.65v1.55h14.7v-1.55c0-2.57-3.3-4.65-7.35-4.65Z"
+                    />
+
+                </svg>
+
+            </a>
+
+
+            <!-- BOTÃO MOBILE -->
+
+            <button
+                type="button"
+                class="dashboard-navbar-toggle"
+                id="dashboardNavbarToggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<style>
+
+/* =====================================================
+   NAVBAR
+====================================================== */
+
+.dashboard-navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9000;
+
+    width: 100%;
+
+    background: rgba(255, 255, 255, .96);
+
+    border-bottom: 1px solid #d8e5f2;
+
+    box-shadow:
+        0 7px 24px
+        rgba(23, 82, 145, .08);
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+}
+
+
+/* =====================================================
+   CONTAINER
+====================================================== */
+
+.dashboard-navbar-container {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    min-height: 82px;
+
+    margin: 0 auto;
+
+    padding: 10px 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* =====================================================
+   LOGO
+====================================================== */
+
+.dashboard-navbar-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+}
+
+
+.dashboard-navbar-logo img {
+
+    width: 155px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 7px 14px
+            rgba(20, 90, 180, .12)
+        );
+
+    transition:
+        transform .2s ease;
+}
+
+
+.dashboard-navbar-logo:hover img {
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   MENU
+====================================================== */
+
+.dashboard-navbar-menu {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    margin-left: auto;
+
+    margin-right: 8px;
+}
+
+
+.dashboard-navbar-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 9px 15px;
+
+    color: #527196;
+
+    border-radius: 11px;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.dashboard-navbar-link:hover {
+
+    color: #1556a5;
+
+    background: #f0f7ff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   AÇÕES
+====================================================== */
+
+.dashboard-navbar-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   BOTÃO DE USUÁRIO
+====================================================== */
+
+.dashboard-user-button {
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #d8e5f2;
+
+    border-radius: 12px;
+
+    background: #f9fcff;
+
+    text-decoration: none;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.dashboard-user-button svg {
+
+    width: 22px;
+
+    height: 22px;
+
+    fill: #216bb7;
+
+    transition:
+        transform .2s ease,
+        fill .2s ease;
+}
+
+
+.dashboard-user-button:hover {
+
+    background: #eef7ff;
+
+    border-color: #c5ddef;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 16px
+        rgba(35, 112, 190, .10);
+}
+
+
+.dashboard-user-button:hover svg {
+
+    fill: #1556a5;
+
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   BOTÃO MOBILE
+====================================================== */
+
+.dashboard-navbar-toggle {
+
+    display: none;
+
+    width: 44px;
+
+    height: 44px;
+
+    padding: 0;
+
+    border: 1px solid #d8e5f2;
+
+    border-radius: 12px;
+
+    background: #f9fcff;
+
+    cursor: pointer;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.dashboard-navbar-toggle span {
+
+    width: 20px;
+
+    height: 2px;
+
+    border-radius: 5px;
+
+    background: #216bb7;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 700px) {
+
+    .dashboard-navbar-container {
+
+        min-height: 72px;
+
+        padding: 9px 18px;
+    }
+
+
+    .dashboard-navbar-logo img {
+
+        width: 130px;
+    }
+
+
+    .dashboard-navbar-actions {
+
+        gap: 7px;
+    }
+
+
+    .dashboard-user-button {
+
+        width: 42px;
+
+        height: 42px;
+    }
+
+
+    .dashboard-navbar-toggle {
+
+        display: flex;
+    }
+
+
+    .dashboard-navbar-menu {
+
+        position: absolute;
+
+        top: calc(100% + 8px);
+
+        left: 14px;
+
+        right: 14px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        margin: 0;
+
+        padding: 10px;
+
+        background: rgba(255,255,255,.98);
+
+        border: 1px solid #d8e5f2;
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 15px 35px
+            rgba(23,82,145,.13);
+    }
+
+
+    .dashboard-navbar-menu.active {
+
+        display: flex;
+    }
+
+
+    .dashboard-navbar-link {
+
+        width: 100%;
+
+        padding: 13px 15px;
+
+        text-align: center;
+    }
+
+}
+
+
+/* =====================================================
+   TELAS PEQUENAS
+====================================================== */
+
+@media (max-width: 400px) {
+
+    .dashboard-navbar-container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+    }
+
+
+    .dashboard-navbar-logo img {
+
+        width: 115px;
+    }
+
+
+    .dashboard-user-button {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .dashboard-navbar-toggle {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+}
+
+
+/* =====================================================
+   ROLAGEM SUAVE
+====================================================== */
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+</style>
+
+
+<script>
+
+/* =====================================================
+   MENU MOBILE
+====================================================== */
+
+(function () {
+
+    const toggle =
+        document.getElementById(
+            "dashboardNavbarToggle"
+        );
+
+
+    const menu =
+        document.getElementById(
+            "dashboardNavbarMenu"
+        );
+
+
+    if (!toggle || !menu) {
+
+        return;
+
+    }
+
+
+    toggle.addEventListener(
+        "click",
+        function () {
+
+            const aberto =
+                menu.classList.toggle("active");
+
+
+            toggle.setAttribute(
+                "aria-expanded",
+                aberto ? "true" : "false"
+            );
+
+        }
+    );
+
+
+    const links =
+        menu.querySelectorAll(
+            ".dashboard-navbar-link"
+        );
+
+
+    links.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function (evento) {
+
+                    const destino =
+                        link.dataset.navbarTarget;
+
+
+                    /* =================================
+                       INÍCIO
+                    ================================= */
+
+                    if (
+                        destino === "inicio"
+                    ) {
+
+                        menu.classList.remove(
+                            "active"
+                        );
+
+
+                        toggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* =================================
+                       FERRAMENTAS
+                    ================================= */
+
+                    if (
+                        destino === "ferramentas"
+                    ) {
+
+                        evento.preventDefault();
+
+
+                        const ferramentas =
+                            document.querySelector(
+                                ".card.ferramentas"
+                            );
+
+
+                        if (ferramentas) {
+
+                            ferramentas.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+
+                        menu.classList.remove(
+                            "active"
+                        );
+
+
+                        toggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+
+                    /* =================================
+                       VÍDEOS
+                    ================================= */
+
+                    if (
+                        destino === "videos"
+                    ) {
+
+                        evento.preventDefault();
+
+
+                        const videos =
+                            document.querySelector(
+                                ".card.videos"
+                            );
+
+
+                        if (videos) {
+
+                            videos.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+
+                        menu.classList.remove(
+                            "active"
+                        );
+
+
+                        toggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+})();
+
+
+/* =====================================================
+   BOTÃO DO USUÁRIO
+====================================================== */
+
+(function () {
+
+    const userButton =
+        document.getElementById(
+            "dashboardUserButton"
+        );
+
+
+    if (!userButton) {
+
+        return;
+
+    }
+
+
+    userButton.addEventListener(
+        "click",
+        function (evento) {
+
+            evento.preventDefault();
+
+            /*
+             * Futuramente podemos abrir aqui:
+             *
+             * - informações da conta
+             * - editar perfil
+             * - configurações
+             * - sair
+             *
+             * Por enquanto o botão permanece
+             * preparado para receber essa função.
+             */
+
+        }
+    );
+
+})();
+
+</script>

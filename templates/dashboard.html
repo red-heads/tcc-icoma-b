@@ -371,6 +371,20 @@
 
 
         /* =========================================================
+           CENTRALIZAR FERRAMENTAS EM TELAS GRANDES
+        ========================================================= */
+
+        @media (min-width: 801px) {
+
+            .ferramentas-carrossel
+            .carrossel-conteudo.centralizado {
+                justify-content: center;
+            }
+
+        }
+
+
+        /* =========================================================
            SETAS
         ========================================================= */
 
@@ -891,7 +905,23 @@
         }
 
 
-        .video-aviso {
+        .video-player-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #000;
+    margin-bottom: 14px;
+}
+
+.video-player-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.video-aviso {
             margin-top: 17px;
 
             padding: 15px 17px;
@@ -913,29 +943,37 @@
 
 
         /* =========================================================
-           API / PERGUNTE À IA
+           API / PERGUNTE À API
         ========================================================= */
 
         .ia {
             padding-bottom: 27px;
         }
 
-
         .ia h2 {
             margin-bottom: 4px;
         }
 
-
-        .ia-form {
-            display: flex;
-
+        .ia-botao-link {
+            display: inline-flex;
             align-items: center;
-
-            gap: 12px;
-
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 28px;
             margin-top: 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #28a9e7, #168fd0);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 3px 8px rgba(25, 143, 205, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
 
-            width: 100%;
+        .ia-botao-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(25, 143, 205, 0.25);
         }
 
 
@@ -2249,8 +2287,8 @@
 <body>
 
     {% include 'componentes/navbar_dashboard.html' %}
-    
-    <main class="dashboard">
+
+<main class="dashboard">
 
 
     <!-- =========================================================
@@ -2754,41 +2792,22 @@
          PERGUNTE À IA
     ========================================================== -->
 
-    <section class="card ia">
+    <section class="card ia" id="api">
 
         <h2>
-            Pergunte à IA
+            Pergunte à API
         </h2>
 
-
         <p>
-            Tire suas dúvidas de forma rápida e segura.
+            Acesse nossa página de apoio para encontrar informações e recursos de forma rápida e segura.
         </p>
 
-
-        <form
-            class="ia-form"
-            onsubmit="enviarPergunta(event)"
+        <a
+            href="{{ url_for('api') }}"
+            class="ia-botao-link"
         >
-
-            <input
-                type="text"
-                id="pergunta"
-                class="ia-input"
-                placeholder="Digite sua pergunta"
-                autocomplete="off"
-            >
-
-
-            <button
-                type="submit"
-                class="ia-botao"
-                aria-label="Enviar pergunta"
-            >
-                ➤
-            </button>
-
-        </form>
+            Acessar a API
+        </a>
 
     </section>
 
@@ -2798,7 +2817,7 @@
          FERRAMENTAS
     ========================================================== -->
 
-    <section class="card ferramentas">
+    <section class="card ferramentas" id="ferramentas">
 
         <h2>
             Ferramentas para você
@@ -2893,7 +2912,7 @@
 
 
                 <a
-                    href="#"
+                    href="/foco"
                     class="ferramenta"
                 >
 
@@ -2904,23 +2923,6 @@
                     <strong>
                         Foco e<br>
                         concentração
-                    </strong>
-
-                </a>
-
-
-                <a
-                    href="#"
-                    class="ferramenta"
-                >
-
-                    <span class="ferramenta-icone">
-                        💙
-                    </span>
-
-                    <strong>
-                        Gratidão<br>
-                        diária
                     </strong>
 
                 </a>
@@ -2955,7 +2957,7 @@
          AJUDA PROFISSIONAL
     ========================================================== -->
 
-    <section class="profissional">
+    <section class="profissional" id="profissionais">
 
         <h2>
             Precisa de ajuda profissional?
@@ -3204,34 +3206,24 @@
             </h2>
 
 
-            <button
-                type="button"
-                class="video-preview"
-                id="videoPreview"
-                onclick="abrirVideoYoutube()"
-                aria-label="Abrir vídeo no YouTube"
-            >
+            <div class="video-player-container" id="videoPlayerContainer">
 
-
-                <img
-                    id="imagemModalVideo"
+                <iframe
+                    id="videoPlayer"
                     src=""
-                    alt=""
-                >
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
 
-
-                <span class="video-play">
-                    ▶
-                </span>
-
-
-            </button>
+            </div>
 
 
             <div class="video-aviso">
 
-                Clique na imagem para assistir ao vídeo
-                completo no YouTube.
+                Vídeo reproduzido pelo player oficial incorporado do YouTube.
 
             </div>
 
@@ -3260,7 +3252,10 @@ const videos = [
             "PRESSÃO, SAÚDE MENTAL E VESTIBULAR: COMO CONCILIAR?",
 
         url:
-            "https://youtu.be/mnssW6JsXME?si=4ri0yNqQUnW-VpDK"
+            "https://youtu.be/mnssW6JsXME?si=4ri0yNqQUnW-VpDK",
+
+        embed:
+            "https://www.youtube.com/embed/mnssW6JsXME?si=GZFCxEhcJIYki4S-"
     },
 
 
@@ -3271,7 +3266,10 @@ const videos = [
             "O Ensino Médio e a Saúde Mental dos Adolescentes - 5 sinais que merecem sua atenção",
 
         url:
-            "https://youtu.be/cHkq6faB0b4?si=PWOp7e6192gsAXb_"
+            "https://youtu.be/cHkq6faB0b4?si=PWOp7e6192gsAXb_",
+
+        embed:
+            "https://www.youtube.com/embed/cHkq6faB0b4?si=XWIXKKBPGwoYAcOt"
     },
 
 
@@ -3282,7 +3280,10 @@ const videos = [
             "HORA DE ENTRAR NA FACULDADE: COMO ESCOLHER O CURSO CERTO DA FACULDADE",
 
         url:
-            "https://youtu.be/BTDCl05XGAA?si=SewRIXolL12MH3AB"
+            "https://youtu.be/BTDCl05XGAA?si=SewRIXolL12MH3AB",
+
+        embed:
+            "https://www.youtube.com/embed/BTDCl05XGAA?si=my4imM2WEPxoNGqe"
     },
 
 
@@ -3293,7 +3294,10 @@ const videos = [
             "3 técnicas indicadas por cientistas para qualquer pessoa melhorar nos estudos",
 
         url:
-            "https://youtu.be/posTc56basM?si=j_REDRX4AEsgbKtc"
+            "https://youtu.be/posTc56basM?si=j_REDRX4AEsgbKtc",
+
+        embed:
+            "https://www.youtube.com/embed/posTc56basM?si=gfrSnUiI_RLu-UUC"
     },
 
 
@@ -3304,7 +3308,10 @@ const videos = [
             "CRISE DOS 18: A pressão de decidir cedo demais",
 
         url:
-            "https://youtu.be/OUND_PErdCE?si=vXTr7ZVTl--91mD4"
+            "https://youtu.be/OUND_PErdCE?si=vXTr7ZVTl--91mD4",
+
+        embed:
+            "https://www.youtube.com/embed/OUND_PErdCE?si=xusOyMMLJEkMyOdW"
     },
 
 
@@ -3315,7 +3322,10 @@ const videos = [
             "Como FUNCIONAM os VESTIBULARES? ENEM, Prouni, Sisu, Fies e Vestibular de Inverno",
 
         url:
-            "https://youtu.be/pIXQIclP1D0?si=kCaNHA_lzffkmUvC"
+            "https://youtu.be/pIXQIclP1D0?si=kCaNHA_lzffkmUvC",
+
+        embed:
+            "https://www.youtube.com/embed/pIXQIclP1D0?si=VWaVRa_-TpJSCsve"
     },
 
 
@@ -3326,7 +3336,10 @@ const videos = [
             "O que é o Vestibular? E o Enem? Um guia para iniciantes",
 
         url:
-            "https://youtu.be/K8zg0RmyH-g?si=fUhnVXy292Ht74dE"
+            "https://youtu.be/K8zg0RmyH-g?si=fUhnVXy292Ht74dE",
+
+        embed:
+            "https://www.youtube.com/embed/K8zg0RmyH-g?si=8nMDwjmA-cM3P_fk"
     },
 
 
@@ -3337,7 +3350,10 @@ const videos = [
             "ENEM 360º: psicóloga dá dicas para o seu preparo mental para as provas",
 
         url:
-            "https://youtu.be/DA2dyg2k8mM?si=QJT-QJncA08-dCQA"
+            "https://youtu.be/DA2dyg2k8mM?si=QJT-QJncA08-dCQA",
+
+        embed:
+            "https://www.youtube.com/embed/DA2dyg2k8mM?si=JQQbUX5hjkQlL3RM"
     }
 
 ];
@@ -3355,65 +3371,43 @@ function abrirVideo(indice) {
 
     videoSelecionado = indice;
 
-
-    const video =
-        videos[indice];
-
+    const video = videos[indice];
 
     if (!video) {
         return;
     }
 
-
     document.getElementById(
         "tituloModalVideo"
-    ).textContent =
-        video.titulo;
+    ).textContent = video.titulo;
 
+    const player = document.getElementById("videoPlayer");
 
-    const imagem =
-        document.getElementById(
-            "imagemModalVideo"
-        );
-
-
-    imagem.src =
-        `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-
-
-    imagem.alt =
-        `Capa do vídeo: ${video.titulo}`;
-
+    player.src = video.embed;
 
     document
         .getElementById("modalVideo")
         .classList.add("aberto");
 
-
-    document.body.style.overflow =
-        "hidden";
+    document.body.style.overflow = "hidden";
 
 }
 
 
-
 /* =========================================================
-   ABRIR VÍDEO NO YOUTUBE
+   ABRIR PLAYER INCORPORADO DO YOUTUBE
 ========================================================= */
 
 function abrirVideoYoutube() {
 
-    const video =
-        videos[videoSelecionado];
-
+    const video = videos[videoSelecionado];
 
     if (!video) {
         return;
     }
 
-
     window.open(
-        video.url,
+        video.embed,
         "_blank",
         "noopener,noreferrer"
     );
@@ -3421,12 +3415,18 @@ function abrirVideoYoutube() {
 }
 
 
-
 /* =========================================================
    FECHAR MODAL DOS VÍDEOS
 ========================================================= */
 
 function fecharVideo() {
+
+    const player = document.getElementById("videoPlayer");
+
+    if (player) {
+        player.src = "about:blank";
+    }
+
 
     document
         .getElementById("modalVideo")
@@ -4257,6 +4257,24 @@ function atualizarSetas(id) {
         chegouFim
     );
 
+
+    /* =====================================================
+       CENTRALIZAR AS FERRAMENTAS QUANDO NÃO HÁ ROLAGEM
+    ====================================================== */
+
+    if (id === "ferramentasScroll") {
+
+        const semRolagem =
+            carrossel.scrollWidth <=
+            carrossel.clientWidth + 5;
+
+        carrossel.classList.toggle(
+            "centralizado",
+            semRolagem
+        );
+
+    }
+
 }
 
 
@@ -4650,44 +4668,6 @@ window.addEventListener(
 /* =========================================================
    PERGUNTE À IA
 ========================================================= */
-
-function enviarPergunta(event) {
-
-    event.preventDefault();
-
-
-    const campo =
-        document.getElementById(
-            "pergunta"
-        );
-
-
-    const pergunta =
-        campo.value.trim();
-
-
-    if (
-        pergunta === ""
-    ) {
-
-        campo.focus();
-
-        return;
-
-    }
-
-
-    alert(
-        "Sua pergunta foi recebida. " +
-        "A integração com a IA poderá " +
-        "ser adicionada aqui."
-    );
-
-
-    campo.value = "";
-
-}
-
 </script>
 
 

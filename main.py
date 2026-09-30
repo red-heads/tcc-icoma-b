@@ -68,6 +68,13 @@ def pensamento():
 def diario():
     return render_template('ferramentas/diario.html')
 
+@app.route("/api")
+def api():
+    return render_template("apoio/api.html")
+
+@app.route("/foco")
+def foco():
+    return render_template("ferramentas/foco.html")
 
 def main():
     app.run(

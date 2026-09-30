@@ -1,0 +1,5308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Foco e concentração | Tudo bem aí?</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef8ff,
+                    #dff1ff,
+                    #f5fbff
+                );
+
+            color: #24445f;
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+        }
+
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+
+        header {
+            width: 100%;
+            padding: 24px 30px;
+        }
+
+
+        .voltar {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            text-decoration: none;
+
+            color: #3979a8;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .voltar:hover {
+            color: #245e88;
+
+            transform: translateX(-2px);
+        }
+
+
+        .container {
+            width: min(92%, 850px);
+
+            max-width: 850px;
+
+            margin: 20px auto 50px;
+
+            min-width: 0;
+        }
+
+
+        .titulo {
+            text-align: center;
+
+            margin-bottom: 10px;
+        }
+
+
+        .titulo h1 {
+            color: #245f89;
+
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    44px
+                );
+
+            margin-bottom: 10px;
+        }
+
+
+        .titulo p {
+            color: #67839a;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            max-width: 650px;
+
+            margin: auto;
+        }
+
+
+        .card {
+            width: 100%;
+
+            max-width: 100%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            border-radius: 26px;
+
+            padding: 30px;
+
+            margin-top: 30px;
+
+            box-shadow:
+                0 15px 45px
+                rgba(
+                    55,
+                    112,
+                    150,
+                    0.12
+                );
+
+            min-width: 0;
+
+            overflow: hidden;
+        }
+
+
+        .campo {
+            margin-bottom: 24px;
+
+            width: 100%;
+
+            min-width: 0;
+        }
+
+
+        .campo label {
+            display: block;
+
+            font-weight: 700;
+
+            color: #315d7c;
+
+            margin-bottom: 9px;
+        }
+
+
+        /* =========================
+           OBJETIVO - SELECT
+        ========================= */
+
+        .select-wrapper {
+            position: relative;
+
+            width: 100%;
+        }
+
+
+        .select-wrapper select {
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            width: 100%;
+
+            cursor: pointer;
+
+            padding-right: 48px;
+
+            background:
+                #f7fcff;
+        }
+
+
+        .select-seta {
+            position: absolute;
+
+            right: 16px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            pointer-events: none;
+
+            color: #3979a8;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           INPUTS
+        ========================= */
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+
+            max-width: 100%;
+
+            border: 1.5px solid #d3e7f4;
+
+            border-radius: 13px;
+
+            padding: 14px 15px;
+
+            background: #fbfdff;
+
+            color: #315d7c;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #72b5dc;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    114,
+                    181,
+                    220,
+                    0.12
+                );
+        }
+
+
+        textarea {
+            min-height: 120px;
+
+            resize: vertical;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           TEMPO
+        ========================= */
+
+        .tempos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+            width: 100%;
+
+            margin-bottom: 14px;
+        }
+
+
+        .tempo {
+            width: 100%;
+
+            border: 1.5px solid #d2e8f7;
+
+            background: #f7fcff;
+
+            color: #426b85;
+
+            border-radius: 14px;
+
+            padding: 14px 8px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+        }
+
+
+        .tempo:hover {
+            border-color: #8bc5e8;
+
+            background: #eef9ff;
+        }
+
+
+        .tempo.selecionado {
+            background: #dff2ff;
+
+            border-color: #5da9d7;
+
+            color: #245f89;
+        }
+
+
+        .tempo-personalizado {
+            width: 100%;
+
+            margin-top: 8px;
+        }
+
+
+        .tempo-personalizado-linha {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            width: 100%;
+        }
+
+
+        .tempo-personalizado-linha .campo-tempo {
+            position: relative;
+        }
+
+
+        .campo-tempo input {
+            padding-right: 55px;
+        }
+
+
+        .campo-tempo span {
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #7893a5;
+
+            font-size: 13px;
+
+            pointer-events: none;
+        }
+
+
+        .tempo-personalizado-label {
+            display: block;
+
+            color: #6d8799;
+
+            font-size: 13px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .tempo-ajuda {
+            color: #7891a2;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin-top: 9px;
+        }
+
+
+        /* =========================
+           BOTÕES
+        ========================= */
+
+        .botoes {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 28px;
+
+            width: 100%;
+        }
+
+
+        .botao-principal,
+        .botao-secundario {
+            min-width: 0;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .botao-principal {
+            flex: 1;
+
+            border: none;
+
+            border-radius: 15px;
+
+            padding: 15px 20px;
+
+            background: #5ca8d6;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .botao-principal:hover {
+            background: #438fbd;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .botao-secundario {
+            flex: 1;
+
+            border: 1.5px solid #c5e0f1;
+
+            border-radius: 15px;
+
+            padding: 15px 20px;
+
+            background: #f4fbff;
+
+            color: #3979a8;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .botao-secundario:hover {
+            background: #eaf7ff;
+        }
+
+
+        /* =========================
+           TELA DE FOCO
+        ========================= */
+
+        #telaFoco {
+            display: none;
+
+            text-align: center;
+        }
+
+
+        .atividade-atual {
+            color: #5e7e94;
+
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+
+            margin-bottom: 8px;
+        }
+
+
+        .objetivo-atual {
+            color: #3979a8;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+
+            margin-bottom: 25px;
+        }
+
+
+        .cronometro {
+            font-size:
+                clamp(
+                    70px,
+                    15vw,
+                    125px
+                );
+
+            font-weight: 700;
+
+            color: #245f89;
+
+            letter-spacing: 2px;
+
+            margin: 20px 0;
+
+            overflow: hidden;
+        }
+
+
+        .status-foco {
+            min-height: 25px;
+
+            color: #7190a4;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            margin-bottom: 25px;
+        }
+
+
+        .botoes-foco {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+            width: 100%;
+        }
+
+
+        .botao-foco {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 14px;
+
+            padding: 15px 10px;
+
+            background: #edf8ff;
+
+            color: #3979a8;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .botao-foco:hover {
+            background: #dff2ff;
+        }
+
+
+        .botao-foco.encerrar {
+            background: #fff1f1;
+
+            color: #b76565;
+        }
+
+
+        .botao-foco.encerrar:hover {
+            background: #ffe5e5;
+        }
+
+
+        /* =========================
+           PAUSA / DISTRAÇÃO
+        ========================= */
+
+        #areaPausa,
+        #areaDistracao {
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 24px;
+
+            background: #f3faff;
+
+            border: 1px solid #d8edf9;
+
+            border-radius: 20px;
+
+            width: 100%;
+
+            min-width: 0;
+
+            overflow: hidden;
+        }
+
+
+        #areaPausa h2,
+        #areaDistracao h2 {
+            color: #315f7d;
+
+            margin-bottom: 8px;
+
+            font-size: 23px;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        #areaPausa p,
+        #areaDistracao p {
+            color: #6d8799;
+
+            line-height: 1.5;
+
+            margin-bottom: 18px;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .continuar {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+            background: #5ca8d6;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .continuar:hover {
+            background: #438fbd;
+        }
+
+
+        .motivos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+
+            width: 100%;
+        }
+
+
+        .motivo {
+            width: 100%;
+
+            border: 1px solid #d2e8f7;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #4d7188;
+
+            padding: 12px;
+
+            cursor: pointer;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .motivo.selecionado {
+            background: #dff2ff;
+
+            border-color: #67acd5;
+
+            color: #245f89;
+        }
+
+
+        /* =========================
+           REFLEXÃO
+        ========================= */
+
+        #telaReflexao {
+            display: none;
+        }
+
+
+        .opcoes-reflexao {
+            display: grid;
+
+            gap: 10px;
+
+            margin: 20px 0;
+
+            width: 100%;
+        }
+
+
+        .reflexao {
+            width: 100%;
+
+            border: 1.5px solid #d2e8f7;
+
+            background: #f7fcff;
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+            color: #426b85;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            text-align: left;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .reflexao.selecionado {
+            background: #dff2ff;
+
+            border-color: #5da9d7;
+
+            color: #245f89;
+        }
+
+
+        /* =========================
+           RESULTADO
+        ========================= */
+
+        #telaResultado {
+            display: none;
+
+            text-align: center;
+        }
+
+
+        .resultado-emoji {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .resultado-titulo {
+            color: #245f89;
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .resultado-texto {
+            color: #67839a;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           HISTÓRICO
+        ========================= */
+
+        #historicoArea {
+            display: none;
+
+            width: 100%;
+
+            max-width: 100%;
+
+            margin-top: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .historico-cabecalho {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+            width: 100%;
+
+            min-width: 0;
+        }
+
+
+        .historico-cabecalho h2 {
+            color: #315f7d;
+
+            font-size: 24px;
+
+            min-width: 0;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .fechar-historico {
+            flex-shrink: 0;
+
+            border: none;
+
+            background: #edf8ff;
+
+            color: #3979a8;
+
+            border-radius: 10px;
+
+            padding: 9px 13px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+
+        .historico-vazio {
+            width: 100%;
+
+            text-align: center;
+
+            padding: 30px 15px;
+
+            color: #7891a2;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .historico-item {
+            width: 100%;
+
+            max-width: 100%;
+
+            background: #f8fcff;
+
+            border: 1px solid #d9ebf6;
+
+            border-radius: 18px;
+
+            padding: 16px;
+
+            margin-bottom: 12px;
+
+            overflow: hidden;
+
+            min-width: 0;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .historico-item:hover {
+            border-color: #9bc9e5;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .historico-topo {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            width: 100%;
+
+            min-width: 0;
+        }
+
+
+        .historico-atividade {
+            color: #315f7d;
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            line-height: 1.4;
+
+            min-width: 0;
+
+            max-width: 100%;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .historico-data {
+            color: #8aa0af;
+
+            font-size: 12px;
+
+            flex-shrink: 0;
+
+            max-width: 30%;
+
+            white-space: normal;
+
+            text-align: right;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .historico-info {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 12px;
+
+            width: 100%;
+
+            min-width: 0;
+        }
+
+
+        .historico-tag {
+            display: inline-block;
+
+            max-width: 100%;
+
+            background: white;
+
+            border: 1px solid #dbeaf3;
+
+            border-radius: 20px;
+
+            padding: 6px 9px;
+
+            color: #58788e;
+
+            font-size: 13px;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .historico-anotacao {
+            width: 100%;
+
+            max-width: 100%;
+
+            color: #698497;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            margin-top: 12px;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .historico-acoes {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 14px;
+
+            width: 100%;
+
+            min-width: 0;
+        }
+
+
+        .historico-acoes button {
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 8px 11px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            min-width: 0;
+
+            max-width: 100%;
+
+            white-space: normal;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .editar {
+            background: #eaf7ff;
+
+            color: #3979a8;
+        }
+
+
+        .apagar {
+            background: #fff0f0;
+
+            color: #b76565;
+        }
+
+
+        /* =========================
+           DETALHES HISTÓRICO
+        ========================= */
+
+        .detalhes-historico {
+            width: 100%;
+
+            max-width: 100%;
+
+            min-width: 0;
+        }
+
+
+        .detalhe-item {
+            width: 100%;
+
+            max-width: 100%;
+
+            padding: 12px 14px;
+
+            margin-bottom: 10px;
+
+            background: #f5fbff;
+
+            border: 1px solid #dcecf6;
+
+            border-radius: 13px;
+
+            color: #557489;
+
+            line-height: 1.5;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .detalhe-titulo {
+            display: block;
+
+            color: #315f7d;
+
+            font-weight: 700;
+
+            margin-bottom: 4px;
+        }
+
+
+        .detalhe-distracao {
+            width: 100%;
+
+            margin-top: 8px;
+
+            padding: 10px;
+
+            background: white;
+
+            border: 1px solid #e1edf4;
+
+            border-radius: 10px;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================
+           MODAIS
+        ========================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(
+                    34,
+                    75,
+                    102,
+                    0.32
+                );
+
+            padding: 15px;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow-y: auto;
+
+            overflow-x: hidden;
+        }
+
+
+        .modal.aberto {
+            display: flex;
+        }
+
+
+        .modal-conteudo {
+            width:
+                min(
+                    100%,
+                    520px
+                );
+
+            max-width: 100%;
+
+            background: white;
+
+            border-radius: 24px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(
+                    30,
+                    75,
+                    105,
+                    0.2
+                );
+
+            max-height:
+                calc(
+                    100vh - 30px
+                );
+
+            overflow-y: auto;
+
+            overflow-x: hidden;
+
+            min-width: 0;
+        }
+
+
+        .modal-icone {
+            font-size: 40px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .modal-conteudo h2 {
+            color: #315f7d;
+
+            margin-bottom: 10px;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .modal-conteudo p {
+            color: #698497;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+        }
+
+
+        .modal-botoes {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            width: 100%;
+        }
+
+
+        .modal-botoes button {
+            flex:
+                1 1 140px;
+
+            min-width: 0;
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 13px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            white-space: normal;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        .modal-cancelar {
+            background: #edf8ff;
+
+            color: #3979a8;
+        }
+
+
+        .modal-confirmar {
+            background: #5ca8d6;
+
+            color: white;
+        }
+
+
+        .modal-perigo {
+            background: #c86f6f;
+
+            color: white;
+        }
+
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 20px;
+            }
+
+
+            .container {
+                width: 94%;
+
+                max-width: 100%;
+
+                margin-top: 10px;
+            }
+
+
+            .card {
+                width: 100%;
+
+                max-width: 100%;
+
+                padding: 22px 16px;
+
+                border-radius: 21px;
+
+                overflow: hidden;
+            }
+
+
+            .tempos {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .tempo-personalizado-linha {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .botoes {
+                flex-direction: column;
+
+                width: 100%;
+            }
+
+
+            .botoes-foco {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .motivos {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .historico-cabecalho {
+                align-items:
+                    flex-start;
+            }
+
+
+            .historico-cabecalho h2 {
+                font-size: 21px;
+            }
+
+
+            .historico-item {
+                padding: 14px;
+            }
+
+
+            .historico-topo {
+                display: block;
+            }
+
+
+            .historico-atividade {
+                width: 100%;
+
+                margin-bottom: 7px;
+            }
+
+
+            .historico-data {
+                display: block;
+
+                width: 100%;
+
+                max-width: 100%;
+
+                text-align: left;
+
+                font-size: 11px;
+
+                white-space: normal;
+
+                overflow-wrap: anywhere;
+            }
+
+
+            .historico-info {
+                width: 100%;
+            }
+
+
+            .historico-tag {
+                max-width: 100%;
+            }
+
+
+            .historico-acoes {
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                width: 100%;
+            }
+
+
+            .historico-acoes button {
+                width: 100%;
+
+                min-width: 0;
+            }
+
+
+            .modal {
+                padding: 10px;
+            }
+
+
+            .modal-conteudo {
+                width: 100%;
+
+                max-width: 100%;
+
+                padding: 20px;
+
+                border-radius: 20px;
+
+                max-height:
+                    calc(
+                        100vh - 20px
+                    );
+            }
+
+
+            .modal-botoes {
+                flex-direction: column;
+            }
+
+
+            .modal-botoes button {
+                width: 100%;
+
+                flex: none;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .tempos {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .historico-acoes {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a
+        href="{{ url_for('dashboard') }}"
+        class="voltar"
+    >
+        ← Voltar
+    </a>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- =========================
+         TELA INICIAL
+    ========================= -->
+
+    <section id="telaInicial">
+
+        <div class="titulo">
+
+            <h1>
+                Foco e concentração
+            </h1>
+
+            <p>
+                Um espaço para organizar seu momento
+                e realizar uma atividade de cada vez,
+                sem precisar se cobrar além do necessário.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+
+            <!-- OBJETIVO -->
+
+            <div class="campo">
+
+                <label for="objetivo">
+                    🎯 O que você precisa fazer?
+                </label>
+
+
+                <div class="select-wrapper">
+
+                    <select id="objetivo">
+
+                        <option
+                            value=""
+                            selected
+                        >
+                            Selecione uma opção
+                        </option>
+
+
+                        <option value="Estudar">
+                            📚 Estudar
+                        </option>
+
+
+                        <option value="Fazer atividade">
+                            📝 Fazer atividade
+                        </option>
+
+
+                        <option value="Ler">
+                            📖 Ler
+                        </option>
+
+
+                        <option value="Fazer trabalho">
+                            💻 Fazer trabalho
+                        </option>
+
+
+                        <option value="Criar">
+                            🎨 Criar
+                        </option>
+
+
+                        <option value="Outro">
+                            ✏️ Outro
+                        </option>
+
+                    </select>
+
+
+                    <span class="select-seta">
+                        ▾
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ATIVIDADE -->
+
+            <div class="campo">
+
+                <label for="atividade">
+                    📝 Qual atividade você vai fazer?
+                </label>
+
+
+                <input
+                    type="text"
+                    id="atividade"
+                    maxlength="150"
+                    placeholder="Ex.: Estudar matemática"
+                >
+
+            </div>
+
+
+            <!-- TEMPO -->
+
+            <div class="campo">
+
+                <label>
+                    ⏱️ Quanto tempo?
+                </label>
+
+
+                <div class="tempos">
+
+                    <button
+                        type="button"
+                        class="tempo"
+                        data-minutos="10"
+                    >
+                        10 min
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="tempo"
+                        data-minutos="20"
+                    >
+                        20 min
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="tempo"
+                        data-minutos="30"
+                    >
+                        30 min
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="tempo"
+                        data-minutos="45"
+                    >
+                        45 min
+                    </button>
+
+                </div>
+
+
+                <span class="tempo-personalizado-label">
+                    Ou personalize seu tempo:
+                </span>
+
+
+                <div class="tempo-personalizado-linha">
+
+
+                    <div class="campo-tempo">
+
+                        <input
+                            type="number"
+                            id="horas"
+                            min="0"
+                            max="23"
+                            value="0"
+                            placeholder="0"
+                        >
+
+                        <span>
+                            horas
+                        </span>
+
+                    </div>
+
+
+                    <div class="campo-tempo">
+
+                        <input
+                            type="number"
+                            id="minutos"
+                            min="0"
+                            max="59"
+                            value="0"
+                            placeholder="0"
+                        >
+
+                        <span>
+                            min
+                        </span>
+
+                    </div>
+
+
+                    <div class="campo-tempo">
+
+                        <input
+                            type="number"
+                            id="segundos"
+                            min="0"
+                            max="59"
+                            value="0"
+                            placeholder="0"
+                        >
+
+                        <span>
+                            seg
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p class="tempo-ajuda">
+                    Você pode escolher um tempo rápido acima
+                    ou definir exatamente quantas horas,
+                    minutos e segundos deseja.
+                </p>
+
+            </div>
+
+
+            <div class="botoes">
+
+                <button
+                    type="button"
+                    class="botao-principal"
+                    onclick="iniciarFoco()"
+                >
+                    ▶️ Começar foco
+                </button>
+
+
+                <button
+                    type="button"
+                    class="botao-secundario"
+                    onclick="abrirHistorico()"
+                >
+                    📋 Histórico
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HISTÓRICO
+    ========================= -->
+
+    <section
+        id="historicoArea"
+        class="card"
+    >
+
+        <div class="historico-cabecalho">
+
+            <h2>
+                📋 Histórico
+            </h2>
+
+
+            <button
+                type="button"
+                class="fechar-historico"
+                onclick="fecharHistorico()"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+
+        <div id="listaHistorico"></div>
+
+    </section>
+
+
+    <!-- =========================
+         TELA DE FOCO
+    ========================= -->
+
+    <section
+        id="telaFoco"
+        class="card"
+    >
+
+        <div class="atividade-atual">
+            <span id="atividadeAtual"></span>
+        </div>
+
+
+        <div class="objetivo-atual">
+            <span id="objetivoAtual"></span>
+        </div>
+
+
+        <div
+            id="cronometro"
+            class="cronometro"
+        >
+            00:00:00
+        </div>
+
+
+        <div
+            id="statusFoco"
+            class="status-foco"
+        >
+            Concentre-se no que está fazendo.
+        </div>
+
+
+        <div class="botoes-foco">
+
+            <button
+                type="button"
+                class="botao-foco"
+                onclick="fazerPausa()"
+            >
+                ⏸️ Fazer pausa
+            </button>
+
+
+            <button
+                type="button"
+                class="botao-foco"
+                onclick="abrirDistracao()"
+            >
+                😵 Me distraí
+            </button>
+
+
+            <button
+                type="button"
+                class="botao-foco encerrar"
+                onclick="encerrarFoco()"
+            >
+                ⏹️ Encerrar
+            </button>
+
+        </div>
+
+
+        <!-- PAUSA -->
+
+        <div id="areaPausa">
+
+            <h2>
+                ⏸️ Momento de pausa
+            </h2>
+
+
+            <p>
+                O tempo está pausado. Quando quiser
+                voltar, continue exatamente de onde parou.
+            </p>
+
+
+            <button
+                type="button"
+                class="continuar"
+                onclick="continuarFoco()"
+            >
+                ▶️ Continuar de onde parei
+            </button>
+
+        </div>
+
+
+        <!-- DISTRAÇÃO -->
+
+        <div id="areaDistracao">
+
+            <h2>
+                😵 O que aconteceu?
+            </h2>
+
+
+            <p>
+                O tempo está pausado. Escolha o que
+                tirou sua atenção ou apenas continue
+                quando estiver pronto.
+            </p>
+
+
+            <div class="motivos">
+
+                <button
+                    type="button"
+                    class="motivo"
+                    data-motivo="Celular"
+                >
+                    📱 Celular
+                </button>
+
+
+                <button
+                    type="button"
+                    class="motivo"
+                    data-motivo="Pensamentos"
+                >
+                    💭 Pensamentos
+                </button>
+
+
+                <button
+                    type="button"
+                    class="motivo"
+                    data-motivo="Barulho"
+                >
+                    🔊 Barulho
+                </button>
+
+
+                <button
+                    type="button"
+                    class="motivo"
+                    data-motivo="Cansaço"
+                >
+                    😴 Cansaço
+                </button>
+
+
+                <button
+                    type="button"
+                    class="motivo"
+                    data-motivo="Outra coisa"
+                >
+                    💬 Outra coisa
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="comentarioDistracao"
+                maxlength="300"
+                placeholder="Se quiser, escreva uma observação..."
+            ></textarea>
+
+
+            <div class="botoes">
+
+                <button
+                    type="button"
+                    class="botao-secundario"
+                    onclick="cancelarDistracao()"
+                >
+                    Continuar depois
+                </button>
+
+
+                <button
+                    type="button"
+                    class="botao-principal"
+                    onclick="registrarDistracao()"
+                >
+                    Registrar e continuar
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REFLEXÃO
+    ========================= -->
+
+    <section
+        id="telaReflexao"
+        class="card"
+    >
+
+        <div class="titulo">
+
+            <h1>
+                Como foi seu foco?
+            </h1>
+
+            <p>
+                Não existe resposta certa. Escolha
+                o que melhor representa como foi
+                esse momento.
+            </p>
+
+        </div>
+
+
+        <div class="opcoes-reflexao">
+
+            <button
+                type="button"
+                class="reflexao"
+                data-resultado="😊 Foi tranquilo"
+            >
+                😊 Foi tranquilo
+            </button>
+
+
+            <button
+                type="button"
+                class="reflexao"
+                data-resultado="🙂 Foi bom"
+            >
+                🙂 Foi bom
+            </button>
+
+
+            <button
+                type="button"
+                class="reflexao"
+                data-resultado="😐 Tive algumas distrações"
+            >
+                😐 Tive algumas distrações
+            </button>
+
+
+            <button
+                type="button"
+                class="reflexao"
+                data-resultado="😵 Foi difícil me concentrar"
+            >
+                😵 Foi difícil me concentrar
+            </button>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="anotacaoFinal">
+                📝 Quer deixar uma anotação?
+            </label>
+
+
+            <textarea
+                id="anotacaoFinal"
+                maxlength="500"
+                placeholder="Escreva algo sobre esse momento..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="botao-principal"
+            onclick="salvarMomento()"
+        >
+            Salvar momento
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         RESULTADO
+    ========================= -->
+
+    <section
+        id="telaResultado"
+        class="card"
+    >
+
+        <div
+            id="resultadoEmoji"
+            class="resultado-emoji"
+        >
+            😊
+        </div>
+
+
+        <h1
+            id="resultadoTitulo"
+            class="resultado-titulo"
+        >
+            Momento registrado!
+        </h1>
+
+
+        <p class="resultado-texto">
+            Você dedicou um momento para realizar
+            sua atividade. Isso já é importante.
+        </p>
+
+
+        <div class="botoes">
+
+            <button
+                type="button"
+                class="botao-principal"
+                onclick="voltarInicio()"
+            >
+                Voltar ao início
+            </button>
+
+
+            <button
+                type="button"
+                class="botao-secundario"
+                onclick="abrirHistoricoResultado()"
+            >
+                📋 Ver histórico
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     MODAL AVISO
+========================= -->
+
+<div
+    id="modalAviso"
+    class="modal"
+>
+
+    <div class="modal-conteudo">
+
+        <div
+            id="avisoIcone"
+            class="modal-icone"
+        >
+            ⚠️
+        </div>
+
+
+        <h2 id="avisoTitulo">
+            Atenção
+        </h2>
+
+
+        <p id="avisoMensagem"></p>
+
+
+        <div class="modal-botoes">
+
+            <button
+                type="button"
+                class="modal-confirmar"
+                onclick="fecharAviso()"
+            >
+                Entendi
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL ENCERRAR
+========================= -->
+
+<div
+    id="modalEncerrar"
+    class="modal"
+>
+
+    <div class="modal-conteudo">
+
+        <div class="modal-icone">
+            ⏹️
+        </div>
+
+
+        <h2>
+            Encerrar esse momento?
+        </h2>
+
+
+        <p>
+            O tempo realizado será salvo e você poderá
+            registrar como foi sua experiência.
+        </p>
+
+
+        <div class="modal-botoes">
+
+            <button
+                type="button"
+                class="modal-cancelar"
+                onclick="fecharEncerrar()"
+            >
+                Continuar
+            </button>
+
+
+            <button
+                type="button"
+                class="modal-confirmar"
+                onclick="confirmarEncerramento()"
+            >
+                Encerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL SAIR
+========================= -->
+
+<div
+    id="modalSair"
+    class="modal"
+>
+
+    <div class="modal-conteudo">
+
+        <div class="modal-icone">
+            ↩️
+        </div>
+
+
+        <h2>
+            Sair do foco?
+        </h2>
+
+
+        <p>
+            O momento atual será encerrado e não será
+            salvo no histórico.
+        </p>
+
+
+        <div class="modal-botoes">
+
+            <button
+                type="button"
+                class="modal-cancelar"
+                onclick="fecharSair()"
+            >
+                Continuar
+            </button>
+
+
+            <button
+                type="button"
+                class="modal-perigo"
+                onclick="confirmarSair()"
+            >
+                Sair
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL CONFIRMAÇÃO
+========================= -->
+
+<div
+    id="modalConfirmacao"
+    class="modal"
+>
+
+    <div class="modal-conteudo">
+
+        <div
+            id="confirmacaoIcone"
+            class="modal-icone"
+        >
+            🗑️
+        </div>
+
+
+        <h2 id="confirmacaoTitulo">
+            Deseja apagar esse momento?
+        </h2>
+
+
+        <p id="confirmacaoMensagem">
+            Esse registro será removido do seu histórico.
+        </p>
+
+
+        <div class="modal-botoes">
+
+            <button
+                type="button"
+                class="modal-cancelar"
+                onclick="fecharConfirmacao()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="modal-perigo"
+                onclick="confirmarAcao()"
+            >
+                Apagar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL EDITAR
+========================= -->
+
+<div
+    id="modalEditar"
+    class="modal"
+>
+
+    <div class="modal-conteudo">
+
+        <div class="modal-icone">
+            ✏️
+        </div>
+
+
+        <h2>
+            Editar momento
+        </h2>
+
+
+        <p>
+            Aqui você pode alterar as informações
+            do seu registro.
+        </p>
+
+
+        <div class="campo">
+
+            <label for="editarAtividade">
+                📝 Atividade
+            </label>
+
+
+            <input
+                type="text"
+                id="editarAtividade"
+                maxlength="150"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="editarResultado">
+                😊 Como foi?
+            </label>
+
+
+            <select id="editarResultado">
+
+                <option value="😊 Foi tranquilo">
+                    😊 Foi tranquilo
+                </option>
+
+
+                <option value="🙂 Foi bom">
+                    🙂 Foi bom
+                </option>
+
+
+                <option value="😐 Tive algumas distrações">
+                    😐 Tive algumas distrações
+                </option>
+
+
+                <option value="😵 Foi difícil me concentrar">
+                    😵 Foi difícil me concentrar
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="editarAnotacao">
+                📝 Anotação
+            </label>
+
+
+            <textarea
+                id="editarAnotacao"
+                maxlength="500"
+            ></textarea>
+
+        </div>
+
+
+        <div class="modal-botoes">
+
+            <button
+                type="button"
+                class="modal-cancelar"
+                onclick="fecharEdicao()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="modal-confirmar"
+                onclick="salvarEdicao()"
+            >
+                Salvar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL DETALHES
+========================= -->
+
+<div
+    id="modalDetalhes"
+    class="modal"
+>
+
+    <div class="modal-conteudo">
+
+        <div class="modal-icone">
+            📋
+        </div>
+
+
+        <h2>
+            Momento registrado
+        </h2>
+
+
+        <div
+            id="detalhesHistorico"
+            class="detalhes-historico"
+        ></div>
+
+
+        <div class="modal-botoes">
+
+            <button
+                type="button"
+                class="modal-confirmar"
+                onclick="fecharDetalhesHistorico()"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================
+       CONFIGURAÇÃO
+    ========================= */
+
+    const CHAVE_HISTORICO =
+        "tudoBemAiFocoHistorico";
+
+
+    let objetivoSelecionado = "";
+
+    let tempoSelecionado = 0;
+
+    let tempoTotal = 0;
+
+    let tempoRestante = 0;
+
+    let intervalo = null;
+
+    let focoAtivo = false;
+
+    let emPausa = false;
+
+    let resultadoSelecionado = "";
+
+    let distracoesAtuais = [];
+
+    let motivoDistracaoSelecionado = "";
+
+    let historico =
+        carregarHistorico();
+
+
+    const telaInicial =
+        document.getElementById(
+            "telaInicial"
+        );
+
+
+    const telaFoco =
+        document.getElementById(
+            "telaFoco"
+        );
+
+
+    const telaReflexao =
+        document.getElementById(
+            "telaReflexao"
+        );
+
+
+    const telaResultado =
+        document.getElementById(
+            "telaResultado"
+        );
+
+
+    const historicoArea =
+        document.getElementById(
+            "historicoArea"
+        );
+
+
+    const cronometro =
+        document.getElementById(
+            "cronometro"
+        );
+
+
+    const statusFoco =
+        document.getElementById(
+            "statusFoco"
+        );
+
+
+    const botaoVoltar =
+        document.querySelector(
+            ".voltar"
+        );
+
+
+    /* =========================
+       OBJETIVO
+    ========================= */
+
+    document
+        .getElementById(
+            "objetivo"
+        )
+        .addEventListener(
+            "change",
+            function() {
+
+                objetivoSelecionado =
+                    this.value;
+
+            }
+        );
+
+
+    /* =========================
+       TEMPOS RÁPIDOS
+    ========================= */
+
+    document
+        .querySelectorAll(
+            ".tempo"
+        )
+        .forEach(
+            botao => {
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        document
+                            .querySelectorAll(
+                                ".tempo"
+                            )
+                            .forEach(
+                                item => {
+
+                                    item.classList
+                                        .remove(
+                                            "selecionado"
+                                        );
+
+                                }
+                            );
+
+
+                        botao.classList
+                            .add(
+                                "selecionado"
+                            );
+
+
+                        tempoSelecionado =
+                            Number(
+                                botao.dataset
+                                    .minutos
+                            ) * 60;
+
+
+                        document
+                            .getElementById(
+                                "horas"
+                            )
+                            .value =
+                                0;
+
+
+                        document
+                            .getElementById(
+                                "minutos"
+                            )
+                            .value =
+                                0;
+
+
+                        document
+                            .getElementById(
+                                "segundos"
+                            )
+                            .value =
+                                0;
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =========================
+       TEMPO PERSONALIZADO
+    ========================= */
+
+    [
+        "horas",
+        "minutos",
+        "segundos"
+    ]
+        .forEach(
+            id => {
+
+                document
+                    .getElementById(
+                        id
+                    )
+                    .addEventListener(
+                        "input",
+                        () => {
+
+                            document
+                                .querySelectorAll(
+                                    ".tempo"
+                                )
+                                .forEach(
+                                    item => {
+
+                                        item.classList
+                                            .remove(
+                                                "selecionado"
+                                            );
+
+                                    }
+                                );
+
+
+                            const horas =
+                                Math.max(
+                                    0,
+                                    Number(
+                                        document
+                                            .getElementById(
+                                                "horas"
+                                            )
+                                            .value
+                                    ) || 0
+                                );
+
+
+                            const minutos =
+                                Math.max(
+                                    0,
+                                    Number(
+                                        document
+                                            .getElementById(
+                                                "minutos"
+                                            )
+                                            .value
+                                    ) || 0
+                                );
+
+
+                            const segundos =
+                                Math.max(
+                                    0,
+                                    Number(
+                                        document
+                                            .getElementById(
+                                                "segundos"
+                                            )
+                                            .value
+                                    ) || 0
+                                );
+
+
+                            tempoSelecionado =
+                                (
+                                    horas * 3600
+                                ) +
+                                (
+                                    minutos * 60
+                                ) +
+                                segundos;
+
+                        }
+                    );
+
+            }
+        );
+
+
+    /* =========================
+       HISTÓRICO
+    ========================= */
+
+    function carregarHistorico() {
+
+        try {
+
+            const salvo =
+                localStorage.getItem(
+                    CHAVE_HISTORICO
+                );
+
+
+            return salvo
+                ? JSON.parse(salvo)
+                : [];
+
+        } catch (erro) {
+
+            return [];
+
+        }
+
+    }
+
+
+    function salvarHistorico() {
+
+        localStorage.setItem(
+            CHAVE_HISTORICO,
+            JSON.stringify(
+                historico
+            )
+        );
+
+    }
+
+
+    function abrirHistorico() {
+
+        telaInicial.style.display =
+            "none";
+
+        telaFoco.style.display =
+            "none";
+
+        telaReflexao.style.display =
+            "none";
+
+        telaResultado.style.display =
+            "none";
+
+        historicoArea.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "none";
+
+
+        renderizarHistorico();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function abrirHistoricoResultado() {
+
+        telaResultado.style.display =
+            "none";
+
+        telaFoco.style.display =
+            "none";
+
+        telaReflexao.style.display =
+            "none";
+
+        historicoArea.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "none";
+
+
+        renderizarHistorico();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function fecharHistorico() {
+
+        historicoArea.style.display =
+            "none";
+
+        telaInicial.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "inline-flex";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function renderizarHistorico() {
+
+        const lista =
+            document.getElementById(
+                "listaHistorico"
+            );
+
+
+        lista.innerHTML = "";
+
+
+        if (
+            historico.length === 0
+        ) {
+
+            lista.innerHTML = `
+
+                <div class="historico-vazio">
+
+                    <div
+                        style="
+                            font-size:40px;
+                            margin-bottom:10px;
+                        "
+                    >
+                        📋
+                    </div>
+
+                    <p>
+                        Você ainda não possui
+                        momentos registrados.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        historico
+            .slice()
+            .reverse()
+            .forEach(
+                (
+                    item,
+                    indiceReverso
+                ) => {
+
+                    const indiceReal =
+                        historico.length -
+                        1 -
+                        indiceReverso;
+
+
+                    const atividade =
+                        criarPreview(
+                            item.atividade,
+                            45
+                        );
+
+
+                    const anotacao =
+                        criarPreview(
+                            item.anotacao,
+                            70
+                        );
+
+
+                    const objetivo =
+                        criarPreview(
+                            item.objetivo,
+                            30
+                        );
+
+
+                    const data =
+                        formatarData(
+                            item.data
+                        );
+
+
+                    let distracoesHTML =
+                        "";
+
+
+                    if (
+                        item.distracoes &&
+                        item.distracoes.length > 0
+                    ) {
+
+                        distracoesHTML = `
+
+                            <span
+                                class="
+                                    historico-tag
+                                "
+                            >
+
+                                😵
+                                ${item.distracoes.length}
+
+                                ${
+                                    item.distracoes
+                                        .length === 1
+                                        ? "distração"
+                                        : "distrações"
+                                }
+
+                            </span>
+
+                        `;
+
+                    }
+
+
+                    let anotacaoHTML =
+                        "";
+
+
+                    if (
+                        item.anotacao
+                    ) {
+
+                        anotacaoHTML = `
+
+                            <div
+                                class="
+                                    historico-anotacao
+                                "
+                            >
+
+                                📝
+                                ${escaparHTML(
+                                    anotacao
+                                )}
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    lista.innerHTML += `
+
+                        <div
+                            class="
+                                historico-item
+                            "
+                            onclick="
+                                abrirDetalhesHistorico(
+                                    ${indiceReal}
+                                )
+                            "
+                        >
+
+                            <div
+                                class="
+                                    historico-topo
+                                "
+                            >
+
+                                <div
+                                    class="
+                                        historico-atividade
+                                    "
+                                >
+
+                                    🎯
+                                    ${escaparHTML(
+                                        atividade
+                                    )}
+
+                                </div>
+
+
+                                <div
+                                    class="
+                                        historico-data
+                                    "
+                                >
+
+                                    ${data}
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="
+                                    historico-info
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        historico-tag
+                                    "
+                                >
+
+                                    📌
+                                    ${escaparHTML(
+                                        objetivo
+                                    )}
+
+                                </span>
+
+
+                                <span
+                                    class="
+                                        historico-tag
+                                    "
+                                >
+
+                                    ⏱️
+                                    ${formatarTempo(
+                                        item.tempoTotal
+                                    )}
+
+                                </span>
+
+
+                                <span
+                                    class="
+                                        historico-tag
+                                    "
+                                >
+
+                                    ${escaparHTML(
+                                        item.resultado
+                                    )}
+
+                                </span>
+
+
+                                ${distracoesHTML}
+
+                            </div>
+
+
+                            ${anotacaoHTML}
+
+
+                            <div
+                                class="
+                                    historico-acoes
+                                "
+                            >
+
+                                <button
+                                    type="button"
+                                    class="editar"
+                                    onclick="
+                                        event.stopPropagation();
+
+                                        editarHistorico(
+                                            ${indiceReal}
+                                        );
+                                    "
+                                >
+                                    ✏️ Editar
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="apagar"
+                                    onclick="
+                                        event.stopPropagation();
+
+                                        apagarHistorico(
+                                            ${indiceReal}
+                                        );
+                                    "
+                                >
+                                    🗑️ Apagar
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+    }
+
+
+    function criarPreview(
+        texto,
+        limite
+    ) {
+
+        if (!texto) {
+            return "";
+        }
+
+
+        texto =
+            String(texto)
+                .trim();
+
+
+        if (
+            texto.length <= limite
+        ) {
+
+            return texto;
+
+        }
+
+
+        return (
+            texto
+                .substring(
+                    0,
+                    limite
+                )
+                .trim()
+            + "..."
+        );
+
+    }
+
+
+    function escaparHTML(
+        texto
+    ) {
+
+        if (!texto) {
+            return "";
+        }
+
+
+        return String(texto)
+
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+
+            .replace(
+                /</g,
+                "&lt;"
+            )
+
+            .replace(
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    function formatarData(
+        data
+    ) {
+
+        if (!data) {
+            return "";
+        }
+
+
+        const dataObj =
+            new Date(data);
+
+
+        return dataObj.toLocaleDateString(
+            "pt-BR"
+        );
+
+    }
+
+
+    function formatarDataCompleta(
+        data
+    ) {
+
+        if (!data) {
+            return "Não informado";
+        }
+
+
+        const dataObj =
+            new Date(data);
+
+
+        return dataObj.toLocaleString(
+            "pt-BR",
+            {
+                dateStyle:
+                    "full",
+
+                timeStyle:
+                    "short"
+            }
+        );
+
+    }
+
+
+    function formatarTempo(
+        segundos
+    ) {
+
+        segundos =
+            Math.max(
+                0,
+                Number(segundos) || 0
+            );
+
+
+        const horas =
+            Math.floor(
+                segundos / 3600
+            );
+
+
+        const minutos =
+            Math.floor(
+                (segundos % 3600) / 60
+            );
+
+
+        const segundosRestantes =
+            segundos % 60;
+
+
+        return [
+
+            horas,
+
+            minutos,
+
+            segundosRestantes
+
+        ]
+            .map(
+                numero =>
+                    String(numero)
+                        .padStart(
+                            2,
+                            "0"
+                        )
+            )
+            .join(":");
+
+    }
+
+
+    /* =========================
+       DETALHES
+    ========================= */
+
+    function abrirDetalhesHistorico(
+        indice
+    ) {
+
+        const item =
+            historico[indice];
+
+
+        if (!item) {
+            return;
+        }
+
+
+        let distracoesHTML =
+            "";
+
+
+        if (
+            item.distracoes &&
+            item.distracoes.length > 0
+        ) {
+
+            distracoesHTML = `
+
+                <div
+                    class="
+                        detalhe-item
+                    "
+                >
+
+                    <span
+                        class="
+                            detalhe-titulo
+                        "
+                    >
+                        😵 Distrações
+                    </span>
+
+
+                    ${item.distracoes
+                        .map(
+                            (
+                                distracao,
+                                numero
+                            ) => `
+
+                                <div
+                                    class="
+                                        detalhe-distracao
+                                    "
+                                >
+
+                                    <strong>
+                                        Distração
+                                        ${numero + 1}
+                                    </strong>
+
+
+                                    <br>
+
+
+                                    📌 Motivo:
+
+                                    ${escaparHTML(
+                                        distracao.motivo ||
+                                        "Não informado"
+                                    )}
+
+
+                                    ${
+                                        distracao.comentario
+                                            ? `
+                                                <br>
+
+                                                💬 Comentário:
+
+                                                ${escaparHTML(
+                                                    distracao.comentario
+                                                )}
+                                            `
+                                            : ""
+                                    }
+
+                                </div>
+
+                            `
+                        )
+                        .join("")}
+
+                </div>
+
+            `;
+
+        } else {
+
+            distracoesHTML = `
+
+                <div
+                    class="
+                        detalhe-item
+                    "
+                >
+
+                    <span
+                        class="
+                            detalhe-titulo
+                        "
+                    >
+                        😵 Distrações
+                    </span>
+
+
+                    Nenhuma distração registrada.
+
+                </div>
+
+            `;
+
+        }
+
+
+        const detalhes =
+            document.getElementById(
+                "detalhesHistorico"
+            );
+
+
+        detalhes.innerHTML = `
+
+            <div
+                class="
+                    detalhe-item
+                "
+            >
+
+                <span
+                    class="
+                        detalhe-titulo
+                    "
+                >
+                    🎯 Atividade
+                </span>
+
+
+                ${escaparHTML(
+                    item.atividade ||
+                    "Não informado"
+                )}
+
+            </div>
+
+
+            <div
+                class="
+                    detalhe-item
+                "
+            >
+
+                <span
+                    class="
+                        detalhe-titulo
+                    "
+                >
+                    📌 Objetivo
+                </span>
+
+
+                ${escaparHTML(
+                    item.objetivo ||
+                    "Não informado"
+                )}
+
+            </div>
+
+
+            <div
+                class="
+                    detalhe-item
+                "
+            >
+
+                <span
+                    class="
+                        detalhe-titulo
+                    "
+                >
+                    ⏱️ Tempo realizado
+                </span>
+
+
+                ${formatarTempo(
+                    item.tempoTotal
+                )}
+
+            </div>
+
+
+            <div
+                class="
+                    detalhe-item
+                "
+            >
+
+                <span
+                    class="
+                        detalhe-titulo
+                    "
+                >
+                    😊 Como foi
+                </span>
+
+
+                ${escaparHTML(
+                    item.resultado ||
+                    "Não informado"
+                )}
+
+            </div>
+
+
+            ${distracoesHTML}
+
+
+            <div
+                class="
+                    detalhe-item
+                "
+            >
+
+                <span
+                    class="
+                        detalhe-titulo
+                    "
+                >
+                    📝 Anotação
+                </span>
+
+
+                ${
+                    item.anotacao
+                        ? escaparHTML(
+                            item.anotacao
+                        )
+                        : "Nenhuma anotação foi adicionada."
+                }
+
+            </div>
+
+
+            <div
+                class="
+                    detalhe-item
+                "
+            >
+
+                <span
+                    class="
+                        detalhe-titulo
+                    "
+                >
+                    📅 Data
+                </span>
+
+
+                ${formatarDataCompleta(
+                    item.data
+                )}
+
+            </div>
+
+        `;
+
+
+        document
+            .getElementById(
+                "modalDetalhes"
+            )
+            .classList
+            .add(
+                "aberto"
+            );
+
+    }
+
+
+    function fecharDetalhesHistorico() {
+
+        document
+            .getElementById(
+                "modalDetalhes"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+    }
+
+
+    /* =========================
+       INICIAR FOCO
+    ========================= */
+
+    function iniciarFoco() {
+
+        const atividade =
+            document
+                .getElementById(
+                    "atividade"
+                )
+                .value
+                .trim();
+
+
+        const objetivo =
+            document
+                .getElementById(
+                    "objetivo"
+                )
+                .value;
+
+
+        objetivoSelecionado =
+            objetivo;
+
+
+        /* Calcula o tempo personalizado */
+
+        const horas =
+            Math.max(
+                0,
+                Number(
+                    document
+                        .getElementById(
+                            "horas"
+                        )
+                        .value
+                ) || 0
+            );
+
+
+        const minutos =
+            Math.max(
+                0,
+                Number(
+                    document
+                        .getElementById(
+                            "minutos"
+                        )
+                        .value
+                ) || 0
+            );
+
+
+        const segundos =
+            Math.max(
+                0,
+                Number(
+                    document
+                        .getElementById(
+                            "segundos"
+                        )
+                        .value
+                ) || 0
+            );
+
+
+        const tempoPersonalizado =
+            (
+                horas * 3600
+            ) +
+            (
+                minutos * 60
+            ) +
+            segundos;
+
+
+        /*
+            Se houver um tempo personalizado,
+            ele tem prioridade.
+        */
+
+        if (
+            tempoPersonalizado > 0
+        ) {
+
+            tempoSelecionado =
+                tempoPersonalizado;
+
+        }
+
+
+        if (
+            !objetivoSelecionado
+        ) {
+
+            mostrarAviso(
+                "Escolha uma opção",
+                "Antes de começar, escolha o que você precisa fazer.",
+                "🎯"
+            );
+
+            return;
+
+        }
+
+
+        if (!atividade) {
+
+            mostrarAviso(
+                "Digite sua atividade",
+                "Escreva qual atividade você pretende realizar.",
+                "📝"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !tempoSelecionado ||
+            tempoSelecionado <= 0
+        ) {
+
+            mostrarAviso(
+                "Escolha um tempo",
+                "Escolha um dos tempos rápidos ou personalize horas, minutos e segundos.",
+                "⏱️"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            minutos > 59 ||
+            segundos > 59
+        ) {
+
+            mostrarAviso(
+                "Tempo inválido",
+                "Minutos e segundos devem ficar entre 0 e 59.",
+                "⏱️"
+            );
+
+            return;
+
+        }
+
+
+        tempoTotal =
+            tempoSelecionado;
+
+
+        tempoRestante =
+            tempoTotal;
+
+
+        focoAtivo =
+            true;
+
+
+        emPausa =
+            false;
+
+
+        distracoesAtuais =
+            [];
+
+
+        document
+            .getElementById(
+                "atividadeAtual"
+            )
+            .textContent =
+                atividade;
+
+
+        document
+            .getElementById(
+                "objetivoAtual"
+            )
+            .textContent =
+                "🎯 " +
+                objetivoSelecionado;
+
+
+        telaInicial.style.display =
+            "none";
+
+
+        historicoArea.style.display =
+            "none";
+
+
+        telaReflexao.style.display =
+            "none";
+
+
+        telaResultado.style.display =
+            "none";
+
+
+        telaFoco.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "none";
+
+
+        document
+            .getElementById(
+                "areaPausa"
+            )
+            .style.display =
+                "none";
+
+
+        document
+            .getElementById(
+                "areaDistracao"
+            )
+            .style.display =
+                "none";
+
+
+        statusFoco.textContent =
+            "Concentre-se no que está fazendo.";
+
+
+        atualizarCronometro();
+
+
+        iniciarContagem();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =========================
+       CONTADOR
+    ========================= */
+
+    function iniciarContagem() {
+
+        clearInterval(
+            intervalo
+        );
+
+
+        intervalo =
+            setInterval(
+                () => {
+
+                    if (
+                        !focoAtivo
+                    ) {
+                        return;
+                    }
+
+
+                    if (
+                        emPausa
+                    ) {
+                        return;
+                    }
+
+
+                    tempoRestante--;
+
+
+                    atualizarCronometro();
+
+
+                    if (
+                        tempoRestante <= 0
+                    ) {
+
+                        tempoRestante =
+                            0;
+
+
+                        atualizarCronometro();
+
+
+                        clearInterval(
+                            intervalo
+                        );
+
+
+                        focoAtivo =
+                            false;
+
+
+                        emPausa =
+                            false;
+
+
+                        mostrarReflexao();
+
+                    }
+
+                },
+                1000
+            );
+
+    }
+
+
+    function atualizarCronometro() {
+
+        cronometro.textContent =
+            formatarTempo(
+                tempoRestante
+            );
+
+    }
+
+
+    /* =========================
+       PAUSA
+    ========================= */
+
+    function fazerPausa() {
+
+        if (
+            !focoAtivo
+        ) {
+            return;
+        }
+
+
+        emPausa =
+            true;
+
+
+        clearInterval(
+            intervalo
+        );
+
+
+        statusFoco.textContent =
+            "Seu momento está pausado.";
+
+
+        document
+            .getElementById(
+                "areaDistracao"
+            )
+            .style.display =
+                "none";
+
+
+        document
+            .getElementById(
+                "areaPausa"
+            )
+            .style.display =
+                "block";
+
+    }
+
+
+    function continuarFoco() {
+
+        if (
+            !focoAtivo
+        ) {
+            return;
+        }
+
+
+        emPausa =
+            false;
+
+
+        document
+            .getElementById(
+                "areaPausa"
+            )
+            .style.display =
+                "none";
+
+
+        document
+            .getElementById(
+                "areaDistracao"
+            )
+            .style.display =
+                "none";
+
+
+        statusFoco.textContent =
+            "Concentre-se no que está fazendo.";
+
+
+        atualizarCronometro();
+
+
+        iniciarContagem();
+
+    }
+
+
+    /* =========================
+       DISTRAÇÃO
+    ========================= */
+
+    function abrirDistracao() {
+
+        if (
+            !focoAtivo
+        ) {
+            return;
+        }
+
+
+        emPausa =
+            true;
+
+
+        clearInterval(
+            intervalo
+        );
+
+
+        statusFoco.textContent =
+            "Seu momento está pausado.";
+
+
+        motivoDistracaoSelecionado =
+            "";
+
+
+        document
+            .querySelectorAll(
+                ".motivo"
+            )
+            .forEach(
+                item => {
+
+                    item.classList
+                        .remove(
+                            "selecionado"
+                        );
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "comentarioDistracao"
+            )
+            .value =
+                "";
+
+
+        document
+            .getElementById(
+                "areaPausa"
+            )
+            .style.display =
+                "none";
+
+
+        document
+            .getElementById(
+                "areaDistracao"
+            )
+            .style.display =
+                "block";
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".motivo"
+        )
+        .forEach(
+            botao => {
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        document
+                            .querySelectorAll(
+                                ".motivo"
+                            )
+                            .forEach(
+                                item => {
+
+                                    item.classList
+                                        .remove(
+                                            "selecionado"
+                                        );
+
+                                }
+                            );
+
+
+                        botao.classList
+                            .add(
+                                "selecionado"
+                            );
+
+
+                        motivoDistracaoSelecionado =
+                            botao.dataset
+                                .motivo;
+
+                    }
+                );
+
+            }
+        );
+
+
+    function registrarDistracao() {
+
+        if (
+            !motivoDistracaoSelecionado
+        ) {
+
+            mostrarAviso(
+                "Escolha uma opção",
+                "Escolha o que tirou sua atenção ou clique em continuar depois.",
+                "😵"
+            );
+
+            return;
+
+        }
+
+
+        const comentario =
+            document
+                .getElementById(
+                    "comentarioDistracao"
+                )
+                .value
+                .trim();
+
+
+        distracoesAtuais.push({
+
+            motivo:
+                motivoDistracaoSelecionado,
+
+            comentario:
+                comentario
+
+        });
+
+
+        continuarFoco();
+
+    }
+
+
+    function cancelarDistracao() {
+
+        continuarFoco();
+
+    }
+
+
+    /* =========================
+       ENCERRAR
+    ========================= */
+
+    function encerrarFoco() {
+
+        if (
+            !focoAtivo
+        ) {
+            return;
+        }
+
+
+        emPausa =
+            true;
+
+
+        clearInterval(
+            intervalo
+        );
+
+
+        document
+            .getElementById(
+                "modalEncerrar"
+            )
+            .classList
+            .add(
+                "aberto"
+            );
+
+    }
+
+
+    function fecharEncerrar() {
+
+        document
+            .getElementById(
+                "modalEncerrar"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+
+        if (
+            focoAtivo
+        ) {
+
+            emPausa =
+                false;
+
+
+            iniciarContagem();
+
+        }
+
+    }
+
+
+    function confirmarEncerramento() {
+
+        document
+            .getElementById(
+                "modalEncerrar"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+
+        clearInterval(
+            intervalo
+        );
+
+
+        focoAtivo =
+            false;
+
+
+        emPausa =
+            false;
+
+
+        mostrarReflexao();
+
+    }
+
+
+    /* =========================
+       REFLEXÃO
+    ========================= */
+
+    document
+        .querySelectorAll(
+            ".reflexao"
+        )
+        .forEach(
+            botao => {
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        document
+                            .querySelectorAll(
+                                ".reflexao"
+                            )
+                            .forEach(
+                                item => {
+
+                                    item.classList
+                                        .remove(
+                                            "selecionado"
+                                        );
+
+                                }
+                            );
+
+
+                        botao.classList
+                            .add(
+                                "selecionado"
+                            );
+
+
+                        resultadoSelecionado =
+                            botao.dataset
+                                .resultado;
+
+                    }
+                );
+
+            }
+        );
+
+
+    function mostrarReflexao() {
+
+        clearInterval(
+            intervalo
+        );
+
+
+        focoAtivo =
+            false;
+
+
+        emPausa =
+            false;
+
+
+        telaFoco.style.display =
+            "none";
+
+
+        telaInicial.style.display =
+            "none";
+
+
+        historicoArea.style.display =
+            "none";
+
+
+        telaResultado.style.display =
+            "none";
+
+
+        telaReflexao.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "none";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =========================
+       SALVAR MOMENTO
+    ========================= */
+
+    function salvarMomento() {
+
+        if (
+            !resultadoSelecionado
+        ) {
+
+            mostrarAviso(
+                "Escolha uma resposta",
+                "Escolha uma opção para registrar como foi seu foco.",
+                "💙"
+            );
+
+            return;
+
+        }
+
+
+        const atividade =
+            document
+                .getElementById(
+                    "atividadeAtual"
+                )
+                .textContent;
+
+
+        const anotacao =
+            document
+                .getElementById(
+                    "anotacaoFinal"
+                )
+                .value
+                .trim();
+
+
+        const tempoRealizado =
+            tempoTotal -
+            tempoRestante;
+
+
+        const novoMomento = {
+
+            id:
+                Date.now(),
+
+            data:
+                new Date()
+                    .toISOString(),
+
+            objetivo:
+                objetivoSelecionado,
+
+            atividade:
+                atividade,
+
+            tempoTotal:
+                tempoRealizado,
+
+            resultado:
+                resultadoSelecionado,
+
+            anotacao:
+                anotacao,
+
+            distracoes:
+                distracoesAtuais
+
+        };
+
+
+        historico.push(
+            novoMomento
+        );
+
+
+        salvarHistorico();
+
+
+        mostrarResultado();
+
+    }
+
+
+    /* =========================
+       RESULTADO
+    ========================= */
+
+    function mostrarResultado() {
+
+        telaReflexao.style.display =
+            "none";
+
+
+        telaResultado.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "none";
+
+
+        let emoji =
+            "😊";
+
+
+        if (
+            resultadoSelecionado
+                .includes(
+                    "Foi bom"
+                )
+        ) {
+
+            emoji =
+                "🙂";
+
+        }
+
+
+        if (
+            resultadoSelecionado
+                .includes(
+                    "distrações"
+                )
+        ) {
+
+            emoji =
+                "😐";
+
+        }
+
+
+        if (
+            resultadoSelecionado
+                .includes(
+                    "difícil"
+                )
+        ) {
+
+            emoji =
+                "😵";
+
+        }
+
+
+        document
+            .getElementById(
+                "resultadoEmoji"
+            )
+            .textContent =
+                emoji;
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =========================
+       VOLTAR AO INÍCIO
+    ========================= */
+
+    function voltarInicio() {
+
+        clearInterval(
+            intervalo
+        );
+
+
+        focoAtivo =
+            false;
+
+
+        emPausa =
+            false;
+
+
+        telaResultado.style.display =
+            "none";
+
+
+        telaReflexao.style.display =
+            "none";
+
+
+        historicoArea.style.display =
+            "none";
+
+
+        telaFoco.style.display =
+            "none";
+
+
+        telaInicial.style.display =
+            "block";
+
+
+        botaoVoltar.style.display =
+            "inline-flex";
+
+
+        limparPreparacao();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function limparPreparacao() {
+
+        objetivoSelecionado =
+            "";
+
+
+        tempoSelecionado =
+            0;
+
+
+        document
+            .getElementById(
+                "objetivo"
+            )
+            .value =
+                "";
+
+
+        document
+            .getElementById(
+                "atividade"
+            )
+            .value =
+                "";
+
+
+        document
+            .getElementById(
+                "anotacaoFinal"
+            )
+            .value =
+                "";
+
+
+        document
+            .getElementById(
+                "horas"
+            )
+            .value =
+                0;
+
+
+        document
+            .getElementById(
+                "minutos"
+            )
+            .value =
+                0;
+
+
+        document
+            .getElementById(
+                "segundos"
+            )
+            .value =
+                0;
+
+
+        document
+            .querySelectorAll(
+                ".tempo"
+            )
+            .forEach(
+                item => {
+
+                    item.classList
+                        .remove(
+                            "selecionado"
+                        );
+
+                }
+            );
+
+
+        document
+            .querySelectorAll(
+                ".reflexao"
+            )
+            .forEach(
+                item => {
+
+                    item.classList
+                        .remove(
+                            "selecionado"
+                        );
+
+                }
+            );
+
+
+        resultadoSelecionado =
+            "";
+
+    }
+
+
+    /* =========================
+       APAGAR
+    ========================= */
+
+    function apagarHistorico(
+        indice
+    ) {
+
+        const item =
+            historico[indice];
+
+
+        if (!item) {
+            return;
+        }
+
+
+        abrirConfirmacao(
+
+            "Deseja apagar esse momento?",
+
+            "Esse registro será removido do seu histórico.",
+
+            "🗑️",
+
+            () => {
+
+                historico.splice(
+                    indice,
+                    1
+                );
+
+
+                salvarHistorico();
+
+
+                renderizarHistorico();
+
+            }
+
+        );
+
+    }
+
+
+    /* =========================
+       EDITAR
+    ========================= */
+
+    function editarHistorico(
+        indice
+    ) {
+
+        const item =
+            historico[indice];
+
+
+        if (!item) {
+            return;
+        }
+
+
+        document
+            .getElementById(
+                "editarAtividade"
+            )
+            .value =
+                item.atividade ||
+                "";
+
+
+        document
+            .getElementById(
+                "editarAnotacao"
+            )
+            .value =
+                item.anotacao ||
+                "";
+
+
+        document
+            .getElementById(
+                "editarResultado"
+            )
+            .value =
+                item.resultado ||
+                "😊 Foi tranquilo";
+
+
+        document
+            .getElementById(
+                "modalEditar"
+            )
+            .dataset
+            .indice =
+                indice;
+
+
+        document
+            .getElementById(
+                "modalEditar"
+            )
+            .classList
+            .add(
+                "aberto"
+            );
+
+    }
+
+
+    function salvarEdicao() {
+
+        const modal =
+            document.getElementById(
+                "modalEditar"
+            );
+
+
+        const indice =
+            Number(
+                modal.dataset.indice
+            );
+
+
+        if (
+            Number.isNaN(indice) ||
+            !historico[indice]
+        ) {
+
+            return;
+
+        }
+
+
+        const atividade =
+            document
+                .getElementById(
+                    "editarAtividade"
+                )
+                .value
+                .trim();
+
+
+        if (!atividade) {
+
+            mostrarAviso(
+                "Digite uma atividade",
+                "A atividade não pode ficar vazia.",
+                "📝"
+            );
+
+            return;
+
+        }
+
+
+        historico[indice]
+            .atividade =
+                atividade;
+
+
+        historico[indice]
+            .anotacao =
+                document
+                    .getElementById(
+                        "editarAnotacao"
+                    )
+                    .value
+                    .trim();
+
+
+        historico[indice]
+            .resultado =
+                document
+                    .getElementById(
+                        "editarResultado"
+                    )
+                    .value;
+
+
+        salvarHistorico();
+
+
+        modal.classList
+            .remove(
+                "aberto"
+            );
+
+
+        renderizarHistorico();
+
+    }
+
+
+    function fecharEdicao() {
+
+        document
+            .getElementById(
+                "modalEditar"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+    }
+
+
+    /* =========================
+       AVISOS
+    ========================= */
+
+    function mostrarAviso(
+        titulo,
+        mensagem,
+        icone = "⚠️"
+    ) {
+
+        document
+            .getElementById(
+                "avisoTitulo"
+            )
+            .textContent =
+                titulo;
+
+
+        document
+            .getElementById(
+                "avisoMensagem"
+            )
+            .textContent =
+                mensagem;
+
+
+        document
+            .getElementById(
+                "avisoIcone"
+            )
+            .textContent =
+                icone;
+
+
+        document
+            .getElementById(
+                "modalAviso"
+            )
+            .classList
+            .add(
+                "aberto"
+            );
+
+    }
+
+
+    function fecharAviso() {
+
+        document
+            .getElementById(
+                "modalAviso"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+    }
+
+
+    /* =========================
+       CONFIRMAÇÃO
+    ========================= */
+
+    let acaoConfirmacao =
+        null;
+
+
+    function abrirConfirmacao(
+        titulo,
+        mensagem,
+        icone,
+        acao
+    ) {
+
+        document
+            .getElementById(
+                "confirmacaoTitulo"
+            )
+            .textContent =
+                titulo;
+
+
+        document
+            .getElementById(
+                "confirmacaoMensagem"
+            )
+            .textContent =
+                mensagem;
+
+
+        document
+            .getElementById(
+                "confirmacaoIcone"
+            )
+            .textContent =
+                icone;
+
+
+        acaoConfirmacao =
+            acao;
+
+
+        document
+            .getElementById(
+                "modalConfirmacao"
+            )
+            .classList
+            .add(
+                "aberto"
+            );
+
+    }
+
+
+    function fecharConfirmacao() {
+
+        acaoConfirmacao =
+            null;
+
+
+        document
+            .getElementById(
+                "modalConfirmacao"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+    }
+
+
+    function confirmarAcao() {
+
+        const acao =
+            acaoConfirmacao;
+
+
+        fecharConfirmacao();
+
+
+        if (
+            typeof acao ===
+            "function"
+        ) {
+
+            acao();
+
+        }
+
+    }
+
+
+    /* =========================
+       SAIR
+    ========================= */
+
+    function abrirModalSair() {
+
+        document
+            .getElementById(
+                "modalSair"
+            )
+            .classList
+            .add(
+                "aberto"
+            );
+
+    }
+
+
+    function fecharSair() {
+
+        document
+            .getElementById(
+                "modalSair"
+            )
+            .classList
+            .remove(
+                "aberto"
+            );
+
+
+        if (
+            focoAtivo
+        ) {
+
+            emPausa =
+                false;
+
+
+            iniciarContagem();
+
+        }
+
+    }
+
+
+    function confirmarSair() {
+
+        clearInterval(
+            intervalo
+        );
+
+
+        focoAtivo =
+            false;
+
+
+        emPausa =
+            false;
+
+
+        window.location.href =
+            "{{ url_for('dashboard') }}";
+
+    }
+
+
+    /* =========================
+       BOTÃO VOLTAR
+    ========================= */
+
+    botaoVoltar.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                !focoAtivo
+            ) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            emPausa =
+                true;
+
+
+            clearInterval(
+                intervalo
+            );
+
+
+            abrirModalSair();
+
+        }
+    );
+
+
+    /* =========================
+       FECHAR MODAIS
+    ========================= */
+
+    document
+        .querySelectorAll(
+            ".modal"
+        )
+        .forEach(
+            modal => {
+
+                modal.addEventListener(
+                    "click",
+                    event => {
+
+                        if (
+                            event.target !==
+                            modal
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            modal.id ===
+                            "modalAviso"
+                        ) {
+
+                            fecharAviso();
+
+                        }
+
+
+                        if (
+                            modal.id ===
+                            "modalDetalhes"
+                        ) {
+
+                            fecharDetalhesHistorico();
+
+                        }
+
+
+                        if (
+                            modal.id ===
+                            "modalConfirmacao"
+                        ) {
+
+                            fecharConfirmacao();
+
+                        }
+
+
+                        if (
+                            modal.id ===
+                            "modalEditar"
+                        ) {
+
+                            fecharEdicao();
+
+                        }
+
+
+                        if (
+                            modal.id ===
+                            "modalEncerrar"
+                        ) {
+
+                            fecharEncerrar();
+
+                        }
+
+
+                        if (
+                            modal.id ===
+                            "modalSair"
+                        ) {
+
+                            fecharSair();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>

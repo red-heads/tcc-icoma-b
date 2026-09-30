@@ -26,6 +26,29 @@ def dashboard():
     return render_template('dashboard.html')
 
 
+# =========================================================
+# CONTA DO USUÁRIO
+# =========================================================
+
+@app.route("/perfil")
+def perfil():
+    return render_template('conta/perfil.html')
+
+
+@app.route("/configuracoes")
+def configuracoes():
+    return render_template('conta/configuracoes.html')
+
+
+@app.route("/privacidade")
+def privacidade():
+    return render_template('conta/privacidade.html')
+
+
+# =========================================================
+# FERRAMENTAS
+# =========================================================
+
 @app.route("/respiracao")
 def respiracao():
     return render_template('ferramentas/respiracao.html')

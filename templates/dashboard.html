@@ -1175,85 +1175,6 @@
 
 
         /* =========================================================
-           AJUDA PROFISSIONAL
-        ========================================================= */
-
-        .profissional {
-            position: relative;
-
-            min-height: 230px;
-
-            padding:
-                25px
-                390px
-                25px
-                10px;
-        }
-
-
-        .profissional h2 {
-            font-size: 27px;
-
-            margin-bottom: 18px;
-
-            color: #294267;
-
-            font-weight: 400;
-        }
-
-
-        .profissional p {
-            max-width: 480px;
-
-            font-size: 17px;
-
-            line-height: 1.45;
-
-            color: #405577;
-        }
-
-
-        .botao-profissional {
-            margin-top: 18px;
-        }
-
-
-        .imagem-clinica {
-            position: absolute;
-
-            right: 15px;
-            bottom: -5px;
-
-            width: 335px;
-            height: 220px;
-
-            object-fit: contain;
-        }
-
-
-        .confidencial {
-            text-align: center;
-
-            color: #2b9ed4;
-
-            font-size: 17px;
-
-            margin-top: 12px;
-
-            padding-bottom: 5px;
-        }
-
-
-        .escudo {
-            font-size: 21px;
-
-            vertical-align: middle;
-
-            margin-right: 4px;
-        }
-
-
-        /* =========================================================
            MODAL INFORMATIVO
         ========================================================= */
 
@@ -1583,17 +1504,6 @@
             .imagem-calma {
                 width: 270px;
                 height: 205px;
-            }
-
-
-            .profissional {
-                padding-right: 300px;
-            }
-
-
-            .imagem-clinica {
-                width: 280px;
-                height: 195px;
             }
 
 
@@ -2010,62 +1920,6 @@
             }
 
 
-            /* PROFISSIONAL */
-
-            .profissional {
-                min-height: 165px;
-
-                padding:
-                    8px
-                    145px
-                    8px
-                    2px;
-            }
-
-
-            .profissional h2 {
-                font-size: 21px;
-
-                margin-bottom: 12px;
-            }
-
-
-            .profissional p {
-                font-size: 13px;
-
-                line-height: 1.35;
-            }
-
-
-            .botao-profissional {
-                font-size: 13px;
-
-                padding:
-                    8px
-                    12px;
-
-                margin-top: 10px;
-            }
-
-
-            .imagem-clinica {
-                width: 145px;
-
-                height: 120px;
-
-                right: -5px;
-
-                bottom: 0;
-            }
-
-
-            .confidencial {
-                font-size: 14px;
-
-                margin-top: 5px;
-            }
-
-
             /* MODAL INFORMATIVO */
 
             .modal-informativo {
@@ -2240,18 +2094,6 @@
 
             .ferramenta strong {
                 font-size: 12px;
-            }
-
-
-            .profissional {
-                padding-right: 125px;
-            }
-
-
-            .imagem-clinica {
-                width: 125px;
-
-                height: 110px;
             }
 
 
@@ -2951,52 +2793,6 @@
 
     </section>
 
-
-
-    <!-- =========================================================
-         AJUDA PROFISSIONAL
-    ========================================================== -->
-
-    <section class="profissional" id="profissionais">
-
-        <h2>
-            Precisa de ajuda profissional?
-        </h2>
-
-
-        <p>
-            Converse com um psicólogo ou procure clínicas
-            e profissionais perto de você.
-        </p>
-
-
-        <a
-            href="#"
-            class="botao botao-profissional"
-        >
-            Encontrar profissionais
-        </a>
-
-
-        <img
-            src="{{ url_for('static', filename='img/clinica.png') }}"
-            alt="Clínica de saúde"
-            class="imagem-clinica"
-        >
-
-    </section>
-
-
-
-    <div class="confidencial">
-
-        <span class="escudo">
-            🛡️
-        </span>
-
-        Tudo é confidencial e seguro.
-
-    </div>
 
 
 </main>

@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>API de apoio | Tudo bem aí?</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #e8efff 0%,
+                    #eef3ff 100%
+                );
+
+            color: #2c4164;
+
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .pagina {
+
+            width: 100%;
+
+            max-width: none;
+
+            height: 100vh;
+            height: 100dvh;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        /* =========================================
+           CARD DO CHAT
+        ========================================= */
+
+        .chat-card {
+
+            width: 100%;
+
+            height: 100%;
+
+            background: #ffffff;
+
+            border-radius: 0;
+
+            border: none;
+
+            box-shadow: none;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* =========================================
+           CABEÇALHO
+        ========================================= */
+
+        .chat-header {
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            padding:
+                18px
+                28px;
+
+            border-bottom:
+                1px solid #e3ebf5;
+
+            background: #ffffff;
+        }
+
+
+        /* =========================================
+           BOTÃO VOLTAR
+        ========================================= */
+
+        .voltar {
+
+            flex-shrink: 0;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                9px
+                13px;
+
+            background: #ffffff;
+
+            color: #42658f;
+
+            border:
+                1px solid rgba(
+                    120,
+                    155,
+                    205,
+                    0.16
+                );
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 3px 9px rgba(
+                    46,
+                    73,
+                    113,
+                    0.08
+                );
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .voltar:hover {
+
+            transform:
+                translateY(-1px);
+
+            background: #f8fbff;
+
+            box-shadow:
+                0 5px 13px rgba(
+                    46,
+                    73,
+                    113,
+                    0.13
+                );
+        }
+
+
+        /* =========================================
+           GRUPO DO LOGO + TEXTO
+        ========================================= */
+
+        .header-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            min-width: 0;
+        }
+
+
+        .avatar {
+
+            width: 48px;
+            height: 48px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8f3ff,
+                    #d9eaff
+                );
+
+            border-radius: 50%;
+
+            font-size: 24px;
+        }
+
+
+        .header-info {
+
+            min-width: 0;
+        }
+
+
+        .header-info h1 {
+
+            color: #294267;
+
+            font-size: 23px;
+
+            font-weight: 500;
+
+            line-height: 1.2;
+
+            margin-bottom: 3px;
+        }
+
+
+        .header-info p {
+
+            color: #71839a;
+
+            font-size: 14px;
+
+            line-height: 1.3;
+        }
+
+
+        /* =========================================
+           ÁREA DE MENSAGENS
+        ========================================= */
+
+        .chat-body {
+
+            flex: 1;
+
+            min-height: 0;
+
+            overflow-y: auto;
+
+            padding:
+                28px
+                30px
+                20px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #f8fbff 0%,
+                    #f5f9ff 100%
+                );
+        }
+
+
+        /* Barra de rolagem */
+
+        .chat-body::-webkit-scrollbar {
+
+            width: 7px;
+        }
+
+
+        .chat-body::-webkit-scrollbar-track {
+
+            background: transparent;
+        }
+
+
+        .chat-body::-webkit-scrollbar-thumb {
+
+            background: #c5d6eb;
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================================
+           MENSAGENS
+        ========================================= */
+
+        .mensagem {
+
+            display: flex;
+
+            width: 100%;
+
+            margin-bottom: 20px;
+
+            animation:
+                mensagemEntrando
+                0.25s
+                ease;
+        }
+
+
+        @keyframes mensagemEntrando {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(8px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .mensagem.api {
+
+            justify-content: flex-start;
+        }
+
+
+        .mensagem.usuario {
+
+            justify-content: flex-end;
+        }
+
+
+        .mensagem-conjunto {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            gap: 9px;
+
+            max-width: 78%;
+        }
+
+
+        .mensagem.usuario
+        .mensagem-conjunto {
+
+            flex-direction: row-reverse;
+        }
+
+
+        .mensagem-avatar {
+
+            width: 36px;
+            height: 36px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 17px;
+        }
+
+
+        .mensagem.api
+        .mensagem-avatar {
+
+            background: #e2efff;
+        }
+
+
+        .mensagem.usuario
+        .mensagem-avatar {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #76aae7,
+                    #6699dc
+                );
+
+            color: #ffffff;
+        }
+
+
+        .mensagem-balao {
+
+            padding:
+                13px
+                16px;
+
+            border-radius: 15px;
+
+            font-size: 17px;
+
+            line-height: 1.55;
+
+            box-shadow:
+                0 2px 7px rgba(
+                    46,
+                    73,
+                    113,
+                    0.07
+                );
+        }
+
+
+        .mensagem.api
+        .mensagem-balao {
+
+            background: #ffffff;
+
+            color: #405577;
+
+            border:
+                1px solid #e0e9f3;
+
+            border-bottom-left-radius: 4px;
+        }
+
+
+        .mensagem.usuario
+        .mensagem-balao {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #76aae7,
+                    #6699dc
+                );
+
+            color: #ffffff;
+
+            border-bottom-right-radius: 4px;
+        }
+
+
+        /* =========================================
+           ÁREA INFERIOR
+        ========================================= */
+
+        .chat-footer {
+
+            flex-shrink: 0;
+
+            padding:
+                15px
+                24px
+                20px;
+
+            background: #ffffff;
+
+            border-top:
+                1px solid #e3ebf5;
+        }
+
+
+        /* =========================================
+           SUGESTÕES RÁPIDAS
+        ========================================= */
+
+        .sugestoes {
+
+            margin-bottom: 13px;
+        }
+
+
+        .sugestoes-titulo {
+
+            color: #607797;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .sugestoes-lista {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .sugestao {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                8px
+                12px;
+
+            background: #edf5ff;
+
+            border:
+                1px solid #d4e5f7;
+
+            border-radius: 8px;
+
+            color: #42658f;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+
+        .sugestao:hover {
+
+            background: #e3f0ff;
+
+            border-color: #bdd7f1;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================================
+           ÁREA DA BARRA
+        ========================================= */
+
+        .entrada-container {
+
+            position: relative;
+
+            width: 100%;
+        }
+
+
+        /* =========================================
+           MENU DE PERGUNTAS
+
+           ABRE PARA CIMA
+        ========================================= */
+
+        .perguntas-menu {
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom:
+                calc(100% + 8px);
+
+            z-index: 50;
+
+            display: none;
+
+            background: #ffffff;
+
+            border:
+                1px solid #d6e3f1;
+
+            border-radius: 12px;
+
+            padding: 8px;
+
+            box-shadow:
+                0 8px 24px rgba(
+                    46,
+                    73,
+                    113,
+                    0.17
+                );
+
+            max-height: 310px;
+
+            overflow-y: auto;
+
+            animation:
+                menuSubindo
+                0.2s
+                ease;
+        }
+
+
+        .perguntas-menu.aberto {
+
+            display: block;
+        }
+
+
+        @keyframes menuSubindo {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(8px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .perguntas-titulo {
+
+            padding:
+                9px
+                11px
+                8px;
+
+            color: #607797;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        .pergunta {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                11px
+                10px;
+
+            background: transparent;
+
+            border: none;
+
+            border-radius: 8px;
+
+            color: #344f75;
+
+            text-align: left;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            line-height: 1.35;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+
+        .pergunta:hover {
+
+            background: #edf5ff;
+
+            color: #275b95;
+        }
+
+
+        .pergunta-emoji {
+
+            width: 27px;
+
+            flex-shrink: 0;
+
+            text-align: center;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================================
+           BARRA DE ESCOLHA
+        ========================================= */
+
+        .barra-pergunta {
+
+            width: 100%;
+
+            min-height: 54px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 12px;
+
+            padding:
+                10px
+                14px;
+
+            background: #ffffff;
+
+            border:
+                1px solid #cbdcf0;
+
+            border-radius: 10px;
+
+            color: #7890ad;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 2px 7px rgba(
+                    46,
+                    73,
+                    113,
+                    0.06
+                );
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .barra-pergunta:hover {
+
+            background: #fbfdff;
+
+            border-color: #78a7dc;
+
+            box-shadow:
+                0 4px 12px rgba(
+                    74,
+                    126,
+                    191,
+                    0.12
+                );
+        }
+
+
+        .barra-pergunta.aberta {
+
+            border-color: #76aae7;
+
+            box-shadow:
+                0 4px 12px rgba(
+                    74,
+                    126,
+                    191,
+                    0.14
+                );
+        }
+
+
+        .barra-esquerda {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            min-width: 0;
+        }
+
+
+        .barra-icone {
+
+            flex-shrink: 0;
+
+            font-size: 20px;
+        }
+
+
+        #textoCampo {
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+
+            font-size: 16px;
+
+            color: #7890ad;
+        }
+
+
+        .barra-seta {
+
+            flex-shrink: 0;
+
+            font-size: 17px;
+
+            color: #5f7fa4;
+
+            transition:
+                transform 0.2s ease;
+        }
+
+
+        .barra-pergunta.aberta
+        .barra-seta {
+
+            transform:
+                rotate(180deg);
+        }
+
+
+        /* =========================================
+           AVISO
+        ========================================= */
+
+        .aviso {
+
+            margin-top: 9px;
+
+            color: #8191a8;
+
+            font-size: 11px;
+
+            line-height: 1.4;
+
+            text-align: center;
+        }
+
+
+        /* =========================================
+           NOTEBOOK / TABLET
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .chat-header {
+
+                padding:
+                    17px
+                    22px;
+            }
+
+
+            .chat-body {
+
+                padding:
+                    24px
+                    22px
+                    18px;
+            }
+
+
+            .mensagem-conjunto {
+
+                max-width: 84%;
+            }
+
+
+            .chat-footer {
+
+                padding:
+                    14px
+                    20px
+                    18px;
+            }
+        }
+
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media (max-width: 650px) {
+
+            body {
+
+                background: #eaf0ff;
+            }
+
+
+            .chat-card {
+
+                border-radius: 0;
+            }
+
+
+            .chat-header {
+
+                gap: 10px;
+
+                padding:
+                    12px
+                    13px;
+            }
+
+
+            .voltar {
+
+                padding:
+                    7px
+                    9px;
+
+                font-size: 12px;
+            }
+
+
+            .header-brand {
+
+                gap: 9px;
+            }
+
+
+            .avatar {
+
+                width: 40px;
+                height: 40px;
+
+                font-size: 20px;
+            }
+
+
+            .header-info h1 {
+
+                font-size: 18px;
+            }
+
+
+            .header-info p {
+
+                font-size: 11px;
+            }
+
+
+            .chat-body {
+
+                padding:
+                    20px
+                    15px
+                    15px;
+            }
+
+
+            .mensagem {
+
+                margin-bottom: 16px;
+            }
+
+
+            .mensagem-conjunto {
+
+                max-width: 90%;
+
+                gap: 7px;
+            }
+
+
+            .mensagem-avatar {
+
+                width: 31px;
+                height: 31px;
+
+                font-size: 15px;
+            }
+
+
+            .mensagem-balao {
+
+                padding:
+                    10px
+                    13px;
+
+                font-size: 15px;
+
+                line-height: 1.5;
+            }
+
+
+            .chat-footer {
+
+                padding:
+                    11px
+                    12px
+                    13px;
+            }
+
+
+            .sugestoes {
+
+                margin-bottom: 9px;
+            }
+
+
+            .sugestoes-titulo {
+
+                font-size: 12px;
+
+                margin-bottom: 6px;
+            }
+
+
+            .sugestoes-lista {
+
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap: 6px;
+            }
+
+
+            .sugestao {
+
+                width: 100%;
+
+                min-height: 34px;
+
+                padding:
+                    6px
+                    5px;
+
+                font-size: 11px;
+
+                line-height: 1.2;
+
+                text-align: center;
+            }
+
+
+            .barra-pergunta {
+
+                min-height: 48px;
+
+                padding:
+                    8px
+                    12px;
+            }
+
+
+            #textoCampo {
+
+                font-size: 14px;
+            }
+
+
+            .barra-icone {
+
+                font-size: 18px;
+            }
+
+
+            .perguntas-menu {
+
+                max-height: 280px;
+            }
+
+
+            .pergunta {
+
+                padding:
+                    10px
+                    8px;
+
+                font-size: 14px;
+            }
+
+
+            .aviso {
+
+                font-size: 10px;
+
+                margin-top: 6px;
+            }
+        }
+
+
+        /* =========================================
+           CELULARES PEQUENOS
+        ========================================= */
+
+        @media (max-width: 390px) {
+
+            .chat-header {
+
+                padding:
+                    10px
+                    9px;
+            }
+
+
+            .voltar {
+
+                padding:
+                    6px
+                    7px;
+
+                font-size: 11px;
+            }
+
+
+            .header-brand {
+
+                gap: 7px;
+            }
+
+
+            .avatar {
+
+                width: 36px;
+                height: 36px;
+
+                font-size: 18px;
+            }
+
+
+            .header-info h1 {
+
+                font-size: 16px;
+            }
+
+
+            .header-info p {
+
+                font-size: 10px;
+            }
+
+
+            .chat-body {
+
+                padding:
+                    16px
+                    11px
+                    12px;
+            }
+
+
+            .chat-footer {
+
+                padding:
+                    9px
+                    9px
+                    10px;
+            }
+
+
+            .sugestao {
+
+                font-size: 10px;
+            }
+
+
+            .mensagem-balao {
+
+                font-size: 14px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="pagina">
+
+
+        <section class="chat-card">
+
+
+            <!-- =================================
+                 CABEÇALHO
+            ================================== -->
+
+            <header class="chat-header">
+
+
+                <!-- BOTÃO VOLTAR -->
+
+                <a
+                    href="{{ url_for('dashboard') }}"
+                    class="voltar"
+                >
+                    ← Voltar
+                </a>
+
+
+                <!-- LOGO + TEXTO -->
+
+                <div class="header-brand">
+
+                    <div class="avatar">
+                        🌱
+                    </div>
+
+                    <div class="header-info">
+
+                        <h1>
+                            Espaço de apoio
+                        </h1>
+
+                        <p>
+                            Ambiente de reflexão
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================
+                 ÁREA DE MENSAGENS
+            ================================== -->
+
+            <div
+                class="chat-body"
+                id="chatBody"
+            >
+
+
+                <div class="mensagem api">
+
+                    <div class="mensagem-conjunto">
+
+                        <div class="mensagem-avatar">
+                            🌱
+                        </div>
+
+                        <div class="mensagem-balao">
+
+                            Olá! 💙 Que bom ter você por aqui.
+                            <br><br>
+
+                            Escolha uma das perguntas disponíveis
+                            abaixo para encontrar uma resposta e
+                            refletir sobre o que você está sentindo.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================
+                 RODAPÉ DO CHAT
+            ================================== -->
+
+            <div class="chat-footer">
+
+
+                <!-- SUGESTÕES RÁPIDAS -->
+
+                <div class="sugestoes">
+
+                    <div class="sugestoes-titulo">
+                        Sugestões rápidas
+                    </div>
+
+
+                    <div class="sugestoes-lista">
+
+
+                        <button
+                            type="button"
+                            class="sugestao"
+
+                            data-pergunta="O que posso fazer quando estou muito ansioso?"
+
+                            data-resposta="Quando a ansiedade aparecer, tente diminuir o ritmo por alguns instantes. Respire de maneira tranquila, observe o que está acontecendo ao seu redor e procure dividir o que está preocupando você em pequenas partes. Se isso estiver acontecendo com frequência ou atrapalhando sua rotina, conversar com um adulto de confiança ou com um profissional pode ser importante."
+                        >
+
+                            🌧️ Estou ansioso(a)
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="sugestao"
+
+                            data-pergunta="Por que estou pensando demais?"
+
+                            data-resposta="Às vezes, nossa mente continua tentando encontrar respostas ou soluções mesmo quando precisamos descansar. Pode ajudar anotar os pensamentos, organizar aquilo que realmente precisa ser resolvido e reservar um momento para fazer algo tranquilo. Você não precisa resolver tudo de uma vez."
+                        >
+
+                            💭 Muitos pensamentos
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="sugestao"
+
+                            data-pergunta="Como lidar com a pressão dos estudos?"
+
+                            data-resposta="A pressão dos estudos pode ficar maior quando tentamos lidar com muitas tarefas ao mesmo tempo. Organizar as atividades por prioridade, fazer pequenas pausas e estabelecer metas possíveis pode ajudar. Também é importante lembrar que uma dificuldade ou uma nota não define todo o seu potencial."
+                        >
+
+                            📚 Estudos e pressão
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="sugestao"
+
+                            data-pergunta="Como posso fazer uma pausa durante os estudos?"
+
+                            data-resposta="Uma pausa não precisa ser longa. Levantar um pouco, respirar tranquilamente, beber água ou simplesmente afastar os olhos da tela por alguns minutos pode ajudar. O importante é permitir que sua mente tenha um pequeno intervalo antes de continuar."
+                        >
+
+                            🌿 Preciso de uma pausa
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     ENTRADA
+                ================================== -->
+
+                <div class="entrada-container">
+
+
+                    <!-- MENU DE PERGUNTAS -->
+
+                    <div
+                        class="perguntas-menu"
+                        id="perguntasMenu"
+                    >
+
+
+                        <div class="perguntas-titulo">
+
+                            Escolha uma pergunta:
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="pergunta"
+
+                            data-pergunta="O que posso fazer quando estou muito ansioso?"
+
+                            data-resposta="Quando a ansiedade aparecer, tente diminuir o ritmo por alguns instantes. Respire de maneira tranquila, observe o que está acontecendo ao seu redor e procure dividir o que está preocupando você em pequenas partes. Se isso estiver acontecendo com frequência ou atrapalhando sua rotina, conversar com um adulto de confiança ou com um profissional pode ser importante."
+                        >
+
+                            <span class="pergunta-emoji">
+                                😰
+                            </span>
+
+                            <span>
+                                O que posso fazer quando estou muito ansioso?
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pergunta"
+
+                            data-pergunta="Por que estou pensando demais?"
+
+                            data-resposta="Às vezes, nossa mente continua tentando encontrar respostas ou soluções mesmo quando precisamos descansar. Pode ajudar anotar os pensamentos, organizar aquilo que realmente precisa ser resolvido e reservar um momento para fazer algo tranquilo. Você não precisa resolver tudo de uma vez."
+                        >
+
+                            <span class="pergunta-emoji">
+                                💭
+                            </span>
+
+                            <span>
+                                Por que estou pensando demais?
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pergunta"
+
+                            data-pergunta="Como lidar com a pressão dos estudos?"
+
+                            data-resposta="A pressão dos estudos pode ficar maior quando tentamos lidar com muitas tarefas ao mesmo tempo. Organizar as atividades por prioridade, fazer pequenas pausas e estabelecer metas possíveis pode ajudar. Também é importante lembrar que uma dificuldade ou uma nota não define todo o seu potencial."
+                        >
+
+                            <span class="pergunta-emoji">
+                                📚
+                            </span>
+
+                            <span>
+                                Como lidar com a pressão dos estudos?
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pergunta"
+
+                            data-pergunta="O que posso fazer quando estou muito cansado?"
+
+                            data-resposta="Quando você estiver cansado, tente observar se seu corpo está pedindo uma pausa. Afaste-se por alguns minutos das tarefas, respire com calma, beba água e, quando possível, descanse. Se o cansaço estiver sendo frequente ou dificultando muito sua rotina, conversar com alguém de confiança pode ser uma boa ideia."
+                        >
+
+                            <span class="pergunta-emoji">
+                                😴
+                            </span>
+
+                            <span>
+                                O que posso fazer quando estou muito cansado?
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pergunta"
+
+                            data-pergunta="Como posso fazer uma pausa durante os estudos?"
+
+                            data-resposta="Uma pausa não precisa ser longa. Levantar um pouco, respirar tranquilamente, beber água ou simplesmente afastar os olhos da tela por alguns minutos pode ajudar. O importante é permitir que sua mente tenha um pequeno intervalo antes de continuar."
+                        >
+
+                            <span class="pergunta-emoji">
+                                🌿
+                            </span>
+
+                            <span>
+                                Como posso fazer uma pausa durante os estudos?
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="pergunta"
+
+                            data-pergunta="O que posso fazer quando estou triste?"
+
+                            data-resposta="Quando estiver triste, tente não guardar tudo sozinho. Falar com alguém em quem você confia pode tornar esse momento mais leve. Você também pode fazer algo simples que ajude a cuidar de você, como descansar, ouvir música, escrever ou sair um pouco do ambiente em que está."
+                        >
+
+                            <span class="pergunta-emoji">
+                                💙
+                            </span>
+
+                            <span>
+                                O que posso fazer quando estou triste?
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- BARRA DE ESCOLHA -->
+
+                    <div
+                        class="barra-pergunta"
+                        id="barraPergunta"
+
+                        role="button"
+
+                        tabindex="0"
+
+                        aria-expanded="false"
+                    >
+
+                        <div class="barra-esquerda">
+
+                            <span class="barra-icone">
+                                💬
+                            </span>
+
+                            <span id="textoCampo">
+                                Digite sua pergunta...
+                            </span>
+
+                        </div>
+
+
+                        <span class="barra-seta">
+                            ▲
+                        </span>
+
+                    </div>
+
+
+                    <!-- AVISO -->
+
+                    <div class="aviso">
+
+                        As respostas são previamente preparadas
+                        para fins de apoio e reflexão. Este espaço
+                        não realiza diagnósticos e não substitui
+                        acompanhamento profissional.
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const barraPergunta =
+            document.getElementById(
+                "barraPergunta"
+            );
+
+
+        const perguntasMenu =
+            document.getElementById(
+                "perguntasMenu"
+            );
+
+
+        const textoCampo =
+            document.getElementById(
+                "textoCampo"
+            );
+
+
+        const chatBody =
+            document.getElementById(
+                "chatBody"
+            );
+
+
+        /* =========================================
+           ABRIR / FECHAR MENU
+        ========================================= */
+
+        function alternarMenu() {
+
+            const aberto =
+                perguntasMenu.classList.toggle(
+                    "aberto"
+                );
+
+
+            barraPergunta.classList.toggle(
+                "aberta",
+                aberto
+            );
+
+
+            barraPergunta.setAttribute(
+                "aria-expanded",
+                aberto
+            );
+        }
+
+
+        barraPergunta.addEventListener(
+            "click",
+            alternarMenu
+        );
+
+
+        barraPergunta.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    alternarMenu();
+                }
+
+            }
+        );
+
+
+        /* =========================================
+           ADICIONAR MENSAGEM
+        ========================================= */
+
+        function adicionarMensagem(
+            tipo,
+            texto
+        ) {
+
+            const mensagem =
+                document.createElement(
+                    "div"
+                );
+
+
+            mensagem.className =
+                "mensagem " + tipo;
+
+
+            const conjunto =
+                document.createElement(
+                    "div"
+                );
+
+
+            conjunto.className =
+                "mensagem-conjunto";
+
+
+            const avatar =
+                document.createElement(
+                    "div"
+                );
+
+
+            avatar.className =
+                "mensagem-avatar";
+
+
+            const balao =
+                document.createElement(
+                    "div"
+                );
+
+
+            balao.className =
+                "mensagem-balao";
+
+
+            if (tipo === "api") {
+
+                avatar.textContent =
+                    "🌱";
+
+            } else {
+
+                avatar.textContent =
+                    "👤";
+            }
+
+
+            balao.textContent =
+                texto;
+
+
+            conjunto.appendChild(
+                avatar
+            );
+
+
+            conjunto.appendChild(
+                balao
+            );
+
+
+            mensagem.appendChild(
+                conjunto
+            );
+
+
+            chatBody.appendChild(
+                mensagem
+            );
+
+
+            setTimeout(
+                function() {
+
+                    chatBody.scrollTo({
+
+                        top:
+                            chatBody.scrollHeight,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                },
+                50
+            );
+        }
+
+
+        /* =========================================
+           ESCOLHER PERGUNTA
+        ========================================= */
+
+        function escolherPergunta(
+            pergunta,
+            resposta
+        ) {
+
+            perguntasMenu.classList.remove(
+                "aberto"
+            );
+
+
+            barraPergunta.classList.remove(
+                "aberta"
+            );
+
+
+            barraPergunta.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
+            textoCampo.textContent =
+                pergunta;
+
+
+            adicionarMensagem(
+                "usuario",
+                pergunta
+            );
+
+
+            setTimeout(
+                function() {
+
+                    adicionarMensagem(
+                        "api",
+                        resposta
+                    );
+
+                },
+                450
+            );
+
+
+            setTimeout(
+                function() {
+
+                    textoCampo.textContent =
+                        "Digite sua pergunta...";
+
+                },
+                800
+            );
+        }
+
+
+        /* =========================================
+           PERGUNTAS
+        ========================================= */
+
+        const perguntas =
+            document.querySelectorAll(
+                ".pergunta"
+            );
+
+
+        perguntas.forEach(
+            function(botao) {
+
+                botao.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+
+                        const pergunta =
+                            this.dataset.pergunta;
+
+
+                        const resposta =
+                            this.dataset.resposta;
+
+
+                        escolherPergunta(
+                            pergunta,
+                            resposta
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           SUGESTÕES RÁPIDAS
+        ========================================= */
+
+        const sugestoes =
+            document.querySelectorAll(
+                ".sugestao"
+            );
+
+
+        sugestoes.forEach(
+            function(botao) {
+
+                botao.addEventListener(
+                    "click",
+                    function() {
+
+                        const pergunta =
+                            this.dataset.pergunta;
+
+
+                        const resposta =
+                            this.dataset.resposta;
+
+
+                        escolherPergunta(
+                            pergunta,
+                            resposta
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           FECHAR MENU AO CLICAR FORA
+        ========================================= */
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                const clicouNaBarra =
+                    barraPergunta.contains(
+                        event.target
+                    );
+
+
+                const clicouNoMenu =
+                    perguntasMenu.contains(
+                        event.target
+                    );
+
+
+                if (
+                    !clicouNaBarra &&
+                    !clicouNoMenu
+                ) {
+
+                    perguntasMenu.classList.remove(
+                        "aberto"
+                    );
+
+
+                    barraPergunta.classList.remove(
+                        "aberta"
+                    );
+
+
+                    barraPergunta.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

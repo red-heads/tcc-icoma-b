@@ -15,9 +15,9 @@
 
     <style>
 
-        /* ================================
+        /* ==================================================
            RESET
-        ================================= */
+        ================================================== */
 
         * {
             box-sizing: border-box;
@@ -25,55 +25,165 @@
             padding: 0;
         }
 
+        /* ==================================================
+           VARIÁVEIS VISUAIS
+        ================================================== */
+
+        :root {
+
+            --azul-escuro: #123e78;
+
+            --azul-principal: #287ed0;
+
+            --azul-medio: #5c9ee8;
+
+            --azul-claro: #dceeff;
+
+            --fundo: #eaf5ff;
+
+            --branco: #ffffff;
+
+            --texto: #294d76;
+
+            --texto-claro: #527196;
+
+            --borda: rgba(40, 126, 208, 0.12);
+
+            --sombra:
+                0 15px 35px
+                rgba(23, 82, 145, 0.10);
+
+            --raio: 18px;
+        }
+
+        /* ==================================================
+           BODY
+        ================================================== */
+
         body {
 
             font-family:
+                -apple-system,
+                BlinkMacSystemFont,
                 "Segoe UI",
+                Roboto,
+                Helvetica,
                 Arial,
                 sans-serif;
 
             min-height: 100vh;
 
             background:
+
+                radial-gradient(
+                    circle at top left,
+                    rgba(92, 158, 232, 0.15),
+                    transparent 35%
+                ),
+
                 linear-gradient(
                     135deg,
-                    #eef5ff 0%,
-                    #e4f2fc 100%
+                    #eaf5ff 0%,
+                    #dceeff 50%,
+                    #f5faff 100%
                 );
 
-            color: #263f70;
+            color: var(--texto);
+
+            padding: 24px;
+
+            overflow-x: hidden;
 
             display: flex;
 
-            justify-content: center;
-
             align-items: center;
 
-            padding: 24px;
+            justify-content: center;
+
+            position: relative;
         }
 
-        /* ================================
-           CONTAINER PRINCIPAL
-        ================================= */
+        /* ==================================================
+           FORMAS DECORATIVAS
+        ================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 420px;
+
+            height: 420px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(83, 157, 255, 0.12);
+
+            top: -180px;
+
+            left: -140px;
+
+            pointer-events: none;
+        }
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+
+            height: 350px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(31, 104, 204, 0.09);
+
+            right: -120px;
+
+            bottom: -150px;
+
+            pointer-events: none;
+        }
+
+        /* ==================================================
+           PÁGINA PRINCIPAL
+        ================================================== */
 
         .pagina {
 
-            width: 100%;
+            width: min(100%, 1160px);
 
-            max-width: 760px;
+            min-height: calc(100vh - 48px);
 
-            min-height: 700px;
+            background:
+                rgba(255, 255, 255, 0.42);
 
-            background: #edf3fd;
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.75);
 
             border-radius: 28px;
 
             padding:
-                clamp(20px, 4vw, 38px);
+                26px
+                clamp(22px, 4vw, 44px)
+                42px;
 
             box-shadow:
-                0 12px 35px
-                rgba(48, 91, 135, 0.15);
+                0 20px 55px
+                rgba(23, 82, 145, 0.12);
+
+            backdrop-filter:
+                blur(10px);
+
+            -webkit-backdrop-filter:
+                blur(10px);
 
             display: flex;
 
@@ -90,24 +200,25 @@
 
             position: absolute;
 
-            width: 260px;
+            width: 300px;
 
-            height: 260px;
+            height: 300px;
 
             border-radius: 50%;
 
-            background: #dceeff;
+            background:
+                rgba(112, 184, 255, 0.10);
 
-            top: -130px;
+            top: -150px;
 
-            right: -100px;
+            right: -80px;
 
-            opacity: 0.7;
+            pointer-events: none;
         }
 
-        /* ================================
-           CABEÇALHO
-        ================================= */
+        /* ==================================================
+           BOTÃO VOLTAR
+        ================================================== */
 
         .voltar {
 
@@ -118,105 +229,142 @@
             padding:
                 10px 18px;
 
-            border: none;
+            border:
+                1px solid
+                rgba(40, 126, 208, 0.10);
 
-            border-radius: 12px;
+            border-radius: 14px;
 
-            background: white;
+            background:
+                rgba(255, 255, 255, 0.92);
 
-            color: #087fc1;
+            color:
+                var(--azul-principal);
 
-            font-size: 16px;
+            font-size: 15px;
+
+            font-weight: 600;
 
             cursor: pointer;
 
             box-shadow:
-                0 3px 10px
-                rgba(45, 79, 112, 0.12);
+                0 5px 16px
+                rgba(23, 82, 145, 0.08);
 
             transition:
-                0.2s ease;
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+        .voltar:hover {
+
+            transform:
+                translateX(-3px);
+
+            background: white;
+
+            box-shadow:
+                0 8px 20px
+                rgba(23, 82, 145, 0.13);
+        }
+
+        .voltar:active {
+
+            transform:
+                translateX(0);
+        }
+
+        /* ==================================================
+           CABEÇALHO
+        ================================================== */
+
+        .cabecalho {
+
+            text-align: center;
+
+            margin:
+                28px auto 0;
+
+            max-width: 700px;
 
             position: relative;
 
             z-index: 2;
         }
 
-        .voltar:hover {
+        .titulo {
 
-            transform: translateX(-3px);
+            color:
+                var(--azul-escuro);
 
-            box-shadow:
-                0 5px 14px
-                rgba(45, 79, 112, 0.18);
+            font-size:
+                clamp(29px, 5vw, 40px);
+
+            line-height: 1.15;
+
+            font-weight: 650;
+
+            letter-spacing:
+                -0.5px;
+
+            margin-bottom: 9px;
         }
 
-        /* ================================
-           TÍTULO
-        ================================= */
+        .subtitulo {
 
-        .cabecalho {
+            color:
+                var(--texto-claro);
 
-            text-align: center;
+            font-size:
+                clamp(15px, 2.5vw, 17px);
 
-            margin-top: 26px;
+            line-height: 1.6;
+        }
+
+        /* ==================================================
+           ÁREA DA RESPIRAÇÃO
+        ================================================== */
+
+        .area-respiracao {
+
+            flex: 1;
+
+            min-height: 400px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                30px 20px;
 
             position: relative;
 
             z-index: 1;
         }
 
-        .titulo {
-
-            font-size:
-                clamp(25px, 5vw, 34px);
-
-            font-weight: 600;
-
-            color: #263f70;
-
-            margin-bottom: 7px;
-        }
-
-        .subtitulo {
-
-            font-size:
-                clamp(14px, 2.5vw, 16px);
-
-            color: #53688f;
-
-            line-height: 1.5;
-        }
-
-        /* ================================
-           ÁREA DA RESPIRAÇÃO
-        ================================= */
-
-        .area-respiracao {
-
-            flex: 1;
-
-            min-height: 360px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 20px;
-        }
+        /* ==================================================
+           CÍRCULO EXTERNO
+        ================================================== */
 
         .circulo-externo {
 
             width:
-                clamp(220px, 42vw, 310px);
+                clamp(235px, 35vw, 330px);
 
             aspect-ratio: 1 / 1;
 
             border-radius: 50%;
 
-            background: #d5efff;
+            background:
+                rgba(220, 238, 255, 0.95);
 
             display: flex;
 
@@ -225,8 +373,12 @@
             justify-content: center;
 
             box-shadow:
+
                 0 0 0 12px
-                rgba(255,255,255,0.25);
+                rgba(255, 255, 255, 0.35),
+
+                0 18px 40px
+                rgba(40, 126, 208, 0.10);
 
             transition:
                 transform 4s
@@ -238,6 +390,10 @@
                 );
         }
 
+        /* ==================================================
+           CÍRCULO DO MEIO
+        ================================================== */
+
         .circulo-meio {
 
             width: 84%;
@@ -246,14 +402,27 @@
 
             border-radius: 50%;
 
-            background: #a9dcfa;
+            background:
+                linear-gradient(
+                    145deg,
+                    #bce5fb,
+                    #9fd8f5
+                );
 
             display: flex;
 
+            align-items: center;
+
             justify-content: center;
 
-            align-items: center;
+            box-shadow:
+                inset 0 3px 12px
+                rgba(255, 255, 255, 0.28);
         }
+
+        /* ==================================================
+           CÍRCULO INTERNO
+        ================================================== */
 
         .circulo-interno {
 
@@ -267,23 +436,26 @@
                 linear-gradient(
                     145deg,
                     #55b5f5,
-                    #389fe5
+                    #287ed0
                 );
 
             display: flex;
 
-            justify-content: center;
-
             align-items: center;
+
+            justify-content: center;
 
             text-align: center;
 
-            box-shadow:
-                inset 0 3px 12px
-                rgba(255,255,255,0.18),
+            padding: 20px;
 
-                0 8px 22px
-                rgba(38, 145, 211, 0.18);
+            box-shadow:
+
+                inset 0 4px 15px
+                rgba(255, 255, 255, 0.20),
+
+                0 12px 28px
+                rgba(40, 126, 208, 0.22);
 
             transition:
                 transform 4s
@@ -300,92 +472,117 @@
             color: white;
 
             font-size:
-                clamp(24px, 5vw, 34px);
+                clamp(24px, 4vw, 35px);
 
             font-weight: 400;
 
-            letter-spacing: 0.3px;
+            letter-spacing:
+                0.2px;
+
+            line-height: 1.2;
         }
 
-        /* ================================
-           ANIMAÇÃO
-        ================================= */
+        /* ==================================================
+           ANIMAÇÃO DA RESPIRAÇÃO
+        ================================================== */
 
         .inspirando .circulo-externo,
         .inspirando .circulo-interno {
 
-            transform: scale(1.10);
+            transform:
+                scale(1.10);
         }
 
         .expirando .circulo-externo,
         .expirando .circulo-interno {
 
-            transform: scale(0.88);
+            transform:
+                scale(0.88);
         }
 
-        /* ================================
-           CARD DE CONTROLE
-        ================================= */
+        /* ==================================================
+           CARD DE CONTROLES
+        ================================================== */
 
         .card {
 
-            background: white;
+            width: 100%;
 
-            border-radius: 18px;
+            max-width: 850px;
+
+            margin:
+                0 auto;
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border:
+                1px solid
+                rgba(40, 126, 208, 0.08);
+
+            border-radius: 22px;
 
             padding:
-                22px;
+                clamp(20px, 3vw, 28px);
 
             box-shadow:
-                0 7px 20px
-                rgba(47, 78, 109, 0.12);
+                0 12px 30px
+                rgba(23, 82, 145, 0.10);
 
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
         }
 
-        /* ================================
+        /* ==================================================
            ESCOLHA DE TEMPO
-        ================================= */
+        ================================================== */
 
         .escolha-tempo {
 
-            margin-bottom: 22px;
+            margin-bottom: 25px;
         }
 
         .titulo-tempo {
 
-            color: #263f70;
+            color:
+                var(--azul-escuro);
 
             font-size: 16px;
 
-            font-weight: 600;
+            font-weight: 650;
 
-            margin-bottom: 12px;
+            margin-bottom: 13px;
 
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             align-items: center;
+
+            gap: 10px;
         }
 
-        /* BOTÃO DISCRETO PARA ABRIR/FECHAR */
+        /* ==================================================
+           BOTÃO RECOLHER
+        ================================================== */
 
         .btn-recolher {
 
             border: none;
 
-            background: transparent;
+            background:
+                transparent;
 
-            color: #6d83a5;
+            color:
+                #7187a8;
 
             font-size: 18px;
 
-            width: 28px;
+            width: 30px;
 
-            height: 28px;
+            height: 30px;
 
             border-radius: 50%;
 
@@ -399,22 +596,29 @@
 
             transition:
                 background 0.2s ease,
-                color 0.2s ease;
+                color 0.2s ease,
+                transform 0.2s ease;
         }
 
         .btn-recolher:hover {
 
-            background: #eef7fd;
+            background:
+                #edf7ff;
 
-            color: #087fc1;
+            color:
+                var(--azul-principal);
         }
 
-        /* CONTEÚDO QUE SERÁ RECOLHIDO */
+        /* ==================================================
+           CONTEÚDO DO TEMPO
+        ================================================== */
 
         .conteudo-tempo {
 
             display: block;
 
+            animation:
+                aparecer 0.2s ease;
         }
 
         .conteudo-tempo.fechado {
@@ -422,31 +626,58 @@
             display: none;
         }
 
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-4px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+        /* ==================================================
+           TEMPOS RÁPIDOS
+        ================================================== */
+
         .tempos-rapidos {
 
             display: flex;
 
             flex-wrap: wrap;
 
-            gap: 8px;
+            gap: 9px;
         }
 
         .btn-tempo {
 
-            flex: 1;
+            flex:
+                1 1 90px;
 
-            min-width: 55px;
+            min-width: 65px;
 
-            min-height: 40px;
+            min-height: 42px;
 
             border:
-                1px solid #cbd9e8;
+                1px solid
+                #cfe0ef;
 
-            border-radius: 9px;
+            border-radius: 11px;
 
-            background: white;
+            background:
+                #fafdff;
 
-            color: #627596;
+            color:
+                #627596;
 
             font-size: 14px;
 
@@ -454,17 +685,37 @@
 
             cursor: pointer;
 
-            transition: 0.2s ease;
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
         }
 
         .btn-tempo:hover {
 
-            background: #e7f5fc;
+            background:
+                #edf7ff;
 
-            color: #087fc1;
+            color:
+                var(--azul-principal);
 
-            border-color: #a9d8f2;
+            border-color:
+                #a9d8f2;
+
+            transform:
+                translateY(-1px);
         }
+
+        .btn-tempo:active {
+
+            transform:
+                translateY(0);
+        }
+
+        /* ==================================================
+           TEMPO PERSONALIZADO
+        ================================================== */
 
         .tempo-personalizado {
 
@@ -472,49 +723,77 @@
 
             flex-wrap: wrap;
 
-            gap: 8px;
+            gap: 9px;
 
             margin-top: 12px;
         }
 
         .tempo-personalizado input {
 
-            flex: 1;
+            flex:
+                1 1 100px;
 
-            min-width: 70px;
+            min-width: 80px;
 
-            min-height: 40px;
+            min-height: 42px;
 
             border:
-                1px solid #cbd9e8;
+                1px solid
+                #cfe0ef;
 
-            border-radius: 9px;
+            border-radius: 11px;
 
             padding:
-                0 10px;
+                0 12px;
 
-            color: #263f70;
+            background:
+                #fafdff;
+
+            color:
+                var(--azul-escuro);
+
+            font-size: 14px;
 
             outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .tempo-personalizado input::placeholder {
+
+            color:
+                #8295af;
         }
 
         .tempo-personalizado input:focus {
 
-            border-color: #56b5f4;
+            border-color:
+                #56b5f4;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(86, 181, 244, 0.12);
         }
 
         .btn-definir {
 
-            min-height: 40px;
+            min-height: 42px;
 
             padding:
-                0 14px;
+                0 17px;
 
             border: none;
 
-            border-radius: 9px;
+            border-radius: 11px;
 
-            background: #087fc1;
+            background:
+                linear-gradient(
+                    135deg,
+                    #287ed0,
+                    #1556a5
+                );
 
             color: white;
 
@@ -523,16 +802,29 @@
             font-weight: 600;
 
             cursor: pointer;
+
+            box-shadow:
+                0 5px 12px
+                rgba(40, 126, 208, 0.18);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .btn-definir:hover {
 
-            background: #076fa9;
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 7px 16px
+                rgba(40, 126, 208, 0.23);
         }
 
-        /* ================================
+        /* ==================================================
            INFORMAÇÕES
-        ================================= */
+        ================================================== */
 
         .informacoes {
 
@@ -543,53 +835,65 @@
 
             align-items: center;
 
-            margin-bottom: 20px;
+            gap: 15px;
+
+            margin-bottom: 17px;
         }
 
         .rotulo {
 
-            color: #52678e;
+            color:
+                var(--texto-claro);
 
             font-size: 14px;
+
+            font-weight: 500;
         }
 
         .tempo {
 
-            color: #263f70;
+            color:
+                var(--azul-escuro);
 
             font-size: 20px;
 
-            font-weight: 600;
+            font-weight: 650;
 
-            background: #edf6fd;
+            background:
+                #edf6fd;
 
             padding:
-                7px 12px;
+                8px 14px;
 
-            border-radius: 8px;
+            border-radius: 10px;
 
-            min-width: 80px;
+            min-width: 82px;
 
             text-align: center;
+
+            border:
+                1px solid
+                rgba(40, 126, 208, 0.07);
         }
 
-        /* ================================
+        /* ==================================================
            BARRA DE PROGRESSO
-        ================================= */
+        ================================================== */
 
         .progresso {
 
             width: 100%;
 
-            height: 6px;
+            height: 7px;
 
-            background: #e7f0f8;
+            background:
+                #e7f0f8;
 
             border-radius: 20px;
 
             overflow: hidden;
 
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .progresso-barra {
@@ -602,7 +906,7 @@
                 linear-gradient(
                     90deg,
                     #56b5f4,
-                    #319de3
+                    #287ed0
                 );
 
             border-radius: 20px;
@@ -611,43 +915,44 @@
                 width 1s linear;
         }
 
-        /* ================================
+        /* ==================================================
            BOTÃO INICIAR
-        ================================= */
+        ================================================== */
 
         .iniciar {
 
             display: block;
 
-            width: min(100%, 190px);
+            width:
+                min(100%, 210px);
 
-            min-height: 44px;
+            min-height: 46px;
 
             margin:
-                0 auto 20px;
+                0 auto 21px;
 
             border: none;
 
-            border-radius: 10px;
+            border-radius: 13px;
 
             background:
                 linear-gradient(
                     135deg,
-                    #4db2f3,
-                    #319ee5
+                    #287ed0,
+                    #1556a5
                 );
 
             color: white;
 
             font-size: 16px;
 
-            font-weight: 500;
+            font-weight: 600;
 
             cursor: pointer;
 
             box-shadow:
-                0 5px 12px
-                rgba(48, 158, 224, 0.22);
+                0 7px 17px
+                rgba(40, 126, 208, 0.20);
 
             transition:
                 transform 0.2s ease,
@@ -656,21 +961,23 @@
 
         .iniciar:hover {
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
 
             box-shadow:
-                0 8px 16px
-                rgba(48, 158, 224, 0.28);
+                0 10px 21px
+                rgba(40, 126, 208, 0.27);
         }
 
         .iniciar:active {
 
-            transform: translateY(0);
+            transform:
+                translateY(0);
         }
 
-        /* ================================
+        /* ==================================================
            CONTROLES
-        ================================= */
+        ================================================== */
 
         .controles {
 
@@ -678,7 +985,9 @@
 
             justify-content: center;
 
-            gap: 45px;
+            align-items: center;
+
+            gap: 55px;
         }
 
         .controle {
@@ -687,44 +996,56 @@
 
             align-items: center;
 
+            justify-content: center;
+
             gap: 8px;
 
             border: none;
 
             background: transparent;
 
-            color: #168bd0;
+            color:
+                var(--azul-principal);
 
             font-size: 15px;
 
+            font-weight: 500;
+
             cursor: pointer;
 
-            padding: 7px;
+            padding:
+                8px 10px;
 
-            border-radius: 8px;
+            border-radius: 10px;
 
             transition:
-                background 0.2s ease;
+                background 0.2s ease,
+                transform 0.2s ease;
         }
 
         .controle:hover {
 
-            background: #eef8fe;
+            background:
+                #edf7ff;
+
+            transform:
+                translateY(-1px);
         }
 
-        /* ================================
-           ÍCONES
-        ================================= */
+        /* ==================================================
+           ÍCONE PAUSA
+        ================================================== */
 
         .icone-pausa {
 
-            width: 25px;
+            width: 27px;
 
-            height: 25px;
+            height: 27px;
 
             border-radius: 50%;
 
-            background: #1684c4;
+            background:
+                #287ed0;
 
             color: white;
 
@@ -735,22 +1056,29 @@
             justify-content: center;
 
             font-size: 11px;
+
+            font-weight: 700;
         }
+
+        /* ==================================================
+           ÍCONE REINICIAR
+        ================================================== */
 
         .icone-reiniciar {
 
-            font-size: 23px;
+            font-size: 24px;
 
-            color: #168bd0;
+            color:
+                var(--azul-principal);
 
             line-height: 1;
         }
 
-        /* ================================
+        /* ==================================================
            CELULAR
-        ================================= */
+        ================================================== */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
             body {
 
@@ -761,40 +1089,69 @@
 
             .pagina {
 
+                width: 100%;
+
                 max-width: none;
 
                 min-height: 100vh;
 
                 border-radius: 0;
 
+                border: none;
+
                 box-shadow: none;
 
                 padding:
-                    18px 16px 22px;
+                    18px
+                    16px
+                    24px;
             }
 
             .cabecalho {
 
-                margin-top: 20px;
+                margin-top: 22px;
+            }
+
+            .titulo {
+
+                font-size: 29px;
             }
 
             .area-respiracao {
 
-                min-height: 350px;
+                min-height: 360px;
 
                 padding:
-                    15px 0;
+                    20px 0;
+            }
+
+            .circulo-externo {
+
+                width:
+                    min(72vw, 310px);
             }
 
             .card {
 
                 padding:
-                    19px 16px;
+                    20px 17px;
+
+                border-radius: 20px;
             }
 
-            .controles {
+            .tempos-rapidos {
 
-                gap: 25px;
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .btn-tempo {
+
+                width: 100%;
+
+                min-width: 0;
             }
 
             .tempo-personalizado {
@@ -806,18 +1163,103 @@
             .btn-definir {
 
                 width: 100%;
+
+                flex: none;
+            }
+
+            .controles {
+
+                gap: 25px;
             }
         }
 
-        /* ================================
+        /* ==================================================
            CELULAR PEQUENO
-        ================================= */
+        ================================================== */
+
+        @media (max-width: 480px) {
+
+            .pagina {
+
+                padding:
+                    16px
+                    14px
+                    20px;
+            }
+
+            .cabecalho {
+
+                margin-top: 19px;
+            }
+
+            .titulo {
+
+                font-size: 27px;
+            }
+
+            .subtitulo {
+
+                font-size: 14px;
+            }
+
+            .area-respiracao {
+
+                min-height: 320px;
+
+                padding:
+                    15px 0;
+            }
+
+            .circulo-externo {
+
+                width: 235px;
+            }
+
+            .texto-respiracao {
+
+                font-size: 25px;
+            }
+
+            .card {
+
+                padding:
+                    18px 15px;
+            }
+
+            .titulo-tempo {
+
+                font-size: 15px;
+            }
+
+            .tempos-rapidos {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .informacoes {
+
+                margin-bottom: 15px;
+            }
+
+            .controles {
+
+                gap: 10px;
+
+                justify-content:
+                    space-between;
+            }
+        }
+
+        /* ==================================================
+           CELULAR MUITO PEQUENO
+        ================================================== */
 
         @media (max-width: 380px) {
 
             .area-respiracao {
 
-                min-height: 300px;
+                min-height: 285px;
             }
 
             .circulo-externo {
@@ -827,32 +1269,50 @@
 
             .titulo {
 
-                font-size: 24px;
+                font-size: 25px;
             }
 
-            .controles {
+            .texto-respiracao {
 
-                gap: 12px;
+                font-size: 23px;
+            }
 
-                justify-content:
-                    space-between;
+            .controle {
+
+                font-size: 14px;
+
+                padding:
+                    7px 5px;
+            }
+
+            .icone-pausa {
+
+                width: 25px;
+
+                height: 25px;
             }
         }
 
-        /* ================================
-           TABLET / DESKTOP GRANDE
-        ================================= */
+        /* ==================================================
+           DESKTOP GRANDE
+        ================================================== */
 
-        @media (min-width: 900px) {
+        @media (min-width: 1000px) {
 
             .pagina {
 
-                min-height: 760px;
+                min-height:
+                    calc(100vh - 48px);
             }
 
             .area-respiracao {
 
-                min-height: 390px;
+                min-height: 430px;
+            }
+
+            .circulo-externo {
+
+                width: 340px;
             }
         }
 
@@ -864,7 +1324,9 @@
 
     <main class="pagina">
 
-        <!-- VOLTAR -->
+        <!-- ==================================================
+             VOLTAR
+        ================================================== -->
 
         <button
             class="voltar"
@@ -872,11 +1334,13 @@
             type="button"
         >
 
-            ← &nbsp; Exercícios de respiração
+            ← &nbsp; Voltar
 
         </button>
 
-        <!-- CABEÇALHO -->
+        <!-- ==================================================
+             CABEÇALHO
+        ================================================== -->
 
         <header class="cabecalho">
 
@@ -894,7 +1358,9 @@
 
         </header>
 
-        <!-- RESPIRAÇÃO -->
+        <!-- ==================================================
+             ÁREA DA RESPIRAÇÃO
+        ================================================== -->
 
         <section class="area-respiracao">
 
@@ -924,7 +1390,9 @@
 
         </section>
 
-        <!-- CONTROLES -->
+        <!-- ==================================================
+             CONTROLES
+        ================================================== -->
 
         <section class="card">
 
@@ -1771,4 +2239,3 @@
 </body>
 
 </html>
-

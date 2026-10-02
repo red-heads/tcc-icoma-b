@@ -13,889 +13,853 @@
     <title>Diário emocional | Tudo bem aí?</title>
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #e8eefb;
-            color: #26364d;
-        }
-
-        .pagina {
-            width: 100%;
-            max-width: 380px;
-            margin: 0 auto;
-            padding: 20px 15px 30px;
-        }
-
-        /* BOTÃO VOLTAR */
-
-        .botao-voltar {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: none;
-            background: transparent;
-            color: #315b9b;
-            font-size: 15px;
-            cursor: pointer;
-            padding: 5px 0;
-            margin-bottom: 15px;
-        }
-
-        .botao-voltar:hover {
-            color: #1d437d;
-        }
-
-        /* CARD PRINCIPAL */
-
-        .diario-card {
-            background: white;
-            border-radius: 20px;
-            padding: 22px;
-            box-shadow: 0 5px 18px rgba(40, 75, 120, 0.12);
-        }
-
-        h1 {
-            text-align: center;
-            color: #315b9b;
-            font-size: 25px;
-            margin: 0 0 8px;
-        }
-
-        .subtitulo {
-            text-align: center;
-            color: #66758a;
-            font-size: 14px;
-            margin: 0 0 22px;
-            line-height: 1.5;
-        }
-
-        .titulo-secao {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #334b6b;
-        }
-
-        /* =========================================
-           ABA DE SENTIMENTOS
-        ========================================= */
-
-        .aba-sentimentos {
-            width: 100%;
-            margin-bottom: 18px;
-        }
-
-        .botao-aba-sentimentos {
-            width: 100%;
-            min-height: 52px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            border: 1px solid #c5d5eb;
-            background: #f5f8fe;
-            color: #315b9b;
-
-            border-radius: 13px;
-            padding: 12px 15px;
-
-            font-size: 15px;
-            font-weight: bold;
-
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .botao-aba-sentimentos:hover {
-            background: #edf3fc;
-        }
-
-        .seta-aba {
-            font-size: 16px;
-            transition: transform 0.2s;
-        }
-
-        .seta-aba.aberta {
-            transform: rotate(180deg);
-        }
-
-        /*
-           LISTA DOS 16 SENTIMENTOS
-
-           Ela fica escondida até abrir a aba.
-        */
-
-        .sentimentos {
-            display: none;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 9px;
-
-            margin-top: 9px;
-            padding: 10px;
-
-            background: #f7f9fd;
-            border: 1px solid #dce5f3;
-
-            border-radius: 14px;
-
-            max-height: 60vh;
-            overflow-y: auto;
-        }
-
-        .sentimentos.aberta {
-            display: grid;
-        }
-
-        /*
-           BOTÕES GRANDES E FÁCEIS DE TOCAR
-        */
-
-        .sentimento {
-            min-height: 58px;
-
-            border: 1px solid #d0dceb;
-            background: white;
-
-            color: #42536b;
-
-            border-radius: 11px;
-
-            padding: 8px 5px;
-
-            font-size: 14px;
-            font-weight: 500;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-
-            text-align: center;
-        }
-
-        .sentimento:hover {
-            background: #edf4ff;
-            border-color: #9eb9df;
-        }
-
-        .sentimento.selecionado {
-            background: #dceaff;
-            border-color: #5f8fc9;
-
-            color: #234f87;
-
-            font-weight: bold;
-        }
-
-        .sentimento span {
-            font-size: 25px;
-            line-height: 1;
-        }
-
-        /* TEXTAREA */
-
-        textarea {
-            width: 100%;
-            min-height: 130px;
-
-            resize: vertical;
-
-            border: 1px solid #ccd8e9;
-            border-radius: 13px;
-
-            padding: 12px;
-
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-
-            color: #34445a;
-
-            outline: none;
-        }
-
-        textarea:focus {
-            border-color: #6f98ca;
-        }
-
-        .contador {
-            text-align: right;
-            color: #7a8798;
-
-            font-size: 12px;
-
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-
-        /* BOTÕES */
-
-        .botao-principal {
-            width: 100%;
-
-            border: none;
-            border-radius: 12px;
-
-            background: #5b86bd;
-            color: white;
-
-            padding: 12px;
-
-            font-size: 15px;
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        .botao-principal:hover {
-            background: #4d76aa;
-        }
-
-        .botao-historico {
-            width: 100%;
-
-            border: 1px solid #b9cbe3;
-            border-radius: 12px;
-
-            background: #f4f7fc;
-            color: #315b9b;
-
-            padding: 11px;
-
-            font-size: 14px;
-
-            cursor: pointer;
-
-            margin-top: 10px;
-        }
-
-        .botao-historico:hover {
-            background: #e9f0fa;
-        }
-
-        /* HISTÓRICO */
-
-        #historico {
-            display: none;
-        }
-
-        .historico-card {
-            background: white;
-
-            border-radius: 20px;
-
-            padding: 20px;
-
-            box-shadow:
-                0 5px 18px rgba(40, 75, 120, 0.12);
-        }
-
-        .historico-titulo {
-            text-align: center;
-
-            color: #315b9b;
-
-            margin: 0 0 15px;
-
-            font-size: 23px;
-        }
-
-        .entry {
-            display: grid;
-
-            grid-template-columns:
-                50px
-                minmax(0, 1fr);
-
-            gap: 10px;
-
-            align-items: center;
-
-            border: 1px solid #dce5f1;
-
-            border-radius: 13px;
-
-            padding: 10px;
-
-            margin-bottom: 9px;
-
-            cursor: pointer;
-
-            background: #fafcff;
-        }
-
-        .entry:hover {
-            background: #f0f5fc;
-        }
-
-        .entry-emoji {
-            width: 42px;
-            height: 42px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            background: #edf3fc;
-
-            border-radius: 50%;
-
-            font-size: 23px;
-        }
-
-        .entry-conteudo {
-            min-width: 0;
-        }
-
-        .entry-sentimento {
-            font-weight: bold;
-
-            color: #315b9b;
-
-            font-size: 14px;
-
-            margin-bottom: 3px;
-        }
-
-        .entry-data {
-            color: #8995a5;
-
-            font-size: 11px;
-
-            margin-bottom: 4px;
-        }
-
-        .entry-text {
-            color: #58677b;
-
-            font-size: 12px;
-
-            line-height: 20px;
-
-            display: -webkit-box;
-
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-
-            overflow: hidden;
-
-            text-overflow: ellipsis;
-
-            max-height: 40px;
-
-            overflow-wrap: break-word;
-            word-break: break-word;
-        }
-
-        .botao-todos {
-            width: 100%;
-
-            border: none;
-
-            background: transparent;
-
-            color: #315b9b;
-
-            font-size: 13px;
-
-            cursor: pointer;
-
-            padding: 8px;
-        }
-
-        /* MODAIS */
-
-        .registro-fundo,
-        .mensagem-fundo,
-        .confirmacao-fundo,
-        .edicao-fundo {
-
-            position: fixed;
-
-            inset: 0;
-
-            background:
-                rgba(35, 54, 78, 0.45);
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 15px;
-        }
-
-        .registro-fundo {
-            z-index: 1100;
-        }
-
-        .edicao-fundo {
-            z-index: 1200;
-        }
-
-        .confirmacao-fundo {
-            z-index: 1300;
-        }
-
-        .mensagem-fundo {
-            z-index: 1400;
-        }
-
-        .registro-caixa {
-
-            width: 100%;
-            max-width: 370px;
-
-            max-height: 80vh;
-
-            overflow-y: auto;
-
-            background: white;
-
-            border-radius: 18px;
-
-            padding: 20px;
-
-            box-shadow:
-                0 8px 30px
-                rgba(20, 40, 70, 0.2);
-        }
-
-        .registro-emoji {
-
-            text-align: center;
-
-            font-size: 43px;
-
-            margin-bottom: 5px;
-        }
-
-        .registro-sentimento {
-
-            text-align: center;
-
-            color: #315b9b;
-
-            font-size: 20px;
-
-            font-weight: bold;
-
-            margin-bottom: 5px;
-        }
-
-        .registro-data {
-
-            text-align: center;
-
-            color: #8995a5;
-
-            font-size: 12px;
-
-            margin-bottom: 18px;
-        }
-
-        .registro-texto {
-
-            color: #46566c;
-
-            font-size: 14px;
-
-            line-height: 1.6;
-
-            white-space: pre-wrap;
-
-            overflow-wrap: break-word;
-            word-break: break-word;
-
-            background: #f5f8fc;
-
-            border-radius: 12px;
-
-            padding: 13px;
-        }
-
-        .botoes-registro {
-
-            display: flex;
-
-            gap: 8px;
-
-            margin-top: 15px;
-        }
-
-        .botoes-registro button {
-
-            flex: 1;
-
-            border: none;
-
-            border-radius: 10px;
-
-            padding: 10px 5px;
-
-            font-size: 12px;
-
-            cursor: pointer;
-        }
-
-        .botao-editar {
-            background: #dceaff;
-            color: #315b9b;
-        }
-
-        .botao-excluir {
-            background: #fde1e1;
-            color: #a74444;
-        }
-
-        .botao-fechar {
-            background: #edf0f4;
-            color: #566476;
-        }
-
-        /* MENSAGEM */
-
-        .mensagem-caixa,
-        .confirmacao-caixa {
-
-            width: 100%;
-            max-width: 330px;
-
-            background: white;
-
-            border-radius: 17px;
-
-            padding: 22px;
-
-            text-align: center;
-
-            box-shadow:
-                0 8px 30px
-                rgba(20, 40, 70, 0.22);
-        }
-
-        .mensagem-caixa p,
-        .confirmacao-caixa p {
-
-            margin: 0 0 18px;
-
-            color: #45556b;
-
-            font-size: 14px;
-
-            line-height: 1.5;
-        }
-
-        .botao-mensagem {
-
-            width: 100%;
-
-            border: none;
-
-            border-radius: 10px;
-
-            background: #5b86bd;
-
-            color: white;
-
-            padding: 10px;
-
-            cursor: pointer;
-        }
-
-        /* CONFIRMAÇÃO */
-
-        .botoes-confirmacao {
-
-            display: flex;
-
-            gap: 10px;
-        }
-
-        .botoes-confirmacao button {
-
-            flex: 1;
-
-            border: none;
-
-            border-radius: 10px;
-
-            padding: 10px;
-
-            cursor: pointer;
-        }
-
-        .botao-nao {
-
-            background: #edf0f4;
-            color: #566476;
-        }
-
-        .botao-sim {
-
-            background: #e56b6b;
-            color: white;
-        }
-
-        /* =========================================
-           EDIÇÃO
-        ========================================= */
-
-        .edicao-caixa {
-
-            width: 100%;
-
-            max-width: 370px;
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            background: white;
-
-            border-radius: 18px;
-
-            padding: 20px;
-        }
-
-        .edicao-titulo {
-
-            text-align: center;
-
-            color: #315b9b;
-
-            font-size: 21px;
-
-            margin: 0 0 15px;
-        }
-
-        /* ABA DE ALTERAR SENTIMENTO */
-
-        .aba-edicao-sentimentos {
-
-            width: 100%;
-
-            margin-bottom: 15px;
-        }
-
-        .botao-aba-edicao {
-
-            width: 100%;
-
-            min-height: 52px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: space-between;
-
-            border: 1px solid #c5d5eb;
-
-            background: #f5f8fe;
-
-            color: #315b9b;
-
-            border-radius: 13px;
-
-            padding: 12px 15px;
-
-            font-size: 15px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-        .botao-aba-edicao:hover {
-
-            background: #edf3fc;
-        }
-
-        .seta-edicao {
-
-            font-size: 16px;
-
-            transition: transform 0.2s;
-        }
-
-        .seta-edicao.aberta {
-
-            transform: rotate(180deg);
-        }
-
-        /*
-           OS 16 SENTIMENTOS DA EDIÇÃO
-        */
-
-        .edicao-sentimentos {
-
-            display: none;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 9px;
-
-            margin-top: 9px;
-
-            padding: 10px;
-
-            background: #f7f9fd;
-
-            border: 1px solid #dce5f3;
-
-            border-radius: 14px;
-
-            max-height: 45vh;
-
-            overflow-y: auto;
-        }
-
-        .edicao-sentimentos.aberta {
-
-            display: grid;
-        }
-
-        .edicao-sentimento {
-
-            min-height: 58px;
-
-            border: 1px solid #d0dceb;
-
-            background: white;
-
-            color: #42536b;
-
-            border-radius: 11px;
-
-            padding: 8px 5px;
-
-            font-size: 14px;
-
-            cursor: pointer;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            gap: 5px;
-
-            text-align: center;
-        }
-
-        .edicao-sentimento:hover {
-
-            background: #edf4ff;
-
-            border-color: #9eb9df;
-        }
-
-        .edicao-sentimento.selecionado {
-
-            background: #dceaff;
-
-            border-color: #5f8fc9;
-
-            color: #234f87;
-
-            font-weight: bold;
-        }
-
-        .edicao-sentimento span {
-
-            font-size: 25px;
-
-            line-height: 1;
-        }
-
-        .botao-salvar-edicao {
-
-            width: 100%;
-
-            border: none;
-
-            border-radius: 10px;
-
-            background: #5b86bd;
-
-            color: white;
-
-            padding: 11px;
-
-            cursor: pointer;
-
-            margin-top: 5px;
-        }
-
-        .botao-cancelar-edicao {
-
-            width: 100%;
-
-            border: none;
-
-            border-radius: 10px;
-
-            background: #edf0f4;
-
-            color: #566476;
-
-            padding: 10px;
-
-            cursor: pointer;
-
-            margin-top: 8px;
-        }
-
-        /* CELULARES */
-
-        @media (max-width: 400px) {
-
-            .pagina {
-
-                padding:
-                    15px 10px 25px;
-            }
-
-            .diario-card,
-            .historico-card {
-
-                padding: 18px;
-            }
-
-            /*
-               Mantém os botões grandes
-               mesmo em telas pequenas.
-            */
-
-            .sentimento,
-            .edicao-sentimento {
-
-                min-height: 62px;
-
-                font-size: 14px;
-            }
-
-            .sentimento span,
-            .edicao-sentimento span {
-
-                font-size: 26px;
-            }
-
-        }
-
-    </style>
+:root {
+    --azul-escuro: #123e78;
+    --azul-principal: #287ed0;
+    --azul-medio: #5c9ee8;
+    --azul-claro: #dceeff;
+    --fundo: #eaf5ff;
+    --branco: #ffffff;
+    --texto: #294d76;
+    --texto-claro: #527196;
+    --borda: #deebf8;
+    --sombra: 0 15px 35px rgba(23, 82, 145, 0.10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(255,255,255,.88),
+            transparent 27%
+        ),
+        linear-gradient(
+            135deg,
+            #eaf5ff 0%,
+            #dceeff 45%,
+            #f5faff 100%
+        );
+    color: var(--texto);
+    overflow-x: hidden;
+}
+
+/* FORMAS SUAVES DO FUNDO */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    width: 430px;
+    height: 430px;
+    background: rgba(83,157,255,.11);
+    top: -190px;
+    left: -150px;
+}
+
+body::after {
+    width: 360px;
+    height: 360px;
+    background: rgba(31,104,204,.09);
+    right: -140px;
+    bottom: -150px;
+}
+
+/* PÁGINA EM TELA INTEIRA */
+
+.pagina {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1160px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 28px 28px 55px;
+}
+
+/* ÁREA PRINCIPAL */
+
+.diario-card,
+.historico-card {
+    position: relative;
+    width: 100%;
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 26px;
+    box-shadow: var(--sombra);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.diario-card::before,
+.historico-card::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(112,184,255,.09);
+    top: -150px;
+    right: -90px;
+    pointer-events: none;
+}
+
+.diario-card {
+    min-height: calc(100vh - 83px);
+    padding: clamp(28px, 5vw, 58px);
+}
+
+.historico-card {
+    min-height: calc(100vh - 83px);
+    padding: clamp(28px, 5vw, 58px);
+}
+
+#diario,
+#historico {
+    position: relative;
+    z-index: 2;
+}
+
+/* VOLTAR */
+
+.botao-voltar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 18px;
+    margin-bottom: 34px;
+    border: 1px solid #c9def2;
+    border-radius: 14px;
+    background: rgba(255,255,255,.82);
+    color: #216bb7;
+    box-shadow: 0 8px 18px rgba(35,112,190,.08);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.botao-voltar:hover {
+    background: #fff;
+    transform: translateX(-3px);
+    box-shadow: 0 12px 24px rgba(35,112,190,.13);
+}
+
+/* CABEÇALHO */
+
+h1 {
+    position: relative;
+    color: var(--azul-escuro);
+    font-size: clamp(38px, 5vw, 54px);
+    font-weight: 750;
+    line-height: 1.04;
+    letter-spacing: -1.5px;
+    margin-bottom: 15px;
+}
+
+.subtitulo {
+    position: relative;
+    max-width: 700px;
+    color: var(--texto-claro);
+    font-size: 17px;
+    line-height: 1.65;
+    margin-bottom: 38px;
+}
+
+.titulo-secao {
+    color: #214b7c;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+/* ÁREA DE SENTIMENTOS */
+
+.aba-sentimentos {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 28px;
+}
+
+.botao-aba-sentimentos {
+    width: 100%;
+    min-height: 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #c9def2;
+    background: rgba(255,255,255,.86);
+    color: #216bb7;
+    border-radius: 15px;
+    padding: 13px 18px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 7px 18px rgba(23,82,145,.06);
+    transition: .2s ease;
+}
+
+.botao-aba-sentimentos:hover {
+    background: #fff;
+    border-color: #a9c9e9;
+    transform: translateY(-1px);
+}
+
+.seta-aba,
+.seta-edicao {
+    font-size: 16px;
+    transition: transform .2s ease;
+}
+
+.seta-aba.aberta,
+.seta-edicao.aberta {
+    transform: rotate(180deg);
+}
+
+.sentimentos {
+    display: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 11px;
+    margin-top: 11px;
+    padding: 12px;
+    background: rgba(248,252,255,.95);
+    border: 1px solid #deebf8;
+    border-radius: 17px;
+    max-height: 50vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 22px rgba(23,82,145,.06);
+}
+
+.sentimentos.aberta {
+    display: grid;
+}
+
+.sentimento {
+    min-height: 72px;
+    border: 1px solid #d6e4f2;
+    background: #fff;
+    color: #425f80;
+    border-radius: 14px;
+    padding: 9px 7px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.sentimento:hover {
+    background: #edf6ff;
+    border-color: #9fc5e9;
+    transform: translateY(-2px);
+}
+
+.sentimento.selecionado {
+    background: #dff0ff;
+    border-color: #5c9ee8;
+    color: #1556a5;
+    font-weight: 750;
+    box-shadow: 0 7px 16px rgba(40,126,208,.10);
+}
+
+.sentimento span,
+.edicao-sentimento span {
+    font-size: 25px;
+    line-height: 1;
+}
+
+/* TEXTO */
+
+textarea {
+    width: 100%;
+    max-width: 900px;
+    min-height: 205px;
+    resize: vertical;
+    border: 1px solid #cfe0f1;
+    border-radius: 17px;
+    padding: 17px 18px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #344f70;
+    background: rgba(255,255,255,.92);
+    outline: none;
+    box-shadow: 0 8px 22px rgba(23,82,145,.05);
+    transition: .2s ease;
+}
+
+textarea:focus {
+    border-color: #5c9ee8;
+    box-shadow:
+        0 0 0 4px rgba(92,158,232,.12),
+        0 9px 24px rgba(23,82,145,.07);
+}
+
+textarea::placeholder {
+    color: #8a9caf;
+}
+
+.contador {
+    width: 100%;
+    max-width: 900px;
+    text-align: right;
+    color: #287ed0;
+    font-size: 12px;
+    font-weight: 650;
+    margin: 7px 0 17px;
+    transition:
+        color .35s ease,
+        transform .35s ease;
+}
+
+.contador-normal {
+    color: #287ed0;
+}
+
+.contador-atencao {
+    color: #e69a2f;
+    transform: translateY(-1px);
+}
+
+.contador-alerta {
+    color: #d95c5c;
+    transform: translateY(-1px);
+}
+
+/* BOTÕES PRINCIPAIS */
+
+.botao-principal {
+    width: 100%;
+    max-width: 900px;
+    min-height: 54px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg,#287ed0,#1556a5);
+    color: white;
+    padding: 0 18px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(35,112,190,.20);
+    transition: .2s ease;
+}
+
+.botao-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(35,112,190,.27);
+}
+
+.botao-historico {
+    width: 100%;
+    max-width: 900px;
+    min-height: 50px;
+    border: 1px solid #c9def2;
+    border-radius: 14px;
+    background: rgba(255,255,255,.75);
+    color: #216bb7;
+    padding: 0 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 11px;
+    transition: .2s ease;
+}
+
+.botao-historico:hover {
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+/* HISTÓRICO */
+
+#historico {
+    display: none;
+}
+
+.historico-titulo {
+    position: relative;
+    color: var(--azul-escuro);
+    font-size: clamp(34px, 5vw, 48px);
+    font-weight: 750;
+    line-height: 1.08;
+    letter-spacing: -1px;
+    margin: 0 0 30px;
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    border: 1px solid #deebf8;
+    border-radius: 17px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: rgba(255,255,255,.84);
+    box-shadow: 0 7px 18px rgba(23,82,145,.05);
+    transition: .2s ease;
+}
+
+.entry:hover {
+    background: #fff;
+    border-color: #c7dced;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(23,82,145,.09);
+}
+
+.entry-emoji {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e1efff;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+.entry-conteudo {
+    min-width: 0;
+}
+
+.entry-sentimento {
+    font-weight: 750;
+    color: #216bb7;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.entry-data {
+    color: #899bb0;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.entry-text {
+    color: #586f89;
+    font-size: 13px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 40px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.botao-todos {
+    width: 100%;
+    max-width: 900px;
+    border: none;
+    background: transparent;
+    color: #287ed0;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 12px;
+}
+
+/* MODAIS */
+
+.registro-fundo,
+.mensagem-fundo,
+.confirmacao-fundo,
+.edicao-fundo {
+    position: fixed;
+    inset: 0;
+    background: rgba(30,55,85,.48);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.registro-fundo { z-index: 1100; }
+.edicao-fundo { z-index: 1200; }
+.confirmacao-fundo { z-index: 1300; }
+.mensagem-fundo { z-index: 1400; }
+
+.registro-caixa,
+.edicao-caixa,
+.mensagem-caixa,
+.confirmacao-caixa {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e2eef9;
+    border-radius: 22px;
+    box-shadow: 0 20px 55px rgba(23,65,105,.22);
+}
+
+.registro-caixa {
+    max-width: 500px;
+    max-height: 84vh;
+    overflow-y: auto;
+    padding: 28px;
+}
+
+.registro-emoji {
+    text-align: center;
+    font-size: 52px;
+    margin-bottom: 7px;
+}
+
+.registro-sentimento {
+    text-align: center;
+    color: #123e78;
+    font-size: 23px;
+    font-weight: 750;
+    margin-bottom: 5px;
+}
+
+.registro-data {
+    text-align: center;
+    color: #899bb0;
+    font-size: 12px;
+    margin-bottom: 19px;
+}
+
+.registro-texto {
+    color: #344f70;
+    font-size: 14px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    background: #f5faff;
+    border: 1px solid #e1edf8;
+    border-radius: 15px;
+    padding: 16px;
+}
+
+.botoes-registro {
+    display: flex;
+    gap: 9px;
+    margin-top: 17px;
+}
+
+.botoes-registro button,
+.botoes-confirmacao button {
+    flex: 1;
+    border: none;
+    border-radius: 12px;
+    min-height: 44px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.botao-editar {
+    background: #dff0ff;
+    color: #216bb7;
+}
+
+.botao-excluir {
+    background: #fde5e5;
+    color: #a74444;
+}
+
+.botao-fechar,
+.botao-nao {
+    background: #edf3f9;
+    color: #566f89;
+}
+
+/* MENSAGEM / CONFIRMAÇÃO */
+
+.mensagem-caixa,
+.confirmacao-caixa {
+    max-width: 370px;
+    padding: 27px;
+    text-align: center;
+}
+
+.mensagem-caixa p,
+.confirmacao-caixa p {
+    color: #344f70;
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 19px;
+}
+
+.botao-mensagem {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#287ed0,#1556a5);
+    color: #fff;
+    padding: 12px;
+    min-height: 45px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.botoes-confirmacao {
+    display: flex;
+    gap: 10px;
+}
+
+.botao-sim {
+    background: #e56b6b;
+    color: white;
+}
+
+/* EDIÇÃO */
+
+.edicao-caixa {
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+}
+
+.edicao-titulo {
+    text-align: center;
+    color: #123e78;
+    font-size: 25px;
+    font-weight: 750;
+    margin: 0 0 20px;
+}
+
+.aba-edicao-sentimentos {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.botao-aba-edicao {
+    width: 100%;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #c9def2;
+    background: #f5faff;
+    color: #216bb7;
+    border-radius: 14px;
+    padding: 12px 15px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.edicao-sentimentos {
+    display: none;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 9px;
+    margin-top: 9px;
+    padding: 10px;
+    background: #f7fbff;
+    border: 1px solid #deebf8;
+    border-radius: 15px;
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+.edicao-sentimentos.aberta {
+    display: grid;
+}
+
+.edicao-sentimento {
+    min-height: 64px;
+    border: 1px solid #d6e4f2;
+    background: #fff;
+    color: #425f80;
+    border-radius: 12px;
+    padding: 8px 5px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    transition: .2s ease;
+}
+
+.edicao-sentimento:hover {
+    background: #edf6ff;
+    border-color: #9fc5e9;
+}
+
+.edicao-sentimento.selecionado {
+    background: #dff0ff;
+    border-color: #5c9ee8;
+    color: #1556a5;
+    font-weight: 750;
+}
+
+.botao-salvar-edicao {
+    width: 100%;
+    border: none;
+    border-radius: 13px;
+    background: linear-gradient(135deg,#287ed0,#1556a5);
+    color: white;
+    padding: 12px;
+    min-height: 48px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.botao-cancelar-edicao {
+    width: 100%;
+    border: none;
+    border-radius: 13px;
+    background: #edf3f9;
+    color: #566f89;
+    padding: 11px;
+    min-height: 45px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+    .pagina {
+        padding: 20px 20px 40px;
+    }
+
+    .diario-card,
+    .historico-card {
+        min-height: calc(100vh - 60px);
+        padding: 35px;
+    }
+
+    .sentimentos,
+    .edicao-sentimentos {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+    .pagina {
+        padding: 10px 12px 28px;
+    }
+
+    .diario-card,
+    .historico-card {
+        min-height: calc(100vh - 38px);
+        border-radius: 22px;
+        padding: 25px 19px;
+    }
+
+    .botao-voltar {
+        margin-bottom: 27px;
+    }
+
+    h1 {
+        font-size: 36px;
+        letter-spacing: -1px;
+    }
+
+    .subtitulo {
+        font-size: 15px;
+        line-height: 1.58;
+        margin-bottom: 30px;
+    }
+
+    .sentimentos,
+    .edicao-sentimentos {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        gap: 8px;
+        padding: 9px;
+    }
+
+    .sentimento,
+    .edicao-sentimento {
+        min-height: 64px;
+    }
+
+    textarea {
+        min-height: 180px;
+        font-size: 14px;
+    }
+
+    .botoes-registro {
+        flex-direction: column;
+    }
+
+    .registro-caixa,
+    .edicao-caixa {
+        padding: 22px;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .pagina {
+        padding: 8px;
+    }
+
+    .diario-card,
+    .historico-card {
+        padding: 22px 16px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .sentimento,
+    .edicao-sentimento {
+        font-size: 12px;
+    }
+}
+</style>
 
 </head>
 
@@ -912,15 +876,14 @@
         <section id="diario">
 
 
-            <button
-                class="botao-voltar"
-                onclick="voltarPagina()"
-            >
-                ← Voltar
-            </button>
-
-
             <div class="diario-card">
+
+                <button
+                    class="botao-voltar"
+                    onclick="voltarPagina()"
+                >
+                    ← Voltar
+                </button>
 
 
                 <h1>
@@ -1142,7 +1105,7 @@
 
                 <textarea
                     id="textoDiario"
-                    maxlength="300"
+                    maxlength="750"
                     placeholder="Como foi seu dia? O que está passando pela sua cabeça?"
                     oninput="atualizarContador()"
                 ></textarea>
@@ -1152,7 +1115,7 @@
                     id="contador"
                     class="contador"
                 >
-                    0/300
+                    0/750
                 </div>
 
 
@@ -1184,15 +1147,14 @@
         <section id="historico">
 
 
-            <button
-                class="botao-voltar"
-                onclick="voltarDiario()"
-            >
-                ← Voltar
-            </button>
-
-
             <div class="historico-card">
+
+                <button
+                    class="botao-voltar"
+                    onclick="voltarDiario()"
+                >
+                    ← Voltar
+                </button>
 
 
                 <h2 class="historico-titulo">
@@ -1586,7 +1548,7 @@
 
             <textarea
                 id="textoEdicao"
-                maxlength="300"
+                maxlength="750"
                 placeholder="Edite seu registro..."
                 oninput="atualizarContadorEdicao()"
             ></textarea>
@@ -1596,7 +1558,7 @@
                 id="contadorEdicao"
                 class="contador"
             >
-                0/300
+                0/750
             </div>
 
 
@@ -1805,10 +1767,51 @@
                 );
 
 
-            contador.textContent =
-                texto.value.length +
-                "/300";
+            const quantidade =
+                texto.value.length;
 
+            contador.textContent =
+                quantidade +
+                "/750";
+
+            atualizarCorContador(
+                contador,
+                quantidade
+            );
+
+        }
+
+
+        function atualizarCorContador(
+            contador,
+            quantidade
+        ) {
+
+            contador.classList.remove(
+                "contador-normal",
+                "contador-atencao",
+                "contador-alerta"
+            );
+
+            if (quantidade >= 713) {
+
+                contador.classList.add(
+                    "contador-alerta"
+                );
+
+            } else if (quantidade >= 600) {
+
+                contador.classList.add(
+                    "contador-atencao"
+                );
+
+            } else {
+
+                contador.classList.add(
+                    "contador-normal"
+                );
+
+            }
         }
 
 
@@ -1887,7 +1890,7 @@
 
             document.getElementById(
                 "contador"
-            ).textContent = "0/300";
+            ).textContent = "0/750";
 
 
             sentimentoSelecionado = null;
@@ -2564,11 +2567,22 @@
                 );
 
 
-            document.getElementById(
-                "contadorEdicao"
-            ).textContent =
-                texto.value.length +
-                "/300";
+            const contador =
+                document.getElementById(
+                    "contadorEdicao"
+                );
+
+            const quantidade =
+                texto.value.length;
+
+            contador.textContent =
+                quantidade +
+                "/750";
+
+            atualizarCorContador(
+                contador,
+                quantidade
+            );
 
         }
 

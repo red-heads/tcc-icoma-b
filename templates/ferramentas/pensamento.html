@@ -10,19 +10,152 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Pensamento positivo | ICOMA</title>
+    <title>Pensamento positivo | Tudo bem aí?</title>
 
 
     <style>
+
+        /* =================================
+           VARIÁVEIS
+        ================================= */
+
+        :root {
+
+            --azul-escuro: #123e78;
+            --azul-principal: #287ed0;
+            --azul-medio: #5c9ee8;
+            --azul-claro: #dceeff;
+            --fundo: #eaf5ff;
+
+            --branco: #ffffff;
+
+            --texto: #294d76;
+            --texto-claro: #527196;
+
+            --borda:
+                rgba(255, 255, 255, 0.72);
+
+            --sombra:
+                0 15px 35px
+                rgba(23, 82, 145, 0.10);
+
+            --raio: 20px;
+        }
+
 
         /* =================================
            RESET
         ================================= */
 
         * {
+
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+
+                radial-gradient(
+                    circle at top left,
+                    rgba(83, 157, 255, 0.16),
+                    transparent 32%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #eaf5ff 0%,
+                    #dceeff 48%,
+                    #f5faff 100%
+                );
+
+            color:
+                var(--texto);
+
+            overflow-x: hidden;
+        }
+
+
+        /* =================================
+           FORMAS DECORATIVAS
+        ================================= */
+
+        .background-shape {
+
+            position: fixed;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        .shape-one {
+
+            width: 420px;
+
+            height: 420px;
+
+            background:
+                rgba(83, 157, 255, 0.13);
+
+            top: -180px;
+
+            left: -140px;
+        }
+
+
+        .shape-two {
+
+            width: 350px;
+
+            height: 350px;
+
+            background:
+                rgba(31, 104, 204, 0.10);
+
+            bottom: -150px;
+
+            right: -120px;
+        }
+
+
+        .shape-three {
+
+            width: 180px;
+
+            height: 180px;
+
+            background:
+                rgba(112, 184, 255, 0.12);
+
+            top: 20%;
+
+            right: 8%;
         }
 
 
@@ -30,128 +163,95 @@
            PÁGINA
         ================================= */
 
-        body {
+        .pagina {
 
-            font-family:
-                "Segoe UI",
-                Arial,
-                sans-serif;
+            position: relative;
+
+            z-index: 1;
+
+            width:
+                min(100%, 1160px);
 
             min-height: 100vh;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef4ff,
-                    #e5eefb
-                );
-
-            color: #263f70;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 24px;
-        }
-
-
-        /* =================================
-           CONTAINER
-        ================================= */
-
-        .pagina {
-
-            width: 100%;
-
-            max-width: 760px;
-
-            min-height: 700px;
-
-            background: #edf3fd;
-
-            border-radius: 28px;
+            margin: 0 auto;
 
             padding:
-                clamp(20px, 4vw, 38px);
-
-            box-shadow:
-                0 12px 35px
-                rgba(48, 91, 135, 0.15);
+                26px
+                28px
+                60px;
 
             display: flex;
 
             flex-direction: column;
-
-            position: relative;
-
-            overflow: hidden;
         }
 
 
         /* =================================
-           DECORAÇÃO
+           TOPO
         ================================= */
 
-        .pagina::before {
+        .topo {
 
-            content: "";
+            display: flex;
 
-            position: absolute;
+            align-items: center;
 
-            width: 270px;
+            justify-content: space-between;
 
-            height: 270px;
+            gap: 20px;
 
-            border-radius: 50%;
-
-            background: #dceafa;
-
-            top: -140px;
-
-            right: -100px;
-
-            opacity: 0.65;
+            margin-bottom: 28px;
         }
 
-
-        /* =================================
-           BOTÃO VOLTAR PARA O INDEX
-        ================================= */
 
         .voltar {
 
-            width: fit-content;
+            display: inline-flex;
 
-            min-height: 48px;
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            min-height: 46px;
 
             padding:
                 10px 18px;
 
-            border: none;
+            border:
+                1px solid
+                rgba(40, 126, 208, 0.14);
 
-            border-radius: 11px;
+            border-radius: 14px;
 
-            background: white;
+            background:
+                rgba(255, 255, 255, 0.84);
 
-            color: #087fc1;
+            backdrop-filter:
+                blur(12px);
 
-            font-size: 18px;
+            -webkit-backdrop-filter:
+                blur(12px);
+
+            color:
+                var(--azul-principal);
+
+            font-size: 16px;
+
+            font-weight: 600;
 
             cursor: pointer;
 
             box-shadow:
-                0 4px 10px
-                rgba(45, 79, 112, 0.14);
+                0 7px 18px
+                rgba(23, 82, 145, 0.08);
 
             transition:
-                0.2s ease;
-
-            position: relative;
-
-            z-index: 2;
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
 
 
@@ -160,9 +260,124 @@
             transform:
                 translateX(-3px);
 
+            background:
+                white;
+
             box-shadow:
-                0 6px 14px
-                rgba(45, 79, 112, 0.2);
+                0 10px 22px
+                rgba(23, 82, 145, 0.13);
+        }
+
+
+        .identidade {
+
+            text-align: right;
+
+            color:
+                var(--texto-claro);
+
+            font-size: 13px;
+
+            line-height: 1.4;
+        }
+
+
+        .identidade strong {
+
+            display: block;
+
+            color:
+                var(--azul-escuro);
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           CARTÃO PRINCIPAL
+        ================================= */
+
+        .conteudo {
+
+            position: relative;
+
+            overflow: hidden;
+
+            flex: 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            background:
+                rgba(255, 255, 255, 0.48);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.82);
+
+            border-radius: 28px;
+
+            padding:
+                clamp(22px, 4vw, 44px);
+
+            box-shadow:
+                0 20px 50px
+                rgba(23, 82, 145, 0.11);
+
+            backdrop-filter:
+                blur(14px);
+
+            -webkit-backdrop-filter:
+                blur(14px);
+        }
+
+
+        .conteudo::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 310px;
+
+            height: 310px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(112, 184, 255, 0.12);
+
+            top: -190px;
+
+            right: -110px;
+
+            pointer-events: none;
+        }
+
+
+        .conteudo::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(220, 238, 255, 0.55);
+
+            bottom: -110px;
+
+            left: -80px;
+
+            pointer-events: none;
         }
 
 
@@ -172,39 +387,75 @@
 
         .cabecalho {
 
-            margin-top: 34px;
-
-            padding:
-                0 5px;
-
             position: relative;
 
-            z-index: 1;
+            z-index: 2;
 
             text-align: center;
+
+            max-width: 760px;
+
+            margin:
+                0 auto;
+        }
+
+
+        .etiqueta {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 14px;
+
+            padding:
+                7px 13px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(40, 126, 208, 0.09);
+
+            color:
+                var(--azul-principal);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.2px;
         }
 
 
         .titulo {
 
+            color:
+                var(--azul-escuro);
+
             font-size:
-                clamp(22px, 4vw, 30px);
+                clamp(28px, 4vw, 38px);
 
-            font-weight: 500;
+            font-weight: 650;
 
-            line-height: 1.3;
+            line-height: 1.2;
 
-            color: #263f70;
+            letter-spacing: -0.5px;
         }
 
 
         .subtitulo {
 
-            margin-top: 10px;
+            margin-top: 12px;
 
-            color: #60769c;
+            color:
+                var(--texto-claro);
 
-            font-size: 16px;
+            font-size:
+                clamp(15px, 2vw, 17px);
+
+            line-height: 1.6;
         }
 
 
@@ -214,9 +465,13 @@
 
         .area-mensagem {
 
+            position: relative;
+
+            z-index: 2;
+
             flex: 1;
 
-            min-height: 330px;
+            min-height: 350px;
 
             display: flex;
 
@@ -225,11 +480,7 @@
             align-items: center;
 
             padding:
-                30px 10px;
-
-            position: relative;
-
-            z-index: 1;
+                34px 10px;
         }
 
 
@@ -241,16 +492,9 @@
 
             width: 100%;
 
-            max-width: 560px;
+            max-width: 720px;
 
-            min-height: 250px;
-
-            background: white;
-
-            border-radius: 25px;
-
-            padding:
-                35px 30px;
+            min-height: 290px;
 
             display: flex;
 
@@ -262,9 +506,22 @@
 
             text-align: center;
 
+            padding:
+                42px
+                clamp(25px, 5vw, 55px);
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.96);
+
+            border-radius: 27px;
+
             box-shadow:
-                0 8px 25px
-                rgba(45, 79, 112, 0.10);
+                0 18px 40px
+                rgba(23, 82, 145, 0.11);
 
             transition:
                 opacity 0.3s ease,
@@ -282,16 +539,40 @@
 
 
         /* =================================
-           CORAÇÃO
+           ÍCONE
         ================================= */
 
         .coracao {
 
-            font-size: 48px;
+            width: 70px;
 
-            color: #087fc1;
+            height: 70px;
 
-            margin-bottom: 20px;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 22px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #e5f5ff,
+                    #c7e6fa
+                );
+
+            color:
+                var(--azul-principal);
+
+            font-size: 37px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(40, 126, 208, 0.12);
 
             animation:
                 pulsar 3s
@@ -303,35 +584,42 @@
         @keyframes pulsar {
 
             0% {
-                transform: scale(1);
+
+                transform:
+                    scale(1);
             }
 
             50% {
-                transform: scale(1.08);
+
+                transform:
+                    scale(1.07);
             }
 
             100% {
-                transform: scale(1);
+
+                transform:
+                    scale(1);
             }
         }
 
 
         /* =================================
-           TEXTO DA MENSAGEM
+           TEXTO
         ================================= */
 
         .texto-mensagem {
 
-            color: #263f70;
+            max-width: 620px;
+
+            color:
+                var(--azul-escuro);
 
             font-size:
-                clamp(20px, 4vw, 25px);
+                clamp(21px, 4vw, 29px);
 
             line-height: 1.5;
 
-            font-weight: 400;
-
-            max-width: 480px;
+            font-weight: 450;
         }
 
 
@@ -341,11 +629,22 @@
 
         .contador-mensagens {
 
-            margin-top: 20px;
+            margin-top: 22px;
 
-            color: #7286a7;
+            padding:
+                6px 12px;
 
-            font-size: 15px;
+            border-radius: 999px;
+
+            background:
+                #edf7ff;
+
+            color:
+                var(--azul-principal);
+
+            font-size: 13px;
+
+            font-weight: 700;
         }
 
 
@@ -355,220 +654,249 @@
 
         .controles {
 
+            position: relative;
+
+            z-index: 3;
+
             display: flex;
 
             flex-direction: column;
 
             align-items: center;
 
-            gap: 10px;
+            gap: 11px;
 
-            padding-bottom: 10px;
-
-            position: relative;
-
-            z-index: 2;
+            padding-top: 4px;
         }
 
 
         /* =================================
-           NAVEGAÇÃO ENTRE FRASES
+           NAVEGAÇÃO
         ================================= */
 
         .navegacao-frases {
 
             width: 100%;
 
-            display: flex;
+            max-width: 590px;
 
-            justify-content: center;
+            display: grid;
 
-            align-items: center;
+            grid-template-columns:
+                1fr 1fr;
 
-            gap: 10px;
+            gap: 11px;
         }
 
 
         .btn-anterior,
         .btn-proxima {
 
-            width: 140px;
+            min-height: 54px;
 
-            height: 50px;
+            border-radius: 14px;
 
-            border-radius: 12px;
+            font-size: 16px;
 
-            font-size: 17px;
+            font-weight: 700;
 
             cursor: pointer;
 
             transition:
-                0.25s ease;
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
 
 
         /* =================================
-           BOTÃO ANTERIOR
+           ANTERIOR
         ================================= */
 
         .btn-anterior {
 
-            background: white;
+            background:
+                rgba(255, 255, 255, 0.90);
 
-            color: #087fc1;
+            color:
+                var(--azul-principal);
 
             border:
-                2px solid #087fc1;
+                1.5px solid
+                var(--azul-principal);
         }
 
 
         .btn-anterior:hover {
 
-            background: #eaf5ff;
-
             transform:
                 translateY(-2px);
+
+            background:
+                #edf7ff;
+
+            box-shadow:
+                0 8px 18px
+                rgba(40, 126, 208, 0.11);
         }
 
 
         /* =================================
-           BOTÃO PRÓXIMA
+           PRÓXIMA
         ================================= */
 
         .btn-proxima {
 
-            background: #087fc1;
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #287ed0,
+                    #1556a5
+                );
 
             color: white;
 
-            border: none;
-
             box-shadow:
-                0 5px 14px
-                rgba(8, 127, 193, 0.20);
+                0 8px 18px
+                rgba(40, 126, 208, 0.20);
         }
 
 
         .btn-proxima:hover {
 
-            background: #076fa9;
-
             transform:
                 translateY(-2px);
 
             box-shadow:
-                0 8px 18px
-                rgba(8, 127, 193, 0.25);
+                0 11px 22px
+                rgba(40, 126, 208, 0.25);
         }
 
 
         /* =================================
-           BOTÕES DE FAVORITOS
+           BOTÕES SECUNDÁRIOS
         ================================= */
 
         .btn-favoritar,
-        .btn-favoritos {
+        .btn-favoritos,
+        .btn-todas {
 
             width:
-                min(100%, 280px);
+                min(100%, 590px);
 
-            min-height: 46px;
+            min-height: 50px;
 
             padding:
                 10px 20px;
 
-            border-radius: 13px;
+            border-radius: 14px;
 
             font-size: 15px;
 
-            font-weight: 600;
+            font-weight: 700;
 
             cursor: pointer;
 
             transition:
-                0.25s ease;
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
 
+        /* =================================
+           FAVORITAR
+        ================================= */
+
         .btn-favoritar {
 
-            background: white;
+            background:
+                rgba(255, 255, 255, 0.90);
 
-            color: #087fc1;
+            color:
+                var(--azul-principal);
 
             border:
-                2px solid #087fc1;
+                1.5px solid
+                var(--azul-principal);
         }
 
 
         .btn-favoritar:hover {
 
-            background: #eaf5ff;
-
             transform:
                 translateY(-2px);
+
+            background:
+                #edf7ff;
+
+            box-shadow:
+                0 8px 18px
+                rgba(40, 126, 208, 0.11);
         }
 
 
+        /* =================================
+           FAVORITOS
+        ================================= */
+
         .btn-favoritos {
 
-            background: #dcecff;
-
-            color: #263f70;
-
             border: none;
+
+            background:
+                rgba(220, 238, 255, 0.88);
+
+            color:
+                var(--azul-escuro);
         }
 
 
         .btn-favoritos:hover {
 
-            background: #cce2ff;
-
             transform:
                 translateY(-2px);
+
+            background:
+                #cfe7fc;
+
+            box-shadow:
+                0 7px 17px
+                rgba(40, 126, 208, 0.10);
         }
 
 
         /* =================================
-           BOTÃO VER TODAS
+           TODAS
         ================================= */
 
         .btn-todas {
 
-            width:
-                min(100%, 280px);
-
-            min-height: 46px;
-
-            padding:
-                10px 20px;
-
-            border-radius: 13px;
-
-            background: transparent;
+            background:
+                transparent;
 
             border:
-                1px solid #9bb9d6;
+                1.5px solid
+                #9cb9d5;
 
-            color: #087fc1;
-
-            font-size: 15px;
-
-            font-weight: 600;
-
-            cursor: pointer;
-
-            transition:
-                0.25s ease;
+            color:
+                var(--azul-principal);
         }
 
 
         .btn-todas:hover {
 
-            background: white;
-
             transform:
                 translateY(-2px);
+
+            background:
+                rgba(255, 255, 255, 0.85);
+
+            box-shadow:
+                0 7px 17px
+                rgba(23, 82, 145, 0.08);
         }
 
 
@@ -581,10 +909,10 @@
 
             width: 100%;
 
-            max-width: 560px;
+            max-width: 590px;
 
             margin:
-                15px auto 0;
+                3px auto 0;
 
             display: none;
 
@@ -599,71 +927,77 @@
 
         .favorito-item {
 
-            background: white;
-
             padding:
-                16px 18px;
-
-            border-radius: 15px;
+                17px 18px;
 
             margin-bottom: 10px;
 
-            color: #263f70;
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.95);
+
+            border-radius: 15px;
+
+            color:
+                var(--texto);
 
             box-shadow:
-                0 3px 10px
-                rgba(0, 0, 0, 0.05);
+                0 6px 15px
+                rgba(23, 82, 145, 0.07);
 
             text-align: left;
 
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
 
         /* =================================
-           ITEM DE TODAS AS MENSAGENS
+           ITEM TODAS AS MENSAGENS
         ================================= */
 
         .mensagem-item {
-
-            background: white;
-
-            padding:
-                16px 18px;
-
-            border-radius: 15px;
-
-            margin-bottom: 10px;
-
-            color: #263f70;
-
-            box-shadow:
-                0 3px 10px
-                rgba(0, 0, 0, 0.05);
-
-            text-align: left;
-
-            line-height: 1.5;
 
             display: flex;
 
             align-items: center;
 
-            gap: 12px;
+            gap: 13px;
+
+            padding:
+                15px 17px;
+
+            margin-bottom: 9px;
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.95);
+
+            border-radius: 15px;
+
+            color:
+                var(--texto);
+
+            box-shadow:
+                0 6px 15px
+                rgba(23, 82, 145, 0.07);
+
+            text-align: left;
+
+            line-height: 1.5;
         }
 
 
         .numero-mensagem {
 
-            min-width: 30px;
+            min-width: 32px;
 
-            height: 30px;
-
-            border-radius: 50%;
-
-            background: #dcecff;
-
-            color: #087fc1;
+            height: 32px;
 
             display: flex;
 
@@ -671,9 +1005,17 @@
 
             justify-content: center;
 
+            border-radius: 50%;
+
+            background:
+                #dceeff;
+
+            color:
+                var(--azul-principal);
+
             font-size: 13px;
 
-            font-weight: bold;
+            font-weight: 700;
         }
 
 
@@ -685,17 +1027,18 @@
 
             margin-top: 9px;
 
+            padding: 0;
+
             background: none;
 
             border: none;
 
-            color: #087fc1;
+            color:
+                var(--azul-principal);
 
             cursor: pointer;
 
             font-size: 13px;
-
-            padding: 0;
         }
 
 
@@ -733,34 +1076,14 @@
            TABLET
         ================================= */
 
-        @media (max-width: 700px) {
-
-            body {
-
-                padding: 0;
-
-                align-items: stretch;
-            }
-
+        @media (max-width: 900px) {
 
             .pagina {
 
-                min-height: 100vh;
-
-                max-width: none;
-
-                border-radius: 0;
-
-                box-shadow: none;
-
                 padding:
-                    22px;
-            }
-
-
-            .cabecalho {
-
-                margin-top: 28px;
+                    22px
+                    20px
+                    50px;
             }
 
         }
@@ -770,35 +1093,129 @@
            CELULAR
         ================================= */
 
-        @media (max-width: 480px) {
+        @media (max-width: 700px) {
 
             .pagina {
 
+                width: 100%;
+
                 padding:
-                    18px 16px 24px;
+                    16px
+                    14px
+                    40px;
             }
 
 
-            .voltar {
+            .topo {
 
-                font-size: 17px;
-
-                min-height: 46px;
-
-                padding:
-                    9px 14px;
+                margin-bottom: 17px;
             }
 
 
-            .cabecalho {
+            .identidade {
 
-                margin-top: 28px;
+                display: none;
+            }
+
+
+            .conteudo {
+
+                border-radius: 22px;
+
+                padding:
+                    21px
+                    16px
+                    32px;
             }
 
 
             .titulo {
 
+                font-size: 28px;
+            }
+
+
+            .area-mensagem {
+
+                min-height: 320px;
+
+                padding:
+                    28px
+                    0;
+            }
+
+
+            .mensagem-card {
+
+                min-height: 270px;
+
+                border-radius: 22px;
+
+                padding:
+                    35px 22px;
+            }
+
+
+            .texto-mensagem {
+
                 font-size: 22px;
+            }
+
+
+            .btn-favoritar,
+            .btn-favoritos,
+            .btn-todas {
+
+                width: 100%;
+            }
+
+        }
+
+
+        /* =================================
+           CELULAR PEQUENO
+        ================================= */
+
+        @media (max-width: 480px) {
+
+            .pagina {
+
+                padding:
+                    14px
+                    12px
+                    32px;
+            }
+
+
+            .voltar {
+
+                min-height: 43px;
+
+                padding:
+                    9px 14px;
+
+                font-size: 15px;
+            }
+
+
+            .conteudo {
+
+                padding:
+                    20px
+                    14px
+                    30px;
+            }
+
+
+            .etiqueta {
+
+                font-size: 12px;
+            }
+
+
+            .titulo {
+
+                font-size: 25px;
             }
 
 
@@ -810,35 +1227,49 @@
 
             .area-mensagem {
 
-                min-height: 320px;
+                min-height: 300px;
 
                 padding:
-                    20px 0;
+                    22px
+                    0;
             }
 
 
             .mensagem-card {
 
-                min-height: 240px;
+                min-height: 250px;
 
                 padding:
-                    28px 20px;
+                    28px
+                    17px;
             }
 
 
             .coracao {
 
-                font-size: 42px;
+                width: 61px;
+
+                height: 61px;
+
+                font-size: 32px;
+
+                margin-bottom: 18px;
             }
 
 
             .texto-mensagem {
 
                 font-size: 20px;
+
+                line-height: 1.45;
             }
 
 
-            /* BOTÕES ANTERIOR E PRÓXIMA */
+            .contador-mensagens {
+
+                margin-top: 18px;
+            }
+
 
             .navegacao-frases {
 
@@ -849,9 +1280,9 @@
             .btn-anterior,
             .btn-proxima {
 
-                width: 50%;
+                min-height: 49px;
 
-                font-size: 15px;
+                font-size: 14px;
             }
 
 
@@ -859,9 +1290,9 @@
             .btn-favoritos,
             .btn-todas {
 
-                width: 100%;
+                min-height: 48px;
 
-                max-width: 280px;
+                font-size: 14px;
             }
 
 
@@ -869,27 +1300,32 @@
 
                 align-items:
                     flex-start;
+
+                font-size: 14px;
             }
 
         }
 
 
         /* =================================
-           CELULAR PEQUENO
+           CELULAR MUITO PEQUENO
         ================================= */
 
         @media (max-width: 360px) {
 
             .titulo {
 
-                font-size: 20px;
+                font-size: 22px;
             }
 
 
             .mensagem-card {
 
+                min-height: 235px;
+
                 padding:
-                    24px 16px;
+                    24px
+                    14px;
             }
 
 
@@ -902,7 +1338,7 @@
             .btn-anterior,
             .btn-proxima {
 
-                font-size: 14px;
+                font-size: 13px;
             }
 
         }
@@ -915,179 +1351,245 @@
 <body>
 
 
+    <!-- =================================
+         FORMAS DECORATIVAS
+    ================================= -->
+
+    <div class="background-shape shape-one"></div>
+
+    <div class="background-shape shape-two"></div>
+
+    <div class="background-shape shape-three"></div>
+
+
+    <!-- =================================
+         PÁGINA
+    ================================= -->
+
     <main class="pagina">
 
 
         <!-- =================================
-             VOLTAR PARA O INDEX
+             TOPO
         ================================= -->
 
-        <button
-            class="voltar"
-            onclick="voltar()"
-        >
-
-            ← &nbsp; Pensamento positivo
-
-        </button>
+        <div class="topo">
 
 
-        <!-- =================================
-             CABEÇALHO
-        ================================= -->
-
-        <header class="cabecalho">
-
-            <h1 class="titulo">
-
-                Leia e reflita sobre a mensagem
-
-            </h1>
-
-
-            <p class="subtitulo">
-
-                Uma pequena mensagem para o seu momento.
-
-            </p>
-
-        </header>
-
-
-        <!-- =================================
-             MENSAGEM ATUAL
-        ================================= -->
-
-        <section class="area-mensagem">
-
-            <div
-                class="mensagem-card"
-                id="mensagemCard"
+            <button
+                class="voltar"
+                onclick="voltar()"
+                type="button"
             >
 
-                <div class="coracao">
+                ←
 
-                    ♥️
+                <span>
+                    Voltar
+                </span>
+
+            </button>
+
+
+            <div class="identidade">
+
+                <strong>
+                    Tudo bem aí?
+                </strong>
+
+                Espaço de apoio e reflexão
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================
+             CONTEÚDO
+        ================================= -->
+
+        <div class="conteudo">
+
+
+            <!-- =================================
+                 CABEÇALHO
+            ================================= -->
+
+            <header class="cabecalho">
+
+
+                <div class="etiqueta">
+
+                    💭 Pensamento positivo
 
                 </div>
 
 
-                <p
-                    class="texto-mensagem"
-                    id="textoMensagem"
-                ></p>
+                <h1 class="titulo">
+
+                    Leia e reflita sobre a mensagem
+
+                </h1>
+
+
+                <p class="subtitulo">
+
+                    Uma pequena mensagem para
+                    acompanhar o seu momento.
+
+                </p>
+
+
+            </header>
+
+
+            <!-- =================================
+                 ÁREA DA MENSAGEM
+            ================================= -->
+
+            <section class="area-mensagem">
 
 
                 <div
-                    class="contador-mensagens"
-                    id="contadorMensagens"
+                    class="mensagem-card"
+                    id="mensagemCard"
+                >
+
+
+                    <div class="coracao">
+
+                        ♥️
+
+                    </div>
+
+
+                    <p
+                        class="texto-mensagem"
+                        id="textoMensagem"
+                    ></p>
+
+
+                    <div
+                        class="contador-mensagens"
+                        id="contadorMensagens"
+                    ></div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================
+                 CONTROLES
+            ================================= -->
+
+            <section class="controles">
+
+
+                <!-- =================================
+                     ANTERIOR / PRÓXIMA
+                ================================= -->
+
+                <div class="navegacao-frases">
+
+
+                    <button
+                        class="btn-anterior"
+                        onclick="mensagemAnterior()"
+                        type="button"
+                    >
+
+                        ← Anterior
+
+                    </button>
+
+
+                    <button
+                        class="btn-proxima"
+                        onclick="proximaMensagem()"
+                        type="button"
+                    >
+
+                        Próxima →
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- =================================
+                     FAVORITAR
+                ================================= -->
+
+                <button
+                    class="btn-favoritar"
+                    id="favoritarBtn"
+                    type="button"
+                >
+
+                    ♡ Favoritar mensagem
+
+                </button>
+
+
+                <!-- =================================
+                     FAVORITOS
+                ================================= -->
+
+                <button
+                    class="btn-favoritos"
+                    id="favoritosBtn"
+                    type="button"
+                >
+
+                    ♥ Minhas mensagens favoritas
+
+                </button>
+
+
+                <!-- =================================
+                     TODAS
+                ================================= -->
+
+                <button
+                    class="btn-todas"
+                    id="todasBtn"
+                    type="button"
+                >
+
+                    ☰ Ver todas as mensagens
+
+                </button>
+
+
+                <!-- =================================
+                     LISTA DE FAVORITOS
+                ================================= -->
+
+                <div
+                    class="lista-favoritos"
+                    id="listaFavoritos"
                 ></div>
 
-            </div>
 
-        </section>
+                <!-- =================================
+                     LISTA DE TODAS
+                ================================= -->
 
-
-        <!-- =================================
-             CONTROLES
-        ================================= -->
-
-        <section class="controles">
-
-
-            <!-- =================================
-                 ANTERIOR / PRÓXIMA
-            ================================= -->
-
-            <div class="navegacao-frases">
+                <div
+                    class="lista-todas"
+                    id="listaTodas"
+                ></div>
 
 
-                <button
-                    class="btn-anterior"
-                    onclick="mensagemAnterior()"
-                >
-
-                    ← Anterior
-
-                </button>
+            </section>
 
 
-                <button
-                    class="btn-proxima"
-                    onclick="proximaMensagem()"
-                >
-
-                    Próxima →
-
-                </button>
-
-
-            </div>
-
-
-            <!-- =================================
-                 FAVORITAR
-            ================================= -->
-
-            <button
-                class="btn-favoritar"
-                id="favoritarBtn"
-            >
-
-                ♡ Favoritar mensagem
-
-            </button>
-
-
-            <!-- =================================
-                 FAVORITOS
-            ================================= -->
-
-            <button
-                class="btn-favoritos"
-                id="favoritosBtn"
-            >
-
-                ♥ Minhas mensagens favoritas
-
-            </button>
-
-
-            <!-- =================================
-                 TODAS AS MENSAGENS
-            ================================= -->
-
-            <button
-                class="btn-todas"
-                id="todasBtn"
-            >
-
-                ☰ Ver todas as mensagens
-
-            </button>
-
-
-            <!-- =================================
-                 LISTA DE FAVORITOS
-            ================================= -->
-
-            <div
-                class="lista-favoritos"
-                id="listaFavoritos"
-            ></div>
-
-
-            <!-- =================================
-                 LISTA DE TODAS
-            ================================= -->
-
-            <div
-                class="lista-todas"
-                id="listaTodas"
-            ></div>
-
-
-        </section>
+        </div>
 
 
     </main>
@@ -1212,7 +1714,7 @@
 
 
         /* =================================
-           PRÓXIMA FRASE
+           PRÓXIMA
         ================================= */
 
         function proximaMensagem() {
@@ -1222,41 +1724,38 @@
             );
 
 
-            setTimeout(() => {
+            setTimeout(
+                () => {
 
-                indiceAtual++;
-
-
-                /*
-                    Se chegar depois
-                    da última frase,
-                    volta para a primeira.
-                */
-
-                if (
-                    indiceAtual >=
-                    mensagens.length
-                ) {
-
-                    indiceAtual = 0;
-
-                }
+                    indiceAtual++;
 
 
-                mostrarMensagem();
+                    if (
+                        indiceAtual >=
+                        mensagens.length
+                    ) {
+
+                        indiceAtual = 0;
+
+                    }
 
 
-                mensagemCard.classList.remove(
-                    "trocando"
-                );
+                    mostrarMensagem();
 
-            }, 300);
+
+                    mensagemCard.classList.remove(
+                        "trocando"
+                    );
+
+                },
+                300
+            );
 
         }
 
 
         /* =================================
-           FRASE ANTERIOR
+           ANTERIOR
         ================================= */
 
         function mensagemAnterior() {
@@ -1266,40 +1765,38 @@
             );
 
 
-            setTimeout(() => {
+            setTimeout(
+                () => {
 
-                indiceAtual--;
-
-
-                /*
-                    Se estiver na primeira
-                    frase, volta para a última.
-                */
-
-                if (
-                    indiceAtual < 0
-                ) {
-
-                    indiceAtual =
-                        mensagens.length - 1;
-
-                }
+                    indiceAtual--;
 
 
-                mostrarMensagem();
+                    if (
+                        indiceAtual < 0
+                    ) {
+
+                        indiceAtual =
+                            mensagens.length - 1;
+
+                    }
 
 
-                mensagemCard.classList.remove(
-                    "trocando"
-                );
+                    mostrarMensagem();
 
-            }, 300);
+
+                    mensagemCard.classList.remove(
+                        "trocando"
+                    );
+
+                },
+                300
+            );
 
         }
 
 
         /* =================================
-           ATUALIZAR BOTÃO FAVORITAR
+           BOTÃO FAVORITAR
         ================================= */
 
         function atualizarBotaoFavoritar() {
@@ -1341,11 +1838,6 @@
                     mensagens[indiceAtual];
 
 
-                /*
-                    Se já estiver favoritada,
-                    remove.
-                */
-
                 if (
                     favoritos.includes(
                         mensagemAtual
@@ -1361,12 +1853,6 @@
 
                 }
 
-
-                /*
-                    Caso contrário,
-                    adiciona.
-                */
-
                 else {
 
                     favoritos.push(
@@ -1375,10 +1861,6 @@
 
                 }
 
-
-                /*
-                    Salva no navegador.
-                */
 
                 localStorage.setItem(
                     "favoritosICOMA",
@@ -1389,6 +1871,7 @@
 
 
                 atualizarBotaoFavoritar();
+
 
                 mostrarFavoritos();
 
@@ -1439,7 +1922,7 @@
 
 
         /* =================================
-           CRIAR LISTA DE FAVORITOS
+           LISTA DE FAVORITOS
         ================================= */
 
         function mostrarFavoritos() {
@@ -1488,9 +1971,11 @@
 
                         </div>
 
+
                         <button
                             class="remover-favorito"
                             onclick="removerFavorito(${indice})"
+                            type="button"
                         >
 
                             Remover dos favoritos
@@ -1534,13 +2019,14 @@
 
             mostrarFavoritos();
 
+
             atualizarBotaoFavoritar();
 
         }
 
 
         /* =================================
-           VER TODAS AS MENSAGENS
+           TODAS AS MENSAGENS
         ================================= */
 
         todasBtn.addEventListener(
@@ -1582,7 +2068,7 @@
 
 
         /* =================================
-           CRIAR LISTA DE TODAS AS MENSAGENS
+           CRIAR LISTA DE TODAS
         ================================= */
 
         function mostrarTodas() {
@@ -1611,6 +2097,7 @@
 
                         </span>
 
+
                         <span>
 
                             ${mensagem}
@@ -1631,7 +2118,7 @@
 
 
         /* =================================
-           VOLTAR PARA O INDEX
+           VOLTAR
         ================================= */
 
         function voltar() {
@@ -1652,12 +2139,9 @@
         mostrarTodas();
 
 
-        /*
-            As listas começam fechadas.
-        */
-
         listaFavoritos.style.display =
             "none";
+
 
         listaTodas.style.display =
             "none";

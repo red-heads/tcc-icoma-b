@@ -22,22 +22,56 @@
         }
 
 
+        :root {
+            --azul-escuro: #123e78;
+            --azul-principal: #287ed0;
+            --azul-medio: #5c9ee8;
+            --azul-claro: #dceeff;
+            --fundo: #eaf5ff;
+            --texto: #294d76;
+            --texto-claro: #527196;
+            --borda: #deebf8;
+            --sombra: 0 15px 35px rgba(23, 82, 145, 0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-
+            position: relative;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background:
-                linear-gradient(
-                    135deg,
-                    #eef8ff,
-                    #dff1ff,
-                    #f5fbff
-                );
-
-            color: #24445f;
-
+                radial-gradient(circle at 10% 5%, rgba(255,255,255,.88), transparent 27%),
+                linear-gradient(135deg, #eaf5ff 0%, #dceeff 45%, #f5faff 100%);
+            color: var(--texto);
             min-height: 100vh;
-
             overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 430px;
+            height: 430px;
+            background: rgba(83,157,255,.11);
+            top: -190px;
+            left: -150px;
+        }
+
+        body::after {
+            width: 360px;
+            height: 360px;
+            background: rgba(31,104,204,.09);
+            right: -140px;
+            bottom: -150px;
         }
 
 
@@ -50,8 +84,11 @@
 
 
         header {
-            width: 100%;
-            padding: 24px 30px;
+            position: relative;
+            z-index: 1;
+            width: min(100%, 1160px);
+            margin: 0 auto;
+            padding: 28px 28px 10px;
         }
 
 
@@ -64,30 +101,32 @@
 
             text-decoration: none;
 
-            color: #3979a8;
+            color: #287ed0;
+            font-size: 15px;
 
-            font-size: 16px;
-
-            font-weight: 600;
-
+            font-weight: 700;
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 12px;
+            background: rgba(255,255,255,.58);
             transition: 0.2s;
         }
 
 
         .voltar:hover {
-            color: #245e88;
+            color: #1d5fa8;
 
             transform: translateX(-2px);
         }
 
 
         .container {
-            width: min(92%, 850px);
-
-            max-width: 850px;
-
-            margin: 20px auto 50px;
-
+            position: relative;
+            z-index: 1;
+            width: min(100%, 1160px);
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 10px 28px 55px;
             min-width: 0;
         }
 
@@ -100,8 +139,8 @@
 
 
         .titulo h1 {
-            color: #245f89;
-
+            color: #123e78;
+            letter-spacing: -1px;
             font-size:
                 clamp(
                     30px,
@@ -114,8 +153,7 @@
 
 
         .titulo p {
-            color: #67839a;
-
+            color: #527196;
             font-size: 16px;
 
             line-height: 1.6;
@@ -127,36 +165,37 @@
 
 
         .card {
+            position: relative;
             width: 100%;
-
             max-width: 100%;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.94
-                );
-
+            min-height: 430px;
+            background: rgba(255,255,255,.76);
+            border: 1px solid rgba(255,255,255,.85);
             border-radius: 26px;
-
-            padding: 30px;
-
-            margin-top: 30px;
-
-            box-shadow:
-                0 15px 45px
-                rgba(
-                    55,
-                    112,
-                    150,
-                    0.12
-                );
-
+            padding: 38px;
+            margin-top: 28px;
+            box-shadow: var(--sombra);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             min-width: 0;
-
             overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(112,176,255,.07);
+            top: -125px;
+            right: -95px;
+            pointer-events: none;
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 1;
         }
 
 
@@ -174,7 +213,7 @@
 
             font-weight: 700;
 
-            color: #315d7c;
+            color: #294d76;
 
             margin-bottom: 9px;
         }
@@ -203,7 +242,7 @@
             padding-right: 48px;
 
             background:
-                #f7fcff;
+                #f7fbff;
         }
 
 
@@ -219,7 +258,7 @@
 
             pointer-events: none;
 
-            color: #3979a8;
+            color: #287ed0;
 
             font-size: 15px;
         }
@@ -236,15 +275,15 @@
 
             max-width: 100%;
 
-            border: 1.5px solid #d3e7f4;
+            border: 1.5px solid #deebf8;
 
             border-radius: 13px;
 
             padding: 14px 15px;
 
-            background: #fbfdff;
+            background: #ffffff;
 
-            color: #315d7c;
+            color: #294d76;
 
             font-size: 15px;
 
@@ -298,11 +337,11 @@
         .tempo {
             width: 100%;
 
-            border: 1.5px solid #d2e8f7;
+            border: 1.5px solid #deebf8;
 
-            background: #f7fcff;
+            background: #f7fbff;
 
-            color: #426b85;
+            color: #527196;
 
             border-radius: 14px;
 
@@ -317,18 +356,18 @@
 
 
         .tempo:hover {
-            border-color: #8bc5e8;
+            border-color: #5c9ee8;
 
             background: #eef9ff;
         }
 
 
         .tempo.selecionado {
-            background: #dff2ff;
+            background: #dceeff;
 
-            border-color: #5da9d7;
+            border-color: #287ed0;
 
-            color: #245f89;
+            color: #123e78;
         }
 
 
@@ -382,7 +421,7 @@
         .tempo-personalizado-label {
             display: block;
 
-            color: #6d8799;
+            color: #527196;
 
             font-size: 13px;
 
@@ -391,7 +430,7 @@
 
 
         .tempo-ajuda {
-            color: #7891a2;
+            color: #6f8baa;
 
             font-size: 13px;
 
@@ -433,7 +472,7 @@
 
             padding: 15px 20px;
 
-            background: #5ca8d6;
+            background: #5c9ee8;
 
             color: white;
 
@@ -448,7 +487,7 @@
 
 
         .botao-principal:hover {
-            background: #438fbd;
+            background: #216bb6;
 
             transform:
                 translateY(-1px);
@@ -458,7 +497,7 @@
         .botao-secundario {
             flex: 1;
 
-            border: 1.5px solid #c5e0f1;
+            border: 1.5px solid #c9def4;
 
             border-radius: 15px;
 
@@ -466,7 +505,7 @@
 
             background: #f4fbff;
 
-            color: #3979a8;
+            color: #287ed0;
 
             font-size: 16px;
 
@@ -510,7 +549,7 @@
 
 
         .objetivo-atual {
-            color: #3979a8;
+            color: #287ed0;
 
             font-size: 15px;
 
@@ -534,7 +573,7 @@
 
             font-weight: 700;
 
-            color: #245f89;
+            color: #123e78;
 
             letter-spacing: 2px;
 
@@ -547,7 +586,7 @@
         .status-foco {
             min-height: 25px;
 
-            color: #7190a4;
+            color: #6f8baa;
 
             font-size: 15px;
 
@@ -578,9 +617,9 @@
 
             padding: 15px 10px;
 
-            background: #edf8ff;
+            background: #eaf5ff;
 
-            color: #3979a8;
+            color: #287ed0;
 
             font-weight: 700;
 
@@ -593,7 +632,7 @@
 
 
         .botao-foco:hover {
-            background: #dff2ff;
+            background: #dceeff;
         }
 
 
@@ -637,7 +676,7 @@
 
         #areaPausa h2,
         #areaDistracao h2 {
-            color: #315f7d;
+            color: #294d76;
 
             margin-bottom: 8px;
 
@@ -649,7 +688,7 @@
 
         #areaPausa p,
         #areaDistracao p {
-            color: #6d8799;
+            color: #527196;
 
             line-height: 1.5;
 
@@ -668,7 +707,7 @@
 
             padding: 15px;
 
-            background: #5ca8d6;
+            background: #5c9ee8;
 
             color: white;
 
@@ -681,7 +720,7 @@
 
 
         .continuar:hover {
-            background: #438fbd;
+            background: #216bb6;
         }
 
 
@@ -702,7 +741,7 @@
         .motivo {
             width: 100%;
 
-            border: 1px solid #d2e8f7;
+            border: 1px solid #deebf8;
 
             border-radius: 12px;
 
@@ -719,11 +758,146 @@
 
 
         .motivo.selecionado {
-            background: #dff2ff;
+            background: #dceeff;
 
-            border-color: #67acd5;
+            border-color: #287ed0;
 
-            color: #245f89;
+            color: #123e78;
+        }
+
+
+        /* =========================
+           OPÇÕES DE OBJETIVO
+        ========================= */
+
+        .objetivo-select-acessivel {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .objetivo-dropdown {
+            width: 100%;
+        }
+
+        .objetivo-toggle {
+            width: 100%;
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 15px 20px;
+            border: 1px solid #cfe1f8;
+            border-radius: 17px;
+            background: #fff;
+            color: #2874bd;
+            font: inherit;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+        }
+
+        .objetivo-toggle:hover,
+        .objetivo-toggle[aria-expanded="true"] {
+            border-color: #9dc8ff;
+            background: #f8fbff;
+            box-shadow: 0 4px 14px rgba(54, 117, 184, .08);
+        }
+
+        .objetivo-toggle-texto {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .objetivo-toggle-seta {
+            flex-shrink: 0;
+            font-size: 18px;
+            transition: transform .2s ease;
+        }
+
+        .objetivo-toggle[aria-expanded="true"] .objetivo-toggle-seta {
+            transform: rotate(180deg);
+        }
+
+        .objetivos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #dceaff;
+            border-radius: 20px;
+            background: #f7fbff;
+        }
+
+        .objetivos-grid[hidden] {
+            display: none;
+        }
+
+        .objetivo-opcao {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 10px;
+            border: 1px solid #cfe1f8;
+            border-radius: 16px;
+            background: #fff;
+            color: #45678d;
+            font: inherit;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: background .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .objetivo-opcao:hover {
+            background: #f0f7ff;
+            border-color: #9dc8ff;
+            transform: translateY(-1px);
+        }
+
+        .objetivo-opcao.selecionado {
+            background: #eaf4ff;
+            border-color: #8fc1ff;
+            color: #205b9b;
+            box-shadow: inset 0 0 0 1px #c6e0ff;
+        }
+
+        .objetivo-emoji {
+            font-size: 25px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .objetivos-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                padding: 9px;
+                gap: 8px;
+            }
+
+            .objetivo-opcao {
+                min-height: 70px;
+                flex-direction: column;
+                gap: 7px;
+                padding: 10px 6px;
+                font-size: 14px;
+            }
+
+            .objetivo-emoji {
+                font-size: 24px;
+            }
         }
 
 
@@ -750,15 +924,15 @@
         .reflexao {
             width: 100%;
 
-            border: 1.5px solid #d2e8f7;
+            border: 1.5px solid #deebf8;
 
-            background: #f7fcff;
+            background: #f7fbff;
 
             border-radius: 14px;
 
             padding: 15px;
 
-            color: #426b85;
+            color: #527196;
 
             font-weight: 600;
 
@@ -771,11 +945,11 @@
 
 
         .reflexao.selecionado {
-            background: #dff2ff;
+            background: #dceeff;
 
-            border-color: #5da9d7;
+            border-color: #287ed0;
 
-            color: #245f89;
+            color: #123e78;
         }
 
 
@@ -798,7 +972,7 @@
 
 
         .resultado-titulo {
-            color: #245f89;
+            color: #123e78;
 
             font-size: 28px;
 
@@ -809,7 +983,7 @@
 
 
         .resultado-texto {
-            color: #67839a;
+            color: #527196;
 
             line-height: 1.6;
 
@@ -852,7 +1026,7 @@
 
 
         .historico-cabecalho h2 {
-            color: #315f7d;
+            color: #294d76;
 
             font-size: 24px;
 
@@ -867,9 +1041,9 @@
 
             border: none;
 
-            background: #edf8ff;
+            background: #eaf5ff;
 
-            color: #3979a8;
+            color: #287ed0;
 
             border-radius: 10px;
 
@@ -888,7 +1062,7 @@
 
             padding: 30px 15px;
 
-            color: #7891a2;
+            color: #6f8baa;
 
             overflow-wrap: anywhere;
         }
@@ -944,7 +1118,7 @@
 
 
         .historico-atividade {
-            color: #315f7d;
+            color: #294d76;
 
             font-weight: 700;
 
@@ -1079,7 +1253,7 @@
         .editar {
             background: #eaf7ff;
 
-            color: #3979a8;
+            color: #287ed0;
         }
 
 
@@ -1131,7 +1305,7 @@
         .detalhe-titulo {
             display: block;
 
-            color: #315f7d;
+            color: #294d76;
 
             font-weight: 700;
 
@@ -1241,7 +1415,7 @@
 
 
         .modal-conteudo h2 {
-            color: #315f7d;
+            color: #294d76;
 
             margin-bottom: 10px;
 
@@ -1298,14 +1472,14 @@
 
 
         .modal-cancelar {
-            background: #edf8ff;
+            background: #eaf5ff;
 
-            color: #3979a8;
+            color: #287ed0;
         }
 
 
         .modal-confirmar {
-            background: #5ca8d6;
+            background: #5c9ee8;
 
             color: white;
         }
@@ -1321,29 +1495,33 @@
         @media (max-width: 650px) {
 
             header {
-                padding: 20px;
+                padding: 16px 16px 8px;
             }
-
 
             .container {
-                width: 94%;
-
+                width: 100%;
                 max-width: 100%;
-
-                margin-top: 10px;
+                margin-top: 0;
+                padding: 8px 12px 28px;
             }
-
 
             .card {
                 width: 100%;
-
                 max-width: 100%;
-
-                padding: 22px 16px;
-
-                border-radius: 21px;
-
+                min-height: calc(100vh - 125px);
+                padding: 25px 19px;
+                border-radius: 22px;
                 overflow: hidden;
+            }
+
+            .titulo h1 {
+                font-size: clamp(30px, 8vw, 36px);
+                letter-spacing: -1px;
+            }
+
+            .titulo p {
+                font-size: 15px;
+                line-height: 1.58;
             }
 
 
@@ -1487,6 +1665,19 @@
 
         @media (max-width: 400px) {
 
+            header {
+                padding: 12px 12px 6px;
+            }
+
+            .container {
+                padding: 6px 8px 20px;
+            }
+
+            .card {
+                padding: 22px 16px;
+                border-radius: 20px;
+            }
+
             .tempos {
                 grid-template-columns:
                     1fr 1fr;
@@ -1529,81 +1720,55 @@
 
     <section id="telaInicial">
 
-        <div class="titulo">
-
-            <h1>
-                Foco e concentração
-            </h1>
-
-            <p>
-                Um espaço para organizar seu momento
-                e realizar uma atividade de cada vez,
-                sem precisar se cobrar além do necessário.
-            </p>
-
-        </div>
-
-
         <div class="card">
+
+            <div class="titulo">
+
+                <h1>
+                    Foco e concentração
+                </h1>
+
+                <p>
+                    Um espaço para organizar seu momento
+                    e realizar uma atividade de cada vez,
+                    sem precisar se cobrar além do necessário.
+                </p>
+
+            </div>
 
 
             <!-- OBJETIVO -->
 
             <div class="campo">
 
-                <label for="objetivo">
+                <label for="objetivo-toggle">
                     🎯 O que você precisa fazer?
                 </label>
 
+                <div class="objetivo-dropdown">
+                    <button type="button" id="objetivo-toggle" class="objetivo-toggle" aria-expanded="false" aria-controls="objetivos-grid">
+                        <span class="objetivo-toggle-texto" id="objetivo-toggle-texto">Escolher atividade</span>
+                        <span class="objetivo-toggle-seta" aria-hidden="true">▼</span>
+                    </button>
 
-                <div class="select-wrapper">
+                <select id="objetivo" class="objetivo-select-acessivel" aria-label="O que você precisa fazer?">
+                    <option value="" selected>Selecione uma opção</option>
+                    <option value="Estudar">Estudar</option>
+                    <option value="Fazer atividade">Fazer atividade</option>
+                    <option value="Ler">Ler</option>
+                    <option value="Fazer trabalho">Fazer trabalho</option>
+                    <option value="Criar">Criar</option>
+                    <option value="Outro">Outro</option>
+                </select>
 
-                    <select id="objetivo">
-
-                        <option
-                            value=""
-                            selected
-                        >
-                            Selecione uma opção
-                        </option>
-
-
-                        <option value="Estudar">
-                            📚 Estudar
-                        </option>
-
-
-                        <option value="Fazer atividade">
-                            📝 Fazer atividade
-                        </option>
-
-
-                        <option value="Ler">
-                            📖 Ler
-                        </option>
-
-
-                        <option value="Fazer trabalho">
-                            💻 Fazer trabalho
-                        </option>
-
-
-                        <option value="Criar">
-                            🎨 Criar
-                        </option>
-
-
-                        <option value="Outro">
-                            ✏️ Outro
-                        </option>
-
-                    </select>
-
-
-                    <span class="select-seta">
-                        ▾
-                    </span>
-
+                <div class="objetivos-grid" id="objetivos-grid" role="group" aria-label="Escolha o que você precisa fazer" hidden>
+                    <button type="button" class="objetivo-opcao" data-objetivo="Estudar"><span class="objetivo-emoji">📚</span><span>Estudar</span></button>
+                    <button type="button" class="objetivo-opcao" data-objetivo="Fazer atividade"><span class="objetivo-emoji">📝</span><span>Fazer atividade</span></button>
+                    <button type="button" class="objetivo-opcao" data-objetivo="Ler"><span class="objetivo-emoji">📖</span><span>Ler</span></button>
+                    <button type="button" class="objetivo-opcao" data-objetivo="Fazer trabalho"><span class="objetivo-emoji">💻</span><span>Fazer trabalho</span></button>
+                    <button type="button" class="objetivo-opcao" data-objetivo="Criar"><span class="objetivo-emoji">🎨</span><span>Criar</span></button>
+                    <button type="button" class="objetivo-opcao" data-objetivo="Outro"><span class="objetivo-emoji">✏️</span><span>Outro</span></button>
+                </div>
                 </div>
 
             </div>
@@ -1973,15 +2138,6 @@
 
 
             <div class="botoes">
-
-                <button
-                    type="button"
-                    class="botao-secundario"
-                    onclick="cancelarDistracao()"
-                >
-                    Continuar depois
-                </button>
-
 
                 <button
                     type="button"
@@ -2611,6 +2767,37 @@
 
             }
         );
+
+
+    const objetivoToggle = document.getElementById("objetivo-toggle");
+    const objetivoToggleTexto = document.getElementById("objetivo-toggle-texto");
+    const objetivosGrid = document.getElementById("objetivos-grid");
+
+    objetivoToggle.addEventListener("click", function() {
+        const aberto = this.getAttribute("aria-expanded") === "true";
+        this.setAttribute("aria-expanded", String(!aberto));
+        objetivosGrid.hidden = aberto;
+    });
+
+    document
+        .querySelectorAll(".objetivo-opcao")
+        .forEach(botao => {
+            botao.addEventListener("click", function() {
+                const valor = this.dataset.objetivo;
+                document.getElementById("objetivo").value = valor;
+                objetivoSelecionado = valor;
+                objetivoToggleTexto.textContent = valor;
+
+                document.querySelectorAll(".objetivo-opcao").forEach(opcao => {
+                    const selecionado = opcao === this;
+                    opcao.classList.toggle("selecionado", selecionado);
+                    opcao.setAttribute("aria-pressed", String(selecionado));
+                });
+
+                objetivoToggle.setAttribute("aria-expanded", "false");
+                objetivosGrid.hidden = true;
+            });
+        });
 
 
     /* =========================
@@ -4207,7 +4394,7 @@
 
             mostrarAviso(
                 "Escolha uma opção",
-                "Escolha o que tirou sua atenção ou clique em continuar depois.",
+                "Escolha o que tirou sua atenção para registrar e continuar.",
                 "😵"
             );
 

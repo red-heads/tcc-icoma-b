@@ -5,16 +5,12 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Criar conta | Tudo bem aí?</title>
 
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -36,12 +32,10 @@
             min-height: 100vh;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #eaf5ff 0%,
                     #dceeff 45%,
-                    #f5faff 100%
-                );
+                    #f5faff 100%);
 
             display: flex;
 
@@ -147,11 +141,9 @@
             border-radius: 32px;
 
             box-shadow:
-                0 25px 70px
-                rgba(23, 82, 145, 0.15),
+                0 25px 70px rgba(23, 82, 145, 0.15),
 
-                0 8px 25px
-                rgba(23, 82, 145, 0.08);
+                0 8px 25px rgba(23, 82, 145, 0.08);
 
             display: grid;
 
@@ -176,12 +168,10 @@
             position: relative;
 
             background:
-                linear-gradient(
-                    145deg,
+                linear-gradient(145deg,
                     #dff0ff 0%,
                     #c8e5ff 48%,
-                    #eaf6ff 100%
-                );
+                    #eaf6ff 100%);
 
             display: flex;
 
@@ -276,10 +266,7 @@
             object-fit: contain;
 
             filter:
-                drop-shadow(
-                    0 15px 25px
-                    rgba(20, 90, 180, 0.15)
-                );
+                drop-shadow(0 15px 25px rgba(20, 90, 180, 0.15));
 
         }
 
@@ -533,8 +520,7 @@
                 #ffffff;
 
             box-shadow:
-                0 0 0 4px
-                rgba(79, 151, 230, 0.12);
+                0 0 0 4px rgba(79, 151, 230, 0.12);
 
         }
 
@@ -559,11 +545,9 @@
                 15px;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #287ed0,
-                    #1556a5
-                );
+                    #1556a5);
 
             color:
                 white;
@@ -578,8 +562,7 @@
                 pointer;
 
             box-shadow:
-                0 10px 22px
-                rgba(35, 112, 190, 0.22);
+                0 10px 22px rgba(35, 112, 190, 0.22);
 
             transition:
                 transform 0.2s ease,
@@ -598,8 +581,7 @@
                 translateY(-2px);
 
             box-shadow:
-                0 14px 28px
-                rgba(35, 112, 190, 0.28);
+                0 14px 28px rgba(35, 112, 190, 0.28);
 
         }
 
@@ -930,7 +912,6 @@
             }
 
         }
-
     </style>
 
 </head>
@@ -968,11 +949,7 @@
 
             <div class="logo-container">
 
-                <img
-                    src="{{ url_for('static', filename='img/logo.png') }}"
-                    alt="Logo Tudo bem aí?"
-                    class="logo"
-                >
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Tudo bem aí?" class="logo">
 
             </div>
 
@@ -1040,11 +1017,7 @@
 
                 <!-- FORMULÁRIO -->
 
-                <form
-                    method="POST"
-                    action="/register"
-                    id="registerForm"
-                >
+                <form method="POST" action="/register" id="registerForm">
 
 
                     <!-- NOME -->
@@ -1067,15 +1040,8 @@
                             </span>
 
 
-                            <input
-                                type="text"
-                                id="nome"
-                                name="nome"
-                                class="form-control"
-                                placeholder="Digite seu nome"
-                                autocomplete="name"
-                                required
-                            >
+                            <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome"
+                                autocomplete="name" required>
 
                         </div>
 
@@ -1103,15 +1069,8 @@
                             </span>
 
 
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                class="form-control"
-                                placeholder="Digite seu e-mail"
-                                autocomplete="email"
-                                required
-                            >
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="Digite seu e-mail" autocomplete="email" required>
 
                         </div>
 
@@ -1139,15 +1098,8 @@
                             </span>
 
 
-                            <input
-                                type="password"
-                                id="senha"
-                                name="senha"
-                                class="form-control"
-                                placeholder="Crie uma senha"
-                                autocomplete="new-password"
-                                required
-                            >
+                            <input type="password" id="senha" name="senha" class="form-control"
+                                placeholder="Crie uma senha" autocomplete="new-password" required>
 
                         </div>
 
@@ -1175,15 +1127,8 @@
                             </span>
 
 
-                            <input
-                                type="password"
-                                id="confirma_senha"
-                                name="confirma_senha"
-                                class="form-control"
-                                placeholder="Digite a senha novamente"
-                                autocomplete="new-password"
-                                required
-                            >
+                            <input type="password" id="confirma_senha" name="confirma_senha" class="form-control"
+                                placeholder="Digite a senha novamente" autocomplete="new-password" required>
 
                         </div>
 
@@ -1193,11 +1138,7 @@
 
                     <!-- BOTÃO -->
 
-                    <button
-                        type="submit"
-                        class="btn-login"
-                        id="btnCadastro"
-                    >
+                    <button type="submit" class="btn-login" id="btnCadastro">
 
                         Criar conta
 
@@ -1253,73 +1194,102 @@
 
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="{{ url_for('static', filename='js/firebase-config.js') }}"></script>
 
     <script>
+        const registerForm = document.getElementById("registerForm");
+        const btnCadastro = document.getElementById("btnCadastro");
+        const mensagem = document.getElementById("mensagem");
 
-        const registerForm =
-            document.getElementById("registerForm");
-
-        const btnCadastro =
-            document.getElementById("btnCadastro");
-
-        const mensagem =
-            document.getElementById("mensagem");
-
-
-        registerForm.addEventListener(
-            "submit",
-            function(event) {
-
-                const senha =
-                    document.getElementById("senha").value;
-
-                const confirmaSenha =
-                    document.getElementById("confirma_senha").value;
-
-
-                /*
-                 * Verificação simples antes de enviar.
-                 */
-
-                if (senha !== confirmaSenha) {
-
-                    event.preventDefault();
-
-
-                    mensagem.innerHTML = `
-
-                        <div class="alert alert-danger">
-
-                            As senhas não são iguais.
-                            Verifique os campos e tente novamente.
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                /*
-                 * Evita múltiplos envios.
-                 */
-
-                btnCadastro.disabled = true;
-
-                btnCadastro.textContent =
-                    "Criando conta...";
-
+        // Tratamento de erros amigável do Firebase
+        function traduzirErroFirebase(codigo, mensagemPadrao) {
+            switch (codigo) {
+                case "auth/email-already-in-use":
+                    return "Este e-mail já está cadastrado. Que tal fazer login?";
+                case "auth/invalid-email":
+                    return "O formato do e-mail é inválido. Verifique e tente novamente.";
+                case "auth/weak-password":
+                    return "A senha deve ter pelo menos 6 caracteres.";
+                case "auth/network-request-failed":
+                    return "Erro de conexão. Verifique sua internet e tente novamente.";
+                default:
+                    return mensagemPadrao || "Não foi possível criar a conta. Tente novamente.";
             }
-        );
+        }
 
+        registerForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value;
+            const confirmaSenha = document.getElementById("confirma_senha").value;
+
+            mensagem.innerHTML = "";
+
+            if (!nome || !email || !senha) {
+                mensagem.innerHTML = `
+                    <div class="alert alert-danger">
+                        Por favor, preencha todos os campos obrigatórios.
+                    </div>
+                `;
+                return;
+            }
+
+            if (senha !== confirmaSenha) {
+                mensagem.innerHTML = `
+                    <div class="alert alert-danger">
+                        As senhas não coincidem. Verifique os campos e tente novamente.
+                    </div>
+                `;
+                return;
+            }
+
+            if (senha.length < 6) {
+                mensagem.innerHTML = `
+                    <div class="alert alert-danger">
+                        A senha precisa ter no mínimo 6 caracteres.
+                    </div>
+                `;
+                return;
+            }
+
+            btnCadastro.disabled = true;
+            btnCadastro.textContent = "Criando sua conta...";
+
+            try {
+                // Cadastra no Firebase Auth e salva na coleção 'usuarios' do Firestore
+                await AuthService.cadastrar(nome, email, senha);
+
+                mensagem.innerHTML = `
+                    <div class="alert alert-success">
+                        Conta criada com sucesso! Redirecionando para o seu dashboard...
+                    </div>
+                `;
+
+                setTimeout(function () {
+                    window.location.href = "{{ url_for('dashboard') }}";
+                }, 1200);
+
+            } catch (erro) {
+                console.error("Erro no cadastro Firebase:", erro);
+
+                const mensagemAmigavel = traduzirErroFirebase(erro.code, erro.message);
+
+                mensagem.innerHTML = `
+                    <div class="alert alert-danger">
+                        ${mensagemAmigavel}
+                    </div>
+                `;
+
+                btnCadastro.disabled = false;
+                btnCadastro.textContent = "Criar conta";
+            }
+        });
     </script>
-
-
 </body>
 
 </html>

@@ -1,9 +1,9 @@
-from dataclasses import dataclass
-from datatime import datetime
+from dataclasses import dataclass, field
+from datetime import datetime
 
 @dataclass
 class User:
     uid: str
     nome: str
     email: str
-    created_at: datatime = field(default_factory=datatime.utcnow)
+    created_at: datetime = field(default_factory=datetime.utcnow)

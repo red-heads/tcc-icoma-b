@@ -5,15 +5,11 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Entrar | Tudo bem aí?</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -33,12 +29,10 @@
             min-height: 100vh;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #eaf5ff 0%,
                     #dceeff 45%,
-                    #f5faff 100%
-                );
+                    #f5faff 100%);
 
             display: flex;
             align-items: center;
@@ -132,12 +126,10 @@
             position: relative;
 
             background:
-                linear-gradient(
-                    145deg,
+                linear-gradient(145deg,
                     #dff0ff 0%,
                     #c8e5ff 48%,
-                    #eaf6ff 100%
-                );
+                    #eaf6ff 100%);
 
             display: flex;
             flex-direction: column;
@@ -207,9 +199,7 @@
             object-fit: contain;
 
             filter:
-                drop-shadow(
-                    0 15px 25px rgba(20, 90, 180, 0.15)
-                );
+                drop-shadow(0 15px 25px rgba(20, 90, 180, 0.15));
         }
 
 
@@ -387,11 +377,9 @@
             border-radius: 15px;
 
             background:
-                linear-gradient(
-                    135deg,
+                linear-gradient(135deg,
                     #287ed0,
-                    #1556a5
-                );
+                    #1556a5);
 
             color: white;
 
@@ -616,7 +604,6 @@
             }
 
         }
-
     </style>
 
 </head>
@@ -645,15 +632,11 @@
 
         <section class="brand-section">
 
-          <div class="logo-container">
+            <div class="logo-container">
 
-    <img
-        src="{{ url_for('static', filename='img/logo.png') }}"
-        alt="Logo Tudo bem aí?"
-        class="logo"
-    >
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Tudo bem aí?" class="logo">
 
-</div>
+            </div>
 
 
             <div class="brand-message">
@@ -722,15 +705,8 @@
                                 ✉
                             </span>
 
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                class="form-control"
-                                placeholder="Digite seu e-mail"
-                                autocomplete="email"
-                                required
-                            >
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="Digite seu e-mail" autocomplete="email" required>
 
                         </div>
 
@@ -752,15 +728,8 @@
                                 🔒
                             </span>
 
-                            <input
-                                type="password"
-                                id="senha"
-                                name="senha"
-                                class="form-control"
-                                placeholder="Digite sua senha"
-                                autocomplete="current-password"
-                                required
-                            >
+                            <input type="password" id="senha" name="senha" class="form-control"
+                                placeholder="Digite sua senha" autocomplete="current-password" required>
 
                         </div>
 
@@ -770,11 +739,7 @@
 
                     <!-- BOTÃO -->
 
-                    <button
-                        type="submit"
-                        class="btn-login"
-                        id="btnLogin"
-                    >
+                    <button type="submit" class="btn-login" id="btnLogin">
                         Entrar
                     </button>
 
@@ -822,113 +787,86 @@
 
 
 
-    <!-- =========================
-         JAVASCRIPT DO LOGIN
-    ========================== -->
-
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="{{ url_for('static', filename='js/firebase-config.js') }}"></script>
     <script>
-
         const loginForm = document.getElementById("loginForm");
-
         const btnLogin = document.getElementById("btnLogin");
-
         const mensagem = document.getElementById("mensagem");
 
+        function traduzirErroLogin(codigo, mensagemPadrao) {
+            switch (codigo) {
+                case "auth/user-not-found":
+                case "auth/wrong-password":
+                case "auth/invalid-credential":
+                    return "E-mail ou senha incorretos. Por favor, verifique seus dados.";
+                case "auth/invalid-email":
+                    return "O formato do e-mail informado é inválido.";
+                case "auth/user-disabled":
+                    return "Esta conta de usuário foi temporariamente desativada.";
+                case "auth/too-many-requests":
+                    return "Muitas tentativas sem sucesso. Aguarde alguns instantes antes de tentar novamente.";
+                case "auth/network-request-failed":
+                    return "Falha de conexão. Verifique sua rede e tente novamente.";
+                default:
+                    return mensagemPadrao || "Não foi possível realizar o login. Tente novamente.";
+            }
+        }
 
-        loginForm.addEventListener("submit", async function(event) {
-
+        loginForm.addEventListener("submit", async function (event) {
             event.preventDefault();
 
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const senha =
-                document.getElementById("senha").value;
-
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value;
 
             mensagem.innerHTML = "";
 
-            btnLogin.disabled = true;
-
-            btnLogin.textContent = "Entrando...";
-
-
-            try {
-
-                const resposta = await fetch("/login", {
-
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        email: email,
-                        senha: senha
-                    })
-
-                });
-
-
-                const dados = await resposta.json();
-
-
-                if (dados.sucesso) {
-
-                    mensagem.innerHTML = `
-                        <div class="alert alert-success">
-                            ${dados.mensagem || "Login realizado com sucesso!"}
-                        </div>
-                    `;
-
-
-                    setTimeout(function() {
-
-                        window.location.href =
-                            dados.redirect || "/dashboard";
-
-                    }, 500);
-
-                } else {
-
-                    mensagem.innerHTML = `
-                        <div class="alert alert-danger">
-                            ${dados.mensagem || "Não foi possível realizar o login."}
-                        </div>
-                    `;
-
-                    btnLogin.disabled = false;
-
-                    btnLogin.textContent = "Entrar";
-
-                }
-
-            } catch (erro) {
-
-                console.error(erro);
-
-
+            if (!email || !senha) {
                 mensagem.innerHTML = `
                     <div class="alert alert-danger">
-                        Ocorreu um erro ao tentar entrar.
-                        Verifique sua conexão e tente novamente.
+                        Por favor, informe seu e-mail e sua senha para entrar.
+                    </div>
+                `;
+                return;
+            }
+
+            btnLogin.disabled = true;
+            btnLogin.textContent = "Entrando...";
+
+            try {
+                // Realiza login diretamente no Firebase Authentication
+                const user = await AuthService.login(email, senha);
+
+                const nomeExibicao = user.displayName ? `Olá, ${user.displayName}!` : "Bem-vindo(a) de volta!";
+
+                mensagem.innerHTML = `
+                    <div class="alert alert-success">
+                        Login realizado com sucesso! ${nomeExibicao} Redirecionando...
                     </div>
                 `;
 
+                setTimeout(function () {
+                    window.location.href = "{{ url_for('dashboard') }}";
+                }, 1000);
+
+            } catch (erro) {
+                console.error("Erro no login Firebase:", erro);
+
+                const mensagemAmigavel = traduzirErroLogin(erro.code, erro.message);
+
+                mensagem.innerHTML = `
+                    <div class="alert alert-danger">
+                        ${mensagemAmigavel}
+                    </div>
+                `;
 
                 btnLogin.disabled = false;
-
                 btnLogin.textContent = "Entrar";
-
             }
-
         });
-
     </script>
-
-
 </body>
 
 </html>

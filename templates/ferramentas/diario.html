@@ -1582,6 +1582,13 @@ textarea::placeholder {
 
     </div>
 
+    <!-- =====================================================
+         FIREBASE SDK & SERVIÇOS
+    ====================================================== -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="{{ url_for('static', filename='js/firebase-config.js') }}"></script>
 
     <script>
 
@@ -1860,27 +1867,29 @@ textarea::placeholder {
                 );
 
 
-            registros.unshift({
+            const novoRegistro = {
+                sentimento: sentimentoSelecionado,
+                texto: texto,
+                data: new Date().toLocaleString("pt-BR")
+            };
 
-                sentimento:
-                    sentimentoSelecionado,
-
-                texto:
-                    texto,
-
-                data:
-                    new Date()
-                        .toLocaleString(
-                            "pt-BR"
-                        )
-
-            });
-
+            registros.unshift(novoRegistro);
 
             localStorage.setItem(
                 "diarioRegistros",
                 JSON.stringify(registros)
             );
+
+            // Sincroniza com o Firestore se o usuário estiver logado
+            if (window.auth && window.auth.currentUser && window.DataCollectionsService) {
+                window.DataCollectionsService.salvarRegistroDiario(window.auth.currentUser.uid, {
+                    humor: sentimentoSelecionado,
+                    sentimento: sentimentoSelecionado,
+                    texto: texto
+                }).catch(function(erro) {
+                    console.warn("Aviso ao sincronizar diário com o Firestore:", erro);
+                });
+            }
 
 
             document.getElementById(
@@ -2762,11 +2771,42 @@ textarea::placeholder {
 
 
         /* =====================================
-           INICIALIZAÇÃO
+           INICIALIZAÇÃO & SINCRONIZAÇÃO FIREBASE
         ====================================== */
 
         carregarHistorico(false);
 
+        // Se houver usuário autenticado no Firebase, sincroniza histórico da nuvem
+        if (window.AuthService && typeof window.AuthService.onAuthStateChanged === "function") {
+            window.AuthService.onAuthStateChanged(async function(user) {
+                if (user && window.DataCollectionsService) {
+                    try {
+                        const registrosRemotos = await window.DataCollectionsService.listarRegistrosDiario(user.uid, 50);
+                        if (registrosRemotos && registrosRemotos.length > 0) {
+                            const sincronizados = registrosRemotos.map(function(item) {
+                                let dataFormatada = "";
+                                if (item.criadoEm && typeof item.criadoEm.toDate === "function") {
+                                    dataFormatada = item.criadoEm.toDate().toLocaleString("pt-BR");
+                                } else {
+                                    dataFormatada = new Date().toLocaleString("pt-BR");
+                                }
+                                return {
+                                    id: item.id,
+                                    sentimento: item.sentimento || item.humor || "Neutro",
+                                    texto: item.texto || "",
+                                    data: dataFormatada
+                                };
+                            });
+
+                            localStorage.setItem("diarioRegistros", JSON.stringify(sincronizados));
+                            carregarHistorico(false);
+                        }
+                    } catch (erroSync) {
+                        console.warn("Aviso na sincronização remota do diário:", erroSync);
+                    }
+                }
+            });
+        }
 
     </script>
 

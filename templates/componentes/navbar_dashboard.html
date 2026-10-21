@@ -114,6 +114,12 @@
         aria-hidden="true"
     >
 
+        <!-- CABEÇALHO DO USUÁRIO LOGADO -->
+        <div id="dashboardUserMenuHeader" style="padding: 14px 18px 12px; border-bottom: 1px solid #e3eaf4; display: none;">
+            <div id="dashboardUserMenuName" style="font-weight: 700; color: #173b70; font-size: 14px; margin-bottom: 2px;"></div>
+            <div id="dashboardUserMenuEmail" style="font-size: 12px; color: #7c91a9; word-break: break-all;"></div>
+        </div>
+
         <a
             href="{{ url_for('perfil') }}"
             class="dashboard-user-menu-item"
@@ -1647,6 +1653,13 @@
 
 </style>
 
+<!-- =====================================================
+     FIREBASE SDK & SERVIÇOS
+====================================================== -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script src="{{ url_for('static', filename='js/firebase-config.js') }}"></script>
 
 <script>
 
@@ -2427,7 +2440,7 @@ document.addEventListener(
 
 
         /* ================================================= */
-        /* SAIR */
+        /* SAIR (FIREBASE AUTH) */
         /* ================================================= */
 
         const logoutButton =
@@ -2440,7 +2453,15 @@ document.addEventListener(
 
             logoutButton.addEventListener(
                 "click",
-                function () {
+                async function () {
+
+                    if (window.AuthService && typeof window.AuthService.logout === "function") {
+                        try {
+                            await window.AuthService.logout();
+                        } catch (e) {
+                            console.warn("Aviso ao desconectar do Firebase:", e);
+                        }
+                    }
 
                     window.location.href =
                         "{{ url_for('login') }}";
@@ -2448,6 +2469,25 @@ document.addEventListener(
                 }
             );
 
+        }
+
+
+        /* ================================================= */
+        /* ATUALIZAR INFORMAÇÕES DO USUÁRIO */
+        /* ================================================= */
+
+        if (window.AuthService && typeof window.AuthService.onAuthStateChanged === "function") {
+            window.AuthService.onAuthStateChanged(function (user) {
+                const header = document.getElementById("dashboardUserMenuHeader");
+                const nameEl = document.getElementById("dashboardUserMenuName");
+                const emailEl = document.getElementById("dashboardUserMenuEmail");
+
+                if (user && header && nameEl && emailEl) {
+                    header.style.display = "block";
+                    nameEl.textContent = user.displayName || "Estudante";
+                    emailEl.textContent = user.email || "";
+                }
+            });
         }
 
 

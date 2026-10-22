@@ -1,10 +1,9 @@
+
 <nav class="dashboard-navbar">
 
     <div class="dashboard-navbar-inner">
 
-        <!-- ================================================= -->
         <!-- LOGO -->
-        <!-- ================================================= -->
 
         <a
             href="{{ url_for('dashboard') }}"
@@ -18,9 +17,7 @@
         </a>
 
 
-        <!-- ================================================= -->
         <!-- LINKS DESKTOP -->
-        <!-- ================================================= -->
 
         <div class="dashboard-navbar-links">
 
@@ -32,7 +29,6 @@
                 Início
             </a>
 
-
             <button
                 type="button"
                 class="dashboard-navbar-link dashboard-navbar-button"
@@ -40,7 +36,6 @@
             >
                 Ferramentas
             </button>
-
 
             <button
                 type="button"
@@ -53,13 +48,9 @@
         </div>
 
 
-        <!-- ================================================= -->
         <!-- AÇÕES -->
-        <!-- ================================================= -->
 
         <div class="dashboard-navbar-actions">
-
-            <!-- ÍCONE DO USUÁRIO -->
 
             <button
                 type="button"
@@ -68,22 +59,12 @@
                 aria-label="Abrir menu do usuário"
                 aria-expanded="false"
             >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                >
-
+                <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
                         d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6Z"
                     />
-
                 </svg>
-
             </button>
-
-
-            <!-- TRÊS RISCOS -->
 
             <button
                 type="button"
@@ -92,11 +73,9 @@
                 aria-label="Abrir menu"
                 aria-expanded="false"
             >
-
                 <span></span>
                 <span></span>
                 <span></span>
-
             </button>
 
         </div>
@@ -104,9 +83,7 @@
     </div>
 
 
-    <!-- ================================================= -->
     <!-- MENU DO USUÁRIO -->
-    <!-- ================================================= -->
 
     <div
         class="dashboard-user-menu"
@@ -114,61 +91,36 @@
         aria-hidden="true"
     >
 
-        <!-- CABEÇALHO DO USUÁRIO LOGADO -->
-        <div id="dashboardUserMenuHeader" style="padding: 14px 18px 12px; border-bottom: 1px solid #e3eaf4; display: none;">
-            <div id="dashboardUserMenuName" style="font-weight: 700; color: #173b70; font-size: 14px; margin-bottom: 2px;"></div>
-            <div id="dashboardUserMenuEmail" style="font-size: 12px; color: #7c91a9; word-break: break-all;"></div>
-        </div>
-
         <a
             href="{{ url_for('perfil') }}"
             class="dashboard-user-menu-item"
         >
-
-            <span class="dashboard-user-menu-icon">
-                👤
-            </span>
-
+            <span class="dashboard-user-menu-icon">👤</span>
             Perfil
-
         </a>
-
 
         <button
             type="button"
             class="dashboard-user-menu-item"
             id="dashboardHelpButton"
         >
-
-            <span class="dashboard-user-menu-icon">
-                ❔
-            </span>
-
+            <span class="dashboard-user-menu-icon">❔</span>
             Ajuda
-
         </button>
-
 
         <button
             type="button"
             class="dashboard-user-menu-item dashboard-user-menu-item-danger"
             id="dashboardLogoutButton"
         >
-
-            <span class="dashboard-user-menu-icon">
-                ↪
-            </span>
-
+            <span class="dashboard-user-menu-icon">↪</span>
             Sair
-
         </button>
 
     </div>
 
 
-    <!-- ================================================= -->
-    <!-- MENU DOS TRÊS RISCOS -->
-    <!-- ================================================= -->
+    <!-- MENU MOBILE -->
 
     <div
         class="dashboard-mobile-menu"
@@ -184,7 +136,6 @@
             Início
         </a>
 
-
         <button
             type="button"
             class="dashboard-mobile-link dashboard-mobile-button"
@@ -192,7 +143,6 @@
         >
             Ferramentas
         </button>
-
 
         <button
             type="button"
@@ -216,7 +166,6 @@
     id="dashboardHelpOverlay"
     aria-hidden="true"
 >
-
     <div
         class="dashboard-help-modal"
         role="dialog"
@@ -229,20 +178,14 @@
         <div class="dashboard-help-header">
 
             <div>
-
                 <span class="dashboard-help-label">
                     Tudo bem aí?
                 </span>
 
-
                 <h2 id="dashboardHelpTitle">
                     Como podemos ajudar?
                 </h2>
-
             </div>
-
-
-            <!-- ÚNICO BOTÃO DE FECHAR -->
 
             <button
                 type="button"
@@ -256,45 +199,28 @@
         </div>
 
 
-        <!-- ================================================= -->
         <!-- CONTEÚDO -->
-        <!-- ================================================= -->
 
         <div class="dashboard-help-content">
 
 
-            <!-- ================================================= -->
             <!-- PERGUNTAS FREQUENTES -->
-            <!-- ================================================= -->
 
             <section class="dashboard-help-section">
 
-                <h3>
-                    Perguntas frequentes
-                </h3>
-
+                <h3>Perguntas frequentes</h3>
 
                 <div class="dashboard-faq">
-
 
                     <button
                         type="button"
                         class="dashboard-faq-question"
                     >
-
-                        <span>
-                            O que é o Tudo bem aí?
-                        </span>
-
-                        <span class="dashboard-faq-arrow">
-                            +
-                        </span>
-
+                        <span>O que é o Tudo bem aí?</span>
+                        <span class="dashboard-faq-arrow">+</span>
                     </button>
 
-
                     <div class="dashboard-faq-answer">
-
                         <p>
                             O Tudo bem aí? é um espaço criado para
                             estudantes encontrarem informações,
@@ -302,7 +228,6 @@
                             olhar com mais atenção para seus sentimentos
                             e para o que estão vivendo.
                         </p>
-
                     </div>
 
 
@@ -310,27 +235,17 @@
                         type="button"
                         class="dashboard-faq-question"
                     >
-
-                        <span>
-                            O site substitui um psicólogo?
-                        </span>
-
-                        <span class="dashboard-faq-arrow">
-                            +
-                        </span>
-
+                        <span>O site substitui um psicólogo?</span>
+                        <span class="dashboard-faq-arrow">+</span>
                     </button>
 
-
                     <div class="dashboard-faq-answer">
-
                         <p>
                             Não. O site foi desenvolvido como um espaço
                             de apoio, informação e reflexão. Ele não
                             substitui acompanhamento psicológico ou
                             outro atendimento profissional.
                         </p>
-
                     </div>
 
 
@@ -338,27 +253,17 @@
                         type="button"
                         class="dashboard-faq-question"
                     >
-
-                        <span>
-                            Preciso usar todas as ferramentas?
-                        </span>
-
-                        <span class="dashboard-faq-arrow">
-                            +
-                        </span>
-
+                        <span>Preciso usar todas as ferramentas?</span>
+                        <span class="dashboard-faq-arrow">+</span>
                     </button>
 
-
                     <div class="dashboard-faq-answer">
-
                         <p>
                             Não. Você pode escolher as ferramentas
                             que fizerem mais sentido para o seu momento.
                             Cada uma foi pensada para proporcionar uma
                             experiência diferente de reflexão e cuidado.
                         </p>
-
                     </div>
 
                 </div>
@@ -366,19 +271,16 @@
             </section>
 
 
-            <!-- ================================================= -->
-            <!-- FERRAMENTAS -->
-            <!-- ================================================= -->
+            <!-- COMO USAR AS FERRAMENTAS -->
 
             <section class="dashboard-help-section">
 
-                <h3>
-                    Como usar as ferramentas
-                </h3>
-
+                <h3>Como usar as ferramentas</h3>
 
                 <div class="dashboard-help-tools">
 
+
+                    <!-- DIÁRIO -->
 
                     <div class="dashboard-help-tool">
 
@@ -386,23 +288,19 @@
                             ✏️
                         </div>
 
-
                         <div>
-
-                            <h4>
-                                Diário
-                            </h4>
-
+                            <h4>Diário Emocional</h4>
 
                             <p>
                                 Um espaço para escrever seus pensamentos,
                                 sentimentos e acontecimentos do dia.
                             </p>
-
                         </div>
 
                     </div>
 
+
+                    <!-- RESPIRAÇÃO -->
 
                     <div class="dashboard-help-tool">
 
@@ -410,23 +308,19 @@
                             🌿
                         </div>
 
-
                         <div>
-
-                            <h4>
-                                Respire com calma
-                            </h4>
-
+                            <h4>Exercícios de respiração</h4>
 
                             <p>
                                 Uma ferramenta para acompanhar um momento
                                 de respiração tranquila e consciente.
                             </p>
-
                         </div>
 
                     </div>
 
+
+                    <!-- PAUSA -->
 
                     <div class="dashboard-help-tool">
 
@@ -434,24 +328,20 @@
                             ⏸️
                         </div>
 
-
                         <div>
-
-                            <h4>
-                                Pausa
-                            </h4>
-
+                            <h4>Pausa consciente</h4>
 
                             <p>
                                 Um pequeno momento para desacelerar,
                                 observar o presente e realizar algumas
                                 missões de autocuidado.
                             </p>
-
                         </div>
 
                     </div>
 
+
+                    <!-- PENSAMENTO POSITIVO -->
 
                     <div class="dashboard-help-tool">
 
@@ -459,20 +349,36 @@
                             💭
                         </div>
 
-
                         <div>
-
-                            <h4>
-                                Pensamento positivo
-                            </h4>
-
+                            <h4>Pensamento positivo</h4>
 
                             <p>
                                 Frases para incentivar uma perspectiva
                                 mais acolhedora durante o seu momento
                                 de reflexão.
                             </p>
+                        </div>
 
+                    </div>
+
+
+                    <!-- FOCO E CONCENTRAÇÃO -->
+
+                    <div class="dashboard-help-tool">
+
+                        <div class="dashboard-help-tool-icon">
+                            🎯
+                        </div>
+
+                        <div>
+                            <h4>Foco e concentração</h4>
+
+                            <p>
+                                Uma ferramenta para organizar suas tarefas,
+                                definir um tempo de concentração e acompanhar
+                                seu progresso, respeitando suas pausas e
+                                seu ritmo.
+                            </p>
                         </div>
 
                     </div>
@@ -482,16 +388,11 @@
             </section>
 
 
-            <!-- ================================================= -->
             <!-- SOBRE O PROJETO -->
-            <!-- ================================================= -->
 
             <section class="dashboard-help-section">
 
-                <h3>
-                    Sobre o projeto
-                </h3>
-
+                <h3>Sobre o projeto</h3>
 
                 <div class="dashboard-help-about">
 
@@ -503,7 +404,6 @@
                         relacionadas ao bem-estar emocional no ambiente
                         escolar.
                     </p>
-
 
                     <p>
                         O projeto busca incentivar o cuidado consigo mesmo,
@@ -529,1137 +429,614 @@
 /* ========================================================= */
 
 .dashboard-navbar {
-
     position: sticky;
-
     top: 0;
-
     z-index: 100;
-
     width: 100%;
-
     background: rgba(255, 255, 255, 0.92);
-
-    border-bottom:
-        1px solid rgba(67, 130, 190, 0.12);
-
-    box-shadow:
-        0 8px 25px rgba(42, 105, 165, 0.08);
-
+    border-bottom: 1px solid rgba(67, 130, 190, 0.12);
+    box-shadow: 0 8px 25px rgba(42, 105, 165, 0.08);
     backdrop-filter: blur(14px);
-
     -webkit-backdrop-filter: blur(14px);
 }
 
 
-/* ========================================================= */
 /* CONTAINER */
-/* ========================================================= */
 
 .dashboard-navbar-inner {
-
-    width:
-        min(
-            1200px,
-            calc(100% - 40px)
-        );
-
+    width: min(1200px, calc(100% - 40px));
     min-height: 82px;
-
     margin: 0 auto;
-
     padding: 10px 28px;
-
     display: flex;
-
     align-items: center;
-
     gap: 25px;
-
     box-sizing: border-box;
 }
 
 
-/* ========================================================= */
 /* LOGO */
-/* ========================================================= */
 
 .dashboard-navbar-logo {
-
     display: flex;
-
     align-items: center;
-
     text-decoration: none;
-
     flex-shrink: 0;
 }
 
-
 .dashboard-navbar-logo img {
-
     display: block;
-
     width: 155px;
-
     height: auto;
-
     object-fit: contain;
 }
 
 
-/* ========================================================= */
 /* LINKS DESKTOP */
-/* ========================================================= */
 
 .dashboard-navbar-links {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 18px;
-
     flex: 1;
-
     margin-left: 40px;
-
     margin-right: 40px;
 }
 
-
 .dashboard-navbar-link {
-
     border: none;
-
     background: transparent;
-
     padding: 13px 22px;
-
     color: #285b87;
-
     font-family: inherit;
-
     font-size: 18px;
-
     font-weight: 700;
-
     text-decoration: none;
-
     border-radius: 13px;
-
     cursor: pointer;
-
     white-space: nowrap;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-
 .dashboard-navbar-link:hover {
-
     background: #edf7ff;
-
     color: #174c78;
-
     transform: translateY(-1px);
 }
 
 
-/* ========================================================= */
 /* AÇÕES */
-/* ========================================================= */
 
 .dashboard-navbar-actions {
-
     display: flex;
-
     align-items: center;
-
     gap: 8px;
-
     flex-shrink: 0;
 }
 
 
-/* ========================================================= */
 /* USUÁRIO */
-/* ========================================================= */
 
 .dashboard-user-button {
-
     width: 44px;
-
     height: 44px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    border:
-        1px solid #d9eafa;
-
+    border: 1px solid #d9eafa;
     border-radius: 50%;
-
     background: #f4faff;
-
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        border-color 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-
 .dashboard-user-button:hover {
-
     background: #e8f4ff;
-
     border-color: #c7e1f7;
-
     transform: translateY(-1px);
 }
 
-
 .dashboard-user-button svg {
-
     width: 21px;
-
     height: 21px;
-
     fill: #3975a6;
 }
 
 
-/* ========================================================= */
 /* TRÊS RISCOS */
-/* ========================================================= */
 
 .dashboard-navbar-toggle {
-
     width: 44px;
-
     height: 44px;
-
     padding: 0;
-
-    border:
-        1px solid #d9eafa;
-
+    border: 1px solid #d9eafa;
     border-radius: 12px;
-
     background: #f4faff;
-
     cursor: pointer;
-
     display: none;
-
     align-items: center;
-
     justify-content: center;
-
     flex-direction: column;
-
     gap: 5px;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        border-color 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-
 .dashboard-navbar-toggle:hover {
-
     background: #e8f4ff;
-
     border-color: #c7e1f7;
-
     transform: translateY(-1px);
 }
 
-
 .dashboard-navbar-toggle span {
-
     width: 20px;
-
     height: 2px;
-
     border-radius: 10px;
-
     background: #3975a6;
 }
 
 
-/* ========================================================= */
 /* MENU USUÁRIO */
-/* ========================================================= */
 
 .dashboard-user-menu {
-
     position: absolute;
-
-    top:
-        calc(100% + 10px);
-
-    right:
-        max(
-            20px,
-            calc((100% - 1200px) / 2)
-        );
-
+    top: calc(100% + 10px);
+    right: max(20px, calc((100% - 1200px) / 2));
     width: 210px;
-
     padding: 8px;
-
-    background:
-        rgba(255, 255, 255, 0.98);
-
-    border:
-        1px solid #dcecf8;
-
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid #dcecf8;
     border-radius: 18px;
-
-    box-shadow:
-        0 15px 40px rgba(43, 100, 150, 0.15);
-
+    box-shadow: 0 15px 40px rgba(43, 100, 150, 0.15);
     opacity: 0;
-
     visibility: hidden;
-
     transform: translateY(-8px);
-
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        visibility 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
-
 .dashboard-user-menu.active {
-
     opacity: 1;
-
     visibility: visible;
-
     transform: translateY(0);
 }
 
-
 .dashboard-user-menu-item {
-
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     padding: 12px 13px;
-
     border: none;
-
     border-radius: 11px;
-
     background: transparent;
-
     color: #315f82;
-
     font-family: inherit;
-
     font-size: 14px;
-
     font-weight: 600;
-
     text-decoration: none;
-
     text-align: left;
-
     cursor: pointer;
-
     box-sizing: border-box;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-
 .dashboard-user-menu-item:hover {
-
     background: #edf7ff;
-
     color: #174c78;
 }
 
-
 .dashboard-user-menu-item-danger {
-
     color: #a85b68;
 }
 
-
 .dashboard-user-menu-item-danger:hover {
-
     background: #fff1f3;
-
     color: #9b4554;
 }
 
-
 .dashboard-user-menu-icon {
-
     width: 20px;
-
     text-align: center;
-
     font-size: 16px;
 }
 
 
-/* ========================================================= */
 /* MENU MOBILE */
-/* ========================================================= */
 
 .dashboard-mobile-menu {
-
     display: none;
-
-    width:
-        min(
-            1200px,
-            calc(100% - 40px)
-        );
-
-    margin:
-        0 auto 12px;
-
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto 12px;
     padding: 8px;
-
-    background:
-        rgba(255, 255, 255, 0.98);
-
-    border:
-        1px solid #dcecf8;
-
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid #dcecf8;
     border-radius: 18px;
-
-    box-shadow:
-        0 12px 30px rgba(43, 100, 150, 0.10);
+    box-shadow: 0 12px 30px rgba(43, 100, 150, 0.10);
 }
-
 
 .dashboard-mobile-menu.active {
-
     display: block;
 }
 
-
 .dashboard-mobile-link {
-
     width: 100%;
-
     display: block;
-
     padding: 13px 15px;
-
     border: none;
-
     border-radius: 11px;
-
     background: transparent;
-
     color: #315f82;
-
     font-family: inherit;
-
     font-size: 15px;
-
     font-weight: 600;
-
     text-decoration: none;
-
     text-align: left;
-
     cursor: pointer;
-
     box-sizing: border-box;
 }
 
-
 .dashboard-mobile-link:hover {
-
     background: #edf7ff;
 }
 
-
 .dashboard-mobile-button {
-
     font-family: inherit;
 }
 
 
-/* ========================================================= */
 /* MODAL AJUDA */
-/* ========================================================= */
 
 .dashboard-help-overlay {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 99999;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     padding: 25px;
-
-    background:
-        rgba(31, 76, 111, 0.45);
-
+    background: rgba(31, 76, 111, 0.45);
     backdrop-filter: blur(7px);
-
     -webkit-backdrop-filter: blur(7px);
-
     opacity: 0;
-
     visibility: hidden;
-
-    transition:
-        opacity 0.25s ease,
-        visibility 0.25s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-
 .dashboard-help-overlay.active {
-
     opacity: 1;
-
     visibility: visible;
 }
 
-
 .dashboard-help-modal {
-
-    width:
-        min(
-            850px,
-            100%
-        );
-
-    max-height:
-        min(
-            850px,
-            90vh
-        );
-
+    width: min(850px, 100%);
+    max-height: min(850px, 90vh);
     display: flex;
-
     flex-direction: column;
-
     background: #ffffff;
-
-    border:
-        1px solid rgba(125, 181, 221, 0.25);
-
+    border: 1px solid rgba(125, 181, 221, 0.25);
     border-radius: 28px;
-
-    box-shadow:
-        0 25px 70px rgba(24, 75, 111, 0.22);
-
+    box-shadow: 0 25px 70px rgba(24, 75, 111, 0.22);
     overflow: hidden;
+    transform: translateY(15px) scale(0.98);
+    transition: transform 0.25s ease;
+}
 
-    transform:
-        translateY(15px)
-        scale(0.98);
-
-    transition:
-        transform 0.25s ease;
+.dashboard-help-overlay.active .dashboard-help-modal {
+    transform: translateY(0) scale(1);
 }
 
 
-.dashboard-help-overlay.active
-.dashboard-help-modal {
-
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-
-/* ========================================================= */
 /* CABEÇALHO AJUDA */
-/* ========================================================= */
 
 .dashboard-help-header {
-
     display: flex;
-
     align-items: flex-start;
-
     justify-content: space-between;
-
     gap: 20px;
-
-    padding:
-        28px 30px 22px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eef8ff 0%,
-            #e5f4ff 100%
-        );
-
-    border-bottom:
-        1px solid #dcecf8;
+    padding: 28px 30px 22px;
+    background: linear-gradient(135deg, #eef8ff 0%, #e5f4ff 100%);
+    border-bottom: 1px solid #dcecf8;
 }
 
-
 .dashboard-help-label {
-
     display: block;
-
     margin-bottom: 5px;
-
     color: #5790b8;
-
     font-size: 13px;
-
     font-weight: 700;
 }
 
-
 .dashboard-help-header h2 {
-
     margin: 0;
-
     color: #255b82;
-
-    font-size:
-        clamp(
-            22px,
-            3vw,
-            30px
-        );
-
+    font-size: clamp(22px, 3vw, 30px);
     line-height: 1.2;
 }
 
-
 .dashboard-help-close {
-
     width: 40px;
-
     height: 40px;
-
     flex-shrink: 0;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     border: none;
-
     border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.8);
-
+    background: rgba(255, 255, 255, 0.8);
     color: #4d7897;
-
     font-size: 28px;
-
     line-height: 1;
-
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
-
 .dashboard-help-close:hover {
-
     background: #ffffff;
-
     transform: rotate(5deg);
 }
 
 
-/* ========================================================= */
 /* CONTEÚDO AJUDA */
-/* ========================================================= */
 
 .dashboard-help-content {
-
-    padding:
-        26px 30px;
-
+    padding: 26px 30px;
     overflow-y: auto;
 }
 
-
 .dashboard-help-section {
-
     margin-bottom: 30px;
 }
 
-
 .dashboard-help-section:last-child {
-
     margin-bottom: 0;
 }
 
-
 .dashboard-help-section h3 {
-
-    margin:
-        0 0 14px;
-
+    margin: 0 0 14px;
     color: #285f86;
-
     font-size: 18px;
 }
 
 
-/* ========================================================= */
 /* FAQ */
-/* ========================================================= */
 
 .dashboard-faq {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 8px;
 }
 
-
 .dashboard-faq-question {
-
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 15px;
-
-    padding:
-        15px 17px;
-
-    border:
-        1px solid #deedf8;
-
+    padding: 15px 17px;
+    border: 1px solid #deedf8;
     border-radius: 14px;
-
     background: #f8fcff;
-
     color: #315f82;
-
     font-family: inherit;
-
     font-size: 14px;
-
     font-weight: 600;
-
     text-align: left;
-
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
-
 
 .dashboard-faq-question:hover,
 .dashboard-faq-question.active {
-
     background: #eef8ff;
-
     border-color: #cce5f6;
 }
 
-
 .dashboard-faq-arrow {
-
     flex-shrink: 0;
-
     color: #5590b8;
-
     font-size: 21px;
-
-    transition:
-        transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
-
-.dashboard-faq-question.active
-.dashboard-faq-arrow {
-
+.dashboard-faq-question.active .dashboard-faq-arrow {
     transform: rotate(45deg);
 }
 
-
 .dashboard-faq-answer {
-
     max-height: 0;
-
     overflow: hidden;
-
-    padding:
-        0 17px;
-
+    padding: 0 17px;
     color: #607d93;
-
     font-size: 14px;
-
     line-height: 1.65;
-
-    transition:
-        max-height 0.3s ease,
-        padding 0.3s ease;
+    transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
-
 .dashboard-faq-answer.open {
-
     max-height: 250px;
-
     padding-top: 4px;
-
     padding-bottom: 12px;
 }
 
-
 .dashboard-faq-answer p {
-
     margin: 0;
 }
 
 
-/* ========================================================= */
 /* FERRAMENTAS */
-/* ========================================================= */
 
 .dashboard-help-tools {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
-
 .dashboard-help-tool {
-
     display: flex;
-
     align-items: flex-start;
-
     gap: 13px;
-
     padding: 16px;
-
     background: #f8fcff;
-
-    border:
-        1px solid #e1eef7;
-
+    border: 1px solid #e1eef7;
     border-radius: 16px;
 }
 
-
 .dashboard-help-tool-icon {
-
     width: 38px;
-
     height: 38px;
-
     flex-shrink: 0;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     border-radius: 11px;
-
     background: #e8f5ff;
-
     font-size: 18px;
 }
 
-
 .dashboard-help-tool h4 {
-
-    margin:
-        0 0 4px;
-
+    margin: 0 0 4px;
     color: #315f82;
-
     font-size: 15px;
 }
 
-
 .dashboard-help-tool p {
-
     margin: 0;
-
     color: #6b8497;
-
     font-size: 13px;
-
     line-height: 1.5;
 }
 
 
-/* ========================================================= */
 /* SOBRE O PROJETO */
-/* ========================================================= */
 
 .dashboard-help-about {
-
     padding: 18px;
-
     background: #f8fcff;
-
-    border:
-        1px solid #e1eef7;
-
+    border: 1px solid #e1eef7;
     border-radius: 16px;
 }
 
-
 .dashboard-help-about p {
-
-    margin:
-        0 0 12px;
-
+    margin: 0 0 12px;
     color: #617d91;
-
     font-size: 14px;
-
     line-height: 1.7;
 }
 
-
 .dashboard-help-about p:last-child {
-
     margin-bottom: 0;
 }
 
-
 .dashboard-help-about strong {
-
     color: #315f82;
 }
 
 
-/* ========================================================= */
 /* RESPONSIVIDADE */
-/* ========================================================= */
 
 @media (max-width: 800px) {
 
     .dashboard-navbar-inner {
-
         min-height: 72px;
-
-        width:
-            calc(100% - 24px);
-
-        padding:
-            8px 12px;
-
+        width: calc(100% - 24px);
+        padding: 8px 12px;
         justify-content: flex-start;
     }
 
-
     .dashboard-navbar-logo {
-
         flex-shrink: 0;
     }
 
-
     .dashboard-navbar-logo img {
-
         width: 130px;
     }
 
-
-    /* Esconde os links no celular */
-
     .dashboard-navbar-links {
-
         display: none;
     }
 
-
-    /*
-       Mantém usuário + três riscos
-       completamente à direita.
-    */
-
     .dashboard-navbar-actions {
-
         margin-left: auto;
-
         display: flex;
-
         align-items: center;
-
         justify-content: flex-end;
-
         gap: 8px;
     }
 
-
-    /* Mostra os três riscos */
-
     .dashboard-navbar-toggle {
-
         display: flex;
     }
 
-
     .dashboard-user-menu {
-
         right: 12px;
     }
 
-
     .dashboard-help-overlay {
-
         padding: 12px;
     }
 
-
     .dashboard-help-modal {
-
         max-height: 94vh;
-
         border-radius: 22px;
     }
 
-
     .dashboard-help-header {
-
-        padding:
-            22px 20px 18px;
+        padding: 22px 20px 18px;
     }
 
-
     .dashboard-help-content {
-
-        padding:
-            22px 20px;
+        padding: 22px 20px;
     }
 
 }
 
-
 @media (max-width: 600px) {
 
     .dashboard-help-tools {
-
         grid-template-columns: 1fr;
     }
 
-
     .dashboard-help-tool {
-
         padding: 14px;
     }
 
 }
 
-
 @media (max-width: 400px) {
 
     .dashboard-navbar-inner {
-
-        width:
-            calc(100% - 16px);
-
+        width: calc(100% - 16px);
         padding-left: 8px;
-
         padding-right: 8px;
     }
 
-
     .dashboard-navbar-logo img {
-
         width: 115px;
     }
 
-
     .dashboard-navbar-actions {
-
         margin-left: auto;
-
         gap: 5px;
     }
 
-
     .dashboard-user-button,
     .dashboard-navbar-toggle {
-
         width: 40px;
-
         height: 40px;
     }
 
-
     .dashboard-help-header {
-
-        padding:
-            19px 16px 16px;
+        padding: 19px 16px 16px;
     }
 
-
     .dashboard-help-content {
-
-        padding:
-            19px 16px;
+        padding: 19px 16px;
     }
 
 }
 
 </style>
 
-<!-- =====================================================
-     FIREBASE SDK & SERVIÇOS
-====================================================== -->
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-<script src="{{ url_for('static', filename='js/firebase-config.js') }}"></script>
 
 <script>
 
@@ -1667,237 +1044,129 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-
-        /* ================================================= */
         /* ELEMENTOS */
-        /* ================================================= */
 
         const userButton =
-            document.getElementById(
-                "dashboardUserButton"
-            );
-
+            document.getElementById("dashboardUserButton");
 
         const userMenu =
-            document.getElementById(
-                "dashboardUserMenu"
-            );
-
+            document.getElementById("dashboardUserMenu");
 
         const navbarToggle =
-            document.getElementById(
-                "dashboardNavbarToggle"
-            );
-
+            document.getElementById("dashboardNavbarToggle");
 
         const mobileMenu =
-            document.getElementById(
-                "dashboardNavbarMenu"
-            );
+            document.getElementById("dashboardNavbarMenu");
 
 
-        /* ================================================= */
         /* FECHAR MENU USUÁRIO */
-        /* ================================================= */
 
         function closeUserMenu() {
 
             if (!userMenu) return;
 
+            userMenu.classList.remove("active");
 
-            userMenu.classList.remove(
-                "active"
-            );
-
-
-            userMenu.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
+            userMenu.setAttribute("aria-hidden", "true");
 
             if (userButton) {
-
-                userButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
+                userButton.setAttribute("aria-expanded", "false");
             }
 
         }
 
 
-        /* ================================================= */
         /* FECHAR MENU MOBILE */
-        /* ================================================= */
 
         function closeMobileMenu() {
 
             if (!mobileMenu) return;
 
+            mobileMenu.classList.remove("active");
 
-            mobileMenu.classList.remove(
-                "active"
-            );
-
-
-            mobileMenu.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
+            mobileMenu.setAttribute("aria-hidden", "true");
 
             if (navbarToggle) {
-
-                navbarToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
+                navbarToggle.setAttribute("aria-expanded", "false");
             }
 
         }
 
 
-        /* ================================================= */
         /* MENU USUÁRIO */
-        /* ================================================= */
 
-        if (
-            userButton &&
-            userMenu
-        ) {
+        if (userButton && userMenu) {
 
-            userButton.addEventListener(
-                "click",
-                function (event) {
+            userButton.addEventListener("click", function (event) {
 
-                    event.stopPropagation();
+                event.stopPropagation();
 
+                const alreadyOpen =
+                    userMenu.classList.contains("active");
 
-                    const alreadyOpen =
-                        userMenu.classList.contains(
-                            "active"
-                        );
+                closeMobileMenu();
 
-
-                    /* Fecha os três riscos */
-
-                    closeMobileMenu();
-
-
-                    if (alreadyOpen) {
-
-                        closeUserMenu();
-
-                    } else {
-
-                        userMenu.classList.add(
-                            "active"
-                        );
-
-
-                        userMenu.setAttribute(
-                            "aria-hidden",
-                            "false"
-                        );
-
-
-                        userButton.setAttribute(
-                            "aria-expanded",
-                            "true"
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        /* ================================================= */
-        /* MENU TRÊS RISCOS */
-        /* ================================================= */
-
-        if (
-            navbarToggle &&
-            mobileMenu
-        ) {
-
-            navbarToggle.addEventListener(
-                "click",
-                function (event) {
-
-                    event.stopPropagation();
-
-
-                    const alreadyOpen =
-                        mobileMenu.classList.contains(
-                            "active"
-                        );
-
-
-                    /* Fecha o menu do usuário */
+                if (alreadyOpen) {
 
                     closeUserMenu();
 
+                } else {
 
-                    if (alreadyOpen) {
+                    userMenu.classList.add("active");
 
-                        closeMobileMenu();
+                    userMenu.setAttribute("aria-hidden", "false");
 
-                    } else {
-
-                        mobileMenu.classList.add(
-                            "active"
-                        );
-
-
-                        mobileMenu.setAttribute(
-                            "aria-hidden",
-                            "false"
-                        );
-
-
-                        navbarToggle.setAttribute(
-                            "aria-expanded",
-                            "true"
-                        );
-
-                    }
+                    userButton.setAttribute("aria-expanded", "true");
 
                 }
-            );
+
+            });
 
         }
 
 
-        /* ================================================= */
-        /* NAVEGAÇÃO PARA SEÇÕES DO DASHBOARD */
-        /* ================================================= */
+        /* MENU TRÊS RISCOS */
 
-        function goToDashboardSection(
-            sectionSelector,
-            sectionName
-        ) {
+        if (navbarToggle && mobileMenu) {
+
+            navbarToggle.addEventListener("click", function (event) {
+
+                event.stopPropagation();
+
+                const alreadyOpen =
+                    mobileMenu.classList.contains("active");
+
+                closeUserMenu();
+
+                if (alreadyOpen) {
+
+                    closeMobileMenu();
+
+                } else {
+
+                    mobileMenu.classList.add("active");
+
+                    mobileMenu.setAttribute("aria-hidden", "false");
+
+                    navbarToggle.setAttribute("aria-expanded", "true");
+
+                }
+
+            });
+
+        }
+
+
+        /* NAVEGAÇÃO PARA SEÇÕES DO DASHBOARD */
+
+        function goToDashboardSection(sectionSelector, sectionName) {
 
             closeMobileMenu();
 
             closeUserMenu();
 
-
-            /*
-               Se a seção existe na página atual,
-               estamos no Dashboard.
-            */
-
             const section =
-                document.querySelector(
-                    sectionSelector
-                );
-
+                document.querySelector(sectionSelector);
 
             if (section) {
 
@@ -1907,27 +1176,16 @@ document.addEventListener(
                 });
 
                 return;
+
             }
 
-
-            /*
-               Se não existe, estamos em outra página,
-               como Perfil.
-
-               Voltamos ao Dashboard levando o nome
-               da seção no endereço.
-            */
-
             window.location.href =
-                "{{ url_for('dashboard') }}#" +
-                sectionName;
+                "{{ url_for('dashboard') }}#" + sectionName;
 
         }
 
 
-        /* ================================================= */
         /* FERRAMENTAS */
-        /* ================================================= */
 
         function goToTools() {
 
@@ -1939,9 +1197,7 @@ document.addEventListener(
         }
 
 
-        /* ================================================= */
         /* VÍDEOS */
-        /* ================================================= */
 
         function goToVideos() {
 
@@ -1953,9 +1209,7 @@ document.addEventListener(
         }
 
 
-        /* ================================================= */
         /* INÍCIO */
-        /* ================================================= */
 
         function goToDashboardHome() {
 
@@ -1963,15 +1217,9 @@ document.addEventListener(
 
             closeUserMenu();
 
-
-            /*
-               Verifica se estamos no Dashboard.
-            */
-
             const isDashboard =
                 window.location.pathname ===
                 "{{ url_for('dashboard') }}";
-
 
             if (isDashboard) {
 
@@ -1984,246 +1232,141 @@ document.addEventListener(
 
             }
 
-
-            /*
-               Se estivermos em outra página,
-               como Perfil, volta ao Dashboard.
-            */
-
             window.location.href =
                 "{{ url_for('dashboard') }}";
 
         }
 
 
-        /* ================================================= */
-        /* RECUPERAR SEÇÃO APÓS VOLTAR AO DASHBOARD */
-        /* ================================================= */
+        /* RECUPERAR SEÇÃO PELO ENDEREÇO */
 
         function openDashboardSectionFromHash() {
 
-            const hash =
-                window.location.hash;
+            const hash = window.location.hash;
 
-
-            if (!hash) {
-                return;
-            }
-
+            if (!hash) return;
 
             let section = null;
 
-
-            if (
-                hash === "#ferramentas"
-            ) {
+            if (hash === "#ferramentas") {
 
                 section =
-                    document.querySelector(
-                        ".card.ferramentas"
-                    );
+                    document.querySelector(".card.ferramentas");
 
             }
 
-
-            if (
-                hash === "#videos"
-            ) {
+            if (hash === "#videos") {
 
                 section =
-                    document.querySelector(
-                        ".card.videos"
-                    );
+                    document.querySelector(".card.videos");
 
             }
 
+            if (!section) return;
 
-            if (!section) {
-                return;
-            }
+            setTimeout(function () {
 
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
-            /*
-               Aguarda o Dashboard terminar de carregar
-               antes de fazer a rolagem.
-            */
-
-            setTimeout(
-                function () {
-
-                    section.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                },
-                150
-            );
+            }, 150);
 
         }
 
 
-        /* ================================================= */
         /* BOTÕES DESKTOP */
-        /* ================================================= */
 
         const homeButton =
-            document.getElementById(
-                "dashboardHomeButton"
-            );
-
+            document.getElementById("dashboardHomeButton");
 
         const toolsButton =
-            document.getElementById(
-                "dashboardToolsButton"
-            );
-
+            document.getElementById("dashboardToolsButton");
 
         const videosButton =
-            document.getElementById(
-                "dashboardVideosButton"
-            );
+            document.getElementById("dashboardVideosButton");
 
 
         if (homeButton) {
 
-            homeButton.addEventListener(
-                "click",
-                function (event) {
+            homeButton.addEventListener("click", function (event) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
-                    goToDashboardHome();
+                goToDashboardHome();
 
-                }
-            );
+            });
 
         }
-
 
         if (toolsButton) {
-
-            toolsButton.addEventListener(
-                "click",
-                goToTools
-            );
-
+            toolsButton.addEventListener("click", goToTools);
         }
-
 
         if (videosButton) {
-
-            videosButton.addEventListener(
-                "click",
-                goToVideos
-            );
-
+            videosButton.addEventListener("click", goToVideos);
         }
 
 
-        /* ================================================= */
         /* BOTÕES MOBILE */
-        /* ================================================= */
 
         const mobileHomeButton =
-            document.getElementById(
-                "dashboardMobileHomeButton"
-            );
-
+            document.getElementById("dashboardMobileHomeButton");
 
         const mobileToolsButton =
-            document.getElementById(
-                "dashboardMobileToolsButton"
-            );
-
+            document.getElementById("dashboardMobileToolsButton");
 
         const mobileVideosButton =
-            document.getElementById(
-                "dashboardMobileVideosButton"
-            );
+            document.getElementById("dashboardMobileVideosButton");
 
 
         if (mobileHomeButton) {
 
-            mobileHomeButton.addEventListener(
-                "click",
-                function (event) {
+            mobileHomeButton.addEventListener("click", function (event) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
-                    goToDashboardHome();
+                goToDashboardHome();
 
-                }
-            );
+            });
 
         }
-
 
         if (mobileToolsButton) {
-
-            mobileToolsButton.addEventListener(
-                "click",
-                goToTools
-            );
-
+            mobileToolsButton.addEventListener("click", goToTools);
         }
-
 
         if (mobileVideosButton) {
-
-            mobileVideosButton.addEventListener(
-                "click",
-                goToVideos
-            );
-
+            mobileVideosButton.addEventListener("click", goToVideos);
         }
 
 
-        /* ================================================= */
         /* AJUDA */
-        /* ================================================= */
 
         const helpButton =
-            document.getElementById(
-                "dashboardHelpButton"
-            );
-
+            document.getElementById("dashboardHelpButton");
 
         const helpOverlay =
-            document.getElementById(
-                "dashboardHelpOverlay"
-            );
-
+            document.getElementById("dashboardHelpOverlay");
 
         const helpClose =
-            document.getElementById(
-                "dashboardHelpClose"
-            );
+            document.getElementById("dashboardHelpClose");
 
 
         function openHelp() {
 
             if (!helpOverlay) return;
 
-
             closeUserMenu();
 
             closeMobileMenu();
 
+            helpOverlay.classList.add("active");
 
-            helpOverlay.classList.add(
-                "active"
-            );
+            helpOverlay.setAttribute("aria-hidden", "false");
 
-
-            helpOverlay.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
+            document.body.style.overflow = "hidden";
 
         }
 
@@ -2232,296 +1375,173 @@ document.addEventListener(
 
             if (!helpOverlay) return;
 
+            helpOverlay.classList.remove("active");
 
-            helpOverlay.classList.remove(
-                "active"
-            );
+            helpOverlay.setAttribute("aria-hidden", "true");
 
-
-            helpOverlay.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.style.overflow =
-                "";
+            document.body.style.overflow = "";
 
         }
 
 
         if (helpButton) {
 
-            helpButton.addEventListener(
-                "click",
-                function (event) {
+            helpButton.addEventListener("click", function (event) {
 
-                    event.stopPropagation();
+                event.stopPropagation();
 
-                    openHelp();
+                openHelp();
 
-                }
-            );
+            });
 
         }
 
 
-        /* ================================================= */
         /* FECHAR AJUDA PELO X */
-        /* ================================================= */
 
         if (helpClose) {
-
-            helpClose.addEventListener(
-                "click",
-                closeHelp
-            );
-
+            helpClose.addEventListener("click", closeHelp);
         }
 
 
-        /* ================================================= */
         /* CLICAR FORA DA AJUDA */
-        /* ================================================= */
 
         if (helpOverlay) {
 
-            helpOverlay.addEventListener(
-                "click",
-                function (event) {
+            helpOverlay.addEventListener("click", function (event) {
 
-                    if (
-                        event.target ===
-                        helpOverlay
-                    ) {
-
-                        closeHelp();
-
-                    }
-
+                if (event.target === helpOverlay) {
+                    closeHelp();
                 }
-            );
+
+            });
 
         }
 
 
-        /* ================================================= */
         /* FAQ */
-        /* ================================================= */
 
         const faqQuestions =
-            document.querySelectorAll(
-                ".dashboard-faq-question"
-            );
+            document.querySelectorAll(".dashboard-faq-question");
 
 
-        faqQuestions.forEach(
-            function (question) {
+        faqQuestions.forEach(function (question) {
 
-                question.addEventListener(
-                    "click",
-                    function () {
+            question.addEventListener("click", function () {
 
+                const answer = question.nextElementSibling;
 
-                        const answer =
-                            question.nextElementSibling;
+                const isOpen =
+                    question.classList.contains("active");
 
 
-                        const isOpen =
-                            question.classList.contains(
-                                "active"
-                            );
+                faqQuestions.forEach(function (otherQuestion) {
 
+                    if (otherQuestion !== question) {
 
-                        faqQuestions.forEach(
-                            function (otherQuestion) {
+                        otherQuestion.classList.remove("active");
 
-                                if (
-                                    otherQuestion !==
-                                    question
-                                ) {
+                        const otherAnswer =
+                            otherQuestion.nextElementSibling;
 
-                                    otherQuestion.classList.remove(
-                                        "active"
-                                    );
-
-
-                                    const otherAnswer =
-                                        otherQuestion.nextElementSibling;
-
-
-                                    if (otherAnswer) {
-
-                                        otherAnswer.classList.remove(
-                                            "open"
-                                        );
-
-                                    }
-
-                                }
-
-                            }
-                        );
-
-
-                        if (isOpen) {
-
-                            question.classList.remove(
-                                "active"
-                            );
-
-
-                            answer.classList.remove(
-                                "open"
-                            );
-
-                        } else {
-
-                            question.classList.add(
-                                "active"
-                            );
-
-
-                            answer.classList.add(
-                                "open"
-                            );
-
+                        if (otherAnswer) {
+                            otherAnswer.classList.remove("open");
                         }
 
                     }
-                );
 
-            }
-        );
+                });
 
 
-        /* ================================================= */
+                if (isOpen) {
+
+                    question.classList.remove("active");
+
+                    answer.classList.remove("open");
+
+                } else {
+
+                    question.classList.add("active");
+
+                    answer.classList.add("open");
+
+                }
+
+            });
+
+        });
+
+
         /* CLIQUE FORA DOS MENUS */
-        /* ================================================= */
 
-        document.addEventListener(
-            "click",
-            function (event) {
+        document.addEventListener("click", function (event) {
 
+            if (
+                userMenu &&
+                userButton &&
+                !userMenu.contains(event.target) &&
+                !userButton.contains(event.target)
+            ) {
 
-                if (
-                    userMenu &&
-                    userButton &&
-                    !userMenu.contains(
-                        event.target
-                    ) &&
-                    !userButton.contains(
-                        event.target
-                    )
-                ) {
-
-                    closeUserMenu();
-
-                }
-
-
-                if (
-                    mobileMenu &&
-                    navbarToggle &&
-                    !mobileMenu.contains(
-                        event.target
-                    ) &&
-                    !navbarToggle.contains(
-                        event.target
-                    )
-                ) {
-
-                    closeMobileMenu();
-
-                }
+                closeUserMenu();
 
             }
-        );
+
+            if (
+                mobileMenu &&
+                navbarToggle &&
+                !mobileMenu.contains(event.target) &&
+                !navbarToggle.contains(event.target)
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        });
 
 
-        /* ================================================= */
-        /* SAIR (FIREBASE AUTH) */
-        /* ================================================= */
+        /* SAIR */
 
         const logoutButton =
-            document.getElementById(
-                "dashboardLogoutButton"
-            );
+            document.getElementById("dashboardLogoutButton");
 
 
         if (logoutButton) {
 
-            logoutButton.addEventListener(
-                "click",
-                async function () {
+            logoutButton.addEventListener("click", function () {
 
-                    if (window.AuthService && typeof window.AuthService.logout === "function") {
-                        try {
-                            await window.AuthService.logout();
-                        } catch (e) {
-                            console.warn("Aviso ao desconectar do Firebase:", e);
-                        }
-                    }
+                window.location.href =
+                    "{{ url_for('login') }}";
 
-                    window.location.href =
-                        "{{ url_for('login') }}";
-
-                }
-            );
-
-        }
-
-
-        /* ================================================= */
-        /* ATUALIZAR INFORMAÇÕES DO USUÁRIO */
-        /* ================================================= */
-
-        if (window.AuthService && typeof window.AuthService.onAuthStateChanged === "function") {
-            window.AuthService.onAuthStateChanged(function (user) {
-                const header = document.getElementById("dashboardUserMenuHeader");
-                const nameEl = document.getElementById("dashboardUserMenuName");
-                const emailEl = document.getElementById("dashboardUserMenuEmail");
-
-                if (user && header && nameEl && emailEl) {
-                    header.style.display = "block";
-                    nameEl.textContent = user.displayName || "Estudante";
-                    emailEl.textContent = user.email || "";
-                }
             });
+
         }
 
 
-        /* ================================================= */
         /* ABRIR SEÇÃO APÓS VOLTAR AO DASHBOARD */
-        /* ================================================= */
 
         openDashboardSectionFromHash();
 
 
-        /* ================================================= */
-        /* ESC */
-        /* ================================================= */
+        /* TECLA ESC */
 
-        document.addEventListener(
-            "keydown",
-            function (event) {
+        document.addEventListener("keydown", function (event) {
 
-                if (
-                    event.key === "Escape"
-                ) {
+            if (event.key === "Escape") {
 
-                    closeHelp();
+                closeHelp();
 
-                    closeUserMenu();
+                closeUserMenu();
 
-                    closeMobileMenu();
-
-                }
+                closeMobileMenu();
 
             }
-        );
+
+        });
 
     }
+
 );
 
 </script>
